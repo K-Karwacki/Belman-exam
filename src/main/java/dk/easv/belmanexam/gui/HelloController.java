@@ -1,4 +1,4 @@
-package dk.easv.belmanexam;
+package dk.easv.belmanexam.gui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
