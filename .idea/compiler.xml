@@ -9,8 +9,5 @@
         <module name="belman-exam" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="belman-exam" target="24" />
-    </bytecodeTargetLevel>
   </component>
 </project>
