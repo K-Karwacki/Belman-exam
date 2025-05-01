@@ -1,4 +1,4 @@
 package dk.easv.belmanexam.ui.controllers.main;
 
-public class QualityAssuranceController {
+public class QualityAssuranceController extends ViewController {
 }

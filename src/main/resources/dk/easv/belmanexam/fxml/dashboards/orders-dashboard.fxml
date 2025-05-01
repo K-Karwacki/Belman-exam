@@ -24,8 +24,8 @@
             <Font size="23.0" />
          </font>
          <styleClass>
-            <String fx:value="basic-button" />
-            <String fx:value="left-side-button" />
+            <String fx:value="header-title" />
+            <String fx:value="left-side-header" />
          </styleClass>
       </Label>
       <HBox alignment="CENTER_LEFT" layoutX="55.0" layoutY="182.0" prefHeight="46.0" prefWidth="700.0">

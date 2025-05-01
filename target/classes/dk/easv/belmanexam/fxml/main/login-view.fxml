@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 
@@ -24,7 +28,7 @@
                   <Label text="Email" />
                   <TextField fx:id="textFieldEmail" prefHeight="32.0">
                      <effect>
-                        <DropShadow height="1.0" offsetX="-4.0" offsetY="4.0" radius="0.0" width="0.0">
+                        <DropShadow height="0.0" offsetX="-4.0" offsetY="4.0" radius="0.0" width="0.0">
                            <color>
                               <Color green="0.29411765933036804" blue="0.5333333611488342" />
                            </color>
@@ -35,14 +39,23 @@
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
                <children>
                   <Label text="Password" />
-                  <TextField fx:id="textFieldPassword" prefHeight="32.0">
-                     <effect>
-                        <DropShadow height="1.0" offsetX="-4.0" offsetY="4.0" radius="0.0" width="0.0">
-                           <color>
-                              <Color green="0.29411765933036804" blue="0.5333333611488342" />
-                           </color>
-                        </DropShadow>
-                     </effect></TextField>
+                  <Pane prefWidth="370.0">
+                     <children>
+                        <TextField fx:id="textFieldPassword" prefWidth="320.0" styleClass="text-field" />
+                        <PasswordField fx:id="passwordFieldPassword" prefWidth="320.0" />
+                        <ImageView fx:id="imgEyeIcon" fitHeight="35.0" fitWidth="28.0" layoutX="278.0" layoutY="6.0" onMouseClicked="#togglePasswordVisibility" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/visible-icon.png" />
+                           </image>
+                           <viewport>
+                              <Rectangle2D />
+                           </viewport>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                     </children>
+                  </Pane>
                </children>
             </VBox>
          </children>
