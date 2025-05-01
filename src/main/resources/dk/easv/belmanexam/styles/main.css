@@ -19,6 +19,12 @@
     -fx-font-size: 20;
     -fx-background-radius: 8;
 }
+.gray-button{
+    -fx-background-color: #B0B0B0;
+    -fx-text-fill: #FFF;
+    -fx-font-size: 20;
+    -fx-background-radius: 8;
+}
 .radius{
     -fx-background-radius: 13;
 }
