@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="600.0" prefWidth="1280.0" styleClass="bgc" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.views.OrdersView">
+<AnchorPane prefHeight="600.0" prefWidth="1280.0" styleClass="bgc" stylesheets="@../../styles/main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.dashboards.OrdersDashboardController">
    <children>
       <Label alignment="CENTER_RIGHT" layoutY="40.0" prefHeight="49.0" prefWidth="260.0" styleClass="basic-button" text="List of orders">
          <padding>
@@ -47,7 +47,7 @@
             <DropShadow height="9.0" radius="4.79" width="12.16" />
          </effect>
       </Button>
-      <HBox layoutX="876.0" layoutY="351.0" prefHeight="55.0" prefWidth="300.0" styleClass="radius" stylesheets="@../styles/search-bar.css">
+      <HBox layoutX="876.0" layoutY="351.0" prefHeight="55.0" prefWidth="300.0" styleClass="radius" stylesheets="@../../styles/search-bar.css">
          <children>
             <TextField alignment="CENTER" prefHeight="55.0" prefWidth="240.0" promptText="Order number">
                <font>
@@ -58,7 +58,7 @@
                <children>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/loop-icon.png" />
+                        <Image url="@../../images/loop-icon.png" />
                      </image>
                   </ImageView>
                </children>
