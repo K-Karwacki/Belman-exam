@@ -1,0 +1,14 @@
+.bgc{
+    -fx-background-color: #F2F2F2;
+}
+
+.logo{
+    -fx-pref-width: 110;
+    -fx-pref-height: 60;
+}
+.logout-button{
+    -fx-background-color: #004B88;
+    -fx-text-fill: #FFF;
+    -fx-background-radius: 13;
+    -fx-font-size: 24;
+}
