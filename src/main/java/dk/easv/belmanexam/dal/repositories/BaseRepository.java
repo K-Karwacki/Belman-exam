@@ -1,4 +1,4 @@
-package dk.easv.belmanexam.dal;
+package dk.easv.belmanexam.dal.repositories;
 
 import java.util.Collection;
 import java.util.Optional;
