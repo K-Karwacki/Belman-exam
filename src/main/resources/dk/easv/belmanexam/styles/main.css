@@ -1,5 +1,5 @@
-*{
-    font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+.root{
+    font-family: "Helvetica", "Helvetica Neue", "Arial", "sans-serif";
 }
 .bgc{
     -fx-background-color: #dadada;
@@ -41,8 +41,7 @@
     -fx-font-size: 20;
     -fx-background-radius: 8;
     -fx-border-radius:8;
-    -fx-border-width:2;
-    -fx-border-color: #338D71
+
 }
 .radius{
     -fx-background-radius: 13;

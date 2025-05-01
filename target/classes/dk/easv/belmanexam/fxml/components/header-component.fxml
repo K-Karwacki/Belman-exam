@@ -15,7 +15,7 @@
             <Image url="@../../images/belman-logo.png" />
          </image>
          <HBox.margin>
-            <Insets left="70.0" />
+            <Insets left="65.0" />
          </HBox.margin>
       </ImageView>
       <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
@@ -59,7 +59,7 @@
             </ImageView>
          </children>
          <HBox.margin>
-            <Insets left="137.0" />
+            <Insets left="142.0" />
          </HBox.margin>
          <effect>
             <DropShadow />

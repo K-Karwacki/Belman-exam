@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1280.0" styleClass="bgc" stylesheets="@../../styles/main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.dashboards.LogsController">
+<AnchorPane prefHeight="600.0" prefWidth="1280.0" styleClass="bgc" stylesheets="@../../styles/main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.dashboards.LogsDashboardController">
    <children>
       <Label alignment="CENTER_RIGHT" layoutY="40.0" prefHeight="49.0" prefWidth="317.0" text="Logs">
          <padding>
@@ -24,11 +24,11 @@
             <Font size="23.0" />
          </font>
          <styleClass>
-            <String fx:value="basic-button" />
-            <String fx:value="left-side-button" />
+            <String fx:value="left-side-header" />
+            <String fx:value="header-title" />
          </styleClass>
       </Label>
-      <HBox alignment="CENTER_LEFT" layoutX="48.0" layoutY="123.0" prefHeight="46.0" prefWidth="1050.0">
+      <HBox alignment="CENTER_LEFT" layoutX="48.0" layoutY="140.0" prefHeight="46.0" prefWidth="1050.0">
          <children>
             <HBox alignment="CENTER">
                <children>
@@ -106,7 +106,7 @@
             <DropShadow height="5.0" radius="3.0" width="9.0" />
          </effect>
       </HBox>
-      <Label layoutX="1155.0" layoutY="272.0" prefHeight="56.0" prefWidth="125.0" text="Users">
+      <Label layoutX="1155.0" layoutY="272.0" onMouseClicked="#onClickShowUsersView" prefHeight="56.0" prefWidth="125.0" text="Users">
          <padding>
             <Insets bottom="10.0" left="20.0" top="10.0" />
          </padding>
