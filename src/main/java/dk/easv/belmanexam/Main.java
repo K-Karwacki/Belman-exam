@@ -1,5 +1,6 @@
 package dk.easv.belmanexam;
 
+import dk.easv.belmanexam.ui.FXMLManager;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.StageManager;
 import dk.easv.belmanexam.ui.ViewManager;
@@ -12,6 +13,7 @@ import java.util.Locale;
 public class Main extends Application
 {
   private final ViewManager viewManager = ViewManager.INSTANCE;
+  private final FXMLManager fxmlManager = FXMLManager.INSTANCE;
   private final StageManager stageManager = new StageManager();
 
 

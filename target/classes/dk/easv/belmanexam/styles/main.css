@@ -7,14 +7,15 @@
 .light-bgc{
     -fx-background-color: #F2F2F2;
 }
-.basic-button{
+.header-title{
     -fx-background-color: #004B88;
     -fx-text-fill: #FFF;
     -fx-background-radius: 13;
     -fx-font-size: 24 !important;
 }
-.left-side-button{
-    -fx-padding: 0 0 0 20;
+
+.left-side-header{
+    -fx-padding: 0 20 0 0;
     -fx-background-radius: 0 13 13 0 !important;
 }
 .right-side-button{
@@ -67,5 +68,5 @@
     -fx-alignment: CENTER_LEFT;
 }
 .shadow{
-    -fx-effect: dropshadow(gaussian, RGBA(100, 100, 100, 0.4), 6, 0, -3, 5);;
+    -fx-effect: dropshadow(gaussian, RGBA(87, 87, 87, 0.5), -3, 5, 10, 0);
 }

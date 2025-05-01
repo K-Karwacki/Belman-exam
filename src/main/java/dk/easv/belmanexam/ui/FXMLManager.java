@@ -15,7 +15,6 @@ public enum FXMLManager
 {
     INSTANCE;
     private final Map<String, Pair<Parent, Object>> loadedFXMLs = new HashMap<>();
-    private final Map<String, Class<?>> classMap = new LinkedHashMap<>();
 
     FXMLManager() {}
 
