@@ -1,0 +1,27 @@
+*{
+    font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+}
+.bgc{
+    -fx-background-color: #CFCFCF;
+}
+.light-bgc{
+    -fx-background-color: #F2F2F2;
+}
+.basic-button{
+    -fx-background-color: #004B88;
+    -fx-text-fill: #FFF;
+    -fx-background-radius: 13;
+    -fx-font-size: 24 !important;
+}
+.green-button{
+    -fx-background-color: #338D71;
+    -fx-text-fill: #FFF;
+    -fx-font-size: 20;
+    -fx-background-radius: 8;
+}
+.radius{
+    -fx-background-radius: 13;
+}
+.label{
+    -fx-font-size: 20;
+}
