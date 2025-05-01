@@ -47,7 +47,7 @@
             </VBox>
          </children>
       </VBox>
-      <StackPane layoutX="1125.0" layoutY="232.0" prefHeight="0.0" prefWidth="0.0">
+      <StackPane layoutX="1140.0" layoutY="250.0" prefHeight="0.0" prefWidth="0.0">
          <children>
             <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -58,6 +58,23 @@
          <styleClass>
             <String fx:value="green-button" />
             <String fx:value="approve-button" />
+            <String fx:value="right-side-button" />
+            <String fx:value="shadow" />
+         </styleClass>
+      </StackPane>
+      <StackPane layoutX="1140.0" layoutY="350.0" minHeight="0.0" prefHeight="0.0" prefWidth="0.0">
+         <children>
+            <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/reject-image.png" />
+               </image>
+            </ImageView>
+         </children>
+         <styleClass>
+            <String fx:value="red-button" />
+            <String fx:value="approve-button" />
+            <String fx:value="right-side-button" />
+            <String fx:value="shadow" />
          </styleClass>
       </StackPane>
    </children>

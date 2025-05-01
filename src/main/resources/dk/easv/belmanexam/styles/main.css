@@ -25,6 +25,10 @@
     -fx-font-size: 20;
     -fx-background-radius: 8;
 }
+.red-button{
+    -fx-background-color: #FF5656;
+    -fx-background-radius: 8;
+}
 .gray-button{
     -fx-background-color: #B0B0B0;
     -fx-text-fill: #FFF;
@@ -55,6 +59,11 @@
     -fx-font-size: 26;
 }
 .approve-button{
+    -fx-padding: 0 0 0 20;
     -fx-min-width: 140;
     -fx-min-height: 60;
+    -fx-alignment: CENTER_LEFT;
+}
+.shadow{
+    -fx-effect: dropshadow(gaussian, RGBA(100, 100, 100, 0.4), 6, 0, -3, 5);;
 }
