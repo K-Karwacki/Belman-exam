@@ -1,0 +1,69 @@
+*{
+    font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+}
+.bgc{
+    -fx-background-color: #CFCFCF;
+}
+.light-bgc{
+    -fx-background-color: #F2F2F2;
+}
+.basic-button{
+    -fx-background-color: #004B88;
+    -fx-text-fill: #FFF;
+    -fx-background-radius: 13;
+    -fx-font-size: 24 !important;
+}
+.left-side-button{
+    -fx-background-radius: 0 13 13 0 !important;
+}
+.right-side-button{
+    -fx-background-radius: 13 0 0 13 !important;
+}
+.green-button{
+    -fx-background-color: #338D71;
+    -fx-text-fill: #FFF;
+    -fx-font-size: 20;
+    -fx-background-radius: 8;
+}
+.red-button{
+    -fx-background-color: #FF5656;
+    -fx-background-radius: 8;
+}
+.gray-button{
+    -fx-background-color: #B0B0B0;
+    -fx-text-fill: #FFF;
+    -fx-font-size: 20;
+    -fx-background-radius: 8;
+}
+.radius{
+    -fx-background-radius: 13;
+}
+.label{
+    -fx-font-size: 20;
+}
+.light-blue-label{
+    -fx-text-fill: #F2F2F2;
+    -fx-background-color: #7FA8C5;
+    -fx-padding: 10;
+}
+
+.order-number-label{
+    -fx-border-radius: 0 0 13 13;
+    -fx-background-radius: 0 0 13 13;
+    -fx-border-color: #000;
+    -fx-background-color: #F2F2F2;
+    -fx-padding: 10;
+}
+
+.add-photo-button{
+    -fx-font-size: 26;
+}
+.approve-button{
+    -fx-padding: 0 0 0 20;
+    -fx-min-width: 140;
+    -fx-min-height: 60;
+    -fx-alignment: CENTER_LEFT;
+}
+.shadow{
+    -fx-effect: dropshadow(gaussian, RGBA(100, 100, 100, 0.4), 6, 0, -3, 5);;
+}

@@ -1,0 +1,16 @@
+.bgc{
+    -fx-background-color: #CFCFCF;
+}
+.login-button{
+    -fx-background-color: #338D71;
+    -fx-text-fill: #FFF;
+    -fx-font-size: 20;
+}
+
+.text-field{
+    -fx-background-radius: 5;
+    -fx-pref-height: 32;
+}
+.label{
+    -fx-font-size: 20;
+}

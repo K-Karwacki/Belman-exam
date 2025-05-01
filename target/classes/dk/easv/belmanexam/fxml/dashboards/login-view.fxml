@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 
-<AnchorPane minHeight="500.0" minWidth="450.0" styleClass="bgc" stylesheets="@../styles/login.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.LoginView">
+<AnchorPane minHeight="500.0" minWidth="450.0" styleClass="bgc" stylesheets="@../../styles/login.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.LoginView">
    <children>
       <ImageView fitHeight="90.0" fitWidth="129.0" layoutX="161.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/belman-logo.png" />
+            <Image url="@../../images/belman-logo.png" />
          </image>
       </ImageView>
       <VBox layoutX="65.0" layoutY="159.0" prefHeight="265.0" prefWidth="320.0">
