@@ -13,6 +13,9 @@
     -fx-background-radius: 13;
     -fx-font-size: 24 !important;
 }
+.left-side-button{
+    -fx-background-radius: 0 13 13 0 !important;
+}
 .green-button{
     -fx-background-color: #338D71;
     -fx-text-fill: #FFF;
@@ -30,4 +33,25 @@
 }
 .label{
     -fx-font-size: 20;
+}
+.light-blue-label{
+    -fx-text-fill: #F2F2F2;
+    -fx-background-color: #7FA8C5;
+    -fx-padding: 10;
+}
+
+.order-number-label{
+    -fx-border-radius: 0 0 13 13;
+    -fx-background-radius: 0 0 13 13;
+    -fx-border-color: #000;
+    -fx-background-color: #F2F2F2;
+    -fx-padding: 10;
+}
+
+.add-photo-button{
+    -fx-font-size: 26;
+}
+.approve-button{
+    -fx-min-width: 140;
+    -fx-min-height: 60;
 }
