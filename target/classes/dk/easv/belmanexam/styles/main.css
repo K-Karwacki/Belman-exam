@@ -14,11 +14,9 @@
     -fx-font-size: 24 !important;
 }
 .left-side-button{
-    -fx-padding: 0 0 0 20;
     -fx-background-radius: 0 13 13 0 !important;
 }
 .right-side-button{
-    -fx-padding: 0 0 0 20;
     -fx-background-radius: 13 0 0 13 !important;
 }
 .green-button{

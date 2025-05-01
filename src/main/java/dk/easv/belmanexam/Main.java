@@ -1,25 +1,25 @@
 package dk.easv.belmanexam;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.util.Pair;
+import dk.easv.belmanexam.ui.FXMLPath;
+import dk.easv.belmanexam.ui.StageManager;
+import dk.easv.belmanexam.ui.ViewManager;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+import java.util.Locale;
 
 public class Main extends Application
 {
-  @Override public void start(Stage stage) throws IOException
-  {
-    FXMLLoader fxmlLoader = new FXMLLoader(
-        Main.class.getResource("hello-view.fxml"));
-    Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-    stage.setTitle("Hello Belman!");
-    stage.setScene(scene);
-    stage.show();
+  private final ViewManager viewManager = ViewManager.INSTANCE;
+  private final StageManager stageManager = new StageManager();
+
+
+  @Override public void start(Stage primaryStage) {
+    Locale.setDefault(Locale.ENGLISH);
+    stageManager.setCurrentStage(primaryStage);
+    viewManager.setStageManager(stageManager);
+    viewManager.showStage(FXMLPath.LOGIN_VIEW, "Login", false);
   }
 
   public static void main(String[] args)
