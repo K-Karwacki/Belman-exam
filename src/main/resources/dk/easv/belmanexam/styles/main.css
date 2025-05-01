@@ -16,6 +16,9 @@
 .left-side-button{
     -fx-background-radius: 0 13 13 0 !important;
 }
+.right-side-button{
+    -fx-background-radius: 13 0 0 13 !important;
+}
 .green-button{
     -fx-background-color: #338D71;
     -fx-text-fill: #FFF;
