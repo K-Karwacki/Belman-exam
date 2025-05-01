@@ -16,10 +16,10 @@ public class Main extends Application
 
 
   @Override public void start(Stage primaryStage) {
-//    Locale.setDefault(Locale.ENGLISH);
-//    stageManager.setCurrentStage(primaryStage);
-//    viewManager.setStageManager(stageManager);
-//    viewManager.showStage(FXMLPath.LOGIN, "Login", false);
+    Locale.setDefault(Locale.ENGLISH);
+    stageManager.setCurrentStage(primaryStage);
+    viewManager.setStageManager(stageManager);
+    viewManager.showStage(FXMLPath.LOGIN_VIEW, "Login", false);
   }
 
   public static void main(String[] args)

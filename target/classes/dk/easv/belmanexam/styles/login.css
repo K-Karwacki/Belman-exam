@@ -9,7 +9,12 @@
 
 .text-field{
     -fx-background-radius: 5;
+    -fx-padding: 12;
     -fx-pref-height: 32;
+}
+.text-field:focused{
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
 }
 .label{
     -fx-font-size: 20;

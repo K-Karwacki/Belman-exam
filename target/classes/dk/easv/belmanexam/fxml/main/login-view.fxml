@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 
-<AnchorPane minHeight="500.0" minWidth="450.0" styleClass="bgc" stylesheets="@../../styles/login.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.LoginView">
+<AnchorPane minHeight="500.0" minWidth="450.0" styleClass="bgc" stylesheets="@../../styles/login.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.main.LoginViewController">
    <children>
       <ImageView fitHeight="90.0" fitWidth="129.0" layoutX="161.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -22,7 +22,7 @@
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
                <children>
                   <Label text="Email" />
-                  <TextField prefHeight="32.0">
+                  <TextField fx:id="textFieldEmail" prefHeight="32.0">
                      <effect>
                         <DropShadow height="1.0" offsetX="-4.0" offsetY="4.0" radius="0.0" width="0.0">
                            <color>
@@ -35,7 +35,7 @@
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
                <children>
                   <Label text="Password" />
-                  <TextField prefHeight="32.0">
+                  <TextField fx:id="textFieldPassword" prefHeight="32.0">
                      <effect>
                         <DropShadow height="1.0" offsetX="-4.0" offsetY="4.0" radius="0.0" width="0.0">
                            <color>
@@ -47,7 +47,7 @@
             </VBox>
          </children>
       </VBox>
-      <Button layoutX="163.0" layoutY="404.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" styleClass="login-button" text="Login">
+      <Button layoutX="163.0" layoutY="404.0" mnemonicParsing="false" onAction="#onClickLogin" prefHeight="40.0" prefWidth="120.0" styleClass="login-button" text="Login">
          <effect>
             <DropShadow height="1.0" offsetX="-3.0" offsetY="3.0" radius="0.0" width="0.0">
                <color>
