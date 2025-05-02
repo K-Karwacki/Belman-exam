@@ -4,6 +4,9 @@
 .bgc{
     -fx-background-color: #dadada;
 }
+.button{
+    -fx-cursor: hand;
+}
 .light-bgc{
     -fx-background-color: #F2F2F2;
 }

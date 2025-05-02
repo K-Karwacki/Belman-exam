@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1280.0" styleClass="bgc" stylesheets="@../../styles/main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.dashboards.UsersDashboardController">
+<AnchorPane prefHeight="600.0" prefWidth="1280.0" styleClass="bgc" stylesheets="@../../../styles/main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.dashboards.admin.UsersDashboardController">
    <children>
       <Label alignment="CENTER_RIGHT" layoutY="40.0" prefHeight="49.0" prefWidth="317.0" text="Users">
          <padding>
@@ -36,7 +36,7 @@
                   <Region prefHeight="200.0" prefWidth="200.0" />
                   <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/fi-rs-user.png" />
+                        <Image url="@../../../images/fi-rs-user.png" />
                      </image>
                   </ImageView>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="365.0" style="-fx-border-color: #575757; -fx-border-width: 0 2 0 0;" text="Name" />
@@ -47,7 +47,7 @@
                   <Region prefHeight="200.0" prefWidth="200.0" />
                   <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/fi-rs-at.png" />
+                        <Image url="@../../../images/fi-rs-at.png" />
                      </image>
                   </ImageView>
                   <Label alignment="CENTER" prefHeight="46.0" prefWidth="371.0" style="-fx-border-width: 0 2 0 0; -fx-border-color: #575757;" text="Email Address" />
@@ -58,7 +58,7 @@
                   <Region prefHeight="200.0" prefWidth="200.0" />
                   <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/role.png" />
+                        <Image url="@../../../images/role.png" />
                      </image>
                   </ImageView>
                   <Label alignment="CENTER" prefHeight="46.0" prefWidth="408.0" text="Role" />
@@ -71,9 +71,9 @@
          </styleClass>
       </HBox>
       <ListView layoutX="48.0" layoutY="201.0" prefHeight="328.0" prefWidth="1050.0" styleClass="radius" />
-      <HBox layoutX="923.0" layoutY="50.0" prefHeight="55.0" prefWidth="300.0" styleClass="radius" stylesheets="@../../styles/search-bar.css">
+      <HBox layoutX="923.0" layoutY="50.0" prefHeight="55.0" prefWidth="300.0" styleClass="radius" stylesheets="@../../../styles/search-bar.css">
          <children>
-            <TextField alignment="CENTER" prefHeight="55.0" prefWidth="240.0" promptText="Search user..." stylesheets="@../../styles/search-bar.css">
+            <TextField alignment="CENTER" prefHeight="55.0" prefWidth="240.0" promptText="Search user..." stylesheets="@../../../styles/search-bar.css">
                <font>
                   <Font size="20.0" />
                </font>
@@ -82,7 +82,7 @@
                <children>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/loop-icon.png" />
+                        <Image url="@../../../images/loop-icon.png" />
                      </image>
                   </ImageView>
                </children>

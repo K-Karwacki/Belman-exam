@@ -13,8 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="1280.0" styleClass="bgc" stylesheets="@../../styles/main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.dashboards.NewDocumentationDashboardController">
+<AnchorPane prefHeight="600.0" prefWidth="1280.0" styleClass="bgc" stylesheets="@../../../styles/main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.dashboards.operator.DocumentationCreationDashboardController">
    <children>
       <Label alignment="CENTER_RIGHT" layoutY="40.0" prefHeight="49.0" prefWidth="329.0" text="New documentation">
          <padding>
@@ -24,16 +23,16 @@
             <Font size="23.0" />
          </font>
          <styleClass>
-            <String fx:value="basic-button" />
-            <String fx:value="left-side-button" />
+            <String fx:value="header-title" />
+            <String fx:value="left-side-header" />
          </styleClass>
       </Label>
       <ScrollPane hbarPolicy="NEVER" layoutX="100.0" layoutY="157.0" prefHeight="398.0" prefWidth="587.0" styleClass="radius">
          <content>
-            <FlowPane prefHeight="200.0" prefWidth="200.0" styleClass="radius" />
+            <FlowPane fx:id="flowPaneImageContainer" prefHeight="200.0" prefWidth="582.0" styleClass="radius" />
          </content>
       </ScrollPane>
-      <Button layoutX="800.0" layoutY="490.0" minHeight="65.0" minWidth="390.0" mnemonicParsing="false" styleClass="basic-button" text="Submit">
+      <Button layoutX="800.0" layoutY="490.0" minHeight="65.0" minWidth="390.0" mnemonicParsing="false" styleClass="header-title" text="Submit">
          <effect>
             <DropShadow height="3.0" radius="1.5" width="5.0" />
          </effect>
@@ -41,7 +40,7 @@
       <VBox layoutX="810.0" layoutY="162.0" prefHeight="86.0" prefWidth="380.0">
          <children>
             <Label prefHeight="46.0" prefWidth="421.0" style="-fx-background-radius: 13 13 0 0;" styleClass="light-blue-label" text="Order number" />
-            <TextField prefHeight="55.0" prefWidth="240.0" promptText="Enter order number" styleClass="order-number-label">
+            <TextField fx:id="textFieldOrderNumber" disable="true" prefHeight="55.0" prefWidth="240.0" promptText="Enter order number" styleClass="order-number-label">
                <font>
                   <Font size="20.0" />
                </font>
@@ -50,7 +49,7 @@
       </VBox>
       <HBox alignment="CENTER" layoutX="807.0" layoutY="319.0" prefHeight="110.0" prefWidth="380.0" spacing="80.0">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="110.0" prefWidth="150.0" text="Open camera" textAlignment="CENTER" wrapText="true">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#uploadPhotoFromDevice" prefHeight="110.0" prefWidth="150.0" style="-fx-font-size: 18;" text="Upload photo from device" textAlignment="CENTER" wrapText="true">
                <effect>
                   <DropShadow height="9.0" radius="4.79" width="12.16" />
                </effect>
@@ -62,7 +61,7 @@
                   <String fx:value="add-photo-button" />
                </styleClass>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="110.0" prefWidth="150.0" text="Upload photo" textAlignment="CENTER" wrapText="true">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#uploadPhotoViaCloud" prefHeight="110.0" prefWidth="150.0" style="-fx-font-size: 18;" text="Upload photo via Cloud" textAlignment="CENTER" wrapText="true">
                <effect>
                   <DropShadow height="9.0" radius="4.79" width="12.16" />
                </effect>
