@@ -20,6 +20,7 @@
 /.idea/
 *.iml
 .settings/
+tokens/
 *.prefs
 *.project
 *.classpath
