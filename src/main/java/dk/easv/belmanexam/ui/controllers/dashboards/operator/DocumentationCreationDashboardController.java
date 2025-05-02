@@ -7,7 +7,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
+import javafx.stage.FileChooser;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.List;
@@ -24,19 +27,34 @@ public class DocumentationCreationDashboardController {
 
     @FXML
     private void uploadPhotoViaCloud() throws PhotoException {
-        try {
-            flowPaneImageContainer.getChildren().clear();
-            String orderNumber = textFieldOrderNumber.getText();
-            List<Image> images = photoDocumentationService.getAllImagesByOrderNumber(orderNumber);
-            images.forEach(image -> flowPaneImageContainer.getChildren().add(new ImageView(image)));
-        }
-        catch (IOException | GeneralSecurityException e) {
-            throw new PhotoException(e);
-        }
+        flowPaneImageContainer.getChildren().clear();
+        String orderNumber = textFieldOrderNumber.getText();
+        List<Image> images = photoDocumentationService.getAllImagesByOrderNumber(orderNumber);
+        images.forEach(image -> {
+            ImageView imageView = new ImageView(image);
+            imageView.setFitHeight(150);
+            imageView.setFitWidth(200);
+            flowPaneImageContainer.getChildren().add(imageView);
+        });
     }
 
     @FXML
-    private void uploadPhotoFromDevice(){
+    private void uploadPhotoFromDevice() throws PhotoException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Image File");
+
+        // Add image file filters
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
+        File selectedFile = fileChooser.showOpenDialog(flowPaneImageContainer.getScene().getWindow());
+        if (selectedFile != null) {
+            photoDocumentationService.saveFileInFolder(selectedFile, orderNumber);
+            Image image = new Image(selectedFile.toURI().toString());
+            ImageView imageView = new ImageView(image);
+            imageView.setFitHeight(150);
+            imageView.setFitWidth(200);
+            flowPaneImageContainer.getChildren().add(imageView);
+        }
 
     }
 

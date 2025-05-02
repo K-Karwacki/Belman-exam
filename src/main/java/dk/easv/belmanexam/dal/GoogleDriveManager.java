@@ -4,12 +4,14 @@ import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
+import com.google.api.client.http.FileContent;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.model.File;
 import com.google.api.services.drive.model.FileList;
+import dk.easv.belmanexam.exceptions.PhotoException;
 import dk.easv.belmanexam.utils.Env;
 
 import java.io.ByteArrayOutputStream;
@@ -29,8 +31,6 @@ public class GoogleDriveManager {
      * Initializes and returns a Google Drive service instance with OAuth authentication.
      *
      * @return Drive service instance
-     * @throws IOException if there are issues reading credentials or tokens
-     * @throws GeneralSecurityException if there are security-related issues
      */
     private Drive getDriveService() throws IOException, GeneralSecurityException {
         NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
@@ -59,10 +59,10 @@ public class GoogleDriveManager {
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(
                 GsonFactory.getDefaultInstance(), new StringReader(clientSecretsJson));
 
-        // Create the flow for authorization
+        // Create the flow for authorization with updated scope
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
                 httpTransport, GsonFactory.getDefaultInstance(), clientSecrets,
-                Collections.singletonList("https://www.googleapis.com/auth/drive.readonly"))
+                Collections.singletonList("https://www.googleapis.com/auth/drive")) // Changed scope
                 .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(TOKENS_DIRECTORY_PATH)))
                 .build();
 
@@ -81,8 +81,6 @@ public class GoogleDriveManager {
      *
      * @param folderName Name of the folder (e.g., "21/2015/AE31")
      * @return Folder ID if found, null otherwise
-     * @throws IOException if there are issues with the API request
-     * @throws GeneralSecurityException if there are security-related issues
      */
     public String findFolderId(String folderName) throws IOException, GeneralSecurityException {
         Drive service = getDriveService();
@@ -99,34 +97,46 @@ public class GoogleDriveManager {
      *
      * @param orderNumber Order number matching the folder name
      * @return List of file names in the folder
-     * @throws IOException if there are issues with the API request
-     * @throws GeneralSecurityException if there are security-related issues
+     * @throws PhotoException if there are issues with the API request or security
      */
-    public List<File> listFilesInFolder(String orderNumber) throws IOException, GeneralSecurityException {
-        Drive service = getDriveService();
+    public List<File> listFilesInFolder(String orderNumber) throws PhotoException {
+        try {
+            Drive service = getDriveService();
 
-        // Find folder ID
-        String folderId = findFolderId(orderNumber);
-        if (folderId == null) {
-            throw new IOException("Folder not found");
+            // Find folder ID
+            String folderId = findFolderId(orderNumber);
+            if (folderId == null) {
+                throw new IOException("Folder not found");
+            }
+
+            // List image files in the folder
+            FileList result = service.files().list()
+                    .setQ("'" + folderId + "' in parents and mimeType contains 'image/' and trashed = false")
+                    .setFields("files(id, name)")
+                    .execute();
+
+            return new ArrayList<>(result.getFiles());
+        } catch (IOException | GeneralSecurityException e) {
+            throw new PhotoException(e);
         }
-
-        // List image files in the folder
-        FileList result = service.files().list()
-                .setQ("'" + folderId + "' in parents and mimeType contains 'image/' and trashed = false")
-                .setFields("files(id, name)")
-                .execute();
-
-        return new ArrayList<>(result.getFiles());
     }
-    public byte[] downloadFileContent(String fileId) throws IOException, GeneralSecurityException {
-        Drive service = getDriveService();
-        try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
-            service.files().get(fileId).executeMediaAndDownloadTo(outputStream);
-            return outputStream.toByteArray();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+
+    /**
+     * Downloads the content of a Google Drive file as a byte array.
+     *
+     * @param fileId ID of the file to download
+     * @return Byte array containing the file content
+     * @throws PhotoException if there are issues with the API request or security
+     */
+    public byte[] downloadFileContent(String fileId) throws PhotoException {
+        try {
+            Drive service = getDriveService();
+            try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
+                service.files().get(fileId).executeMediaAndDownloadTo(outputStream);
+                return outputStream.toByteArray();
+            }
+        } catch (IOException | GeneralSecurityException e) {
+            throw new PhotoException(e);
         }
     }
 
@@ -135,10 +145,9 @@ public class GoogleDriveManager {
      *
      * @param files List of File objects to download
      * @return List of byte arrays (one per file), with null for any failed downloads
-     * @throws IOException if there are issues with the API request
-     * @throws GeneralSecurityException if there are security-related issues
+     * @throws PhotoException if there are issues with the API request or security
      */
-    public List<byte[]> downloadFilesContent(List<File> files) throws IOException, GeneralSecurityException {
+    public List<byte[]> downloadFilesContent(List<File> files) throws PhotoException {
         List<byte[]> fileContents = new ArrayList<>();
         for (File file : files) {
             byte[] content = downloadFileContent(file.getId());
@@ -151,10 +160,53 @@ public class GoogleDriveManager {
      * Ensures that the tokens directory exists.
      * Call this method before using the GoogleDriveManager.
      */
-    public static void ensureTokensDirectoryExists() {
+    public void ensureTokensDirectoryExists() {
         java.io.File tokensDir = new java.io.File(TOKENS_DIRECTORY_PATH);
         if (!tokensDir.exists()) {
             tokensDir.mkdirs();
+        }
+    }
+
+
+    public void saveFileInFolder(java.io.File file, String folderName) throws PhotoException {
+        try {
+            Drive service = getDriveService();
+
+            // Find or create the folder
+            String folderId = findFolderId(folderName);
+            if (folderId == null) {
+                // Create a new folder
+                File folderMetadata = new File();
+                folderMetadata.setName(folderName);
+                folderMetadata.setMimeType("application/vnd.google-apps.folder");
+
+                File folder = service.files().create(folderMetadata)
+                        .setFields("id")
+                        .execute();
+                folderId = folder.getId();
+            }
+
+            // Create file metadata
+            File fileMetadata = new File();
+            fileMetadata.setName(file.getName());
+            fileMetadata.setParents(Collections.singletonList(folderId));
+
+            // Determine MIME type
+            String mimeType = java.nio.file.Files.probeContentType(file.toPath());
+            if (mimeType == null) {
+                mimeType = "application/octet-stream"; // Default MIME type
+            }
+
+            // Create file content
+            FileContent mediaContent = new FileContent(mimeType, file);
+
+            // Upload the file
+            service.files().create(fileMetadata, mediaContent)
+                    .setFields("id, name")
+                    .execute();
+
+        } catch (IOException | GeneralSecurityException e) {
+            throw new PhotoException(e);
         }
     }
 }
