@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.main.QualityAssuranceController">
+    <top>
+        <fx:include source="../components/header-component.fxml" />
+    </top>
+    <center>
+        <fx:include source="../dashboards/documentations-dashboard.fxml" />
+    </center>
+</BorderPane>

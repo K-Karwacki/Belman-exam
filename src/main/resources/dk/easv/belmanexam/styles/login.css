@@ -7,9 +7,15 @@
     -fx-font-size: 20;
 }
 
-.text-field{
+.text-field ,.password-field{
     -fx-background-radius: 5;
+    -fx-padding: 12;
     -fx-pref-height: 32;
+    -fx-effect: dropshadow(gaussian, #004b88, 0, 0, -4, 4);;
+}
+.text-field:focused{
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
 }
 .label{
     -fx-font-size: 20;
