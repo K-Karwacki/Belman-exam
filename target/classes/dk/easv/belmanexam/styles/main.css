@@ -1,8 +1,11 @@
-*{
-    font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+.root{
+    font-family: "Helvetica", "Helvetica Neue", "Arial", "sans-serif";
 }
 .bgc{
-    -fx-background-color: #CFCFCF;
+    -fx-background-color: #dadada;
+}
+.button{
+    -fx-cursor: hand;
 }
 .light-bgc{
     -fx-background-color: #F2F2F2;
@@ -27,16 +30,21 @@
     -fx-text-fill: #FFF;
     -fx-font-size: 20;
     -fx-background-radius: 8;
+    -fx-border-radius:8;
+    -fx-border-width:2;
+
 }
 .red-button{
     -fx-background-color: #FF5656;
     -fx-background-radius: 8;
 }
 .gray-button{
-    -fx-background-color: #B0B0B0;
+    -fx-background-color: #9d9d9d;
     -fx-text-fill: #FFF;
     -fx-font-size: 20;
     -fx-background-radius: 8;
+    -fx-border-radius:8;
+
 }
 .radius{
     -fx-background-radius: 13;
@@ -68,5 +76,12 @@
     -fx-alignment: CENTER_LEFT;
 }
 .shadow{
-    -fx-effect: dropshadow(gaussian, RGBA(87, 87, 87, 0.5), -3, 5, 10, 0);
+    -fx-effect: dropshadow(gaussian, RGBA(87, 87, 87, 0.5), 10, -3, 5,0);
+}
+
+.filter-checkbox{
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-width: 40px;
+    -fx-max-height: 40px;
 }

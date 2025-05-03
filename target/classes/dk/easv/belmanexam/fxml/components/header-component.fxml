@@ -8,14 +8,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="105.0" prefWidth="1280.0" styleClass="bgc" stylesheets="@../../styles/header.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.components.HeaderComponentController">
+<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="105.0" prefWidth="1280.0" styleClass="bgc" stylesheets="@../../styles/header.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.components.HeaderComponentController">
    <children>
       <ImageView fitHeight="70.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true" styleClass="logo">
          <image>
             <Image url="@../../images/belman-logo.png" />
          </image>
          <HBox.margin>
-            <Insets left="70.0" />
+            <Insets left="65.0" />
          </HBox.margin>
       </ImageView>
       <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
@@ -59,7 +59,7 @@
             </ImageView>
          </children>
          <HBox.margin>
-            <Insets left="137.0" />
+            <Insets left="142.0" />
          </HBox.margin>
          <effect>
             <DropShadow />

@@ -1,8 +1,11 @@
-*{
-    font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+.root{
+    font-family: "Helvetica", "Helvetica Neue", "Arial", "sans-serif";
 }
 .bgc{
     -fx-background-color: #dadada;
+}
+.button{
+    -fx-cursor: hand;
 }
 .light-bgc{
     -fx-background-color: #F2F2F2;
@@ -41,8 +44,7 @@
     -fx-font-size: 20;
     -fx-background-radius: 8;
     -fx-border-radius:8;
-    -fx-border-width:2;
-    -fx-border-color: #338D71
+
 }
 .radius{
     -fx-background-radius: 13;

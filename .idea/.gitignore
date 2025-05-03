@@ -1,3 +1,35 @@
-# Default ignored files
-/shelf/
-/workspace.xml
+# Compiled class files
+*.class
+
+# JAR files
+*.jar
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+
+# Build directories
+/bin/
+/build/
+/out/
+/target/
+
+# IDE-specific files
+/.idea/
+*.iml
+.settings/
+tokens/
+*.prefs
+*.project
+*.classpath
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Sensitive files
+*.env
+*.key
+*.properties

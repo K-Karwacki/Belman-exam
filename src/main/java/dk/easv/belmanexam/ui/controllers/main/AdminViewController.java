@@ -1,4 +1,4 @@
 package dk.easv.belmanexam.ui.controllers.main;
 
-public class AdminViewController {
+public class AdminViewController extends ViewController {
 }

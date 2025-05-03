@@ -2,12 +2,11 @@
 
 <?import javafx.scene.layout.BorderPane?>
 
-
-<BorderPane fx:controller="dk.easv.belmanexam.ui.controllers.main.OperatorViewController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" >
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.main.OperatorViewController">
     <top>
         <fx:include source="../components/header-component.fxml" />
     </top>
     <center>
-        <fx:include source="../dashboards/orders-dashboard.fxml" />
+        <fx:include source="../dashboards/operator/orders-dashboard.fxml" />
     </center>
 </BorderPane>
