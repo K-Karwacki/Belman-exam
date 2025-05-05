@@ -1,0 +1,33 @@
+
+.bgc{
+    -fx-background-color: #dadada;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: light grey;
+
+    -fx-border-width:1;
+}
+
+.button{
+    -fx-cursor: hand;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-color: light grey;
+}
+
+.green-button{
+    -fx-background-color: #338d71;
+    -fx-text-fill: #FFF;
+
+}
+
+.red-button{
+    -fx-background-color: #FF5656;
+    -fx-text-fill: #FFF;
+}
+
+.shadow{
+    -fx-effect: dropshadow(gaussian, RGBA(87    , 87, 87, 0.5), 10, -3, 5,0);
+}
+
+
