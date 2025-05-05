@@ -52,7 +52,7 @@
       </HBox>
       <ScrollPane hbarPolicy="NEVER" layoutX="55.0" layoutY="220.0" prefHeight="320.0" prefWidth="720.0" style="-fx-border-color: #777;" styleClass="custom-scroll-pane">
          <content>
-            <FlowPane fx:id="flowPanePaneWeldList" prefHeight="200.0" prefWidth="700.0" />
+            <FlowPane fx:id="flowPaneOrderList" prefHeight="200.0" prefWidth="700.0" />
          </content></ScrollPane>
       <VBox layoutX="890.0" layoutY="225.0" prefHeight="200.0" prefWidth="300.0" spacing="50.0">
          <children>
@@ -64,12 +64,12 @@
             </Button>
             <HBox prefHeight="55.0" prefWidth="300.0" styleClass="radius" stylesheets="@../../../styles/search-bar.css">
                <children>
-                  <TextField alignment="CENTER" prefHeight="55.0" prefWidth="240.0" promptText="Order number" style="-fx-font-size: 20;">
+                  <TextField fx:id="textFieldSearchBar" alignment="CENTER" prefHeight="55.0" prefWidth="240.0" promptText="Order number" style="-fx-font-size: 20;">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </TextField>
-                  <StackPane prefHeight="60.0" prefWidth="60.0">
+                  <StackPane onMouseClicked="#filterByOrderNumber" prefHeight="60.0" prefWidth="60.0">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>

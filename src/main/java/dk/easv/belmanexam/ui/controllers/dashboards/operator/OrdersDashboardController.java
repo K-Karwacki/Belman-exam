@@ -16,10 +16,10 @@ import java.util.ResourceBundle;
 
 public class OrdersDashboardController implements Initializable {
     @FXML
-    private FlowPane flowPanePaneWeldList;
+    private FlowPane flowPaneOrderList;
 
     @FXML
-    private TextField textFieldOrderNumber;
+    private TextField textFieldSearchBar;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -34,16 +34,16 @@ public class OrdersDashboardController implements Initializable {
         p4.getValue().setOrderNumber("2025/11/1331");
         Pair<Parent, OrderListComponent> p5 = FXMLManager.INSTANCE.loadFXML(FXMLPath.ORDER_LIST_COMPONENT);
         p5.getValue().setOrderNumber("2022/10/101");
-        flowPanePaneWeldList.getChildren().addAll(p1.getKey(), p2.getKey(), p3.getKey(), p4.getKey(), p5.getKey());
-    }
-
-    public void setOrderNumber(String orderNumber){
-        textFieldOrderNumber.setText(orderNumber);
+        flowPaneOrderList.getChildren().addAll(p1.getKey(), p2.getKey(), p3.getKey(), p4.getKey(), p5.getKey());
     }
 
     @FXML
     private void showEnterOrderDashboard(){
         ViewManager.INSTANCE.switchDashboard(FXMLPath.ENTER_ORDER_DASHBOARD, "BelSign");
+    }
+
+    @FXML
+    private void filterByOrderNumber(){
     }
 
 }
