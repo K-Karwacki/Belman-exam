@@ -27,9 +27,12 @@
             <String fx:value="left-side-header" />
          </styleClass>
       </Label>
-      <ScrollPane hbarPolicy="NEVER" layoutX="100.0" layoutY="157.0" prefHeight="398.0" prefWidth="587.0" styleClass="radius">
+      <ScrollPane hbarPolicy="NEVER" layoutX="100.0" layoutY="157.0" prefHeight="398.0" prefWidth="600.0" styleClass="radius">
          <content>
-            <FlowPane fx:id="flowPaneImageContainer" prefHeight="200.0" prefWidth="582.0" styleClass="radius" />
+            <FlowPane fx:id="flowPaneImageContainer" alignment="CENTER" hgap="50.0" prefHeight="200.0" prefWidth="582.0" styleClass="radius" vgap="25.0">
+               <padding>
+                  <Insets top="25.0" />
+               </padding></FlowPane>
          </content>
       </ScrollPane>
       <Button layoutX="800.0" layoutY="490.0" minHeight="65.0" minWidth="390.0" mnemonicParsing="false" styleClass="header-title" text="Submit">
