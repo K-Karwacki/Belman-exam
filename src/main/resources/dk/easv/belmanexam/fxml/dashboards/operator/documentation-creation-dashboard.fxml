@@ -29,23 +29,27 @@
             <String fx:value="left-side-header" />
          </styleClass>
       </Label>
-      <ScrollPane hbarPolicy="NEVER" layoutX="100.0" layoutY="157.0" prefHeight="398.0" prefWidth="600.0" styleClass="radius">
+      <ScrollPane hbarPolicy="NEVER" layoutX="100.0" layoutY="157.0" prefHeight="398.0" prefWidth="600.0" style="-fx-background-color: #ccc; -fx-background: transparent;">
          <content>
             <FlowPane fx:id="flowPaneImageContainer" alignment="CENTER" hgap="50.0" prefHeight="200.0" prefWidth="582.0" styleClass="radius" vgap="25.0">
                <padding>
                   <Insets top="25.0" />
                </padding></FlowPane>
          </content>
+         <styleClass>
+            <String fx:value="radius" />
+            <String fx:value="photos-container" />
+         </styleClass>
       </ScrollPane>
       <Button layoutX="800.0" layoutY="490.0" minHeight="65.0" minWidth="390.0" mnemonicParsing="false" styleClass="header-title" text="Submit">
          <effect>
             <DropShadow height="3.0" radius="1.5" width="5.0" />
          </effect>
       </Button>
-      <VBox layoutX="810.0" layoutY="162.0" prefHeight="86.0" prefWidth="380.0">
+      <VBox layoutX="810.0" layoutY="162.0" prefHeight="86.0" prefWidth="380.0" style="-fx-border-color: #777; -fx-border-radius: 14; -fx-border-width: 2;">
          <children>
-            <Label prefHeight="46.0" prefWidth="421.0" style="-fx-background-radius: 13 13 0 0;" styleClass="light-blue-label" text="Order number" />
-            <TextField fx:id="textFieldOrderNumber" disable="true" prefHeight="55.0" prefWidth="240.0" promptText="Enter order number" styleClass="order-number-label">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="421.0" style="-fx-background-radius: 13 13 0 0;" styleClass="light-blue-label" text="Order number" />
+            <TextField fx:id="textFieldOrderNumber" alignment="CENTER" disable="true" prefHeight="55.0" prefWidth="240.0" promptText="Enter order number" styleClass="order-number-label">
                <font>
                   <Font size="20.0" />
                </font>
@@ -66,7 +70,7 @@
                   <String fx:value="add-photo-button" />
                </styleClass>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#uploadPhotoViaCloud" prefHeight="110.0" prefWidth="150.0" style="-fx-font-size: 18;" text="Upload photo via Cloud" textAlignment="CENTER" wrapText="true">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#uploadPhotoViaCloud" prefHeight="110.0" prefWidth="150.0" style="-fx-font-size: 18;" text="Upload photos via Cloud" textAlignment="CENTER" wrapText="true">
                <effect>
                   <DropShadow height="9.0" radius="4.79" width="12.16" />
                </effect>

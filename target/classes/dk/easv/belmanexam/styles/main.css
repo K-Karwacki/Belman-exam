@@ -47,11 +47,6 @@
     -fx-background-color: #FF5656;
     -fx-background-radius: 8;
 }
-.delete-button{
-    -fx-background-color: #A92D2F;
-    -fx-font-size: 26;
-    -fx-text-fill: #FFF;
-}
 .disabled-menu-button{
     -fx-background-color: #9d9d9d;
     -fx-text-fill: #FFF;
@@ -59,14 +54,12 @@
     -fx-background-radius: 8;
     -fx-border-radius:8;
 }
-.gray-button{
-    -fx-background-color: #9d9d9d;
+.delete-button{
+    -fx-background-color: #A92D2F;
+    -fx-font-size: 26;
     -fx-text-fill: #FFF;
-    -fx-font-size: 20;
-    -fx-background-radius: 8;
-    -fx-border-radius:8;
-
 }
+
 .radius{
     -fx-background-radius: 13;
 }
@@ -82,7 +75,6 @@
 .order-number-label{
     -fx-border-radius: 0 0 13 13;
     -fx-background-radius: 0 0 13 13;
-    -fx-border-color: #F2F2F2;
     -fx-background-color: #F2F2F2;
     -fx-padding: 10;
 }
@@ -135,7 +127,24 @@
     -fx-border-radius: 13;
     -fx-border-width: 1;
 }
+.scroll-pane.viewport{
+    -fx-background-radius: 13;
+}
 
 .custom-scroll-pane .viewport {
     -fx-background-color: transparent; /* Ensure viewport doesn't override background */
+}
+.scroll-bar:vertical {
+    -fx-background-color: rgba(51,141,113,.2);
+    -fx-background-radius: 7;
+}
+.scroll-pane .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+}
+.scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: rgb(51,141,113, .8);
+    -fx-background-radius: 7;
+}
+.photos-container:focused{
+    -fx-background-color: #ccc;
 }

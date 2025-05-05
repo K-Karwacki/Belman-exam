@@ -10,6 +10,6 @@ public class UsersDashboardController {
 
     public void switchToNewUser(ActionEvent actionEvent)
     {
-        ViewManager.INSTANCE.switchDashboard(FXMLPath.ENTER_ORDER_DASHBOARD, "New user");
+//        ViewManager.INSTANCE.switchDashboard(FXMLPath.ENTER_ORDER_DASHBOARD, "New user");
     }
 }

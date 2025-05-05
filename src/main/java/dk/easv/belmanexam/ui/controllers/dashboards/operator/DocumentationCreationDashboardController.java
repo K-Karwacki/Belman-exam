@@ -20,7 +20,7 @@ import java.util.List;
 public class DocumentationCreationDashboardController {
 
     private final PhotoDocumentationService photoDocumentationService = new PhotoDocumentationService();
-    private String weldNumber;
+    private String orderNumber;
     @FXML
     private TextField textFieldOrderNumber;
 
@@ -45,7 +45,7 @@ public class DocumentationCreationDashboardController {
                 new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
         File selectedFile = fileChooser.showOpenDialog(flowPaneImageContainer.getScene().getWindow());
         if (selectedFile != null) {
-            photoDocumentationService.saveFileInFolder(selectedFile, weldNumber);
+            photoDocumentationService.saveFileInFolder(selectedFile, orderNumber);
             Image image = new Image(selectedFile.toURI().toString());
             addPhoto(image);
         }
@@ -65,11 +65,12 @@ public class DocumentationCreationDashboardController {
     }
     @FXML
     private void showParentView(){
-        ViewManager.INSTANCE.switchDashboard(FXMLPath.WELDS_DASHBOARD, "Belsign");
+        ViewManager.INSTANCE.switchDashboard(FXMLPath.ORDERS_DASHBOARD, "Belsign");
     }
 
-    public void setWeldNumber(String orderNumber) {
-        this.weldNumber = orderNumber;
+    public void setDetails(String orderNumber) {
+        flowPaneImageContainer.getChildren().clear();
+        this.orderNumber = orderNumber;
         textFieldOrderNumber.setText(orderNumber);
     }
 

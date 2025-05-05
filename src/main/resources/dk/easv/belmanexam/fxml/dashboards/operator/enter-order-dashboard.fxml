@@ -6,10 +6,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:controller="dk.easv.belmanexam.ui.controllers.dashboards.operator.EnterOrderDashboardController" prefHeight="600.0" prefWidth="1280.0" styleClass="bgc" stylesheets="@../../../styles/main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="1280.0" styleClass="bgc" stylesheets="@../../../styles/main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.dashboards.operator.EnterOrderDashboardController">
     <children>
         <Label alignment="CENTER_RIGHT" layoutY="40.0" prefHeight="49.0" prefWidth="329.0" text="Enter order number">
             <padding>
@@ -23,15 +27,38 @@
                 <String fx:value="left-side-header" />
             </styleClass>
         </Label>
-        <Button layoutX="388.0" layoutY="400.0" minHeight="65.0" minWidth="450.0" mnemonicParsing="false" onAction="#onClickShowWeldsView" styleClass="header-title" text="Submit">
-            <effect>
-                <DropShadow height="3.0" radius="1.5" width="5.0" />
-            </effect>
-        </Button>
-          <TextField fx:id="textFieldOrderNumber" alignment="CENTER" layoutX="388.0" layoutY="303.0" minWidth="450.0" prefHeight="80.0" prefWidth="280.0" promptText="Order number" style="-fx-background-radius: 8; -fx-font-weight: bold; -fx-font-size: 42;">
-              <font>
-                  <Font name="Helvetica" size="42.0" />
-              </font>
-          </TextField>
+      <VBox layoutX="449.0" layoutY="250.0" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
+         <children>
+                <TextField fx:id="textFieldOrderNumber" alignment="CENTER" minWidth="450.0" prefHeight="80.0" prefWidth="280.0" promptText="Order number" style="-fx-background-radius: 8; -fx-font-size: 32;">
+                    <font>
+                        <Font name="Helvetica" size="42.0" />
+                    </font>
+                </TextField>
+              <Button minHeight="65.0" minWidth="450.0" mnemonicParsing="false" onAction="#showDocumentationCreationView" styleClass="header-title" text="Submit">
+                  <effect>
+                      <DropShadow height="3.0" radius="1.5" width="5.0" />
+                  </effect>
+              </Button>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER_LEFT" layoutX="1080.0" layoutY="50.0" minHeight="49.0" minWidth="132.0" onMouseClicked="#showParentView" prefHeight="50.0" prefWidth="132.0">
+         <children>
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/left-side-arrow.png" />
+               </image>
+            </ImageView>
+            <Label text="Go back" textFill="WHITE">
+               <font>
+                  <Font size="46.0" />
+               </font>
+            </Label>
+         </children>
+         <styleClass>
+            <String fx:value="header-title" />
+            <String fx:value="right-side-button" />
+            <String fx:value="previous-button" />
+         </styleClass>
+      </HBox>
     </children>
 </AnchorPane>

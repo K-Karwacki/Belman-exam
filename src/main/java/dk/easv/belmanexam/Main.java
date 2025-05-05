@@ -5,6 +5,7 @@ import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.StageManager;
 import dk.easv.belmanexam.ui.ViewManager;
 
+import dk.easv.belmanexam.ui.controllers.dashboards.operator.ImageDisplayDashboardController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -15,7 +16,6 @@ public class Main extends Application
   private final ViewManager viewManager = ViewManager.INSTANCE;
   private final FXMLManager fxmlManager = FXMLManager.INSTANCE;
   private final StageManager stageManager = new StageManager();
-
 
   @Override public void start(Stage primaryStage) {
     Locale.setDefault(Locale.ENGLISH);

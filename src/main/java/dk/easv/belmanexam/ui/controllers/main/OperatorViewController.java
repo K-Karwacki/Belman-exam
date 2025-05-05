@@ -12,6 +12,6 @@ public class OperatorViewController {
 
     public void initialize(){
         ViewManager.INSTANCE.setStageRoot(root);
-        ViewManager.INSTANCE.switchDashboard(FXMLPath.ENTER_ORDER_DASHBOARD, "BelSign");
+        ViewManager.INSTANCE.switchDashboard(FXMLPath.ORDERS_DASHBOARD, "BelSign");
     }
 }
