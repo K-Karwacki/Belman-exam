@@ -2,6 +2,9 @@ package dk.easv.belmanexam.ui.controllers.dashboards.operator;
 
 import dk.easv.belmanexam.bll.PhotoDocumentationService;
 import dk.easv.belmanexam.exceptions.PhotoException;
+import dk.easv.belmanexam.ui.FXMLPath;
+import dk.easv.belmanexam.ui.ViewManager;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -17,6 +20,7 @@ import java.util.List;
 
 public class DocumentationCreationDashboardController {
 
+    private final ViewManager viewManager = ViewManager.INSTANCE;
     private final PhotoDocumentationService photoDocumentationService = new PhotoDocumentationService();
     private String orderNumber;
     @FXML
@@ -24,6 +28,7 @@ public class DocumentationCreationDashboardController {
 
     @FXML
     private FlowPane flowPaneImageContainer;
+
 
     @FXML
     private void uploadPhotoViaCloud() throws PhotoException {
@@ -61,5 +66,15 @@ public class DocumentationCreationDashboardController {
     public void setOrderNumber(String orderNumber) {
         this.orderNumber = orderNumber;
         textFieldOrderNumber.setText(orderNumber);
+    }
+
+    public void goBackButton() {
+        {
+            viewManager.switchDashboard(FXMLPath.ORDERS_DASHBOARD, "BelSign");
+        }
+    }
+
+    public void onClickSubmitDocumentation() {
+        viewManager.switchDashboard(FXMLPath.ORDERS_DASHBOARD, "BelSign");
     }
 }
