@@ -26,6 +26,7 @@ public enum FXMLManager
             T controller = loader.getController();
             Pair<Parent, Object> parentFXMLControllerPair = new Pair<>(root, controller);
             loadedFXMLs.put(fxmlPath, parentFXMLControllerPair);
+            System.out.println("Fxml loaded");
             return new Pair<>(parentFXMLControllerPair.getKey(), (T) parentFXMLControllerPair.getValue());
         } catch (IOException e) {
             e.printStackTrace();
@@ -38,6 +39,7 @@ public enum FXMLManager
     // Gets fxml document from the cache, if fxml is not in the cache load document
     public <T> Pair<Parent, T> getFXML(String fxmlPath) {
         if(!loadedFXMLs.containsKey(fxmlPath)){
+            System.out.println("fxml not loaded");
             return loadFXML(fxmlPath);
 //      throw new RuntimeException("FXML wasn't loaded: " + fxmlPath);
         }

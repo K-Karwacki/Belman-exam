@@ -32,19 +32,27 @@
     -fx-background-radius: 8;
     -fx-border-radius:8;
     -fx-border-width:2;
+}
+
+.active-menu-button{
+    -fx-background-color: #004B88;
+    -fx-text-fill: #FFF;
+    -fx-font-size: 20;
+    -fx-background-radius: 8;
+    -fx-border-radius:8;
+    -fx-border-width:2;
 
 }
 .red-button{
     -fx-background-color: #FF5656;
     -fx-background-radius: 8;
 }
-.gray-button{
+.disabled-menu-button{
     -fx-background-color: #9d9d9d;
     -fx-text-fill: #FFF;
     -fx-font-size: 20;
     -fx-background-radius: 8;
     -fx-border-radius:8;
-
 }
 .radius{
     -fx-background-radius: 13;
