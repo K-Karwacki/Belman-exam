@@ -75,6 +75,6 @@ public class DocumentationCreationDashboardController {
     }
 
     public void onClickSubmitDocumentation() {
-        viewManager.switchDashboard(FXMLPath.ORDERS_DASHBOARD, "BelSign");
+        viewManager.switchDashboard(FXMLPath.DOCUMENTATION_CREATION_DASHBOARD, "BelSign");
     }
 }
