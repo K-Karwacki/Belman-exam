@@ -14,10 +14,9 @@ public class EnterOrderDashboardController {
     @FXML private TextField textFieldOrderNumber;
 
     @FXML
-    private void onClickShowDocumentationCreationView() {
-        Pair<Parent, DocumentationCreationDashboardController> p = FXMLManager.INSTANCE.getFXML(FXMLPath.DOCUMENTATION_CREATION_DASHBOARD);
-        // @ToDo -> Needs some validation later (check if order no. exist etc.)
+    private void onClickShowWeldsView() {
+        Pair<Parent, WeldsDashboardController> p = FXMLManager.INSTANCE.getFXML(FXMLPath.WELDS_DASHBOARD);
         p.getValue().setOrderNumber(textFieldOrderNumber.getText());
-        ViewManager.INSTANCE.switchDashboard(FXMLPath.DOCUMENTATION_CREATION_DASHBOARD, "Photo Documentation");
+        ViewManager.INSTANCE.switchDashboard(FXMLPath.WELDS_DASHBOARD, "Welds logs");
     }
 }

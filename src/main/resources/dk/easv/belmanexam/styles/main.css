@@ -1,5 +1,5 @@
-.root{
-    font-family: "Helvetica", "Helvetica Neue", "Arial", "sans-serif";
+*{
+    -fx-font-family: Helvetica, Arial;
 }
 .bgc{
     -fx-background-color: #dadada;
@@ -54,6 +54,12 @@
     -fx-background-radius: 8;
     -fx-border-radius:8;
 }
+.delete-button{
+    -fx-background-color: #A92D2F;
+    -fx-font-size: 26;
+    -fx-text-fill: #FFF;
+}
+
 .radius{
     -fx-background-radius: 13;
 }
@@ -72,6 +78,18 @@
     -fx-border-color: #000;
     -fx-background-color: #F2F2F2;
     -fx-padding: 10;
+}
+.description-text-area{
+    -fx-border-radius: 0 0 13 13;
+    -fx-background-radius: 0 0 13 13;
+}
+.description-text-area .content{
+    -fx-background-radius: 0 0 13 13;
+    -fx-border-radius: 0 0 13 13;
+}
+
+.description-text-area .viewport {
+    -fx-background-color: transparent;
 }
 
 .add-photo-button{
@@ -92,4 +110,25 @@
     -fx-min-height: 40px;
     -fx-max-width: 40px;
     -fx-max-height: 40px;
+}
+
+.previous-button{
+    -fx-min-height: 50;
+    -fx-min-width: 200;
+    -fx-spacing: 20;
+    -fx-font-size: 26;
+}
+.save-button{
+    -fx-font-size: 24 !important;
+}
+
+.custom-scroll-pane {
+    -fx-background-color: #F2F2F2;
+    -fx-background-radius: 13;
+    -fx-border-radius: 13;
+    -fx-border-width: 1;
+}
+
+.custom-scroll-pane .viewport {
+    -fx-background-color: transparent; /* Ensure viewport doesn't override background */
 }
