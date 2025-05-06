@@ -1,18 +1,27 @@
 package dk.easv.belmanexam.be;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "PhotoDocumentation")
 public class PhotoDocumentation {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int ID;
 
-    public final int id;
-    public String title;
-    public String author;
-    public int authorId;
-    public String orderNumber;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "PhotoID")
+    private Photo photo;
 
-    public PhotoDocumentation(int id, String title, String author, int authorId, String orderNumber) {
-        this.id = id;
-        this.title = title;
-        this.author = author;
-        this.authorId = authorId;
-        this.orderNumber = orderNumber;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "OrderID")
+    private Order order;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "UserID")
+    private User user;
+
+    public PhotoDocumentation() {
+
     }
 }

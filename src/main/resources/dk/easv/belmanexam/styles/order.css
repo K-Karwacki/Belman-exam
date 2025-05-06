@@ -9,3 +9,6 @@
     -fx-font-family: Helvetica;
     -fx-font-weight: 700;
 }
+.sent{
+    -fx-background-color: rgba(51, 141, 113, .3) !important;
+}

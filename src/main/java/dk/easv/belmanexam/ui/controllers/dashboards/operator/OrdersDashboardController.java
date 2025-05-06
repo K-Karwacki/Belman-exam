@@ -25,9 +25,9 @@ public class OrdersDashboardController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         // @ToDo -> Remove mock data later
         Pair<Parent, OrderListComponent> p1 = FXMLManager.INSTANCE.loadFXML(FXMLPath.ORDER_LIST_COMPONENT);
-        p1.getValue().setOrderNumber("2024");
+        p1.getValue().setOrderNumber("2024/12/1113");
         Pair<Parent, OrderListComponent> p2 = FXMLManager.INSTANCE.loadFXML(FXMLPath.ORDER_LIST_COMPONENT);
-        p2.getValue().setOrderNumber("2025");
+        p2.getValue().setOrderNumber("2025/09/1941");
         Pair<Parent, OrderListComponent> p3 = FXMLManager.INSTANCE.loadFXML(FXMLPath.ORDER_LIST_COMPONENT);
         p3.getValue().setOrderNumber("2025/21/1231");
         Pair<Parent, OrderListComponent> p4 = FXMLManager.INSTANCE.loadFXML(FXMLPath.ORDER_LIST_COMPONENT);
