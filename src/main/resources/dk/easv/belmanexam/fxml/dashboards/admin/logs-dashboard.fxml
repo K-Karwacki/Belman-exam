@@ -29,14 +29,14 @@
                   <String fx:value="header-title" />
                </styleClass>
                <HBox.margin>
-                  <Insets right="455.0" />
+                  <Insets right="460.0" />
                </HBox.margin>
             </Label>
             <HBox prefHeight="49.0">
                <children>
                   <TextField alignment="CENTER" prefHeight="49.0" prefWidth="249.0" promptText="Search log" stylesheets="@../../../styles/search-bar.css">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="Arial" size="18.0" />
                      </font>
                   </TextField>
                   <StackPane prefHeight="49.0" prefWidth="49.0">

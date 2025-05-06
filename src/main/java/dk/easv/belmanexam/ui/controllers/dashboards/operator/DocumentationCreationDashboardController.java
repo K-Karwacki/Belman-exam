@@ -45,7 +45,7 @@ public class DocumentationCreationDashboardController {
                 new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
         File selectedFile = fileChooser.showOpenDialog(flowPaneImageContainer.getScene().getWindow());
         if (selectedFile != null) {
-            photoDocumentationService.saveFileInFolder(selectedFile, orderNumber);
+//            photoDocumentationService.saveFileInFolder(selectedFile, orderNumber);
             Image image = new Image(selectedFile.toURI().toString());
             addPhoto(image);
         }
