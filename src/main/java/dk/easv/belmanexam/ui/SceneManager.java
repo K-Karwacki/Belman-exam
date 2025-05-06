@@ -51,15 +51,12 @@ public class SceneManager
         }
     }
 
-    public void switchDashboard(String fxmlPath, String title)
-    {
-        if(currentStage != null){
-            if(stageRoot != null){
-                Scene scene = loadScene(fxmlPath);
-                System.out.println("switchich dashboards");
-                stageRoot.setCenter(scene.getRoot());
-                currentStage.setTitle(title);
-            }
+    public void switchDashboard(String fxmlPath, String title) {
+        if (currentStage != null && stageRoot != null) {
+            Parent root = FXMLManager.INSTANCE.getFXML(fxmlPath).getKey();
+            stageRoot.setCenter(root);
+            stageRoot.requestLayout();
+            currentStage.setTitle(title);
         }
     }
 
