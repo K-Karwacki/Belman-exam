@@ -7,6 +7,7 @@ public enum ViewManager
     INSTANCE;
     private StageManager stageManager;
     private SceneManager sceneManager;
+
     private final FXMLManager fxmlManager = FXMLManager.INSTANCE;
 
     ViewManager(){

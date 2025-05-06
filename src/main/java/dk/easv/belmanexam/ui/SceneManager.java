@@ -55,7 +55,9 @@ public class SceneManager
     {
         if(currentStage != null){
             if(stageRoot != null){
-                stageRoot.setCenter(loadScene(fxmlPath).getRoot());
+                Scene scene = loadScene(fxmlPath);
+                System.out.println("switchich dashboards");
+                stageRoot.setCenter(scene.getRoot());
                 currentStage.setTitle(title);
             }
         }

@@ -1,5 +1,5 @@
-.root{
-    font-family: "Helvetica", "Helvetica Neue", "Arial", "sans-serif";
+*{
+    -fx-font-family: Helvetica, Arial;
 }
 .bgc{
     -fx-background-color: #dadada;
@@ -32,20 +32,34 @@
     -fx-background-radius: 8;
     -fx-border-radius:8;
     -fx-border-width:2;
+}
+
+.active-menu-button{
+    -fx-background-color: #004B88;
+    -fx-text-fill: #FFF;
+    -fx-font-size: 20;
+    -fx-background-radius: 8;
+    -fx-border-radius:8;
+    -fx-border-width:2;
 
 }
 .red-button{
     -fx-background-color: #FF5656;
     -fx-background-radius: 8;
 }
-.gray-button{
+.disabled-menu-button{
     -fx-background-color: #9d9d9d;
     -fx-text-fill: #FFF;
     -fx-font-size: 20;
     -fx-background-radius: 8;
     -fx-border-radius:8;
-
 }
+.delete-button{
+    -fx-background-color: #A92D2F;
+    -fx-font-size: 26;
+    -fx-text-fill: #FFF;
+}
+
 .radius{
     -fx-background-radius: 13;
 }
@@ -61,9 +75,20 @@
 .order-number-label{
     -fx-border-radius: 0 0 13 13;
     -fx-background-radius: 0 0 13 13;
-    -fx-border-color: #000;
     -fx-background-color: #F2F2F2;
     -fx-padding: 10;
+}
+.description-text-area{
+    -fx-border-radius: 0 0 13 13;
+    -fx-background-radius: 0 0 13 13;
+}
+.description-text-area .content{
+    -fx-background-radius: 0 0 13 13;
+    -fx-border-radius: 0 0 13 13;
+}
+
+.description-text-area .viewport {
+    -fx-background-color: transparent;
 }
 
 .add-photo-button{
@@ -84,4 +109,42 @@
     -fx-min-height: 40px;
     -fx-max-width: 40px;
     -fx-max-height: 40px;
+}
+
+.previous-button{
+    -fx-min-height: 50;
+    -fx-min-width: 200;
+    -fx-spacing: 20;
+    -fx-font-size: 26;
+}
+.save-button{
+    -fx-font-size: 24 !important;
+}
+
+.custom-scroll-pane {
+    -fx-background-color: #F2F2F2;
+    -fx-background-radius: 13;
+    -fx-border-radius: 13;
+    -fx-border-width: 1;
+}
+.scroll-pane.viewport{
+    -fx-background-radius: 13;
+}
+
+.custom-scroll-pane .viewport {
+    -fx-background-color: transparent; /* Ensure viewport doesn't override background */
+}
+.scroll-bar:vertical {
+    -fx-background-color: rgba(51,141,113,.2);
+    -fx-background-radius: 7;
+}
+.scroll-pane .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+}
+.scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color: rgb(51,141,113, .8);
+    -fx-background-radius: 7;
+}
+.photos-container:focused{
+    -fx-background-color: #ccc;
 }

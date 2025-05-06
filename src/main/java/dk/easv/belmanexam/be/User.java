@@ -1,15 +1,36 @@
 package dk.easv.belmanexam.be;
 
 import dk.easv.belmanexam.bll.RoleType;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "[user]")
 public class User {
-    public final int id;
-    public String firstName;
-    public String lastName;
-    public RoleType role;
-    public String email;
-    public String password;
-    public String phoneNumber;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private long id;
+    private int id;
+
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
+//    @Enumerated(EnumType.STRING)
+    @Column(name = "role")
+    private RoleType role;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
+    public User() {}
 
     public User(int id, String firstName, String lastName, RoleType role, String email, String password, String phoneNumber) {
         this.id = id;

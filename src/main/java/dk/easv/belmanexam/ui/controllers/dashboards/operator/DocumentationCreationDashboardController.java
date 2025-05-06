@@ -2,25 +2,23 @@ package dk.easv.belmanexam.ui.controllers.dashboards.operator;
 
 import dk.easv.belmanexam.bll.PhotoDocumentationService;
 import dk.easv.belmanexam.exceptions.PhotoException;
+import dk.easv.belmanexam.ui.FXMLManager;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.FileChooser;
+import javafx.util.Pair;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.security.GeneralSecurityException;
 import java.util.List;
 
 public class DocumentationCreationDashboardController {
 
-    private final ViewManager viewManager = ViewManager.INSTANCE;
     private final PhotoDocumentationService photoDocumentationService = new PhotoDocumentationService();
     private String orderNumber;
     @FXML
@@ -29,18 +27,12 @@ public class DocumentationCreationDashboardController {
     @FXML
     private FlowPane flowPaneImageContainer;
 
-
     @FXML
     private void uploadPhotoViaCloud() throws PhotoException {
         flowPaneImageContainer.getChildren().clear();
         String orderNumber = textFieldOrderNumber.getText();
-        List<Image> images = photoDocumentationService.getAllImagesByOrderNumber(orderNumber);
-        images.forEach(image -> {
-            ImageView imageView = new ImageView(image);
-            imageView.setFitHeight(150);
-            imageView.setFitWidth(200);
-            flowPaneImageContainer.getChildren().add(imageView);
-        });
+        List<Image> photos = photoDocumentationService.getAllImagesByOrderNumber(orderNumber);
+        photos.forEach(this::addPhoto);
     }
 
     @FXML
@@ -55,26 +47,31 @@ public class DocumentationCreationDashboardController {
         if (selectedFile != null) {
             photoDocumentationService.saveFileInFolder(selectedFile, orderNumber);
             Image image = new Image(selectedFile.toURI().toString());
-            ImageView imageView = new ImageView(image);
-            imageView.setFitHeight(150);
-            imageView.setFitWidth(200);
-            flowPaneImageContainer.getChildren().add(imageView);
+            addPhoto(image);
         }
 
     }
+    @FXML
+    private void addPhoto(Image image) {
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(150);
+        imageView.setFitWidth(200);
+        flowPaneImageContainer.getChildren().add(imageView);
+        imageView.setOnMouseClicked(event -> {
+            Pair<Parent, ImageDisplayDashboardController> p = FXMLManager.INSTANCE.getFXML(FXMLPath.IMAGE_DISPLAY_DASHBOARD);
+            p.getValue().setDetails(image);
+            ViewManager.INSTANCE.switchDashboard(FXMLPath.IMAGE_DISPLAY_DASHBOARD, "Selected Photo");
+        });
+    }
+    @FXML
+    private void showParentView(){
+        ViewManager.INSTANCE.switchDashboard(FXMLPath.ORDERS_DASHBOARD, "Belsign");
+    }
 
-    public void setOrderNumber(String orderNumber) {
+    public void setDetails(String orderNumber) {
+        flowPaneImageContainer.getChildren().clear();
         this.orderNumber = orderNumber;
         textFieldOrderNumber.setText(orderNumber);
     }
 
-    public void goBackButton() {
-        {
-            viewManager.switchDashboard(FXMLPath.ORDERS_DASHBOARD, "BelSign");
-        }
-    }
-
-    public void onClickSubmitDocumentation() {
-        viewManager.switchDashboard(FXMLPath.ORDERS_DASHBOARD, "BelSign");
-    }
 }

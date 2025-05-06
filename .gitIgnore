@@ -29,7 +29,7 @@
 Thumbs.db
 
 # Sensitive files
-*.env
+.env
 *.key
 *.properties
 tokens/
