@@ -15,7 +15,7 @@ public class EnterOrderDashboardController {
     @FXML
     private void showDocumentationCreationView() {
         Pair<Parent, DocumentationCreationDashboardController> p = FXMLManager.INSTANCE.getFXML(FXMLPath.DOCUMENTATION_CREATION_DASHBOARD);
-        p.getValue().setDetails(textFieldOrderNumber.getText());
+        p.getValue().setDetails(textFieldOrderNumber.getText(), null);
         ViewManager.INSTANCE.switchDashboard(FXMLPath.DOCUMENTATION_CREATION_DASHBOARD, "BelSign");
     }
     @FXML

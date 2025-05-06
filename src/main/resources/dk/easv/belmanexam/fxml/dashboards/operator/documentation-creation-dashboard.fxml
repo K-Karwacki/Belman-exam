@@ -41,7 +41,7 @@
             <String fx:value="photos-container" />
          </styleClass>
       </ScrollPane>
-      <Button layoutX="800.0" layoutY="490.0" minHeight="65.0" minWidth="390.0" mnemonicParsing="false" styleClass="header-title" text="Submit">
+      <Button layoutX="800.0" layoutY="490.0" minHeight="65.0" minWidth="390.0" mnemonicParsing="false" onAction="#onClickSubmitDocumentation" styleClass="header-title" text="Submit">
          <effect>
             <DropShadow height="3.0" radius="1.5" width="5.0" />
          </effect>
