@@ -15,7 +15,7 @@
       <Separator orientation="VERTICAL" prefHeight="62.0" prefWidth="6.0" />
       <Label fx:id="lblOrderComment" prefHeight="58.0" prefWidth="194.0" text="Photo did not met criteria" wrapText="true" />
       <Separator orientation="VERTICAL" prefHeight="200.0" />
-      <Button mnemonicParsing="false" onAction="#onClickShowNewDocumentationView" prefHeight="40.0" style="-fx-font-size: 16;" styleClass="green-button" text="Add documentation">
+      <Button fx:id="btnAddDocumentation" mnemonicParsing="false" onAction="#onClickShowNewDocumentationView" prefHeight="40.0" style="-fx-font-size: 16;" styleClass="green-button" text="Add documentation">
          <effect>
             <DropShadow height="9.0" radius="4.79" width="12.16" />
          </effect>

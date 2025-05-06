@@ -6,6 +6,7 @@ import dk.easv.belmanexam.ui.ViewManager;
 import dk.easv.belmanexam.ui.controllers.dashboards.operator.DocumentationCreationDashboardController;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.util.Pair;
@@ -17,6 +18,9 @@ public class OrderListComponent {
 
     @FXML
     private HBox hboxContainer;
+
+    @FXML
+    private Button btnAddDocumentation;
 
     @FXML
     private Label lblOrderStatus;
@@ -43,5 +47,6 @@ public class OrderListComponent {
         hboxContainer.getStyleClass().add("sent");
         lblOrderStatus.setText("Sent");
         lblOrderComment.setText("Waiting to be approved...");
+        btnAddDocumentation.setVisible(false);
     }
 }
