@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox fx:id="hboxContainer" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1100.0" styleClass="container" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.components.DocumentationListComponent">
+    <children>
+        <Label fx:id="lblOrderNumber" alignment="CENTER" minWidth="150.0" text="12-03/133245" />
+        <Separator orientation="VERTICAL" prefHeight="30.0" prefWidth="0.0" />
+        <Label fx:id="lblOrderStatus" alignment="CENTER" minWidth="100.0" text="Pending" />
+        <Separator orientation="VERTICAL" prefHeight="62.0" prefWidth="6.0" />
+        <Label fx:id="lblOrderComment" alignment="CENTER" prefHeight="58.0" prefWidth="200.0" text="11/24/2025" wrapText="true" />
+        <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <Label fx:id="lblDocumentedBy" alignment="CENTER" prefWidth="250.0" text="Anders Nielsen" wrapText="true" />
+      <Separator orientation="VERTICAL" prefHeight="200.0" />
+        <Button fx:id="btnSeeDetails" mnemonicParsing="false" onAction="#onClickShowApproveDocumentationView" prefHeight="40.0" prefWidth="242.0" style="-fx-font-size: 16;" styleClass="green-button" text="See details">
+            <effect>
+                <DropShadow height="9.0" radius="4.79" width="12.16" />
+            </effect>
+        </Button>
+    </children>
+   <stylesheets>
+      <URL value="@../../styles/main.css" />
+      <URL value="@../../styles/documentation.css" />
+   </stylesheets>
+</HBox>

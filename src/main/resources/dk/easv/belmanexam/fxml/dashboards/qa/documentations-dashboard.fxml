@@ -31,73 +31,76 @@
             <String fx:value="left-side-header" />
          </styleClass>
         </Label>
-      <VBox layoutX="920.0" layoutY="220.0" prefHeight="320.0" prefWidth="284.0" spacing="38.0">
+        <HBox layoutX="940.0" layoutY="40.0" prefHeight="50.0" styleClass="radius" stylesheets="@../../../styles/search-bar.css">
+            <children>
+                <TextField alignment="CENTER" prefHeight="55.0" prefWidth="240.0" promptText="Order number" stylesheets="@../../../styles/search-bar.css">
+                    <font>
+                        <Font name="Helvetica Neue" size="18.0" />
+                    </font>
+                </TextField>
+                <StackPane prefHeight="60.0" prefWidth="44.0">
+                    <children>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../images/loop-icon.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                    <styleClass>
+                        <String fx:value="green-button" />
+                        <String fx:value="loop-icon-container" />
+                    </styleClass>
+                </StackPane>
+            </children>
+            <effect>
+                <DropShadow height="5.0" radius="3.0" width="9.0" />
+            </effect>
+        </HBox>
+      <VBox layoutX="90.0" layoutY="150.0" prefHeight="400.0" prefWidth="1140.0" spacing="20.0">
          <children>
-              <HBox prefHeight="50.0" styleClass="radius" stylesheets="@../../../styles/search-bar.css">
-                  <children>
-                      <TextField alignment="CENTER" prefHeight="55.0" prefWidth="240.0" promptText="Order number" stylesheets="@../../../styles/search-bar.css">
-                          <font>
-                              <Font name="Helvetica Neue" size="18.0" />
-                          </font>
-                      </TextField>
-                      <StackPane prefHeight="60.0" prefWidth="44.0">
-                          <children>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                  <image>
-                                      <Image url="@../../../images/loop-icon.png" />
-                                  </image>
-                              </ImageView>
-                          </children>
-                          <styleClass>
-                              <String fx:value="green-button" />
-                              <String fx:value="loop-icon-container" />
-                          </styleClass>
-                      </StackPane>
-                  </children>
-                  <effect>
-                      <DropShadow height="5.0" radius="3.0" width="9.0" />
-                  </effect>
-              </HBox>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="378.0" styleClass="disabled-menu-button" text="Approved" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="414.0" style="-fx-border-color: #338D71; -fx-border-radius: 8; -fx-border-width: 2;" text="Pending">
-               <styleClass>
-                  <String fx:value="gray-button" />
-                  <String fx:value="green-button" />
-               </styleClass></Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="302.0" text="Rejected">
-               <styleClass>
-                  <String fx:value="gray-button" />
-                  <String fx:value="disabled-menu-button" />
-               </styleClass></Button>
-         </children>
-      </VBox>
-      <VBox layoutX="90.0" layoutY="150.0" prefHeight="400.0" prefWidth="720.0" spacing="20.0">
-         <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="720.0" style="-fx-border-color: #777; -fx-border-radius: 13;">
+            <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="848.0" spacing="20.0" style="-fx-border-color: #777; -fx-border-radius: 13;">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="145.0" style="-fx-font-weight: bold;" text="Order No." />
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="160.0" style="-fx-font-weight: bold;" text="Order No." />
                   <Separator orientation="VERTICAL" prefHeight="200.0" />
-                  <Label alignment="CENTER" prefHeight="46.0" prefWidth="107.0" style="-fx-font-weight: bold;" text="Status">
+                  <Label alignment="CENTER" prefHeight="46.0" prefWidth="80.0" style="-fx-font-weight: bold;" text="Status">
                      <padding>
                         <Insets left="5.0" right="5.0" />
                      </padding>
                   </Label>
                   <Separator orientation="VERTICAL" prefHeight="200.0" />
-                  <Label alignment="CENTER" prefHeight="46.0" prefWidth="230.0" style="-fx-font-weight: bold;" text="Comment" textAlignment="CENTER" />
+                  <Label alignment="CENTER" prefHeight="46.0" prefWidth="180.0" style="-fx-font-weight: bold;" text="Date of record" textAlignment="CENTER" />
                   <Separator orientation="VERTICAL" prefHeight="200.0" />
-                  <Label alignment="CENTER" prefHeight="26.0" prefWidth="183.0" />
+                  <Label alignment="CENTER" prefHeight="26.0" prefWidth="230.0" style="-fx-font-weight: bold;" text="Documented By" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
                </children>
                <styleClass>
                   <String fx:value="light-bgc" />
                   <String fx:value="radius" />
                </styleClass>
             </HBox>
-            <ScrollPane hbarPolicy="NEVER" prefHeight="320.0" prefWidth="720.0" style="-fx-border-color: #777;" styleClass="custom-scroll-pane">
+            <ScrollPane hbarPolicy="NEVER" prefHeight="338.0" prefWidth="1142.0" style="-fx-border-color: #777;" styleClass="custom-scroll-pane">
                <content>
                   <FlowPane fx:id="flowPaneOrderList" prefHeight="200.0" prefWidth="700.0" />
                </content>
             </ScrollPane>
          </children>
       </VBox>
+      <HBox alignment="CENTER" layoutX="421.0" layoutY="45.0" spacing="33.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="130.0" styleClass="disabled-menu-button" text="Approved" />
+            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="130.0" style="-fx-border-color: #338D71; -fx-border-radius: 8; -fx-border-width: 2;" text="Pending">
+               <styleClass>
+                  <String fx:value="gray-button" />
+                  <String fx:value="green-button" />
+               </styleClass>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="130.0" text="Rejected">
+               <styleClass>
+                  <String fx:value="gray-button" />
+                  <String fx:value="disabled-menu-button" />
+               </styleClass>
+            </Button>
+         </children>
+      </HBox>
     </children>
 </AnchorPane>

@@ -88,7 +88,7 @@
          <children>
             <ScrollPane hbarPolicy="NEVER" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ccc; -fx-background: transparent;">
                <content>
-                  <FlowPane fx:id="flowPaneImageContainer" alignment="CENTER" hgap="50.0" prefHeight="200.0" prefWidth="582.0" styleClass="radius" vgap="25.0">
+                  <FlowPane fx:id="flowPaneImageContainer" alignment="CENTER" hgap="50.0" prefHeight="385.0" prefWidth="582.0" styleClass="radius" vgap="25.0">
                      <padding>
                         <Insets top="25.0" />
                      </padding>
@@ -99,9 +99,9 @@
                   <String fx:value="photos-container" />
                </styleClass>
             </ScrollPane>
-            <ImageView fx:id="imgViewLoadingGif" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgViewLoadingGif" fitHeight="77.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/spinner.gif" />
+                  <Image url="@../../../images/loading.gif" />
                </image>
             </ImageView>
          </children>

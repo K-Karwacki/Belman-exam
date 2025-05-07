@@ -17,7 +17,12 @@ public class FXMLPath
     public static final String DOCUMENTATION_CREATION_DASHBOARD = "/dk/easv/belmanexam/fxml/dashboards/operator/documentation-creation-dashboard.fxml";
     public static final String ENTER_ORDER_DASHBOARD = "/dk/easv/belmanexam/fxml/dashboards/operator/enter-order-dashboard.fxml";
     public static final String IMAGE_DISPLAY_DASHBOARD = "/dk/easv/belmanexam/fxml/dashboards/operator/image-display-dashboard.fxml";
+    public static final String DOCUMENTATION_DASHBOARD = "/dk/easv/belmanexam/fxml/dashboards/qa/documentations-dashboard.fxml";
+    public static final String APPROVE_DOCUMENTATION_DASHBOARD = "/dk/easv/belmanexam/fxml/dashboards/qa/approve-documentation-dashboard.fxml";
 
     //    Components
     public static final String ORDER_LIST_COMPONENT = "/dk/easv/belmanexam/fxml/components/order-list-component.fxml";
+    public static final String DOCUMENTATION_LIST_COMPONENT = "/dk/easv/belmanexam/fxml/components/documentation-list-component.fxml";
+
 }
+
