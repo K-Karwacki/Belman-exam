@@ -4,15 +4,17 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1280.0" styleClass="bgc" stylesheets="@../../../styles/main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.dashboards.qa.DocumentationDashboardController">
+<AnchorPane prefHeight="600.0" prefWidth="1280.0" styleClass="bgc" stylesheets="@../../../styles/main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.dashboards.qa.ApproveDocumentationDashboardController">
    <children>
       <Label alignment="CENTER_RIGHT" layoutY="40.0" prefHeight="49.0" prefWidth="364.0" text="Approve documentation">
          <padding>
@@ -24,25 +26,30 @@
          <styleClass>
             <String fx:value="basic-button" />
             <String fx:value="left-side-button" />
+            <String fx:value="header-title" />
+            <String fx:value="left-side-header" />
          </styleClass>
       </Label>
-      <ScrollPane hbarPolicy="NEVER" layoutX="100.0" layoutY="157.0" prefHeight="398.0" prefWidth="587.0" styleClass="radius">
-         <content>
-            <FlowPane prefHeight="200.0" prefWidth="200.0" styleClass="radius" />
-         </content>
-      </ScrollPane>
-      <VBox layoutX="746.0" layoutY="158.0" prefHeight="400.0" prefWidth="300.0" spacing="75.0">
+      <VBox layoutX="746.0" layoutY="150.0" prefHeight="400.0" prefWidth="300.0" spacing="125.0">
          <children>
-            <VBox prefHeight="94.0" prefWidth="304.0">
+            <VBox prefHeight="86.0" prefWidth="380.0" style="-fx-border-color: #777; -fx-border-radius: 14; -fx-border-width: 2;">
                <children>
-                  <Label prefHeight="46.0" prefWidth="421.0" style="-fx-background-radius: 13 13 0 0;" styleClass="light-blue-label" text="Order number" />
-                  <Label prefHeight="48.0" prefWidth="416.0" styleClass="order-number-label" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="421.0" style="-fx-background-radius: 13 13 0 0;" styleClass="light-blue-label" text="Order number" />
+                  <TextField fx:id="textFieldOrderNumber" alignment="CENTER" disable="true" prefHeight="55.0" prefWidth="240.0" styleClass="order-number-label">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </TextField>
                </children>
             </VBox>
-            <VBox prefHeight="237.0" prefWidth="304.0">
+            <VBox prefHeight="200.0" prefWidth="300.0" style="-fx-border-color: #777; -fx-border-radius: 14; -fx-border-width: 2;">
                <children>
-                  <Label prefHeight="46.0" prefWidth="421.0" style="-fx-background-radius: 13 13 0 0;" styleClass="light-blue-label" text="Message" />
-                  <Label prefHeight="190.0" prefWidth="304.0" styleClass="order-number-label" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="421.0" style="-fx-background-radius: 13 13 0 0;" styleClass="light-blue-label" text="Comment" />
+                  <TextField fx:id="textFieldOrderNumber1" alignment="TOP_LEFT" prefHeight="133.0" prefWidth="296.0" styleClass="order-number-label">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </TextField>
                </children>
             </VBox>
          </children>
@@ -77,5 +84,46 @@
             <String fx:value="shadow" />
          </styleClass>
       </StackPane>
+      <StackPane layoutX="74.0" layoutY="150.0">
+         <children>
+            <ScrollPane hbarPolicy="NEVER" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ccc; -fx-background: transparent;">
+               <content>
+                  <FlowPane fx:id="flowPaneImageContainer" alignment="CENTER" hgap="50.0" prefHeight="200.0" prefWidth="582.0" styleClass="radius" vgap="25.0">
+                     <padding>
+                        <Insets top="25.0" />
+                     </padding>
+                  </FlowPane>
+               </content>
+               <styleClass>
+                  <String fx:value="radius" />
+                  <String fx:value="photos-container" />
+               </styleClass>
+            </ScrollPane>
+            <ImageView fx:id="imgViewLoadingGif" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/spinner.gif" />
+               </image>
+            </ImageView>
+         </children>
+      </StackPane>
+      <HBox alignment="CENTER_LEFT" layoutX="1090.0" layoutY="50.0" minHeight="49.0" minWidth="132.0" onMouseClicked="#showParentView" prefHeight="50.0" prefWidth="132.0">
+         <children>
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/left-side-arrow.png" />
+               </image>
+            </ImageView>
+            <Label text="Go back" textFill="WHITE">
+               <font>
+                  <Font size="46.0" />
+               </font>
+            </Label>
+         </children>
+         <styleClass>
+            <String fx:value="header-title" />
+            <String fx:value="right-side-button" />
+            <String fx:value="previous-button" />
+         </styleClass>
+      </HBox>
    </children>
 </AnchorPane>
