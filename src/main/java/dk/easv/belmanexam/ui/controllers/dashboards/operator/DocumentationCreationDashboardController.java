@@ -1,6 +1,5 @@
 package dk.easv.belmanexam.ui.controllers.dashboards.operator;
 
-import dk.easv.belmanexam.be.Photo;
 import dk.easv.belmanexam.bll.PhotoDocumentationService;
 import dk.easv.belmanexam.exceptions.PhotoException;
 import dk.easv.belmanexam.ui.FXMLManager;
@@ -16,10 +15,8 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.FileChooser;
 import javafx.util.Pair;
 
-import javax.swing.text.View;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class DocumentationCreationDashboardController {

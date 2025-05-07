@@ -1,25 +1,30 @@
 package dk.easv.belmanexam.be;
 
+import dk.easv.belmanexam.bll.Status;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Cascade;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
-@Table(name = "order")
+@Table(name = "Order")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID;
 
-    @Column(name = "order_number")
+    @Column(name = "OrderNumber")
     private String orderNumber;
 
+    @Column(name = "Date")
+    private LocalDateTime date;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "documentation_id")
-    private PhotoDocumentation photoDocumentation;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "CustomerID")
+    private Customer customer;
 
     @Enumerated(EnumType.STRING)
-    private String status;
+    @JoinColumn(name = "Status")
+    private Status status;
 }
