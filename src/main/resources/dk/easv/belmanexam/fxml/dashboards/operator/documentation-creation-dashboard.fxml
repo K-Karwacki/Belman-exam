@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -31,28 +30,19 @@
             <String fx:value="left-side-header" />
          </styleClass>
       </Label>
-      <StackPane layoutX="100.0" layoutY="157.0">
-         <children>
-            <ScrollPane hbarPolicy="NEVER" prefHeight="398.0" prefWidth="600.0" style="-fx-background-color: #ccc; -fx-background: transparent;">
-               <content>
-                  <FlowPane fx:id="flowPaneImageContainer" alignment="CENTER" hgap="50.0" prefHeight="200.0" prefWidth="582.0" styleClass="radius" vgap="25.0">
-                     <padding>
-                        <Insets top="25.0" />
-                     </padding>
-                  </FlowPane>
-               </content>
-               <styleClass>
-                  <String fx:value="radius" />
-                  <String fx:value="photos-container" />
-               </styleClass>
-            </ScrollPane>
-            <ImageView fx:id="imgViewLoadingGif" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/spinner.gif" />
-               </image>
-            </ImageView>
-         </children>
-      </StackPane>
+      <ScrollPane hbarPolicy="NEVER" layoutX="100.0" layoutY="157.0" prefHeight="398.0" prefWidth="600.0" style="-fx-background-color: #ccc; -fx-background: transparent;">
+         <content>
+            <FlowPane fx:id="flowPaneImageContainer" alignment="CENTER" hgap="50.0" prefHeight="200.0" prefWidth="582.0" styleClass="radius" vgap="25.0">
+               <padding>
+                  <Insets top="25.0" />
+               </padding>
+            </FlowPane>
+         </content>
+         <styleClass>
+            <String fx:value="radius" />
+            <String fx:value="photos-container" />
+         </styleClass>
+      </ScrollPane>
       <Button layoutX="800.0" layoutY="490.0" minHeight="65.0" minWidth="390.0" mnemonicParsing="false" onAction="#onClickSubmitDocumentation" styleClass="header-title" text="Submit">
          <effect>
             <DropShadow height="3.0" radius="1.5" width="5.0" />
