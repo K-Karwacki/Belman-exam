@@ -1,5 +1,6 @@
 package dk.easv.belmanexam.dal.repositories;
 
-public interface PhotoDocumentationRepository
-{
+import dk.easv.belmanexam.be.PhotoDocumentation;
+
+public interface PhotoDocumentationRepository extends BaseRepository<PhotoDocumentation>{
 }

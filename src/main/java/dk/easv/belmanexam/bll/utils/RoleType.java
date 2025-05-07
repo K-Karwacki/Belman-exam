@@ -1,4 +1,4 @@
-package dk.easv.belmanexam.bll;
+package dk.easv.belmanexam.bll.utils;
 
 public enum RoleType
 {

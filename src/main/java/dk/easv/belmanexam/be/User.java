@@ -1,6 +1,6 @@
 package dk.easv.belmanexam.be;
 
-import dk.easv.belmanexam.bll.RoleType;
+import dk.easv.belmanexam.bll.utils.RoleType;
 import jakarta.persistence.*;
 
 @Entity
@@ -8,8 +8,7 @@ import jakarta.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private long id;
-    private int id;
+    private int ID;
 
     @Column(name = "first_name")
     private String firstName;
@@ -17,33 +16,26 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-//    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private RoleType role;
 
     @Column(name = "email")
     private String email;
 
-    @Column(name = "password")
-    private String password;
-
-    @Column(name = "phone_number")
-    private String phoneNumber;
 
     public User() {}
 
-    public User(int id, String firstName, String lastName, RoleType role, String email, String password, String phoneNumber) {
-        this.id = id;
+    public User(int id, String firstName, String lastName, RoleType role, String email) {
+        this.ID = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.role = role;
         this.email = email;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
     }
 
-    public int getId() {
-        return id;
+    public long getID() {
+        return ID;
     }
     public String getFirstName() {
         return firstName;
@@ -68,18 +60,6 @@ public class User {
     }
     public void setEmail(String email) {
         this.email = email;
-    }
-    public String getPassword() {
-        return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
 }

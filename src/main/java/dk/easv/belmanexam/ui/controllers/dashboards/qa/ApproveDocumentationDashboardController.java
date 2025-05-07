@@ -1,28 +1,24 @@
 package dk.easv.belmanexam.ui.controllers.dashboards.qa;
 
-import dk.easv.belmanexam.bll.PhotoDocumentationService;
+import dk.easv.belmanexam.bll.implementations.PhotoDocumentationServiceImpl;
+import dk.easv.belmanexam.bll.interfaces.PhotoDocumentationManagementService;
 import dk.easv.belmanexam.exceptions.PhotoException;
-import dk.easv.belmanexam.ui.FXMLManager;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
-import dk.easv.belmanexam.ui.controllers.components.OrderListComponent;
-import dk.easv.belmanexam.ui.controllers.dashboards.operator.ImageDisplayDashboardController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class ApproveDocumentationDashboardController {
 
-    private final PhotoDocumentationService photoDocumentationService = new PhotoDocumentationService();
+    PhotoDocumentationManagementService photoDocumentationManagementService;
     private final Map<String, List<Image>> imageCache = new HashMap<>();
 
     private String orderNumber;
@@ -72,10 +68,14 @@ public class ApproveDocumentationDashboardController {
             photos.forEach(photo -> Platform.runLater(() -> addPhoto(photo)));
         }
         else{
-            List<Image> photos = photoDocumentationService.getAllImagesByOrderNumber(orderNumber);
+            List<Image> photos = photoDocumentationManagementService.getAllImagesByOrderNumber(orderNumber);
             imageCache.put(orderNumber, photos);
             photos.forEach(photo -> Platform.runLater(() -> addPhoto(photo)));
         }
 
+    }
+
+    public void setServices(PhotoDocumentationManagementService photoDocumentationManagementService) {
+        this.photoDocumentationManagementService = photoDocumentationManagementService;
     }
 }

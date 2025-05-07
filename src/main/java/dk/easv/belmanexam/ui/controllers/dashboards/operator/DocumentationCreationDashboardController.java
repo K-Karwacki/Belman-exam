@@ -1,6 +1,7 @@
 package dk.easv.belmanexam.ui.controllers.dashboards.operator;
 
-import dk.easv.belmanexam.bll.PhotoDocumentationService;
+import dk.easv.belmanexam.bll.implementations.PhotoDocumentationServiceImpl;
+import dk.easv.belmanexam.bll.interfaces.PhotoDocumentationManagementService;
 import dk.easv.belmanexam.exceptions.PhotoException;
 import dk.easv.belmanexam.ui.FXMLManager;
 import dk.easv.belmanexam.ui.FXMLPath;
@@ -23,7 +24,7 @@ public class DocumentationCreationDashboardController {
 
     private List<File> photos = new ArrayList<>();
     private OrderListComponent parentController;
-    private final PhotoDocumentationService photoDocumentationService = new PhotoDocumentationService();
+    private PhotoDocumentationManagementService photoDocumentationManagementService;
     private String orderNumber;
     @FXML
     private TextField textFieldOrderNumber;
@@ -35,7 +36,7 @@ public class DocumentationCreationDashboardController {
     private void uploadPhotoViaCloud() throws PhotoException {
         flowPaneImageContainer.getChildren().clear();
         String orderNumber = textFieldOrderNumber.getText();
-        List<Image> photos = photoDocumentationService.getAllImagesByOrderNumber(orderNumber);
+        List<Image> photos = photoDocumentationManagementService.getAllImagesByOrderNumber(orderNumber);
         photos.forEach(this::addPhoto);
     }
 
@@ -49,7 +50,7 @@ public class DocumentationCreationDashboardController {
                 new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
         File selectedFile = fileChooser.showOpenDialog(flowPaneImageContainer.getScene().getWindow());
         if (selectedFile != null) {
-//            photoDocumentationService.saveFileInFolder(selectedFile, orderNumber);
+//            photoDocumentationServiceImpl.saveFileInFolder(selectedFile, orderNumber);
             Image image = new Image(selectedFile.toURI().toString());
             savePhotoInformation(selectedFile);
             addPhoto(image);
@@ -81,7 +82,7 @@ public class DocumentationCreationDashboardController {
         if(!photos.isEmpty()){
         photos.forEach(file -> {
             try {
-                photoDocumentationService.saveFileInFolder(file, orderNumber);
+                photoDocumentationManagementService.saveFileInFolder(file, orderNumber);
             } catch (PhotoException e) {
                 throw new RuntimeException(e);
             }
@@ -101,4 +102,7 @@ public class DocumentationCreationDashboardController {
         this.parentController = parentController;
     }
 
+    public void setServices(PhotoDocumentationManagementService photoDocumentationManagementService) {
+        this.photoDocumentationManagementService = photoDocumentationManagementService;
+    }
 }

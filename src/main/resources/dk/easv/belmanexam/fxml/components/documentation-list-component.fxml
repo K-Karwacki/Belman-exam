@@ -13,7 +13,7 @@
         <Separator orientation="VERTICAL" prefHeight="30.0" prefWidth="0.0" />
         <Label fx:id="lblOrderStatus" alignment="CENTER" minWidth="100.0" text="Pending" />
         <Separator orientation="VERTICAL" prefHeight="62.0" prefWidth="6.0" />
-        <Label fx:id="lblOrderComment" alignment="CENTER" prefHeight="58.0" prefWidth="200.0" text="11/24/2025" wrapText="true" />
+        <Label fx:id="lblRecordDate" alignment="CENTER" prefHeight="58.0" prefWidth="200.0" text="11/24/2025" wrapText="true" />
         <Separator orientation="VERTICAL" prefHeight="200.0" />
       <Label fx:id="lblDocumentedBy" alignment="CENTER" prefWidth="250.0" text="Anders Nielsen" wrapText="true" />
       <Separator orientation="VERTICAL" prefHeight="200.0" />

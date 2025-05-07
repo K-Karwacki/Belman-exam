@@ -2,6 +2,7 @@ package dk.easv.belmanexam.be;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,24 +11,21 @@ import java.util.List;
 public class PhotoDocumentation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int ID;
+    private int id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "OrderID")
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id", referencedColumnName = "id")
     private Order order;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "UserID")
-    private User documented_by;
-
+    @Column(name = "date")
+    private LocalDateTime date;
 
     public PhotoDocumentation() {
 
-    }
-
-    public int getID()
-    {
-        return ID;
     }
 
     public Order getOrder()
@@ -40,14 +38,11 @@ public class PhotoDocumentation {
         this.order = order;
     }
 
-    public User getDocumented_by()
-    {
-        return documented_by;
+    public User getUser(){
+        return user;
     }
-
-    public void setDocumented_by(User documented_by)
-    {
-        this.documented_by = documented_by;
+    public LocalDateTime getDate(){
+        return date;
     }
 
 }

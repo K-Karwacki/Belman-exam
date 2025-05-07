@@ -1,12 +1,12 @@
 package dk.easv.belmanexam.dal.implementations;
 
 import dk.easv.belmanexam.be.Order;
-import dk.easv.belmanexam.be.User;
 import dk.easv.belmanexam.dal.repositories.OrderRepository;
 import dk.easv.belmanexam.utils.JPAUtil;
 import jakarta.persistence.EntityManager;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,7 +14,17 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     @Override
     public Collection<Order> getAll() {
-        return List.of();
+        try(EntityManager em = JPAUtil.getEntityManager()){
+            em.getTransaction().begin();
+            List<Order> orders = em.createQuery("select o from Order o", Order.class).getResultList();
+            if(!orders.isEmpty()){
+                em.getTransaction().commit();
+                return orders;
+            }
+        }catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+        return Collections.emptyList();
     }
 
     @Override

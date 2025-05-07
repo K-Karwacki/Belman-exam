@@ -1,5 +1,6 @@
 package dk.easv.belmanexam.ui.controllers.components;
 
+import dk.easv.belmanexam.bll.utils.Status;
 import dk.easv.belmanexam.ui.FXMLManager;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
@@ -41,6 +42,9 @@ public class OrderListComponent {
     {
         this.orderNumber = orderNumber;
         lblOrderNumber.setText(orderNumber);
+    }
+    public void setStatus (Status status){
+        lblOrderStatus.setText(status.toString().toLowerCase());
     }
 
     public void changeStatus() {

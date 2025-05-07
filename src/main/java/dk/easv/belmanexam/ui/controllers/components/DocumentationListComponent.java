@@ -24,7 +24,7 @@ public class DocumentationListComponent {
     private Button btnSeeDocumentation;
 
     @FXML
-    private Label lblOrderStatus;
+    private Label lblRecordDate;
 
     @FXML
     private Label lblDocumentedBy;
@@ -41,6 +41,13 @@ public class DocumentationListComponent {
     public void setOrderNumber(String orderNumber) {
         this.orderNumber = orderNumber;
         lblOrderNumber.setText(orderNumber);
+    }
+
+    public void setDocumentedBy(String documentedBy) {
+        this.lblDocumentedBy.setText(documentedBy);
+    }
+    public void setRecordDate(String recordDate) {
+        this.lblRecordDate.setText(recordDate);
     }
 
 }
