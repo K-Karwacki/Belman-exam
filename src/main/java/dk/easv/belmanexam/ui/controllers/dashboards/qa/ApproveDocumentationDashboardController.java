@@ -18,13 +18,16 @@ import java.util.Map;
 
 public class ApproveDocumentationDashboardController {
 
-    PhotoDocumentationManagementService photoDocumentationManagementService;
+    private PhotoDocumentationManagementService photoDocumentationManagementService;
     private final Map<String, List<Image>> imageCache = new HashMap<>();
 
     private String orderNumber;
 
     @FXML
     private TextField textFieldOrderNumber;
+
+    @FXML
+    private TextField textFieldComment;
 
     @FXML
     private ImageView imgViewLoadingGif;

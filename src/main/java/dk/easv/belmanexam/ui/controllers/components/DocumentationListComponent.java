@@ -1,5 +1,6 @@
 package dk.easv.belmanexam.ui.controllers.components;
 
+import dk.easv.belmanexam.be.PhotoDocumentation;
 import dk.easv.belmanexam.ui.FXMLManager;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
@@ -13,6 +14,8 @@ import javafx.scene.layout.HBox;
 import javafx.util.Pair;
 
 public class DocumentationListComponent {
+
+    private PhotoDocumentation photoDocumentation;
 
     @FXML
     private Label lblOrderNumber;
@@ -50,4 +53,11 @@ public class DocumentationListComponent {
         this.lblRecordDate.setText(recordDate);
     }
 
+    public void setPhotoDocumentation(PhotoDocumentation documentation) {
+        this.photoDocumentation = photoDocumentation;
+        setOrderNumber(documentation.getOrder().getOrderNumber());
+        setDocumentedBy(documentation.getUser().getFirstName() + " " + documentation.getUser().getLastName());
+        String date = documentation.getDate().getDayOfMonth() + "/" + documentation.getDate().getMonthValue() + "/" + documentation.getDate().getYear();
+        setRecordDate(date);
+    }
 }
