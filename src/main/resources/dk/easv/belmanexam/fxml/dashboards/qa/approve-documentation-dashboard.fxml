@@ -45,7 +45,7 @@
             <VBox prefHeight="200.0" prefWidth="300.0" style="-fx-border-color: #777; -fx-border-radius: 14; -fx-border-width: 2;">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="421.0" style="-fx-background-radius: 13 13 0 0;" styleClass="light-blue-label" text="Comment" />
-                  <TextField fx:id="textFieldOrderNumber1" alignment="TOP_LEFT" prefHeight="133.0" prefWidth="296.0" styleClass="order-number-label">
+                  <TextField fx:id="textFieldComment" alignment="TOP_LEFT" prefHeight="133.0" prefWidth="296.0" styleClass="order-number-label">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -54,7 +54,7 @@
             </VBox>
          </children>
       </VBox>
-      <StackPane layoutX="1140.0" layoutY="250.0" prefHeight="0.0" prefWidth="0.0">
+      <StackPane layoutX="1150.0" layoutY="250.0" prefHeight="0.0" prefWidth="0.0">
          <children>
             <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -69,7 +69,7 @@
             <String fx:value="shadow" />
          </styleClass>
       </StackPane>
-      <StackPane layoutX="1140.0" layoutY="350.0" minHeight="0.0" prefHeight="0.0" prefWidth="0.0">
+      <StackPane layoutX="1150.0" layoutY="350.0" minHeight="0.0" prefHeight="0.0" prefWidth="0.0">
          <children>
             <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                <image>

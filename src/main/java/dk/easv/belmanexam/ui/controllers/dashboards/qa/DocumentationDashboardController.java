@@ -31,11 +31,7 @@ public class DocumentationDashboardController {
         Collection<PhotoDocumentation> documentations = photoDocumentationManagementService.getPhotoDocumentationListModel().getDocumentation();
         documentations.forEach(documentation -> {
             Pair<Parent, DocumentationListComponent> p = FXMLManager.INSTANCE.loadFXML(FXMLPath.DOCUMENTATION_LIST_COMPONENT);
-            p.getValue().setOrderNumber(documentation.getOrder().getOrderNumber());
-            p.getValue().setDocumentedBy(documentation.getUser().getFirstName() + " " + documentation.getUser().getLastName());
-            // ToDo -> Replace this with something more elegant
-            String date = documentation.getDate().getDayOfMonth() + "/" + documentation.getDate().getMonthValue() + "/" + documentation.getDate().getYear();
-            p.getValue().setRecordDate(date);
+            p.getValue().setPhotoDocumentation(documentation);
             flowPaneOrderList.getChildren().add(p.getKey());
         });
     }
