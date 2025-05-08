@@ -6,8 +6,6 @@
             <!-- Database Connection -->
             <property name="jakarta.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:sqlserver://10.176.111.34:1433;databaseName=Exam_FCGoats;encrypt=true;trustServerCertificate=true"/>
-            <property name="jakarta.persistence.jdbc.user" value="CSe2024b_e_10"/>
-            <property name="jakarta.persistence.jdbc.password" value="CSe2024bE10!24"/>
 
             <!-- Hibernate Properties -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
