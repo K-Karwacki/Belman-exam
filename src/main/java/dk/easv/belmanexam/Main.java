@@ -11,6 +11,7 @@ import dk.easv.belmanexam.ui.FXMLManager;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.StageManager;
 import dk.easv.belmanexam.ui.ViewManager;
+import dk.easv.belmanexam.ui.controllers.dashboards.admin.UsersDashboardController;
 import dk.easv.belmanexam.ui.controllers.dashboards.operator.DocumentationCreationDashboardController;
 import dk.easv.belmanexam.ui.controllers.dashboards.operator.OrdersDashboardController;
 import dk.easv.belmanexam.ui.controllers.dashboards.qa.ApproveDocumentationDashboardController;

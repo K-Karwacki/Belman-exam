@@ -8,11 +8,6 @@
     </remote-repository>
     <remote-repository>
       <option name="id" value="gluon-releases" />
-      <option name="name" value="gluon-releases" />
-      <option name="url" value="https://nexus.gluonhq.com/nexus/content/repositories/releases/" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="gluon-releases" />
       <option name="name" value="Gluon Releases" />
       <option name="url" value="https://nexus.gluonhq.com/nexus/content/repositories/releases/" />
     </remote-repository>

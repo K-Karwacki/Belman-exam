@@ -24,5 +24,8 @@ public class FXMLPath
     public static final String ORDER_LIST_COMPONENT = "/dk/easv/belmanexam/fxml/components/order-list-component.fxml";
     public static final String DOCUMENTATION_LIST_COMPONENT = "/dk/easv/belmanexam/fxml/components/documentation-list-component.fxml";
 
+    //    Popups
+    public static final String USER_EDITOR_POPUP = "/dk/easv/belmanexam/fxml/dashboards/admin/user-editor-popup.fxml";
+    public static final String USER_CREATOR_POPUP = "/dk/easv/belmanexam/fxml/dashboards/admin/user-creator-popup.fxml";
 }
 

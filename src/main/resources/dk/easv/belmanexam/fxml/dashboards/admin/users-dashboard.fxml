@@ -16,8 +16,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox styleClass="bgc" stylesheets="@../../../styles/main.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.dashboards.admin.UsersDashboardController">
+<VBox styleClass="bgc" stylesheets="@../../../styles/main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.dashboards.admin.UsersDashboardController">
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="49.0" styleClass="radius" stylesheets="@../../../styles/search-bar.css">
          <children>
@@ -44,6 +43,15 @@
                <HBox.margin>
                   <Insets right="50.0" />
                </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#openUserEditor" prefHeight="45.0" prefWidth="175.0" styleClass="green-button" text="Edit &quot;TEST&quot;">
+               <effect>
+                  <DropShadow height="11.37" offsetX="-3.0" offsetY="5.0" radius="5.3825" width="12.16">
+                     <color>
+                        <Color red="0.46000000834465027" green="0.46000000834465027" blue="0.46000000834465027" opacity="0.4029914438724518" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </Button>
             <HBox>
                <children>

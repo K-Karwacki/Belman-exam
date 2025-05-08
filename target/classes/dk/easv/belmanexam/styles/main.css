@@ -66,6 +66,7 @@
 .label{
     -fx-font-size: 20;
 }
+
 .light-blue-label{
     -fx-text-fill: #F2F2F2;
     -fx-background-color: #7FA8C5;

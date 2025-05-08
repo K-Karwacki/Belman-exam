@@ -1,0 +1,71 @@
+.container{
+    -fx-background-color: #c8c8c8;
+    -fx-spacing: 5;
+}
+.text-field{
+    -fx-effect: dropshadow(gaussian, #555, 0, 0, -3, 3);
+    -fx-padding: 8;
+}
+.text-area{
+    -fx-effect: dropshadow(gaussian, #555, 0, 0, -3, 3);
+}
+.text-field:focused, .text-area:focused, .date-picker:focused{
+    -fx-focus-color: #338D71;
+    -fx-faint-focus-color:transparent;
+    -fx-effect: dropshadow(gaussian, #338D71, 0, 2, -3, 3);
+}
+.combo-box{
+    -fx-effect: dropshadow(gaussian, #555, 0, 0, -3, 3);
+}
+.button{
+    -fx-effect: dropshadow(gaussian, #555, 0, 0, -3, 3);
+    -fx-cursor: HAND;
+}
+.date-picker{
+    -fx-effect: dropshadow(gaussian, #555, 0, 0, -3, 3);
+}
+.date-picker .text-field {
+    -fx-effect: none;
+}
+.date-picker .text-field:focused{
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+.date-picker .arrow-button{
+    -fx-background-color: #338D71;
+    -fx-padding: 10;
+}
+
+.blue-button{
+    -fx-background-color: #004B88;
+    -fx-text-fill: #FFF;
+    -fx-font-size: 15;
+    -fx-background-radius: 8;
+    -fx-border-radius:8;
+    -fx-border-width:2;
+
+}
+
+.header-title{
+    -fx-background-color: #004B88;
+    -fx-text-fill: #FFF;
+    -fx-background-radius: 13;
+    -fx-font-size: 18 !important;
+}
+
+.left-side-header{
+    -fx-padding: 0 20 0 0;
+    -fx-background-radius: 0 13 13 0 !important;
+}
+
+.green-button{
+    -fx-background-color: #338D71;
+    -fx-text-fill: #FFF;
+    -fx-font-size: 15;
+    -fx-background-radius: 6;
+    -fx-border-radius:6;
+    -fx-border-width:2;
+}
+
+
+
