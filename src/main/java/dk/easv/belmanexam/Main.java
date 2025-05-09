@@ -1,21 +1,20 @@
 package dk.easv.belmanexam;
 
-import dk.easv.belmanexam.bll.factories.RepositoryService;
-import dk.easv.belmanexam.bll.factories.RepositoryServiceFactory;
-import dk.easv.belmanexam.bll.implementations.OrderManagementServiceImpl;
-import dk.easv.belmanexam.bll.implementations.PhotoDocumentationServiceImpl;
-import dk.easv.belmanexam.bll.interfaces.OrderManagementService;
-import dk.easv.belmanexam.bll.interfaces.PhotoDocumentationManagementService;
-import dk.easv.belmanexam.dal.GoogleDriveManager;
+import dk.easv.belmanexam.services.factories.RepositoryService;
+import dk.easv.belmanexam.services.factories.RepositoryServiceFactory;
+import dk.easv.belmanexam.services.implementations.OrderManagementServiceImpl;
+import dk.easv.belmanexam.services.implementations.PhotoDocumentationServiceImpl;
+import dk.easv.belmanexam.services.interfaces.OrderManagementService;
+import dk.easv.belmanexam.services.interfaces.PhotoDocumentationManagementService;
+import dk.easv.belmanexam.repositories.utils.GoogleDriveManager;
 import dk.easv.belmanexam.ui.FXMLManager;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.StageManager;
 import dk.easv.belmanexam.ui.ViewManager;
-import dk.easv.belmanexam.ui.controllers.dashboards.admin.UsersDashboardController;
-import dk.easv.belmanexam.ui.controllers.dashboards.operator.DocumentationCreationDashboardController;
-import dk.easv.belmanexam.ui.controllers.dashboards.operator.OrdersDashboardController;
-import dk.easv.belmanexam.ui.controllers.dashboards.qa.ApproveDocumentationDashboardController;
-import dk.easv.belmanexam.ui.controllers.dashboards.qa.DocumentationDashboardController;
+import dk.easv.belmanexam.ui.controllers.operator.dashboards.DocumentationCreationDashboardController;
+import dk.easv.belmanexam.ui.controllers.operator.dashboards.OrdersDashboardController;
+import dk.easv.belmanexam.ui.controllers.qa.dashboards.ApproveDocumentationDashboardController;
+import dk.easv.belmanexam.ui.controllers.qa.dashboards.DocumentationDashboardController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

@@ -5,7 +5,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" stylesheets="@../../styles/main.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.components.AdminMenuComponent">
+<VBox alignment="CENTER" stylesheets="@../../styles/main.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.admin.AdminMenuComponent">
    <children>
       <Button mnemonicParsing="false" onAction="#switchToUsers" prefHeight="45.0" prefWidth="150.0" styleClass="disabled-menu-button" text="Users">
          <VBox.margin>

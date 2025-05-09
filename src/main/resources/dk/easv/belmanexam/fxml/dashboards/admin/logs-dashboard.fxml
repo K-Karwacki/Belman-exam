@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox styleClass="bgc" stylesheets="@../../../styles/main.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.dashboards.admin.LogsDashboardController">
+<VBox styleClass="bgc" stylesheets="@../../../styles/main.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.admin.dashboards.LogsDashboardController">
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="49.0" styleClass="radius" stylesheets="@../../../styles/search-bar.css">
          <children>

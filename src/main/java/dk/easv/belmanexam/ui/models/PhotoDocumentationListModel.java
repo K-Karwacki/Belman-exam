@@ -1,7 +1,6 @@
 package dk.easv.belmanexam.ui.models;
 
-import dk.easv.belmanexam.be.Order;
-import dk.easv.belmanexam.be.PhotoDocumentation;
+import dk.easv.belmanexam.model.PhotoDocumentation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

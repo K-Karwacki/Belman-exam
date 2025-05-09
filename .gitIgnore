@@ -27,7 +27,6 @@
 # System files
 .DS_Store
 Thumbs.db
-
 # Sensitive files
 .env
 *.key

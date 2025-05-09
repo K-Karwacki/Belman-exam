@@ -7,6 +7,5 @@
         <fx:include source="../components/header-component.fxml" />
     </top>
     <center>
-        <fx:include source="../dashboards/qa/documentations-dashboard.fxml" />
     </center>
 </BorderPane>

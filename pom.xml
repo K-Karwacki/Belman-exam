@@ -1,117 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>dk.easv</groupId>
-    <artifactId>belman-exam</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <name>belman-exam</name>
+    <groupId>dk.easv.belmanexam</groupId>
+    <artifactId>Belman</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
+    <name>Belman</name>
     <properties>
+        <main.class>dk.easv.belmanexam.Main</main.class>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <junit.version>5.7.1</junit.version>
+        <maven.compiler.release>17</maven.compiler.release>
+        <javafx.version>21.0.7</javafx.version>
+        <charm.version>6.2.3</charm.version>
+        <charm.cloudlink.version>6.0.7</charm.cloudlink.version>
+        <glisten.afterburner.version>2.1.0</glisten.afterburner.version>
+        <attach.version>4.0.21</attach.version>
+        <connect.version>2.0.1</connect.version>
+        <javafx.maven.plugin.version>0.0.8</javafx.maven.plugin.version>
+        <gluonfx.maven.plugin.version>1.0.26</gluonfx.maven.plugin.version>
+        <gluonfx.target>host</gluonfx.target>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>gluon-releases</id>
-            <name>Gluon Releases</name>
-            <url>https://nexus.gluonhq.com/nexus/content/repositories/releases/</url>
-            <layout>default</layout>
-        </repository>
-    </repositories>
-
     <dependencies>
-        <!-- Gluon Mobile UI toolkit -->
         <dependency>
-            <groupId>com.gluonhq</groupId>
-            <artifactId>charm-glisten</artifactId>
-            <version>6.2.3</version>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-base</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>${javafx.version}</version>
         </dependency>
 
-        <!-- Gluon Attach (formerly Charm Down) for camera/pictures service -->
         <dependency>
             <groupId>com.gluonhq.attach</groupId>
             <artifactId>pictures</artifactId>
-            <version>4.0.22</version>
-        </dependency>
-        <dependency>
-            <groupId>com.gluonhq.attach</groupId>
-            <artifactId>storage</artifactId>
-            <version>4.0.22</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.google.http-client/google-http-client-jackson2 -->
-        <dependency>
-            <groupId>com.google.http-client</groupId>
-            <artifactId>google-http-client-jackson2</artifactId>
-            <version>1.47.0</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>2.19.0</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.google.api-client/google-api-client -->
-        <dependency>
-            <groupId>com.google.api-client</groupId>
-            <artifactId>google-api-client</artifactId>
-            <version>2.7.2</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.google.oauth-client/google-oauth-client-jetty -->
-        <dependency>
-            <groupId>com.google.oauth-client</groupId>
-            <artifactId>google-oauth-client-jetty</artifactId>
-            <version>1.39.0</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.google.apis/google-api-services-drive -->
-        <dependency>
-            <groupId>com.google.apis</groupId>
-            <artifactId>google-api-services-drive</artifactId>
-            <version>v3-rev20240722-2.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.pdfbox</groupId>
-            <artifactId>pdfbox</artifactId>
-            <version>2.0.27</version>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.persistence</groupId>
-            <artifactId>jakarta.persistence-api</artifactId>
-            <version>3.1.0</version>
+            <version>${attach.version}</version>
         </dependency>
 
-
-
-        <!-- Hibernate Core (JPA Provider) -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>6.3.1.Final</version>
-        </dependency>
         <dependency>
             <groupId>org.mindrot</groupId>
             <artifactId>jbcrypt</artifactId>
             <version>0.4</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-controls</artifactId>
-            <version>21</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-fxml</artifactId>
-            <version>21</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-swing</artifactId>
-            <version>21</version>
-        </dependency>
+
 
 
         <!--   SQL     -->
@@ -122,77 +68,129 @@
             <version>12.2.0.jre11</version> <!-- Use the latest version -->
         </dependency>
 
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>core</artifactId>
-            <version>3.5.3</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>javase</artifactId>
-            <version>3.5.3</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.junit.jupiter</groupId>-->
+<!--            <artifactId>junit-jupiter-api</artifactId>-->
+<!--            <version>${junit.version}</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.junit.jupiter</groupId>-->
+<!--            <artifactId>junit-jupiter-engine</artifactId>-->
+<!--            <version>${junit.version}</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
 
         <dependency>
-            <groupId>com.sun.mail</groupId>
-            <artifactId>jakarta.mail</artifactId>
-            <version>2.0.1</version>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.eclipse.angus</groupId>
-            <artifactId>angus-activation</artifactId>
-            <version>2.0.1</version>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-swing</artifactId>
+            <version>${javafx.version}</version>
         </dependency>
     </dependencies>
 
     <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
         <plugins>
-            <!-- JavaFX Maven Plugin to run on desktop -->
-            <plugin>
-                <groupId>org.openjfx</groupId>
-                <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.8</version>
-                <configuration>
-                    <mainClass>dk.easv.belmanexam.Main</mainClass>
-                </configuration>
-            </plugin>
-            <!-- GluonFX Maven Plugin for native builds (Android/iOS) -->
-            <plugin>
-                <groupId>com.gluonhq</groupId>
-                <artifactId>gluonfx-maven-plugin</artifactId>
-                <version>1.0.26</version>
-                <configuration>
-                    <mainClass>com.myapp.MainApp</mainClass>
-                    <!-- (on macOS, you may set graalvmHome or ensure GRAALVM_HOME is set) -->
-                </configuration>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>${javafx.maven.plugin.version}</version>
                 <configuration>
-                    <source>21</source>
-                    <target>21</target>
+                    <mainClass>${main.class}</mainClass>
                 </configuration>
             </plugin>
 
+            <plugin>
+                <groupId>com.gluonhq</groupId>
+                <artifactId>gluonfx-maven-plugin</artifactId>
+                <version>${gluonfx.maven.plugin.version}</version>
+                <configuration>
+                    <target>host</target>
+                    <mainClass>${main.class}</mainClass>
+                    <verbose>true</verbose>
+                    <enableSWRendering>false</enableSWRendering>
+                    <graalvmHome></graalvmHome>
 
+                    <bundlesList></bundlesList>
+                    <resourcesList></resourcesList>
+                    <reflectionList>
+                        <reflection>dk.easv.belmanexam.model.Customer</reflection>
+                        <reflection>dk.easv.belmanexam.model.Order</reflection>
+                        <reflection>dk.easv.belmanexam.model.PhotoDocumentation</reflection>
+                        <reflection>dk.easv.belmanexam.model.User</reflection>
+                    </reflectionList>
+                    <jniList></jniList>
+                    <attachList>
+                        <list>pictures</list>
+                    </attachList>
+
+                    <nativeImageArgs>
+                        <arg>--report-unsupported-elements-at-runtime</arg>
+                    </nativeImageArgs>
+                    <linkerArgs></linkerArgs>
+                    <runtimeArgs></runtimeArgs>
+                    <remoteHostName></remoteHostName>
+                    <remoteDir></remoteDir>
+                    <appIdentifier></appIdentifier>
+                    <!--                    <javaStaticSdkVersion>17.0.8</javaStaticSdkVersion>-->
+                    <!--                    <javafxStaticSdkVersion>21.0.7</javafxStaticSdkVersion>-->
+
+                    <releaseConfiguration>
+                        <!-- all targets -->
+                        <packageType></packageType>
+                        <description></description>
+                        <vendor></vendor>
+                        <!-- macOS -->
+                        <macAppStore></macAppStore>
+                        <macSigningUserName></macSigningUserName>
+                        <macAppCategory></macAppCategory>
+                        <!-- macOS/iOS -->
+                        <bundleName></bundleName>
+                        <bundleVersion>1.0</bundleVersion>
+                        <bundleShortVersion>1.0</bundleShortVersion>
+                        <providedSigningIdentity></providedSigningIdentity>
+                        <providedProvisioningProfile></providedProvisioningProfile>
+                        <skipSigning>false</skipSigning>
+                        <!-- iOS Simulator -->
+                        <simulatorDevice></simulatorDevice>
+                        <!-- Android -->
+                        <appLabel></appLabel>
+                        <versionCode>1</versionCode>
+                        <versionName>1.0</versionName>
+                        <!--                        <providedKeyStorePath>${android-keystore-path}</providedKeyStorePath>-->
+                        <!--                        <providedKeyStorePassword>${android-keystore-password}</providedKeyStorePassword>-->
+                        <!--                        <providedKeyAlias>${android-key-alias}</providedKeyAlias>-->
+                        <!--                        <providedKeyAliasPassword>${android-key-password}</providedKeyAliasPassword>-->
+                    </releaseConfiguration>
+                </configuration>
+            </plugin>
         </plugins>
-
     </build>
+
+    <profiles>
+        <profile>
+            <id>ios</id>
+            <properties>
+                <gluonfx.target>ios</gluonfx.target>
+            </properties>
+        </profile>
+        <profile>
+            <id>android</id>
+            <properties>
+                <gluonfx.target>android</gluonfx.target>
+            </properties>
+        </profile>
+    </profiles>
+
 </project>

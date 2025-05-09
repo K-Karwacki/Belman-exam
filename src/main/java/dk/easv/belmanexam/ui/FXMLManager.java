@@ -21,7 +21,7 @@ public enum FXMLManager
     // Loads FXML document and put it into the cache memory, returns a pair of a root element and controller of the document
     public <T> Pair<Parent, T> loadFXML(String fxmlPath) {
         try {
-            FXMLLoader loader = new FXMLLoader(getFXMLPath(fxmlPath));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
             T controller = loader.getController();
             Pair<Parent, Object> parentFXMLControllerPair = new Pair<>(root, controller);
@@ -38,20 +38,21 @@ public enum FXMLManager
 
     // Gets fxml document from the cache, if fxml is not in the cache load document
     public <T> Pair<Parent, T> getFXML(String fxmlPath) {
-        if(!loadedFXMLs.containsKey(fxmlPath)){
-            System.out.println("fxml not loaded");
-            return loadFXML(fxmlPath);
-//      throw new RuntimeException("FXML wasn't loaded: " + fxmlPath);
-        }
-
-        Pair<Parent, Object> fxmlParentControllerPair = loadedFXMLs.get(fxmlPath);
-        return new Pair<>(fxmlParentControllerPair.getKey(), (T) fxmlParentControllerPair.getValue());
+//        if(!loadedFXMLs.containsKey(fxmlPath)){
+//            System.out.println("fxml not loaded");
+//            return loadFXML(fxmlPath);
+////      throw new RuntimeException("FXML wasn't loaded: " + fxmlPath);
+//        }
+//
+//        Pair<Parent, Object> fxmlParentControllerPair = loadedFXMLs.get(fxmlPath);
+//        return new Pair<>(fxmlParentControllerPair.getKey(), (T) fxmlParentControllerPair.getValue());
+        return loadFXML(fxmlPath);
     }
 
 
     // returns FXML document path
     private static URL getFXMLPath(String fxmlPath) {
-        URL resource = Main.class.getResource(fxmlPath);
+        URL resource = FXMLManager.class.getResource(fxmlPath);
         if (resource == null) {
             throw new IllegalArgumentException("FXML file not found: " + fxmlPath);
         }
