@@ -6,11 +6,13 @@ import dk.easv.belmanexam.bll.interfaces.PhotoDocumentationManagementService;
 import dk.easv.belmanexam.dal.GoogleDriveManager;
 import dk.easv.belmanexam.dal.repositories.PhotoDocumentationRepository;
 import dk.easv.belmanexam.exceptions.PhotoException;
-import dk.easv.belmanexam.ui.models.PhotoDocumentationListModel;
+import dk.easv.belmanexam.ui.models.PhotoDocumentationModel;
+import dk.easv.belmanexam.ui.models.lists.PhotoDocumentationListModel;
 import dk.easv.belmanexam.utils.ImageConverter;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class PhotoDocumentationServiceImpl implements PhotoDocumentationManagementService {
@@ -45,7 +47,11 @@ public class PhotoDocumentationServiceImpl implements PhotoDocumentationManageme
         if (photoDocumentationRepository == null || photoDocumentationListModel == null || repositoryService == null) {
             throw new RuntimeException("Load dependencies for OrderManagementService");
         }
-        photoDocumentationListModel.setDocumentation(photoDocumentationRepository.getAll());
+        Collection<PhotoDocumentationModel> photoDocumentationModels = new ArrayList<>();
+        photoDocumentationRepository.getAll().forEach(photoDocumentation -> {
+            photoDocumentationModels.add(new PhotoDocumentationModel(photoDocumentation));
+        });
+        photoDocumentationListModel.setDocumentation(photoDocumentationModels);
     }
 
     public PhotoDocumentationListModel getPhotoDocumentationListModel() {

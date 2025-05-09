@@ -44,5 +44,17 @@ public class PhotoDocumentation {
     public LocalDateTime getDate(){
         return date;
     }
+    public void setUser(User user){
+        this.user = user;
+    }
+    public void setId(int id){
+        this.id = id;
+    }
+    public int getId(){
+        return id;
+    }
+    public void setDate(LocalDateTime date){
+        this.date = date;
+    }
 
 }

@@ -1,9 +1,11 @@
 package dk.easv.belmanexam.dal.implementations;
 
 import dk.easv.belmanexam.be.Order;
+import dk.easv.belmanexam.bll.utils.Status;
 import dk.easv.belmanexam.dal.repositories.OrderRepository;
 import dk.easv.belmanexam.utils.JPAUtil;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -82,6 +84,18 @@ public class OrderRepositoryImpl implements OrderRepository {
             return null;
         } finally {
             em.close();
+        }
+    }
+
+    @Override
+    public Optional<Order> getByOrderNumber(String orderNumber) {
+        try(EntityManager em = JPAUtil.getEntityManager()) {
+            TypedQuery<Order> query = em.createQuery("Select o from Order o where orderNumber = :order_number", Order.class);
+            query.setParameter("order_number", orderNumber);
+            if(query.getResultStream().findFirst().isEmpty()){
+                throw new RuntimeException("No role with given id.");
+            }
+            return query.getResultStream().findFirst();
         }
     }
 }

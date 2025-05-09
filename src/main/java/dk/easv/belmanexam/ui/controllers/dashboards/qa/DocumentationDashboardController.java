@@ -8,6 +8,7 @@ import dk.easv.belmanexam.ui.FXMLManager;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.controllers.components.DocumentationListComponent;
 import dk.easv.belmanexam.ui.controllers.components.OrderListComponent;
+import dk.easv.belmanexam.ui.models.PhotoDocumentationModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -28,7 +29,7 @@ public class DocumentationDashboardController {
     private FlowPane flowPaneOrderList;
 
     private void initialize() {
-        Collection<PhotoDocumentation> documentations = photoDocumentationManagementService.getPhotoDocumentationListModel().getDocumentation();
+        Collection<PhotoDocumentationModel> documentations = photoDocumentationManagementService.getPhotoDocumentationListModel().getDocumentation();
         documentations.forEach(documentation -> {
             Pair<Parent, DocumentationListComponent> p = FXMLManager.INSTANCE.loadFXML(FXMLPath.DOCUMENTATION_LIST_COMPONENT);
             p.getValue().setPhotoDocumentation(documentation);

@@ -9,13 +9,13 @@
 
 <HBox fx:id="hboxContainer" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="700.0" styleClass="container" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.components.OrderListComponent">
    <children>
-      <Label fx:id="lblOrderNumber" alignment="CENTER" minWidth="100.0" text="12-03/133245" />
+      <Label fx:id="lblOrderNumber" alignment="CENTER" minWidth="115.0" prefHeight="20.0" prefWidth="115.0" text="12-03/133245" />
       <Separator orientation="VERTICAL" prefHeight="30.0" prefWidth="0.0" />
-      <Label fx:id="lblOrderStatus" alignment="CENTER" minWidth="65.0" text="Pending" />
+      <Label fx:id="lblOrderStatus" alignment="CENTER" minWidth="90.0" text="Pending" />
       <Separator orientation="VERTICAL" prefHeight="62.0" prefWidth="6.0" />
-      <Label fx:id="lblOrderComment" prefHeight="58.0" prefWidth="194.0" text="Photo did not met criteria" wrapText="true" />
+      <Label fx:id="lblOrderComment" prefHeight="58.0" prefWidth="210.0" text="Photo did not met criteria" textAlignment="CENTER" wrapText="true" />
       <Separator orientation="VERTICAL" prefHeight="200.0" />
-      <Button fx:id="btnAddDocumentation" mnemonicParsing="false" onAction="#onClickShowNewDocumentationView" prefHeight="40.0" style="-fx-font-size: 16;" styleClass="green-button" text="Add documentation">
+      <Button fx:id="btnAddDocumentation" mnemonicParsing="false" onAction="#onClickShowNewDocumentationView" prefHeight="40.0" prefWidth="185.0" style="-fx-font-size: 16;" styleClass="green-button" text="Add documentation">
          <effect>
             <DropShadow height="9.0" radius="4.79" width="12.16" />
          </effect>

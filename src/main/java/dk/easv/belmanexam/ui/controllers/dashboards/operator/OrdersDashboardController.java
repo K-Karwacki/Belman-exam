@@ -7,6 +7,7 @@ import dk.easv.belmanexam.ui.FXMLManager;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
 import dk.easv.belmanexam.ui.controllers.components.OrderListComponent;
+import dk.easv.belmanexam.ui.models.OrderModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -29,11 +30,10 @@ public class OrdersDashboardController{
     private TextField textFieldSearchBar;
 
     private void initialize() {
-        Collection<Order> orders = orderManagementService.getOrderListModel().getOrders();
+        Collection<OrderModel> orders = orderManagementService.getOrderListModel().getOrders();
         orders.forEach(order -> {
             Pair<Parent, OrderListComponent> p = FXMLManager.INSTANCE.loadFXML(FXMLPath.ORDER_LIST_COMPONENT);
-            p.getValue().setOrderNumber(order.getOrderNumber());
-            p.getValue().setStatus(order.getStatus());
+            p.getValue().setOrderModel(order);
             flowPaneOrderList.getChildren().add(p.getKey());
         });
     }

@@ -1,5 +1,6 @@
 package dk.easv.belmanexam.ui.controllers.dashboards.operator;
 
+import dk.easv.belmanexam.be.Order;
 import dk.easv.belmanexam.bll.implementations.PhotoDocumentationServiceImpl;
 import dk.easv.belmanexam.bll.interfaces.PhotoDocumentationManagementService;
 import dk.easv.belmanexam.exceptions.PhotoException;
@@ -7,6 +8,7 @@ import dk.easv.belmanexam.ui.FXMLManager;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
 import dk.easv.belmanexam.ui.controllers.components.OrderListComponent;
+import dk.easv.belmanexam.ui.models.OrderModel;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.TextField;
@@ -23,9 +25,9 @@ import java.util.List;
 public class DocumentationCreationDashboardController {
 
     private List<File> photos = new ArrayList<>();
+    private OrderModel orderModel;
     private OrderListComponent parentController;
     private PhotoDocumentationManagementService photoDocumentationManagementService;
-    private String orderNumber;
     @FXML
     private TextField textFieldOrderNumber;
 
@@ -82,7 +84,7 @@ public class DocumentationCreationDashboardController {
         if(!photos.isEmpty()){
         photos.forEach(file -> {
             try {
-                photoDocumentationManagementService.saveFileInFolder(file, orderNumber);
+                photoDocumentationManagementService.saveFileInFolder(file, orderModel.getOrderNumber());
             } catch (PhotoException e) {
                 throw new RuntimeException(e);
             }
@@ -94,11 +96,10 @@ public class DocumentationCreationDashboardController {
 
     }
 
-    public void setDetails(String orderNumber, OrderListComponent parentController) {
+    public void setDetails(OrderModel orderModel, OrderListComponent parentController) {
         flowPaneImageContainer.getChildren().clear();
         photos.clear();
-        this.orderNumber = orderNumber;
-        textFieldOrderNumber.setText(orderNumber);
+        textFieldOrderNumber.setText(orderModel.getOrderNumber());
         this.parentController = parentController;
     }
 

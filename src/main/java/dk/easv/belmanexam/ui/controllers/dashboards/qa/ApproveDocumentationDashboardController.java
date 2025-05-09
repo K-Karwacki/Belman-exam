@@ -1,10 +1,16 @@
 package dk.easv.belmanexam.ui.controllers.dashboards.qa;
 
+import dk.easv.belmanexam.be.Order;
+import dk.easv.belmanexam.be.PhotoDocumentation;
 import dk.easv.belmanexam.bll.implementations.PhotoDocumentationServiceImpl;
+import dk.easv.belmanexam.bll.interfaces.OrderManagementService;
 import dk.easv.belmanexam.bll.interfaces.PhotoDocumentationManagementService;
+import dk.easv.belmanexam.bll.utils.Status;
 import dk.easv.belmanexam.exceptions.PhotoException;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
+import dk.easv.belmanexam.ui.models.OrderModel;
+import dk.easv.belmanexam.ui.models.PhotoDocumentationModel;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -19,9 +25,11 @@ import java.util.Map;
 public class ApproveDocumentationDashboardController {
 
     private PhotoDocumentationManagementService photoDocumentationManagementService;
+    private PhotoDocumentationModel photoDocumentationModel;
+    private OrderManagementService orderManagementService;
     private final Map<String, List<Image>> imageCache = new HashMap<>();
 
-    private String orderNumber;
+    private OrderModel orderModel;
 
     @FXML
     private TextField textFieldOrderNumber;
@@ -48,13 +56,13 @@ public class ApproveDocumentationDashboardController {
         flowPaneImageContainer.getChildren().add(imageView);
     }
 
-    public void setDetails(String orderNumber) {
-        this.orderNumber = orderNumber;
-        this.textFieldOrderNumber.setText(orderNumber);
+    public void setDetails(PhotoDocumentationModel photoDocumentationModel) {
+        this.photoDocumentationModel = photoDocumentationModel;
+        this.textFieldOrderNumber.setText(photoDocumentationModel.getOrder().getOrderNumber());
         imgViewLoadingGif.setVisible(true);
         Thread t = new Thread(() -> {
             try {
-                loadImages(orderNumber);
+                loadImages(photoDocumentationModel.getOrder().getOrderNumber());
             } catch (PhotoException e) {
                 throw new RuntimeException(e);
             } finally {
@@ -78,7 +86,25 @@ public class ApproveDocumentationDashboardController {
 
     }
 
-    public void setServices(PhotoDocumentationManagementService photoDocumentationManagementService) {
+    @FXML
+    private void onClickApproveDocumentation() {
+        OrderModel orderModel = photoDocumentationModel.getOrder();
+        orderModel.setStatus(Status.APPROVED);
+        orderManagementService.updateOrder(orderModel);
+        ViewManager.INSTANCE.switchDashboard(FXMLPath.DOCUMENTATION_DASHBOARD, "BelSign");
+    }
+
+    @FXML
+    private void onClickRejectDocumentation() {
+        OrderModel orderModel = photoDocumentationModel.getOrder();
+        orderModel.setStatus(Status.REJECTED);
+        orderManagementService.updateOrder(orderModel);
+        ViewManager.INSTANCE.switchDashboard(FXMLPath.DOCUMENTATION_DASHBOARD, "BelSign");
+
+    }
+
+    public void setServices(PhotoDocumentationManagementService photoDocumentationManagementService, OrderManagementService orderManagementService) {
         this.photoDocumentationManagementService = photoDocumentationManagementService;
+        this.orderManagementService = orderManagementService;
     }
 }

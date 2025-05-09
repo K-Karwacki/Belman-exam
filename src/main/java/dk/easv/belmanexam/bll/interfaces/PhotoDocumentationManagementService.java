@@ -1,7 +1,7 @@
 package dk.easv.belmanexam.bll.interfaces;
 
 import dk.easv.belmanexam.exceptions.PhotoException;
-import dk.easv.belmanexam.ui.models.PhotoDocumentationListModel;
+import dk.easv.belmanexam.ui.models.lists.PhotoDocumentationListModel;
 import javafx.scene.image.Image;
 
 import java.util.List;

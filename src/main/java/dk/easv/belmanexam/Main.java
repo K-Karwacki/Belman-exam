@@ -12,6 +12,7 @@ import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.StageManager;
 import dk.easv.belmanexam.ui.ViewManager;
 import dk.easv.belmanexam.ui.controllers.dashboards.operator.DocumentationCreationDashboardController;
+import dk.easv.belmanexam.ui.controllers.dashboards.operator.EnterOrderDashboardController;
 import dk.easv.belmanexam.ui.controllers.dashboards.operator.OrdersDashboardController;
 import dk.easv.belmanexam.ui.controllers.dashboards.qa.ApproveDocumentationDashboardController;
 import dk.easv.belmanexam.ui.controllers.dashboards.qa.DocumentationDashboardController;
@@ -47,11 +48,13 @@ public class Main extends Application
     DocumentationDashboardController documentationDashboardController = (DocumentationDashboardController) fxmlManager.getFXML(FXMLPath.DOCUMENTATION_DASHBOARD).getValue();
     DocumentationCreationDashboardController documentationCreationDashboardController = (DocumentationCreationDashboardController) fxmlManager.getFXML(FXMLPath.DOCUMENTATION_CREATION_DASHBOARD).getValue();
     ApproveDocumentationDashboardController approveDocumentationDashboardController = (ApproveDocumentationDashboardController) fxmlManager.getFXML(FXMLPath.APPROVE_DOCUMENTATION_DASHBOARD).getValue();
+    EnterOrderDashboardController enterOrderDashboardController = (EnterOrderDashboardController) fxmlManager.getFXML(FXMLPath.ENTER_ORDER_DASHBOARD).getValue();
     // Setting dependencies
     ordersDashboardController.setServices(orderManagementService, googleDriveManager);
     documentationDashboardController.setServices(photoDocumentationManagementService, googleDriveManager);
     documentationCreationDashboardController.setServices(photoDocumentationManagementService);
-    approveDocumentationDashboardController.setServices(photoDocumentationManagementService);
+    approveDocumentationDashboardController.setServices(photoDocumentationManagementService, orderManagementService);
+    enterOrderDashboardController.setServices(orderManagementService);
   }
 
   public static void main(String[] args)
