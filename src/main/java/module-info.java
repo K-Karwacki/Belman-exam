@@ -10,8 +10,15 @@ module dk.easv.belmanexam{
   requires jbcrypt;
   requires java.sql;
   requires com.microsoft.sqlserver.jdbc;
+  requires com.google.api.client;
+  requires com.google.api.services.drive;
+  requires google.api.client;
+  requires com.google.api.client.json.gson;
+  requires com.google.api.client.auth;
+    requires com.google.api.client.extensions.java6.auth;
+    requires com.google.api.client.extensions.jetty.auth;
 
-  opens dk.easv.belmanexam.ui.controllers.main to javafx.fxml;
+    opens dk.easv.belmanexam.ui.controllers.main to javafx.fxml;
   opens dk.easv.belmanexam.ui.controllers.components to javafx.fxml;
   opens dk.easv.belmanexam.ui.controllers.admin to javafx.fxml;
   opens dk.easv.belmanexam.ui.controllers.admin.dashboards to javafx.fxml;
@@ -26,6 +33,7 @@ module dk.easv.belmanexam{
   exports dk.easv.belmanexam.services.factories;
   exports dk.easv.belmanexam.services.implementations;
 
+  exports dk.easv.belmanexam.exceptions;
   exports dk.easv.belmanexam.ui;
   exports dk.easv.belmanexam.ui.controllers.main;
   exports dk.easv.belmanexam.ui.controllers.components;
