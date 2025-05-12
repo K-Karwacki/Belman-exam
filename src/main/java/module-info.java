@@ -8,6 +8,7 @@ module dk.easv.belmanexam{
   requires java.desktop;
 
   requires jbcrypt;
+  requires jdk.httpserver;
   requires java.sql;
   requires com.microsoft.sqlserver.jdbc;
   requires com.google.api.client;

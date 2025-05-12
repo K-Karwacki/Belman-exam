@@ -35,7 +35,7 @@ public class DocumentationListComponent {
     @FXML
     private void onClickShowApproveDocumentationView() {
         Pair<Parent, ApproveDocumentationDashboardController> p = FXMLManager.INSTANCE.getFXML(FXMLPath.APPROVE_DOCUMENTATION_DASHBOARD);
-        p.getValue().setDetails(photoDocumentation.getOrderNumber());
+        p.getValue().setDetails(photoDocumentation);
         ViewManager.INSTANCE.switchDashboard(FXMLPath.APPROVE_DOCUMENTATION_DASHBOARD, "BelSign");
     }
 

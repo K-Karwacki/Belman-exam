@@ -1,5 +1,6 @@
 package dk.easv.belmanexam.services.implementations;
 
+import com.google.api.services.drive.model.File;
 import dk.easv.belmanexam.model.PhotoDocumentation;
 import dk.easv.belmanexam.services.factories.RepositoryService;
 import dk.easv.belmanexam.services.interfaces.PhotoDocumentationManagementService;
@@ -28,14 +29,13 @@ public class PhotoDocumentationServiceImpl implements PhotoDocumentationManageme
     }
 
     public List<Image> getAllImagesByOrderNumber(String orderNumber) throws PhotoException {
-//        List<Image> images = new ArrayList<>();
-//        List<File> cloudFiles = googleDriveManager.listFilesInFolder(orderNumber);
-//        List<byte[]> filesData = googleDriveManager.downloadFilesContent(cloudFiles);
-//        for(byte[] fileData: filesData){
-//            images.add(ImageConverter.convertToImage(fileData));
-//        }
-//        return images;
-        return new ArrayList<>();
+        List<Image> images = new ArrayList<>();
+        List<File> cloudFiles = googleDriveManager.listFilesInFolder(orderNumber);
+        List<byte[]> filesData = googleDriveManager.downloadFilesContent(cloudFiles);
+        for(byte[] fileData: filesData){
+            images.add(ImageConverter.convertToImage(fileData));
+        }
+        return images;
     }
     public Collection<PhotoDocumentation> getAll(){
         return photoDocumentationRepository.getAll();
