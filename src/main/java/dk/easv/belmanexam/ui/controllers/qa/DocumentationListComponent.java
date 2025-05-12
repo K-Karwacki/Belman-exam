@@ -31,32 +31,18 @@ public class DocumentationListComponent {
     @FXML
     private Label lblDocumentedBy;
 
-    private String orderNumber;
 
     @FXML
     private void onClickShowApproveDocumentationView() {
         Pair<Parent, ApproveDocumentationDashboardController> p = FXMLManager.INSTANCE.getFXML(FXMLPath.APPROVE_DOCUMENTATION_DASHBOARD);
-        p.getValue().setDetails(orderNumber);
+        p.getValue().setDetails(photoDocumentation.getOrderNumber());
         ViewManager.INSTANCE.switchDashboard(FXMLPath.APPROVE_DOCUMENTATION_DASHBOARD, "BelSign");
     }
 
-    public void setOrderNumber(String orderNumber) {
-        this.orderNumber = orderNumber;
-        lblOrderNumber.setText(orderNumber);
-    }
-
-    public void setDocumentedBy(String documentedBy) {
-        this.lblDocumentedBy.setText(documentedBy);
-    }
-    public void setRecordDate(String recordDate) {
-        this.lblRecordDate.setText(recordDate);
-    }
 
     public void setPhotoDocumentation(PhotoDocumentation documentation) {
-        this.photoDocumentation = photoDocumentation;
-//        setOrderNumber(documentation.getOrder().getOrderNumber());
-//        setDocumentedBy(documentation.getUser().getFirstName() + " " + documentation.getUser().getLastName());
-//        String date = documentation.getDate().getDayOfMonth() + "/" + documentation.getDate().getMonthValue() + "/" + documentation.getDate().getYear();
-//        setRecordDate(date);
+        this.photoDocumentation = documentation;
+        lblOrderNumber.setText(documentation.getOrderNumber());
+        lblRecordDate.setText(documentation.getDateTime().toString());
     }
 }

@@ -3,11 +3,13 @@ module dk.easv.belmanexam{
   requires javafx.controls;
   requires javafx.fxml;
   requires javafx.swing;
+  requires java.naming;
 
   requires java.desktop;
-  requires java.base;
 
   requires jbcrypt;
+  requires java.sql;
+  requires com.microsoft.sqlserver.jdbc;
 
   opens dk.easv.belmanexam.ui.controllers.main to javafx.fxml;
   opens dk.easv.belmanexam.ui.controllers.components to javafx.fxml;
@@ -35,8 +37,10 @@ module dk.easv.belmanexam{
   exports dk.easv.belmanexam.ui.controllers.qa.dashboards;
 
   exports dk.easv.belmanexam.model;
+  exports dk.easv.belmanexam.services.utils;
   exports dk.easv.belmanexam.repositories.interfaces;
   exports dk.easv.belmanexam.repositories.utils;
+  exports dk.easv.belmanexam.repositories.utils.mappers;
 
 
 }

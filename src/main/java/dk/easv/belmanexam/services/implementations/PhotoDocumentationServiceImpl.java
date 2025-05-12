@@ -1,5 +1,6 @@
 package dk.easv.belmanexam.services.implementations;
 
+import dk.easv.belmanexam.model.PhotoDocumentation;
 import dk.easv.belmanexam.services.factories.RepositoryService;
 import dk.easv.belmanexam.services.interfaces.PhotoDocumentationManagementService;
 import dk.easv.belmanexam.repositories.utils.GoogleDriveManager;
@@ -10,6 +11,7 @@ import dk.easv.belmanexam.utils.ImageConverter;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class PhotoDocumentationServiceImpl implements PhotoDocumentationManagementService {
@@ -34,6 +36,9 @@ public class PhotoDocumentationServiceImpl implements PhotoDocumentationManageme
 //        }
 //        return images;
         return new ArrayList<>();
+    }
+    public Collection<PhotoDocumentation> getAll(){
+        return photoDocumentationRepository.getAll();
     }
 
     public void saveFileInFolder(java.io.File file, String folder) throws PhotoException {
