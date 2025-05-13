@@ -7,10 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Belman" />
+        <module name="belman-exam" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="belman-exam" target="21" />
-    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="belman-exam" options="--add-modules jdk.httpserver" />
+    </option>
   </component>
 </project>

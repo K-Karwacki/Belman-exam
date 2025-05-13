@@ -54,7 +54,7 @@
             </VBox>
          </children>
       </VBox>
-      <StackPane layoutX="1150.0" layoutY="250.0" prefHeight="0.0" prefWidth="0.0">
+      <StackPane layoutX="1150.0" layoutY="250.0" onMouseClicked="#onClickApproveDocumentation" prefHeight="0.0" prefWidth="0.0">
          <children>
             <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -69,7 +69,7 @@
             <String fx:value="shadow" />
          </styleClass>
       </StackPane>
-      <StackPane layoutX="1150.0" layoutY="350.0" minHeight="0.0" prefHeight="0.0" prefWidth="0.0">
+      <StackPane layoutX="1150.0" layoutY="350.0" minHeight="0.0" onMouseClicked="#onClickRejectDocumentation" prefHeight="0.0" prefWidth="0.0">
          <children>
             <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -106,7 +106,7 @@
             </ImageView>
          </children>
       </StackPane>
-      <HBox alignment="CENTER_LEFT" layoutX="1090.0" layoutY="50.0" minHeight="49.0" minWidth="132.0" onMouseClicked="#showParentView" prefHeight="50.0" prefWidth="132.0">
+      <HBox alignment="CENTER_LEFT" layoutX="1090.0" layoutY="50.0" onMouseClicked="#showParentView">
          <children>
             <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>

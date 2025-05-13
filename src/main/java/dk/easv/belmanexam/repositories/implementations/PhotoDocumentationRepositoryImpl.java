@@ -2,7 +2,12 @@ package dk.easv.belmanexam.repositories.implementations;
 
 import dk.easv.belmanexam.model.PhotoDocumentation;
 import dk.easv.belmanexam.repositories.interfaces.PhotoDocumentationRepository;
+import dk.easv.belmanexam.repositories.utils.DBConnection;
+import dk.easv.belmanexam.repositories.utils.QueryBuilder;
+import dk.easv.belmanexam.repositories.utils.mappers.PhotoDocumentationMapper;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -10,7 +15,14 @@ public class PhotoDocumentationRepositoryImpl implements PhotoDocumentationRepos
 
     @Override public Collection<PhotoDocumentation> getAll()
     {
-        return null;
+        QueryBuilder<PhotoDocumentation> queryBuilder = new QueryBuilder<>(PhotoDocumentation.class, "PhotoDocumentation")
+                .withRowMapper(new PhotoDocumentationMapper());
+
+        try (DBConnection dbConnection = new DBConnection()) {
+            return queryBuilder.executeSelect(dbConnection.getConnection());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override public Optional<PhotoDocumentation> getById(long id)

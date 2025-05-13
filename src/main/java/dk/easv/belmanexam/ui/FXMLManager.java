@@ -38,15 +38,14 @@ public enum FXMLManager
 
     // Gets fxml document from the cache, if fxml is not in the cache load document
     public <T> Pair<Parent, T> getFXML(String fxmlPath) {
-//        if(!loadedFXMLs.containsKey(fxmlPath)){
-//            System.out.println("fxml not loaded");
-//            return loadFXML(fxmlPath);
-////      throw new RuntimeException("FXML wasn't loaded: " + fxmlPath);
-//        }
-//
-//        Pair<Parent, Object> fxmlParentControllerPair = loadedFXMLs.get(fxmlPath);
-//        return new Pair<>(fxmlParentControllerPair.getKey(), (T) fxmlParentControllerPair.getValue());
-        return loadFXML(fxmlPath);
+        if(!loadedFXMLs.containsKey(fxmlPath)){
+            System.out.println("fxml not loaded");
+            return loadFXML(fxmlPath);
+//      throw new RuntimeException("FXML wasn't loaded: " + fxmlPath);
+        }
+
+        Pair<Parent, Object> fxmlParentControllerPair = loadedFXMLs.get(fxmlPath);
+        return new Pair<>(fxmlParentControllerPair.getKey(), (T) fxmlParentControllerPair.getValue());
     }
 
 

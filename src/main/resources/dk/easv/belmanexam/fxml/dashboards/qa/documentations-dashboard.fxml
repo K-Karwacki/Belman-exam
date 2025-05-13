@@ -80,7 +80,7 @@
             </HBox>
             <ScrollPane hbarPolicy="NEVER" prefHeight="338.0" prefWidth="1142.0" style="-fx-border-color: #777;" styleClass="custom-scroll-pane">
                <content>
-                  <FlowPane fx:id="flowPaneOrderList" prefHeight="200.0" prefWidth="700.0" />
+                  <FlowPane fx:id="flowPaneDocumentationList" prefHeight="200.0" prefWidth="1132.0" />
                </content>
             </ScrollPane>
          </children>
