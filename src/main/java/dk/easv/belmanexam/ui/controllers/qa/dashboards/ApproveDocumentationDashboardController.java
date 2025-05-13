@@ -3,16 +3,20 @@ package dk.easv.belmanexam.ui.controllers.qa.dashboards;
 import dk.easv.belmanexam.exceptions.PhotoException;
 import dk.easv.belmanexam.model.PhotoDocumentation;
 import dk.easv.belmanexam.services.interfaces.PhotoDocumentationManagementService;
+import dk.easv.belmanexam.ui.FXMLManager;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
+import javafx.util.Pair;
 
+import javax.swing.text.View;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,6 +51,12 @@ public class ApproveDocumentationDashboardController {
         imageView.setFitHeight(150);
         imageView.setFitWidth(200);
         flowPaneImageContainer.getChildren().add(imageView);
+
+        imageView.setOnMouseClicked(event -> {
+            Pair<Parent, PhotoDashboardController> p = FXMLManager.INSTANCE.getFXML(FXMLPath.PHOTO_DASHBOARD);
+            p.getValue().setPhoto(image);
+            ViewManager.INSTANCE.switchDashboard(FXMLPath.PHOTO_DASHBOARD, "BelSign");
+        });
     }
 
     public void setDetails(PhotoDocumentation photoDocumentation) {
