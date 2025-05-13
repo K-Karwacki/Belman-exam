@@ -7,6 +7,10 @@ module dk.easv.belmanexam{
   requires java.desktop;
   requires java.base;
 
+  requires com.gluonhq.attach.pictures;
+//  requires charm.down.common;
+//  requires com.gluonhq.;
+
   requires jbcrypt;
 
   opens dk.easv.belmanexam.ui.controllers.main to javafx.fxml;

@@ -1,5 +1,6 @@
 package dk.easv.belmanexam;
 
+import com.gluonhq.attach.pictures.PicturesService;
 import dk.easv.belmanexam.services.factories.RepositoryService;
 import dk.easv.belmanexam.services.factories.RepositoryServiceFactory;
 import dk.easv.belmanexam.services.implementations.OrderManagementServiceImpl;
@@ -19,6 +20,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 import java.util.Locale;
+import java.util.Optional;
 
 public class Main extends Application
 {
@@ -34,6 +36,17 @@ public class Main extends Application
   protected final PhotoDocumentationManagementService photoDocumentationManagementService = new PhotoDocumentationServiceImpl(repositoryService);
 
   @Override public void start(Stage primaryStage) {
+
+  Optional<PicturesService> picturesService = PicturesService.create();
+
+  if(picturesService.isEmpty()){
+    System.out.println("Service not available");
+  }else{
+    System.out.println("Service on");
+  }
+
+
+
     Locale.setDefault(Locale.ENGLISH);
     setControllersDependencies();
     stageManager.setCurrentStage(primaryStage);

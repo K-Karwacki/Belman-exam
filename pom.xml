@@ -16,11 +16,12 @@
         <charm.version>6.2.3</charm.version>
         <charm.cloudlink.version>6.0.7</charm.cloudlink.version>
         <glisten.afterburner.version>2.1.0</glisten.afterburner.version>
-        <attach.version>4.0.21</attach.version>
+        <attach.version>4.0.22</attach.version>
         <connect.version>2.0.1</connect.version>
         <javafx.maven.plugin.version>0.0.8</javafx.maven.plugin.version>
         <gluonfx.maven.plugin.version>1.0.26</gluonfx.maven.plugin.version>
         <gluonfx.target>host</gluonfx.target>
+        <simulator.device>iPad Pro 11-inch (M4)</simulator.device>
     </properties>
 
     <dependencies>
@@ -45,12 +46,29 @@
             <version>${javafx.version}</version>
         </dependency>
 
+
+<!--        Gluon-->
         <dependency>
             <groupId>com.gluonhq.attach</groupId>
             <artifactId>pictures</artifactId>
             <version>${attach.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.gluonhq</groupId>
+            <artifactId>charm-cloudlink-client</artifactId>
+            <version>6.0.7</version>
+        </dependency>
+        <dependency>
+            <groupId>com.gluonhq</groupId>
+            <artifactId>charm-down-common</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.gluonhq/charm-down-core-ios -->
+        <dependency>
+            <groupId>com.gluonhq</groupId>
+            <artifactId>charm-down-core-ios</artifactId>
+            <version>3.8.6</version>
+        </dependency>
         <dependency>
             <groupId>org.mindrot</groupId>
             <artifactId>jbcrypt</artifactId>
@@ -115,20 +133,20 @@
                 <groupId>com.gluonhq</groupId>
                 <artifactId>gluonfx-maven-plugin</artifactId>
                 <version>${gluonfx.maven.plugin.version}</version>
+
                 <configuration>
-                    <target>host</target>
+                    <target>${gluonfx.target}</target>
                     <mainClass>${main.class}</mainClass>
                     <verbose>true</verbose>
                     <enableSWRendering>false</enableSWRendering>
                     <graalvmHome></graalvmHome>
-
                     <bundlesList></bundlesList>
                     <resourcesList></resourcesList>
                     <reflectionList>
-                        <reflection>dk.easv.belmanexam.model.Customer</reflection>
-                        <reflection>dk.easv.belmanexam.model.Order</reflection>
-                        <reflection>dk.easv.belmanexam.model.PhotoDocumentation</reflection>
-                        <reflection>dk.easv.belmanexam.model.User</reflection>
+<!--                        <reflection>dk.easv.belmanexam.model.Customer</reflection>-->
+<!--                        <reflection>dk.easv.belmanexam.model.Order</reflection>-->
+<!--                        <reflection>dk.easv.belmanexam.model.PhotoDocumentation</reflection>-->
+<!--                        <reflection>dk.easv.belmanexam.model.User</reflection>-->
                     </reflectionList>
                     <jniList></jniList>
                     <attachList>
@@ -159,11 +177,12 @@
                         <bundleName></bundleName>
                         <bundleVersion>1.0</bundleVersion>
                         <bundleShortVersion>1.0</bundleShortVersion>
-                        <providedSigningIdentity></providedSigningIdentity>
+                        <!--suppress UnresolvedMavenProperty -->
+                        <providedSigningIdentity>${env.IOS_SIGN_IDENTITY}</providedSigningIdentity>
                         <providedProvisioningProfile></providedProvisioningProfile>
                         <skipSigning>false</skipSigning>
                         <!-- iOS Simulator -->
-                        <simulatorDevice></simulatorDevice>
+                        <simulatorDevice>${simulator.device}</simulatorDevice>
                         <!-- Android -->
                         <appLabel></appLabel>
                         <versionCode>1</versionCode>
@@ -180,6 +199,12 @@
 
     <profiles>
         <profile>
+            <id>ios-sim</id>
+            <properties>
+                <gluonfx.target>ios-sim</gluonfx.target>
+            </properties>
+        </profile>
+        <profile>
             <id>ios</id>
             <properties>
                 <gluonfx.target>ios</gluonfx.target>
@@ -193,4 +218,10 @@
         </profile>
     </profiles>
 
+    <repositories>
+        <repository>
+            <id>gluon-releases</id>
+            <url>https://nexus.gluonhq.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </repositories>
 </project>

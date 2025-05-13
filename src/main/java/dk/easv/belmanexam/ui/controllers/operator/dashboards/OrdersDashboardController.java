@@ -29,12 +29,12 @@ public class OrdersDashboardController{
     }
 
     @FXML
-    private void showEnterOrderDashboard(){
+    public void showEnterOrderDashboard(){
         ViewManager.INSTANCE.switchDashboard(FXMLPath.ENTER_ORDER_DASHBOARD, "BelSign");
     }
 
     @FXML
-    private void filterByOrderNumber(){
+    public void filterByOrderNumber(){
     }
 
     public void setServices(OrderManagementService orderManagementService, GoogleDriveManager googleDriveManager) {

@@ -9,93 +9,6 @@
   "name":"[Ljavafx.collections.transformation.SortedList$Element;"
 },
 {
-  "name":"[Lorg.hibernate.event.spi.AutoFlushEventListener;"
-},
-{
-  "name":"[Lorg.hibernate.event.spi.DeleteEventListener;"
-},
-{
-  "name":"[Lorg.hibernate.event.spi.DirtyCheckEventListener;"
-},
-{
-  "name":"[Lorg.hibernate.event.spi.EvictEventListener;"
-},
-{
-  "name":"[Lorg.hibernate.event.spi.FlushEntityEventListener;"
-},
-{
-  "name":"[Lorg.hibernate.event.spi.FlushEventListener;"
-},
-{
-  "name":"[Lorg.hibernate.event.spi.InitializeCollectionEventListener;"
-},
-{
-  "name":"[Lorg.hibernate.event.spi.LoadEventListener;"
-},
-{
-  "name":"[Lorg.hibernate.event.spi.LockEventListener;"
-},
-{
-  "name":"[Lorg.hibernate.event.spi.MergeEventListener;"
-},
-{
-  "name":"[Lorg.hibernate.event.spi.PersistEventListener;"
-},
-{
-  "name":"[Lorg.hibernate.event.spi.PostDeleteEventListener;"
-},
-{
-  "name":"[Lorg.hibernate.event.spi.PostInsertEventListener;"
-},
-{
-  "name":"[Lorg.hibernate.event.spi.PostLoadEventListener;"
-},
-{
-  "name":"[Lorg.hibernate.event.spi.PostUpdateEventListener;"
-},
-{
-  "name":"[Lorg.hibernate.event.spi.PreLoadEventListener;"
-},
-{
-  "name":"[Lorg.hibernate.event.spi.RefreshEventListener;"
-},
-{
-  "name":"[Lorg.hibernate.event.spi.ReplicateEventListener;"
-},
-{
-  "name":"[Lorg.hibernate.event.spi.ResolveNaturalIdEventListener;"
-},
-{
-  "name":"[Lorg.hibernate.event.spi.SaveOrUpdateEventListener;"
-},
-{
-  "name":"[Lorg.hibernate.query.hql.spi.DotIdentifierConsumer;"
-},
-{
-  "name":"[Lorg.hibernate.query.hql.spi.SqmCreationProcessingState;"
-},
-{
-  "name":"[Lorg.hibernate.query.sqm.spi.ParameterDeclarationContext;"
-},
-{
-  "name":"[Lorg.hibernate.query.sqm.sql.FromClauseIndex;"
-},
-{
-  "name":"[Lorg.hibernate.sql.ast.Clause;"
-},
-{
-  "name":"[Lorg.hibernate.sql.ast.spi.SqlAstProcessingState;"
-},
-{
-  "name":"[Lorg.hibernate.sql.ast.tree.Statement;"
-},
-{
-  "name":"[Lorg.hibernate.sql.ast.tree.select.QueryPart;"
-},
-{
-  "name":"[Lorg.hibernate.sql.results.jdbc.spi.JdbcValuesSourceProcessingState;"
-},
-{
   "name":"apple.security.AppleProvider",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -382,7 +295,10 @@
   "name":"dk.easv.belmanexam.ui.controllers.dashboards.operator.DocumentationCreationDashboardController",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }]
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"showParentView","parameterTypes":[] }
+  ]
 },
 {
   "name":"dk.easv.belmanexam.ui.controllers.dashboards.operator.OrdersDashboardController",
@@ -411,24 +327,6 @@
     {"name":"initialize","parameterTypes":[] }
   ]
 },
-  {
-    "name":"dk.easv.belmanexam.ui.controllers.main.OperatorViewController",
-    "allDeclaredFields":true,
-    "queryAllDeclaredMethods":true,
-    "methods":[
-      {"name":"<init>","parameterTypes":[] },
-      {"name":"initialize","parameterTypes":[] }
-    ]
-  },
-  {
-    "name":"dk.easv.belmanexam.ui.controllers.main.QAViewController",
-    "allDeclaredFields":true,
-    "queryAllDeclaredMethods":true,
-    "methods":[
-      {"name":"<init>","parameterTypes":[] },
-      {"name":"initialize","parameterTypes":[] }
-    ]
-  },
 {
   "name":"dk.easv.belmanexam.ui.controllers.main.LoginViewController",
   "allDeclaredFields":true,
@@ -439,16 +337,44 @@
   ]
 },
 {
+  "name":"dk.easv.belmanexam.ui.controllers.main.OperatorViewController",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"initialize","parameterTypes":[] }
+  ]
+},
+{
+  "name":"dk.easv.belmanexam.ui.controllers.main.QAViewController",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"initialize","parameterTypes":[] }
+  ]
+},
+{
   "name":"dk.easv.belmanexam.ui.controllers.operator.dashboards.DocumentationCreationDashboardController",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }]
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"showParentView","parameterTypes":[] }
+  ]
+},
+{
+  "name":"dk.easv.belmanexam.ui.controllers.operator.dashboards.EnterOrderDashboardController",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "allDeclaredConstructors":true
 },
 {
   "name":"dk.easv.belmanexam.ui.controllers.operator.dashboards.OrdersDashboardController",
   "allDeclaredFields":true,
+  "allDeclaredConstructors":true,
   "queryAllDeclaredMethods":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }]
+  "methods":[{"name":"showEnterOrderDashboard","parameterTypes":[] }]
 },
 {
   "name":"dk.easv.belmanexam.ui.controllers.qa.dashboards.ApproveDocumentationDashboardController",

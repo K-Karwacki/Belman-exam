@@ -18,7 +18,7 @@ public class ImageDisplayDashboardController {
     }
 
     @FXML
-    private void showParentView(){
+    public void showParentView(){
 //        ViewManager.INSTANCE.switchDashboard(FXMLPath.DOCUMENTATION_CREATION_DASHBOARD, "Photo Documentation");
     }
 }
