@@ -101,6 +101,12 @@
     -fx-min-height: 60;
     -fx-alignment: CENTER_LEFT;
 }
+.confirm-button{
+    -fx-padding: 0 20 0 20;
+    -fx-min-width: 140;
+    -fx-min-height: 60;
+    -fx-alignment: CENTER;
+}
 .shadow{
     -fx-effect: dropshadow(gaussian, RGBA(87, 87, 87, 0.5), 10, -3, 5,0);
 }
