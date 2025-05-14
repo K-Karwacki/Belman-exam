@@ -50,11 +50,11 @@ public class PhotoDocumentationServiceImpl implements PhotoDocumentationManageme
         if (photoDocumentationRepository == null || photoDocumentationListModel == null || repositoryService == null) {
             throw new RuntimeException("Load dependencies for OrderManagementService");
         }
-//        photoDocumentationListModel.setDocumentation(photoDocumentationRepository.getAll());
+        photoDocumentationListModel.setDocumentation(photoDocumentationRepository.getAll());
     }
 
-//    public PhotoDocumentationListModel getPhotoDocumentationListModel() {
-//        return photoDocumentationListModel;
-//    }
+    public PhotoDocumentationListModel getPhotoDocumentationListModel() {
+        return photoDocumentationListModel;
+    }
 
 }

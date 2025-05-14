@@ -1,10 +1,12 @@
 package dk.easv.belmanexam.ui.models;
 
 import dk.easv.belmanexam.model.PhotoDocumentation;
+import dk.easv.belmanexam.services.utils.Status;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 public class PhotoDocumentationListModel {
     private final ObservableList<PhotoDocumentation> documentation = FXCollections.observableArrayList();
@@ -18,5 +20,21 @@ public class PhotoDocumentationListModel {
     }
     public ObservableList<PhotoDocumentation> getDocumentation() {
         return documentation;
+    }
+
+    public ObservableList<PhotoDocumentation> getDocumentationForStatus(Status status) {
+        return FXCollections.observableArrayList(
+                documentation.stream()
+                        .filter(doc -> doc.getStatus() == status)
+                        .collect(Collectors.toList())
+        );
+    }
+    public ObservableList<PhotoDocumentation> getDocumentationForInput(Status status, String input) {
+        return FXCollections.observableArrayList(
+                documentation.stream()
+                        .filter(doc -> doc.getStatus() == status)
+                        .filter(doc -> doc.getOrderNumber().contains(input))
+                        .collect(Collectors.toList())
+        );
     }
 }

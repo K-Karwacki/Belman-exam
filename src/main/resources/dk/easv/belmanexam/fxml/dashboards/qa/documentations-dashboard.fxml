@@ -33,12 +33,12 @@
         </Label>
         <HBox layoutX="940.0" layoutY="40.0" prefHeight="50.0" styleClass="radius" stylesheets="@../../../styles/search-bar.css">
             <children>
-                <TextField alignment="CENTER" prefHeight="55.0" prefWidth="240.0" promptText="Order number" stylesheets="@../../../styles/search-bar.css">
+                <TextField fx:id="textFieldOrderNumber" alignment="CENTER" prefHeight="55.0" prefWidth="240.0" promptText="Order number" stylesheets="@../../../styles/search-bar.css">
                     <font>
                         <Font name="Helvetica Neue" size="18.0" />
                     </font>
                 </TextField>
-                <StackPane prefHeight="60.0" prefWidth="44.0">
+                <StackPane onMouseClicked="#onClickSearch" prefHeight="60.0" prefWidth="44.0">
                     <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -87,14 +87,9 @@
       </VBox>
       <HBox alignment="CENTER" layoutX="421.0" layoutY="45.0" spacing="33.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="130.0" styleClass="disabled-menu-button" text="Approved" />
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="130.0" style="-fx-border-color: #338D71; -fx-border-radius: 8; -fx-border-width: 2;" text="Pending">
-               <styleClass>
-                  <String fx:value="gray-button" />
-                  <String fx:value="green-button" />
-               </styleClass>
-            </Button>
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="130.0" text="Rejected">
+            <Button fx:id="btnApprovedDocumentation" mnemonicParsing="false" onAction="#onClickShowApprovedDocumentation" prefHeight="32.0" prefWidth="130.0" styleClass="disabled-menu-button" text="Approved" />
+            <Button fx:id="btnPendingDocumentation" mnemonicParsing="false" onAction="#onClickShowPendingDocumentation" prefHeight="30.0" prefWidth="130.0" styleClass="green-button" text="Pending" />
+            <Button fx:id="btnRejectedDocumentation" mnemonicParsing="false" onAction="#onClickShowRejectedDocumentation" prefHeight="30.0" prefWidth="130.0" text="Rejected">
                <styleClass>
                   <String fx:value="gray-button" />
                   <String fx:value="disabled-menu-button" />

@@ -12,4 +12,5 @@ public interface PhotoDocumentationManagementService {
     void saveFileInFolder(java.io.File file, String folder) throws PhotoException;
     List<Image> getAllImagesByOrderNumber(String orderNumber) throws PhotoException;
     Collection<PhotoDocumentation> getAll();
+    PhotoDocumentationListModel getPhotoDocumentationListModel();
 }
