@@ -17,6 +17,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.util.Pair;
 
 import javax.swing.text.View;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -90,7 +91,7 @@ public class ApproveDocumentationDashboardController {
     }
 
     @FXML
-    private void onClickApproveDocumentation() {
+    private void onClickApproveDocumentation() throws IOException {
         String orderNumber = textFieldOrderNumber.getText();
         String comment = textFieldComment.getText();
         List<Image> images = imageCache.get(orderNumber);

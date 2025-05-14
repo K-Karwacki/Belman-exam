@@ -28,7 +28,7 @@
       </Label>
       <ScrollPane fx:id="previewContainerPane" layoutX="74.0" layoutY="150.0" prefHeight="400.0" prefWidth="972.0">
          <content>
-            <AnchorPane fx:id="imageAnchor" prefHeight="200.0" prefWidth="200.0" />
+            <ImageView fx:id="imgViewPDFContainer" fitHeight="1330.0" fitWidth="950.0" pickOnBounds="true" preserveRatio="true" />
          </content>
       </ScrollPane>
       <HBox alignment="CENTER_LEFT" layoutX="1090.0" layoutY="50.0" onMouseClicked="#onClickGoBack">

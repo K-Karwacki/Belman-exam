@@ -2,6 +2,9 @@ package dk.easv.belmanexam.utils;
 
 import javafx.scene.image.Image; // JavaFX Image
 import javafx.embed.swing.SwingFXUtils; // For conversion
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.rendering.PDFRenderer;
+
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.ByteArrayInputStream;
@@ -40,5 +43,17 @@ public class ImageConverter {
             e.printStackTrace();
         }
         return null;
+    }
+    public static Image convertPdfToImage(byte[] pdfBytes) {
+        try (PDDocument document = PDDocument.load(new ByteArrayInputStream(pdfBytes))) {
+            PDFRenderer pdfRenderer = new PDFRenderer(document);
+            // Render the first page (index 0) to a BufferedImage
+            BufferedImage bufferedImage = pdfRenderer.renderImageWithDPI(0, 300); // 300 DPI for good quality
+            // Convert BufferedImage to JavaFX Image
+            return SwingFXUtils.toFXImage(bufferedImage, null);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
