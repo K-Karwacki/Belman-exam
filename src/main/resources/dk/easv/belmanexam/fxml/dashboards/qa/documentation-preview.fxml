@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="1280.0" stylesheets="@../../../styles/main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.qa.dashboards.DocumentationPreviewController">
    <children>
       <Label alignment="CENTER_RIGHT" layoutY="40.0" prefHeight="49.0" prefWidth="364.0" text="Preview">
@@ -27,7 +26,11 @@
             <String fx:value="left-side-header" />
          </styleClass>
       </Label>
-      <ScrollPane fx:id="previewContainerPane" layoutX="74.0" layoutY="150.0" prefHeight="400.0" prefWidth="972.0" />
+      <ScrollPane fx:id="previewContainerPane" layoutX="74.0" layoutY="150.0" prefHeight="400.0" prefWidth="972.0">
+         <content>
+            <AnchorPane fx:id="imageAnchor" prefHeight="200.0" prefWidth="200.0" />
+         </content>
+      </ScrollPane>
       <HBox alignment="CENTER_LEFT" layoutX="1090.0" layoutY="50.0" onMouseClicked="#onClickGoBack">
          <children>
             <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">

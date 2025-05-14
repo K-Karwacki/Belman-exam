@@ -91,8 +91,14 @@ public class ApproveDocumentationDashboardController {
 
     @FXML
     private void onClickApproveDocumentation() {
-        //@ToDo - Finish it
-        ViewManager.INSTANCE.switchDashboard(FXMLPath.DOCUMENTATION_DASHBOARD, "BelSign");
+        String orderNumber = textFieldOrderNumber.getText();
+        List<Image> images = imageCache.get(orderNumber);
+
+        Pair<Parent, DocumentationPreviewController> p = FXMLManager.INSTANCE.getFXML(FXMLPath.DOCUMENTATION_PREVIEW);
+        DocumentationPreviewController controller = p.getValue();
+        controller.setDetails(images);
+
+        ViewManager.INSTANCE.switchDashboard(FXMLPath.DOCUMENTATION_PREVIEW, "BelSign");
     }
 
     @FXML
