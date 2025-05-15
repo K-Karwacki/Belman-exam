@@ -7,6 +7,7 @@ import dk.easv.belmanexam.services.utils.Status;
 import dk.easv.belmanexam.ui.FXMLManager;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.controllers.qa.DocumentationListComponent;
+import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -34,7 +35,11 @@ public class DocumentationDashboardController {
 
     private void initialize() {
         addDocumentation(status);
-    }
+        photoDocumentationManagementService.getPhotoDocumentationListModel()
+                .getDocumentation()
+                .addListener((ListChangeListener<PhotoDocumentation>) change -> {
+                    addDocumentation(status);
+                });}
 
     public void setServices(PhotoDocumentationManagementService photoDocumentationManagementService, GoogleDriveManager googleDriveManager) {
         this.photoDocumentationManagementService = photoDocumentationManagementService;

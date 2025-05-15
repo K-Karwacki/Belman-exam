@@ -1,7 +1,9 @@
 package dk.easv.belmanexam.ui.controllers.operator.dashboards;
 
+import dk.easv.belmanexam.model.PhotoDocumentation;
 import dk.easv.belmanexam.services.interfaces.PhotoDocumentationManagementService;
 import dk.easv.belmanexam.exceptions.PhotoException;
+import dk.easv.belmanexam.services.utils.Status;
 import dk.easv.belmanexam.ui.FXMLManager;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
@@ -16,7 +18,9 @@ import javafx.stage.FileChooser;
 import javafx.util.Pair;
 
 import java.io.File;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class DocumentationCreationDashboardController {
@@ -78,6 +82,11 @@ public class DocumentationCreationDashboardController {
 
     @FXML
     private void onClickSubmitDocumentation(){
+        PhotoDocumentation photoDocumentation = new PhotoDocumentation();
+        photoDocumentation.setStatus(Status.PENDING);
+        photoDocumentation.setOrderNumber(orderNumber);
+        photoDocumentation.setDateTime(LocalDateTime.now());
+        photoDocumentationManagementService.add(photoDocumentation);
         if(!photos.isEmpty()){
         photos.forEach(file -> {
             try {

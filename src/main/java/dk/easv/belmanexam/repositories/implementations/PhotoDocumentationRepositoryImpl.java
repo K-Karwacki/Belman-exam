@@ -6,8 +6,6 @@ import dk.easv.belmanexam.repositories.utils.DBConnection;
 import dk.easv.belmanexam.repositories.utils.QueryBuilder;
 import dk.easv.belmanexam.repositories.utils.mappers.PhotoDocumentationMapper;
 
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -32,7 +30,17 @@ public class PhotoDocumentationRepositoryImpl implements PhotoDocumentationRepos
 
     @Override public PhotoDocumentation add(PhotoDocumentation entity)
     {
-        return null;
+        QueryBuilder<PhotoDocumentation> queryBuilder = new QueryBuilder<>(PhotoDocumentation.class, "PhotoDocumentation")
+                .set("date", entity.getDateTime().toString())
+                .set("status", "PENDING")
+                .set("order_number", entity.getOrderNumber());
+
+        try (DBConnection dbConnection = new DBConnection()) {
+            queryBuilder.executeInsert(dbConnection.getConnection());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return entity;
     }
 
     @Override public boolean delete(PhotoDocumentation entity)
@@ -42,6 +50,16 @@ public class PhotoDocumentationRepositoryImpl implements PhotoDocumentationRepos
 
     @Override public PhotoDocumentation update(PhotoDocumentation newEntity)
     {
-        return null;
+        // ToDo -> finish it
+        QueryBuilder<PhotoDocumentation> queryBuilder = new QueryBuilder<>(PhotoDocumentation.class, "PhotoDocumentation")
+                .set("date", newEntity.getDateTime().toString())
+                .set("status", newEntity.getStatus().toString())
+                .where("id",  newEntity.getId());
+        try (DBConnection dbConnection = new DBConnection()) {
+            queryBuilder.executeUpdate(dbConnection.getConnection());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return newEntity;
     }
 }

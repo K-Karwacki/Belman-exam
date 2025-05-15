@@ -1,5 +1,8 @@
 package dk.easv.belmanexam.ui.controllers.qa.dashboards;
 
+import dk.easv.belmanexam.model.PhotoDocumentation;
+import dk.easv.belmanexam.services.interfaces.PhotoDocumentationManagementService;
+import dk.easv.belmanexam.services.utils.Status;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
 import dk.easv.belmanexam.utils.ImageConverter;
@@ -23,6 +26,10 @@ import java.util.List;
 public class DocumentationPreviewController {
     @FXML
     private ImageView imgViewPDFContainer;
+
+    private PhotoDocumentationManagementService photoDocumentationManagementService;
+
+    private PhotoDocumentation photoDocumentation;
     private List<Image> imageList;
     private String orderNumber;
     private String comment;
@@ -30,11 +37,12 @@ public class DocumentationPreviewController {
 
     public DocumentationPreviewController() {}
 
-    public void onClickGoBack(MouseEvent mouseEvent) {
+    public void onClickGoBack() {
         ViewManager.INSTANCE.switchDashboard(FXMLPath.APPROVE_DOCUMENTATION_DASHBOARD, "BelSign");
     }
 
-    public void setDetails(List<Image> imageList, String orderNumber, String comment) throws IOException {
+    public void setDetails(List<Image> imageList, String orderNumber, String comment, PhotoDocumentation photoDocumentation) throws IOException {
+        this.photoDocumentation = photoDocumentation;
         this.imageList = imageList;
         this.orderNumber = orderNumber;
         this.comment = comment;
@@ -45,6 +53,13 @@ public class DocumentationPreviewController {
 
 
     @FXML
-    private void onClickConfirm(MouseEvent mouseEvent) {
+    private void onClickConfirm() {
+        photoDocumentation.setStatus(Status.APPROVED);
+        photoDocumentationManagementService.update(photoDocumentation);
+        ViewManager.INSTANCE.switchDashboard(FXMLPath.DOCUMENTATION_DASHBOARD, "BelSign");
+    }
+
+    public void setServices(PhotoDocumentationManagementService photoDocumentationManagementService) {
+        this.photoDocumentationManagementService = photoDocumentationManagementService;
     }
 }

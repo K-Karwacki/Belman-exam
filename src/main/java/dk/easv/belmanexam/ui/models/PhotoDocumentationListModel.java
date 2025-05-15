@@ -5,7 +5,9 @@ import dk.easv.belmanexam.services.utils.Status;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import javax.print.Doc;
 import java.util.Collection;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class PhotoDocumentationListModel {
@@ -36,5 +38,19 @@ public class PhotoDocumentationListModel {
                         .filter(doc -> doc.getOrderNumber().contains(input))
                         .collect(Collectors.toList())
         );
+    }
+
+    public void update(PhotoDocumentation photoDocumentation) {
+        PhotoDocumentation documentationToRemove = null;
+        for(PhotoDocumentation doc:documentation){
+            if (Objects.equals(photoDocumentation.getId(), doc.getId())){
+                documentationToRemove = doc;
+            }
+        }
+        documentation.remove(documentationToRemove);
+        documentation.add(photoDocumentation);
+    }
+    public void add(PhotoDocumentation photoDocumentation){
+        documentation.add(photoDocumentation);
     }
 }

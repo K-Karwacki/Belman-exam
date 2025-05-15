@@ -11,7 +11,7 @@
 
 <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="940.0" stylesheets="@../../styles/user-card.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.components.UserCardComponentController">
     <children>
-      <VBox alignment="CENTER" prefHeight="50.0" prefWidth="201.0">
+      <VBox alignment="CENTER" prefHeight="50.0" prefWidth="230.0">
          <children>
                 <Label fx:id="txtUserFirstName" contentDisplay="CENTER" prefHeight="26.0" stylesheets="@../../styles/user-card.css" text="&lt;First Name&gt;" textAlignment="CENTER">
                     <font>
@@ -28,7 +28,7 @@
             <Insets right="40.0" />
          </HBox.margin>
       </VBox>
-          <Label fx:id="txtUserEmail" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="351.0" text="useremail@email.com" textAlignment="CENTER">
+          <Label fx:id="txtUserEmail" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="390.0" text="useremail@email.com" textAlignment="CENTER">
               <font>
                   <Font name="Geeza Pro Regular" size="16.0" />
               </font>
@@ -36,7 +36,7 @@
             <Insets />
          </HBox.margin>
           </Label>
-        <Label fx:id="txtUserRole" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="303.0" text="&lt;Role&gt;" textAlignment="CENTER">
+        <Label fx:id="txtUserRole" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="194.0" text="&lt;Role&gt;" textAlignment="CENTER">
             <font>
                 <Font name="Geeza Pro Regular" size="16.0" />
             </font>

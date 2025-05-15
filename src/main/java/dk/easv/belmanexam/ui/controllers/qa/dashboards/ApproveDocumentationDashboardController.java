@@ -3,6 +3,7 @@ package dk.easv.belmanexam.ui.controllers.qa.dashboards;
 import dk.easv.belmanexam.exceptions.PhotoException;
 import dk.easv.belmanexam.model.PhotoDocumentation;
 import dk.easv.belmanexam.services.interfaces.PhotoDocumentationManagementService;
+import dk.easv.belmanexam.services.utils.Status;
 import dk.easv.belmanexam.ui.FXMLManager;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
@@ -98,14 +99,15 @@ public class ApproveDocumentationDashboardController {
 
         Pair<Parent, DocumentationPreviewController> p = FXMLManager.INSTANCE.getFXML(FXMLPath.DOCUMENTATION_PREVIEW);
         DocumentationPreviewController controller = p.getValue();
-        controller.setDetails(images, orderNumber, comment);
+        controller.setDetails(images, orderNumber, comment, photoDocumentation);
 
         ViewManager.INSTANCE.switchDashboard(FXMLPath.DOCUMENTATION_PREVIEW, "BelSign");
     }
 
     @FXML
     private void onClickRejectDocumentation() {
-        //@ToDo - Finish it
+        photoDocumentation.setStatus(Status.REJECTED);
+        photoDocumentationManagementService.update(photoDocumentation);
         ViewManager.INSTANCE.switchDashboard(FXMLPath.DOCUMENTATION_DASHBOARD, "BelSign");
 
     }

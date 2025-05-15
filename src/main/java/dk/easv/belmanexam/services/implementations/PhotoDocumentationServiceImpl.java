@@ -42,7 +42,7 @@ public class PhotoDocumentationServiceImpl implements PhotoDocumentationManageme
     }
 
     public void saveFileInFolder(java.io.File file, String folder) throws PhotoException {
-//        googleDriveManager.saveFileInFolder(file,folder);
+        googleDriveManager.saveFileInFolder(file,folder);
     }
 
 
@@ -55,6 +55,18 @@ public class PhotoDocumentationServiceImpl implements PhotoDocumentationManageme
 
     public PhotoDocumentationListModel getPhotoDocumentationListModel() {
         return photoDocumentationListModel;
+    }
+
+    @Override
+    public void update(PhotoDocumentation photoDocumentation) {
+        photoDocumentationRepository.update(photoDocumentation);
+        photoDocumentationListModel.update(photoDocumentation);
+    }
+
+    @Override
+    public void add(PhotoDocumentation photoDocumentation) {
+        photoDocumentationRepository.add(photoDocumentation);
+        photoDocumentationListModel.add(photoDocumentation);
     }
 
 }

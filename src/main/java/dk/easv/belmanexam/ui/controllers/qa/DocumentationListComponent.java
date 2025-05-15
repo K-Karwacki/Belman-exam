@@ -12,6 +12,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.util.Pair;
 
+import java.time.LocalDateTime;
+
 public class DocumentationListComponent {
 
     private PhotoDocumentation photoDocumentation;
@@ -43,6 +45,7 @@ public class DocumentationListComponent {
     public void setPhotoDocumentation(PhotoDocumentation documentation) {
         this.photoDocumentation = documentation;
         lblOrderNumber.setText(documentation.getOrderNumber());
-        lblRecordDate.setText(documentation.getDateTime().toString());
+        LocalDateTime localDateTime = documentation.getDateTime();
+        lblRecordDate.setText(localDateTime.getDayOfMonth() + "/" + localDateTime.getMonthValue() + "/" + localDateTime.getYear());
     }
 }

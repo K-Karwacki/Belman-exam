@@ -13,4 +13,8 @@ public interface PhotoDocumentationManagementService {
     List<Image> getAllImagesByOrderNumber(String orderNumber) throws PhotoException;
     Collection<PhotoDocumentation> getAll();
     PhotoDocumentationListModel getPhotoDocumentationListModel();
+
+    void update(PhotoDocumentation photoDocumentation);
+
+    void add(PhotoDocumentation photoDocumentation);
 }
