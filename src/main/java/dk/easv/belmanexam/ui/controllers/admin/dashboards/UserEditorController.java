@@ -58,7 +58,6 @@ public class UserEditorController {
         String selectedRole = roleComboBox.getSelectionModel().getSelectedItem();
         if (selectedRole != null) {
             userModel.setRole(selectedRole);
-        }
 
 
         userManagementService.updateUser(userModel);
@@ -74,5 +73,6 @@ public class UserEditorController {
                     e.printStackTrace();
                 }
             }).start();
+        }
         }
     }

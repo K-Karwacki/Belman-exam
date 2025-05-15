@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1280.0" stylesheets="@../../../styles/main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.admin.dashboards.UsersDashboardController">
+<AnchorPane prefHeight="600.0" prefWidth="1280.0" stylesheets="@../../../styles/main.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.admin.dashboards.UsersDashboardController">
    <children>
       <HBox alignment="CENTER_LEFT" layoutX="65.0" layoutY="152.0" prefHeight="50.0" prefWidth="960.0" style="-fx-border-color: #777; -fx-border-radius: 13;">
          <children>
@@ -39,7 +31,7 @@
       </HBox>
       <ScrollPane hbarPolicy="NEVER" layoutX="65.0" layoutY="230.0" prefHeight="350.0" prefWidth="960.0" style="-fx-border-color: #777;" styleClass="custom-scroll-pane">
          <content>
-            <FlowPane fx:id="userListRoot" prefHeight="347.0" prefWidth="940.0">
+            <FlowPane fx:id="userListRoot" hgap="15.0" prefHeight="347.0" prefWidth="940.0" vgap="15.0">
                <padding>
                   <Insets top="10.0" />
                </padding></FlowPane>

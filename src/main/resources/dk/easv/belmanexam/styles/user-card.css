@@ -18,12 +18,18 @@
 .green-button{
     -fx-background-color: #338d71;
     -fx-text-fill: #FFF;
+    -fx-font-size: 16;
+    -fx-font-family: Helvetica;
+    -fx-font-weight: 700;
 
 }
 
 .red-button{
     -fx-background-color: #FF5656;
     -fx-text-fill: #FFF;
+    -fx-font-size: 14;
+    -fx-font-family: Helvetica;
+    -fx-font-weight: 700;
 }
 
 .shadow{
