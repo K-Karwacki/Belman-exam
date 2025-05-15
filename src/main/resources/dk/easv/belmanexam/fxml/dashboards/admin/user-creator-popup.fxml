@@ -23,9 +23,6 @@
 <Label text="Last Name:" />
 <TextField fx:id="lastNameField" />
 
-<Label text="Phone Number:" />
-<TextField fx:id="phoneField" />
-
 <Label text="Email:" />
 <TextField fx:id="emailField" />
 

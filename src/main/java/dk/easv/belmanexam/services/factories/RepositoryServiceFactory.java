@@ -2,9 +2,11 @@ package dk.easv.belmanexam.services.factories;
 
 import dk.easv.belmanexam.repositories.implementations.OrderRepositoryImpl;
 import dk.easv.belmanexam.repositories.implementations.PhotoDocumentationRepositoryImpl;
+import dk.easv.belmanexam.repositories.implementations.UserRepositoryImpl;
 import dk.easv.belmanexam.repositories.interfaces.BaseRepository;
 import dk.easv.belmanexam.repositories.interfaces.OrderRepository;
 import dk.easv.belmanexam.repositories.interfaces.PhotoDocumentationRepository;
+import dk.easv.belmanexam.repositories.interfaces.UserRepository;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,6 +27,7 @@ public class RepositoryServiceFactory
     // @ToDo -> Add UserRepository later
     repositoryMap.putIfAbsent(OrderRepository.class, new OrderRepositoryImpl());
     repositoryMap.putIfAbsent(PhotoDocumentationRepository.class, new PhotoDocumentationRepositoryImpl());
+    repositoryMap.putIfAbsent(UserRepository.class, new UserRepositoryImpl());
   }
 
   public void addRepository(Class<?extends BaseRepository<?>> repositoryInterfaceClass, BaseRepository<?> instance){

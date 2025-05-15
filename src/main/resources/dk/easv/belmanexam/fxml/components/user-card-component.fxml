@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="1000.0" stylesheets="@../../styles/user-card.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.components.UserCardComponentController">
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="940.0" stylesheets="@../../styles/user-card.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.components.UserCardComponentController">
     <children>
-      <VBox alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="50.0" prefWidth="201.0">
          <children>
                 <Label fx:id="txtUserFirstName" contentDisplay="CENTER" prefHeight="26.0" stylesheets="@../../styles/user-card.css" text="&lt;First Name&gt;" textAlignment="CENTER">
                     <font>
@@ -28,23 +28,23 @@
             <Insets right="150.0" />
          </HBox.margin>
       </VBox>
-          <Label fx:id="txtUserEmail" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" text="useremail@email.com" textAlignment="CENTER">
+          <Label fx:id="txtUserEmail" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="245.0" text="useremail@email.com" textAlignment="CENTER">
               <font>
                   <Font name="Geeza Pro Regular" size="16.0" />
               </font>
          <HBox.margin>
-            <Insets right="150.0" />
+            <Insets right="60.0" />
          </HBox.margin>
           </Label>
-        <Label fx:id="txtUserRole" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" text="&lt;Role&gt;" textAlignment="CENTER">
+        <Label fx:id="txtUserRole" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="226.0" text="&lt;Role&gt;" textAlignment="CENTER">
             <font>
                 <Font name="Geeza Pro Regular" size="16.0" />
             </font>
             <HBox.margin>
-                <Insets right="150.0" />
+                <Insets right="60.0" />
             </HBox.margin>
         </Label>
-        <Button layoutX="235.0" layoutY="24.0" mnemonicParsing="false" onAction="#onClickEditUser" prefHeight="48.0" prefWidth="80.0" text="Edit " textAlignment="CENTER" wrapText="true">
+        <Button layoutX="235.0" layoutY="24.0" mnemonicParsing="false" onAction="#onClickEditUser" prefHeight="48.0" prefWidth="124.0" text="Edit " textAlignment="CENTER" wrapText="true">
             <font>
                 <Font name="Geeza Pro Regular" size="16.0" />
             </font>
@@ -59,7 +59,7 @@
             <String fx:value="shadow" />
          </styleClass>
         </Button>
-        <Button layoutX="315.0" layoutY="24.0" mnemonicParsing="false" onAction="#onClickDeleteUser" prefHeight="48.0" prefWidth="80.0" text="Delete" textAlignment="CENTER" wrapText="true">
+        <Button layoutX="315.0" layoutY="24.0" mnemonicParsing="false" onAction="#onClickDeleteUser" prefHeight="48.0" prefWidth="124.0" text="Delete" textAlignment="CENTER" wrapText="true">
             <font>
                 <Font name="Geeza Pro Regular" size="16.0" />
             </font>

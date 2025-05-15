@@ -4,21 +4,48 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox styleClass="bgc" stylesheets="@../../../styles/main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.admin.dashboards.UsersDashboardController">
+<AnchorPane prefHeight="600.0" prefWidth="1280.0" stylesheets="@../../../styles/main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.admin.dashboards.UsersDashboardController">
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="49.0" styleClass="radius" stylesheets="@../../../styles/search-bar.css">
+      <HBox alignment="CENTER_LEFT" layoutX="65.0" layoutY="152.0" prefHeight="50.0" prefWidth="960.0" style="-fx-border-color: #777; -fx-border-radius: 13;">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="177.0" style="-fx-font-weight: bold;" text="Full Name" />
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <Label alignment="CENTER" prefHeight="44.0" prefWidth="274.0" style="-fx-font-weight: bold;" text="Email ">
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+            </Label>
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <Label alignment="CENTER" prefHeight="46.0" prefWidth="161.0" style="-fx-font-weight: bold;" text="Role" textAlignment="CENTER" />
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+         </children>
+         <styleClass>
+            <String fx:value="light-bgc" />
+            <String fx:value="radius" />
+         </styleClass>
+      </HBox>
+      <ScrollPane hbarPolicy="NEVER" layoutX="65.0" layoutY="230.0" prefHeight="350.0" prefWidth="960.0" style="-fx-border-color: #777;" styleClass="custom-scroll-pane">
+         <content>
+            <FlowPane fx:id="userListRoot" prefHeight="347.0" prefWidth="940.0">
+               <padding>
+                  <Insets top="10.0" />
+               </padding></FlowPane>
+         </content>
+      </ScrollPane>
+      <HBox alignment="CENTER_LEFT" layoutY="30.0" prefHeight="49.0" styleClass="radius" stylesheets="@../../../styles/search-bar.css">
          <children>
             <Label alignment="CENTER_RIGHT" prefHeight="49.0" prefWidth="270.0" text="Users">
                <font>
@@ -32,7 +59,7 @@
                   <Insets right="235.0" />
                </HBox.margin>
             </Label>
-            <Button mnemonicParsing="false" onAction="#switchToNewUser" prefHeight="45.0" prefWidth="175.0" styleClass="green-button" text="Add new user">
+            <Button mnemonicParsing="false" onAction="#onClickOpenCreateUser" prefHeight="45.0" prefWidth="175.0" styleClass="green-button" text="Add new user">
                <effect>
                   <DropShadow height="11.37" offsetX="-3.0" offsetY="5.0" radius="5.3825" width="12.16">
                      <color>
@@ -43,15 +70,6 @@
                <HBox.margin>
                   <Insets right="50.0" />
                </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#openUserEditor" prefHeight="45.0" prefWidth="175.0" styleClass="green-button" text="Edit &quot;TEST&quot;">
-               <effect>
-                  <DropShadow height="11.37" offsetX="-3.0" offsetY="5.0" radius="5.3825" width="12.16">
-                     <color>
-                        <Color red="0.46000000834465027" green="0.46000000834465027" blue="0.46000000834465027" opacity="0.4029914438724518" />
-                     </color>
-                  </DropShadow>
-               </effect>
             </Button>
             <HBox>
                <children>
@@ -73,19 +91,5 @@
             </HBox>
          </children>
       </HBox>
-      <TableView prefHeight="450.0" prefWidth="980.0" style="-fx-border-radius: 9; -fx-background-radius: 11;">
-        <columns>
-          <TableColumn prefWidth="137.0" text="Full name" />
-            <TableColumn prefWidth="137.0" text="Role" />
-            <TableColumn prefWidth="137.0" text="Email" />
-            <TableColumn prefWidth="195.0" text="Phone number" />
-        </columns>
-         <VBox.margin>
-            <Insets left="65.0" top="50.0" />
-         </VBox.margin>
-      </TableView>
    </children>
-   <padding>
-      <Insets top="30.0" />
-   </padding>
-</VBox>
+</AnchorPane>
