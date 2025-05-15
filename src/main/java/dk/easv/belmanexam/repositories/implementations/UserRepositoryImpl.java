@@ -20,6 +20,7 @@ public class UserRepositoryImpl implements UserRepository {
             List<User> users = new LinkedList<>();
             while (rs.next()) {
                 User user = new User();
+                user.setId(rs.getInt("id"));
                 user.setFirstName(rs.getString("first_name"));
                 user.setLastName(rs.getString("last_name"));
                 user.setEmail(rs.getString("email"));
@@ -35,7 +36,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public Optional<User> getById(long id) {
-        String sql = "SELECT * FROM [user] WHERE id = ?";
+        String sql = "SELECT * FROM [User] WHERE ID = ?";
 
         try (Connection conn = new DBConnection().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -45,6 +46,7 @@ public class UserRepositoryImpl implements UserRepository {
 
             if (rs.next()) {
                 User user = new User();
+                System.out.println(rs.getLong("id"));
                 user.setId(rs.getLong("id"));
                 user.setFirstName(rs.getString("first_name"));
                 user.setLastName(rs.getString("last_name"));

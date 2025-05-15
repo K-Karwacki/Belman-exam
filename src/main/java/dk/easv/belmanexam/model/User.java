@@ -35,7 +35,7 @@ public class User {
     }
 
     public long setId(long id) {
-        return id;
+        return this.id = id;
     }
 
     public String getFirstName() {
