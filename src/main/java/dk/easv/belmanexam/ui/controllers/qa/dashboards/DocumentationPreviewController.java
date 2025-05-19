@@ -7,6 +7,7 @@ import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
 import dk.easv.belmanexam.utils.ImageConverter;
 import dk.easv.belmanexam.utils.PDFGenerator;
+import dk.easv.belmanexam.utils.PdfFile;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
@@ -21,6 +22,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 
 public class DocumentationPreviewController {
@@ -29,6 +31,7 @@ public class DocumentationPreviewController {
 
     private PhotoDocumentationManagementService photoDocumentationManagementService;
 
+    private PdfFile pdfFile;
     private PhotoDocumentation photoDocumentation;
     private List<Image> imageList;
     private String orderNumber;
@@ -46,8 +49,8 @@ public class DocumentationPreviewController {
         this.imageList = imageList;
         this.orderNumber = orderNumber;
         this.comment = comment;
-        byte[] byteArray = PDFGenerator.createPdf(orderNumber, "", imageList);
-        Image image = ImageConverter.convertPdfToImage(byteArray);
+        pdfFile = PDFGenerator.createPdf(orderNumber, "", imageList);
+        Image image = ImageConverter.convertPdfToImage(pdfFile.getByteData());
         imgViewPDFContainer.setImage(image);
     }
 
@@ -57,6 +60,25 @@ public class DocumentationPreviewController {
         photoDocumentation.setStatus(Status.APPROVED);
         photoDocumentationManagementService.update(photoDocumentation);
         ViewManager.INSTANCE.switchDashboard(FXMLPath.DOCUMENTATION_DASHBOARD, "BelSign");
+    }
+
+    @FXML
+    private void onClickDownload(){
+        try {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Save PDF");
+            fileChooser.setInitialFileName("report.pdf");
+            fileChooser.getExtensionFilters().add(
+                    new FileChooser.ExtensionFilter("PDF Files", "*.pdf")
+            );
+
+            File destination = fileChooser.showSaveDialog(imgViewPDFContainer.getScene().getWindow());
+            if (destination != null) {
+                Files.copy(pdfFile.getFile().toPath(), destination.toPath());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void setServices(PhotoDocumentationManagementService photoDocumentationManagementService) {

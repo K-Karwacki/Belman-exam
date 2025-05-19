@@ -117,7 +117,6 @@ public class UserRepositoryImpl implements UserRepository {
 
         try (Connection conn = new DBConnection().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-
             stmt.setString(1, entity.getFirstName());
             stmt.setString(2, entity.getLastName());
             stmt.setString(3, entity.getEmail());

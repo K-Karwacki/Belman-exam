@@ -10,12 +10,14 @@ import javafx.scene.image.Image;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
 public class PDFGenerator {
-    public static byte[] createPdf(String title, String content, List<Image> images) throws IOException {
+    public static PdfFile createPdf(String title, String content, List<Image> images) throws IOException {
         try (PDDocument document = new PDDocument()) {
+            PdfFile pdfFile = new PdfFile();
             PDPage page = new PDPage();
             document.addPage(page);
 
@@ -70,8 +72,13 @@ public class PDFGenerator {
             // Save to ByteArrayOutputStream instead of file
             try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()) {
                 document.save(byteArrayOutputStream);
-                return byteArrayOutputStream.toByteArray();
+                pdfFile.setByteData(byteArrayOutputStream.toByteArray());
             }
+            File tempFile = File.createTempFile("report_", ".pdf");
+            document.save(tempFile);
+            pdfFile.setFile(tempFile);
+
+            return pdfFile;
         }
     }
     private static void addText(PDPageContentStream contentStream, float position1, float position2, int photoNumber) throws IOException {

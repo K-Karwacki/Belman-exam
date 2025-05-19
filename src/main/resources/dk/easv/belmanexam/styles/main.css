@@ -34,6 +34,15 @@
     -fx-border-width:2;
 }
 
+.blue-button{
+    -fx-background-color: #004B88;
+    -fx-text-fill: #FFF;
+    -fx-font-size: 20;
+    -fx-background-radius: 8;
+    -fx-border-radius:8;
+    -fx-border-width:2;
+}
+
 .active-menu-button{
     -fx-background-color: #004B88;
     -fx-text-fill: #FFF;
