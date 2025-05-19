@@ -7,80 +7,83 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="940.0" stylesheets="@../../styles/user-card.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.components.UserCardComponentController">
-    <children>
-      <VBox alignment="CENTER" prefHeight="50.0" prefWidth="230.0">
-         <children>
-                <Label fx:id="txtUserFirstName" contentDisplay="CENTER" prefHeight="26.0" stylesheets="@../../styles/user-card.css" text="&lt;First Name&gt;" textAlignment="CENTER">
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.components.UserCardComponentController">
+   <children>
+      <Line endX="839.2929077148438" endY="0.2928932309150696" layoutX="111.0" layoutY="81.0" startX="-100.0" />
+      <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="940.0" styleClass="bgc" stylesheets="@../../styles/user-card.css">
+          <children>
+            <VBox alignment="CENTER" prefHeight="50.0" prefWidth="230.0">
+               <children>
+                      <Label fx:id="txtUserFirstName" contentDisplay="CENTER" prefHeight="26.0" stylesheets="@../../styles/user-card.css" text="&lt;First Name&gt;" textAlignment="CENTER">
+                          <font>
+                              <Font name="Geeza Pro Regular" size="16.0" />
+                          </font>
+                      </Label>
+                      <Label fx:id="txtUserLastName" contentDisplay="CENTER" prefHeight="26.0" text="&lt;Last Name&gt;">
+                          <font>
+                              <Font name="Geeza Pro Regular" size="16.0" />
+                          </font>
+                      </Label>
+               </children>
+               <HBox.margin>
+                  <Insets right="40.0" />
+               </HBox.margin>
+            </VBox>
+                <Label fx:id="txtUserEmail" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="390.0" text="useremail@email.com" textAlignment="CENTER">
                     <font>
                         <Font name="Geeza Pro Regular" size="16.0" />
                     </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
                 </Label>
-                <Label fx:id="txtUserLastName" contentDisplay="CENTER" prefHeight="26.0" text="&lt;Last Name&gt;">
-                    <font>
-                        <Font name="Geeza Pro Regular" size="16.0" />
-                    </font>
-                </Label>
-         </children>
-         <HBox.margin>
-            <Insets right="40.0" />
-         </HBox.margin>
-      </VBox>
-          <Label fx:id="txtUserEmail" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="390.0" text="useremail@email.com" textAlignment="CENTER">
-              <font>
-                  <Font name="Geeza Pro Regular" size="16.0" />
-              </font>
-         <HBox.margin>
+              <Label fx:id="txtUserRole" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="194.0" text="&lt;Role&gt;" textAlignment="CENTER">
+                  <font>
+                      <Font name="Geeza Pro Regular" size="16.0" />
+                  </font>
+                  <HBox.margin>
+                      <Insets left="30.0" right="100.0" />
+                  </HBox.margin>
+              </Label>
+              <Button layoutX="235.0" layoutY="24.0" mnemonicParsing="false" onAction="#onClickEditUser" prefHeight="45.0" prefWidth="160.0" text="Edit " textAlignment="CENTER" wrapText="true">
+                  <font>
+                      <Font name="Geeza Pro Regular" size="16.0" />
+                  </font>
+                  <HBox.margin>
+                      <Insets right="20.0" />
+                  </HBox.margin>
+                  <cursor>
+                      <Cursor fx:constant="HAND" />
+                  </cursor>
+               <styleClass>
+                  <String fx:value="green-button" />
+                  <String fx:value="shadow" />
+               </styleClass>
+              </Button>
+              <Button layoutX="315.0" layoutY="24.0" mnemonicParsing="false" onAction="#onClickDeleteUser" prefHeight="45.0" prefWidth="160.0" text="Delete" textAlignment="CENTER" wrapText="true">
+                  <font>
+                      <Font name="Geeza Pro Regular" size="16.0" />
+                  </font>
+                  <cursor>
+                      <Cursor fx:constant="HAND" />
+                  </cursor>
+               <styleClass>
+                  <String fx:value="red-button" />
+                  <String fx:value="shadow" />
+               </styleClass>
+              </Button>
+          </children>
+          <padding>
+              <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+          </padding>
+         <opaqueInsets>
             <Insets />
-         </HBox.margin>
-          </Label>
-        <Label fx:id="txtUserRole" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="194.0" text="&lt;Role&gt;" textAlignment="CENTER">
-            <font>
-                <Font name="Geeza Pro Regular" size="16.0" />
-            </font>
-            <HBox.margin>
-                <Insets left="30.0" right="100.0" />
-            </HBox.margin>
-        </Label>
-        <Button layoutX="235.0" layoutY="24.0" mnemonicParsing="false" onAction="#onClickEditUser" prefHeight="45.0" prefWidth="160.0" text="Edit " textAlignment="CENTER" wrapText="true">
-            <font>
-                <Font name="Geeza Pro Regular" size="16.0" />
-            </font>
-            <HBox.margin>
-                <Insets right="20.0" />
-            </HBox.margin>
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor>
-         <styleClass>
-            <String fx:value="green-button" />
-            <String fx:value="shadow" />
-         </styleClass>
-        </Button>
-        <Button layoutX="315.0" layoutY="24.0" mnemonicParsing="false" onAction="#onClickDeleteUser" prefHeight="45.0" prefWidth="160.0" text="Delete" textAlignment="CENTER" wrapText="true">
-            <font>
-                <Font name="Geeza Pro Regular" size="16.0" />
-            </font>
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor>
-         <styleClass>
-            <String fx:value="red-button" />
-            <String fx:value="shadow" />
-         </styleClass>
-        </Button>
-    </children>
-    <padding>
-        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-    </padding>
-   <opaqueInsets>
-      <Insets />
-   </opaqueInsets>
-   <styleClass>
-      <String fx:value="button" />
-      <String fx:value="bgc" />
-      <String fx:value="shadow" />
-   </styleClass>
-</HBox>
+         </opaqueInsets>
+      </HBox>
+      <Line endX="839.2929077148438" endY="0.2928932309150696" startX="-100.0" />
+   </children>
+</VBox>

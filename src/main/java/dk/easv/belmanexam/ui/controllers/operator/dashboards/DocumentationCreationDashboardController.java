@@ -1,5 +1,6 @@
 package dk.easv.belmanexam.ui.controllers.operator.dashboards;
 
+import com.gluonhq.attach.pictures.PicturesService;
 import dk.easv.belmanexam.model.PhotoDocumentation;
 import dk.easv.belmanexam.services.interfaces.PhotoDocumentationManagementService;
 import dk.easv.belmanexam.exceptions.PhotoException;
@@ -13,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.TouchEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.FileChooser;
 import javafx.util.Pair;
@@ -22,6 +24,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 public class DocumentationCreationDashboardController {
 
@@ -29,6 +32,7 @@ public class DocumentationCreationDashboardController {
     private OrderListComponent parentController;
     private PhotoDocumentationManagementService photoDocumentationManagementService;
     private String orderNumber;
+
     @FXML
     private TextField textFieldOrderNumber;
 
@@ -36,15 +40,16 @@ public class DocumentationCreationDashboardController {
     private FlowPane flowPaneImageContainer;
 
     @FXML
-    private void uploadPhotoViaCloud() throws PhotoException {
+    public void uploadPhotoViaCloud() throws PhotoException {
         flowPaneImageContainer.getChildren().clear();
         String orderNumber = textFieldOrderNumber.getText();
         List<Image> photos = photoDocumentationManagementService.getAllImagesByOrderNumber(orderNumber);
         photos.forEach(this::addPhoto);
     }
 
+
     @FXML
-    private void uploadPhotoFromDevice() throws PhotoException {
+    public void uploadPhotoFromDevice() throws PhotoException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select Image File");
 
@@ -81,7 +86,7 @@ public class DocumentationCreationDashboardController {
     }
 
     @FXML
-    private void onClickSubmitDocumentation(){
+    public void onClickSubmitDocumentation(){
         PhotoDocumentation photoDocumentation = new PhotoDocumentation();
         photoDocumentation.setStatus(Status.PENDING);
         photoDocumentation.setOrderNumber(orderNumber);
@@ -103,8 +108,8 @@ public class DocumentationCreationDashboardController {
     }
 
     public void setDetails(String orderNumber, OrderListComponent parentController) {
-        flowPaneImageContainer.getChildren().clear();
-        photos.clear();
+//        flowPaneImageContainer.getChildren().clear();
+//        photos.clear();
         this.orderNumber = orderNumber;
         textFieldOrderNumber.setText(orderNumber);
         this.parentController = parentController;
@@ -112,5 +117,18 @@ public class DocumentationCreationDashboardController {
 
     public void setServices(PhotoDocumentationManagementService photoDocumentationManagementService) {
         this.photoDocumentationManagementService = photoDocumentationManagementService;
+    }
+
+
+
+    public void onTouchAddPhoto(TouchEvent touchEvent)
+    {
+        System.out.println("touched");
+        Optional<PicturesService> picturesService = PicturesService.create();
+        if(picturesService.isPresent()){
+            Optional<File> picture = picturesService.get().getImageFile();
+        }else{
+            System.out.println("Not supported operation");
+        }
     }
 }

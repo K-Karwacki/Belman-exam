@@ -133,4 +133,10 @@ public class UserRepositoryImpl implements UserRepository {
             throw new RuntimeException("Error updating user: " + e.getMessage(), e);
         }
     }
+
+    @Override public User findByEmail(String email)
+    {
+        return new User();
+    }
+
 }

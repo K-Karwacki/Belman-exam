@@ -1,6 +1,9 @@
 package dk.easv.belmanexam.ui.controllers.main;
 
 import dk.easv.belmanexam.Main;
+import dk.easv.belmanexam.auth.AuthService;
+import dk.easv.belmanexam.auth.UserSession;
+import dk.easv.belmanexam.services.utils.RoleType;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
 import javafx.event.ActionEvent;
@@ -13,6 +16,8 @@ import javafx.scene.image.ImageView;
 import java.util.Objects;
 
 public class LoginViewController {
+    private AuthService authService;
+    private UserSession userSession;
     @FXML
     private TextField textFieldPassword;
     @FXML
@@ -28,15 +33,20 @@ public class LoginViewController {
 
     private final ViewManager viewManager = ViewManager.INSTANCE;
     public void onClickLogin(ActionEvent actionEvent) {
-        if(textFieldEmail.getText().equals("qa")){
-            goToQAPage();
+        if(authService.authenticateWithPassword(textFieldEmail.getText(), textFieldPassword.getText())){
+            switch (userSession.getLoggedUser().getRole()){
+                
+            }
         }
-        else if(textFieldEmail.getText().equals("admin")){
-            goToAdminPage();
-        }
-        else if(textFieldEmail.getText().equals("operator")){
-            goToOperatorPage();
-        }
+//        if(textFieldEmail.getText().equals("qa")){
+//            goToQAPage();
+//        }
+//        else if(textFieldEmail.getText().equals("admin")){
+//            goToAdminPage();
+//        }
+//        else if(textFieldEmail.getText().equals("operator")){
+//            goToOperatorPage();
+//        }
     }
     private void goToOperatorPage(){
         viewManager.showStage(FXMLPath.OPERATOR_VIEW, "BelSign", true);
@@ -67,5 +77,9 @@ public class LoginViewController {
             imgEyeIcon.setImage(VISIBLE_ICON);
             isPasswordVisible = false;
         }
+    }
+
+    public void setServices(AuthService authService){
+        this.authService = authService;
     }
 }

@@ -1,0 +1,31 @@
+package dk.easv.belmanexam.auth;
+
+import dk.easv.belmanexam.model.User;
+import dk.easv.belmanexam.repositories.interfaces.UserRepository;
+import dk.easv.belmanexam.services.factories.RepositoryService;
+import dk.easv.belmanexam.services.interfaces.UserManagementService;
+
+public class AuthService
+{
+  private final UserRepository userRepository;
+
+  public AuthService(RepositoryService repositoryService){
+    this.userRepository = repositoryService.getRepository(UserRepository.class);
+  }
+
+  private User findUserWithEmail(String email){
+    return userRepository.findByEmail(email);
+  }
+
+  public boolean authenticateWithPassword(String email, String password){
+    User user = findUserWithEmail(email);
+    if(findUserWithEmail(email) == null){
+      return false;
+    }
+    if(password == "javaiscool"){
+        UserSession.INSTANCE.setLoggedUser(user);
+        return true;
+    }
+    return false;
+  }
+}

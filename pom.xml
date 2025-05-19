@@ -77,12 +77,35 @@
         </dependency>
 
 
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/androidx.legacy/legacy-support-v4 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>androidx.legacy</groupId>-->
+<!--            <artifactId>legacy-support-v4</artifactId>-->
+<!--            <version>1.0.0</version>-->
+<!--            <scope>runtime</scope>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; AndroidX Fragment &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>androidx.fragment</groupId>-->
+<!--            <artifactId>fragment</artifactId>-->
+<!--            <version>1.6.2</version>-->
+<!--            <type>aar</type>-->
+<!--        </dependency>-->
+
+
 <!--        Gluon-->
         <dependency>
             <groupId>com.gluonhq.attach</groupId>
             <artifactId>pictures</artifactId>
             <version>${attach.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.gluonhq/charm-down-core-android -->
+<!--        <dependency>-->
+<!--            <groupId>com.gluonhq</groupId>-->
+<!--            <artifactId>charm-down-core-android</artifactId>-->
+<!--            <version>3.8.6</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>com.gluonhq</groupId>
             <artifactId>charm-cloudlink-client</artifactId>
@@ -229,9 +252,6 @@
                         <bundleName></bundleName>
                         <bundleVersion>1.0</bundleVersion>
                         <bundleShortVersion>1.0</bundleShortVersion>
-                        <!--suppress UnresolvedMavenProperty -->
-                        <providedSigningIdentity>${env.IOS_SIGN_IDENTITY}</providedSigningIdentity>
-                        <providedProvisioningProfile></providedProvisioningProfile>
                         <skipSigning>false</skipSigning>
                         <!-- iOS Simulator -->
                         <simulatorDevice>${simulator.device}</simulatorDevice>
@@ -266,14 +286,33 @@
             <id>android</id>
             <properties>
                 <gluonfx.target>android</gluonfx.target>
+                <android.sdk.dir>~/android_sdk</android.sdk.dir>
+                <android.ndk.dir>~/android_sdk/ndk/25.2.9519653</android.ndk.dir>
             </properties>
+
         </profile>
     </profiles>
 
     <repositories>
         <repository>
+            <id>google</id>
+            <name>Google Maven</name>
+            <url>https://maven.google.com</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <layout>default</layout>
+        </repository>
+        <repository>
             <id>gluon-releases</id>
             <url>https://nexus.gluonhq.com/nexus/content/repositories/releases/</url>
         </repository>
     </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>google</id>
+            <url>https://maven.google.com</url>
+        </pluginRepository>
+    </pluginRepositories>
 </project>

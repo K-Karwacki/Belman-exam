@@ -1,30 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="105.0" prefWidth="1280.0" styleClass="bgc" stylesheets="@../../styles/header.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.components.HeaderComponentController">
+<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="105.0" prefWidth="1280.0" styleClass="bgc" stylesheets="@../../styles/header.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.components.HeaderComponentController">
    <children>
-      <ImageView fitHeight="70.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true" styleClass="logo">
-         <image>
-            <Image url="@../../images/belman-logo.png" />
-         </image>
+      <Label fx:id="usernameLabel" text="Jake (#123233)">
+         <font>
+            <Font name="Helvetica" size="37.0" />
+         </font>
          <HBox.margin>
-            <Insets left="65.0" />
+            <Insets left="66.0" />
          </HBox.margin>
-      </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="844.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../images/bell-icon.png" />
-         </image>
-         <HBox.margin>
-            <Insets left="814.0" />
-         </HBox.margin>
-      </ImageView>
+      </Label>
       <HBox alignment="CENTER" maxHeight="55.0" maxWidth="180.0" onMouseClicked="#onClickLogout" prefHeight="55.0" prefWidth="150.0" styleClass="logout-button">
          <children>
             <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
@@ -34,7 +28,7 @@
             </ImageView>
          </children>
          <HBox.margin>
-            <Insets left="65.0" />
+            <Insets left="730.0" />
          </HBox.margin>
          <effect>
             <DropShadow offsetX="-3.0" offsetY="5.0">

@@ -12,11 +12,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1280.0" styleClass="bgc" stylesheets="@../../../styles/main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.operator.dashboards.DocumentationCreationDashboardController">
+<AnchorPane prefHeight="500.0" styleClass="bgc" stylesheets="@../../../styles/main.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.operator.dashboards.DocumentationCreationDashboardController">
    <children>
       <Label alignment="CENTER_RIGHT" layoutY="40.0" prefHeight="49.0" prefWidth="329.0" text="New documentation">
          <padding>
@@ -30,59 +29,86 @@
             <String fx:value="left-side-header" />
          </styleClass>
       </Label>
-      <ScrollPane hbarPolicy="NEVER" layoutX="100.0" layoutY="157.0" prefHeight="398.0" prefWidth="600.0" style="-fx-background-color: #ccc; -fx-background: transparent;">
-         <content>
-            <FlowPane fx:id="flowPaneImageContainer" alignment="CENTER" hgap="50.0" prefHeight="200.0" prefWidth="582.0" styleClass="radius" vgap="25.0">
-               <padding>
-                  <Insets top="25.0" />
-               </padding>
-            </FlowPane>
-         </content>
+      <ScrollPane hbarPolicy="NEVER" layoutX="100.0" layoutY="157.0" prefHeight="326.0" prefWidth="673.0" style="-fx-background-color: #ccc; -fx-background: transparent;">
          <styleClass>
             <String fx:value="radius" />
             <String fx:value="photos-container" />
          </styleClass>
+         <padding>
+            <Insets top="33.0" />
+         </padding>
+         <content>
+            <FlowPane fx:id="flowPaneImageContainer" prefWidth="658.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0">
+                     <children>
+                        <Label text="Label" />
+                        <ImageView fitHeight="170.0" fitWidth="300.0" onTouchPressed="#onTouchAddPhoto" opacity="0.42" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/add-icon--endless-icons-21.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="300.0">
+                     <children>
+                        <Label text="Label" />
+                        <ImageView fitHeight="170.0" fitWidth="300.0" onTouchPressed="#onTouchAddPhoto" opacity="0.42" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/add-icon--endless-icons-21.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="310.0" layoutY="10.0" prefHeight="200.0" prefWidth="300.0">
+                     <children>
+                        <Label text="Label" />
+                        <ImageView fitHeight="170.0" fitWidth="300.0" onTouchPressed="#onTouchAddPhoto" opacity="0.42" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/add-icon--endless-icons-21.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="10.0" layoutY="210.0" prefHeight="200.0" prefWidth="300.0">
+                     <children>
+                        <Label text="Label" />
+                        <ImageView fitHeight="170.0" fitWidth="300.0" onTouchPressed="#onTouchAddPhoto" opacity="0.42" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/add-icon--endless-icons-21.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="310.0" layoutY="210.0" prefHeight="200.0" prefWidth="300.0">
+                     <children>
+                        <Label text="Label" />
+                        <ImageView fitHeight="170.0" fitWidth="300.0" onTouchPressed="#onTouchAddPhoto" opacity="0.42" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/add-icon--endless-icons-21.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+               </children>
+            </FlowPane>
+         </content>
       </ScrollPane>
-      <Button layoutX="800.0" layoutY="490.0" minHeight="65.0" minWidth="390.0" mnemonicParsing="false" onAction="#onClickSubmitDocumentation" styleClass="header-title" text="Submit">
+      <Button layoutX="826.0" layoutY="354.0" minHeight="65.0" minWidth="380.0" mnemonicParsing="false" onAction="#onClickSubmitDocumentation" styleClass="header-title" text="Submit">
          <effect>
             <DropShadow height="3.0" radius="1.5" width="5.0" />
          </effect>
       </Button>
-      <VBox layoutX="810.0" layoutY="162.0" prefHeight="86.0" prefWidth="380.0" style="-fx-border-color: #777; -fx-border-radius: 14; -fx-border-width: 2;">
+      <VBox layoutX="825.0" layoutY="233.0" prefHeight="86.0" prefWidth="380.0" style="-fx-border-color: #777; -fx-border-radius: 14; -fx-border-width: 2;">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="421.0" style="-fx-background-radius: 13 13 0 0;" styleClass="light-blue-label" text="Order number" />
-            <TextField fx:id="textFieldOrderNumber" alignment="CENTER" disable="true" prefHeight="55.0" prefWidth="240.0" promptText="Enter order number" styleClass="order-number-label">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="380.0" style="-fx-background-radius: 13 13 0 0;" styleClass="light-blue-label" text="Order number" VBox.vgrow="NEVER" />
+            <TextField fx:id="textFieldOrderNumber" alignment="CENTER" disable="true" prefHeight="55.0" promptText="Enter order number" styleClass="order-number-label">
                <font>
                   <Font size="20.0" />
                </font>
             </TextField>
          </children>
       </VBox>
-      <HBox alignment="CENTER" layoutX="807.0" layoutY="319.0" prefHeight="110.0" prefWidth="380.0" spacing="80.0">
-         <children>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#uploadPhotoFromDevice" prefHeight="110.0" prefWidth="150.0" style="-fx-font-size: 18;" text="Upload photo from device" textAlignment="CENTER" wrapText="true">
-               <effect>
-                  <DropShadow height="9.0" radius="4.79" width="12.16" />
-               </effect>
-               <font>
-                  <Font size="19.0" />
-               </font>
-               <styleClass>
-                  <String fx:value="green-button" />
-                  <String fx:value="add-photo-button" />
-               </styleClass>
-            </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#uploadPhotoViaCloud" prefHeight="110.0" prefWidth="150.0" style="-fx-font-size: 18;" text="Download photos from Cloud" textAlignment="CENTER" wrapText="true">
-               <effect>
-                  <DropShadow height="9.0" radius="4.79" width="12.16" />
-               </effect>
-               <styleClass>
-                  <String fx:value="green-button" />
-                  <String fx:value="add-photo-button" />
-               </styleClass>
-            </Button>
-         </children>
-      </HBox>
       <HBox alignment="CENTER_LEFT" layoutX="1080.0" layoutY="40.0" minHeight="49.0" minWidth="132.0" onMouseClicked="#showParentView" prefHeight="50.0" prefWidth="132.0">
          <children>
             <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
@@ -102,6 +128,5 @@
             <String fx:value="previous-button" />
          </styleClass>
       </HBox>
-      <Pane layoutX="108.0" layoutY="31.0" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

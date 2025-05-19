@@ -122,6 +122,10 @@
   ]
 },
 {
+  "name":"com.sun.prism.shader.DrawRoundRect_Color_Loader",
+  "methods":[{"name":"loadShader","parameterTypes":["com.sun.prism.ps.ShaderFactory","java.io.InputStream"] }]
+},
+{
   "name":"com.sun.prism.shader.FillPgram_Color_Loader",
   "methods":[{"name":"loadShader","parameterTypes":["com.sun.prism.ps.ShaderFactory","java.io.InputStream"] }]
 },
@@ -238,13 +242,19 @@
   "name":"dk.easv.belmanexam.ui.controllers.admin.dashboards.UserCreatorController",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }]
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"initialize","parameterTypes":[] }
+  ]
 },
 {
   "name":"dk.easv.belmanexam.ui.controllers.admin.dashboards.UserEditorController",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }]
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"initialize","parameterTypes":[] }
+  ]
 },
 {
   "name":"dk.easv.belmanexam.ui.controllers.admin.dashboards.UsersDashboardController",
@@ -252,6 +262,7 @@
   "queryAllDeclaredMethods":true,
   "methods":[
     {"name":"<init>","parameterTypes":[] }, 
+    {"name":"initialize","parameterTypes":[] }, 
     {"name":"openUserEditor","parameterTypes":[] }, 
     {"name":"switchToNewUser","parameterTypes":[] }
   ]
@@ -286,6 +297,12 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "name":"dk.easv.belmanexam.ui.controllers.components.UserCardComponentController",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "name":"dk.easv.belmanexam.ui.controllers.dashboards.admin.UsersDashboardController",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true,
@@ -297,7 +314,8 @@
   "queryAllDeclaredMethods":true,
   "methods":[
     {"name":"<init>","parameterTypes":[] }, 
-    {"name":"showParentView","parameterTypes":[] }
+    {"name":"showParentView","parameterTypes":[] }, 
+    {"name":"uploadPhotoFromDevice","parameterTypes":[] }
   ]
 },
 {
@@ -360,7 +378,8 @@
   "queryAllDeclaredMethods":true,
   "methods":[
     {"name":"<init>","parameterTypes":[] }, 
-    {"name":"showParentView","parameterTypes":[] }
+    {"name":"showParentView","parameterTypes":[] }, 
+    {"name":"uploadPhotoFromDevice","parameterTypes":[] }
   ]
 },
 {
@@ -377,6 +396,12 @@
   "methods":[{"name":"showEnterOrderDashboard","parameterTypes":[] }]
 },
 {
+  "name":"dk.easv.belmanexam.ui.controllers.qa.DocumentationListComponent",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "name":"dk.easv.belmanexam.ui.controllers.qa.dashboards.ApproveDocumentationDashboardController",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true,
@@ -384,6 +409,17 @@
 },
 {
   "name":"dk.easv.belmanexam.ui.controllers.qa.dashboards.DocumentationDashboardController",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"onClickShowApprovedDocumentation","parameterTypes":[] }, 
+    {"name":"onClickShowPendingDocumentation","parameterTypes":[] }, 
+    {"name":"onClickShowRejectedDocumentation","parameterTypes":[] }
+  ]
+},
+{
+  "name":"dk.easv.belmanexam.ui.controllers.qa.dashboards.DocumentationPreviewController",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
@@ -590,7 +626,10 @@
   "name":"javafx.geometry.Insets",
   "queryAllPublicMethods":true,
   "queryAllPublicConstructors":true,
-  "methods":[{"name":"<init>","parameterTypes":["double","double","double","double"] }]
+  "methods":[
+    {"name":"<init>","parameterTypes":["double"] }, 
+    {"name":"<init>","parameterTypes":["double","double","double","double"] }
+  ]
 },
 {
   "name":"javafx.geometry.Orientation",
@@ -629,6 +668,8 @@
     {"name":"setLayoutX","parameterTypes":["double"] }, 
     {"name":"setLayoutY","parameterTypes":["double"] }, 
     {"name":"setOnMouseClicked","parameterTypes":["javafx.event.EventHandler"] }, 
+    {"name":"setOnTouchPressed","parameterTypes":["javafx.event.EventHandler"] }, 
+    {"name":"setOpacity","parameterTypes":["double"] }, 
     {"name":"setPickOnBounds","parameterTypes":["boolean"] }, 
     {"name":"setStyle","parameterTypes":["java.lang.String"] }
   ]
@@ -845,6 +886,10 @@
   ]
 },
 {
+  "name":"javafx.scene.layout.Priority",
+  "methods":[{"name":"valueOf","parameterTypes":["java.lang.String"] }]
+},
+{
   "name":"javafx.scene.layout.Region",
   "queryAllDeclaredMethods":true,
   "methods":[
@@ -852,6 +897,7 @@
     {"name":"setMaxWidth","parameterTypes":["double"] }, 
     {"name":"setMinHeight","parameterTypes":["double"] }, 
     {"name":"setMinWidth","parameterTypes":["double"] }, 
+    {"name":"setOpaqueInsets","parameterTypes":["javafx.geometry.Insets"] }, 
     {"name":"setPadding","parameterTypes":["javafx.geometry.Insets"] }, 
     {"name":"setPrefHeight","parameterTypes":["double"] }, 
     {"name":"setPrefWidth","parameterTypes":["double"] }
@@ -871,8 +917,10 @@
     {"name":"<init>","parameterTypes":[] }, 
     {"name":"setAlignment","parameterTypes":["javafx.geometry.Pos"] }, 
     {"name":"setMargin","parameterTypes":["javafx.scene.Node","javafx.geometry.Insets"] }, 
-    {"name":"setSpacing","parameterTypes":["double"] }
-  ]
+    {"name":"setSpacing","parameterTypes":["double"] }, 
+    {"name":"setVgrow","parameterTypes":["javafx.scene.Node","javafx.scene.layout.Priority"] }
+  ],
+  "queriedMethods":[{"name":"getVgrow","parameterTypes":["javafx.scene.Node"] }]
 },
 {
   "name":"javafx.scene.paint.Color",

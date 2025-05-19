@@ -57,6 +57,7 @@ module dk.easv.belmanexam{
   exports dk.easv.belmanexam.repositories.utils;
   exports dk.easv.belmanexam.repositories.utils.mappers;
   exports dk.easv.belmanexam.ui.models;
+  exports dk.easv.belmanexam.auth;
 
 
 }

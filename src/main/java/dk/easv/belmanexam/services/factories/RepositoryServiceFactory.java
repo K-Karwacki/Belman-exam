@@ -24,7 +24,6 @@ public class RepositoryServiceFactory
   };
 
   public void loadRepositories(){
-    // @ToDo -> Add UserRepository later
     repositoryMap.putIfAbsent(OrderRepository.class, new OrderRepositoryImpl());
     repositoryMap.putIfAbsent(PhotoDocumentationRepository.class, new PhotoDocumentationRepositoryImpl());
     repositoryMap.putIfAbsent(UserRepository.class, new UserRepositoryImpl());

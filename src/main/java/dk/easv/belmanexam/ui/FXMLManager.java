@@ -41,7 +41,6 @@ public enum FXMLManager
         if(!loadedFXMLs.containsKey(fxmlPath)){
             System.out.println("fxml not loaded");
             return loadFXML(fxmlPath);
-//      throw new RuntimeException("FXML wasn't loaded: " + fxmlPath);
         }
 
         Pair<Parent, Object> fxmlParentControllerPair = loadedFXMLs.get(fxmlPath);
