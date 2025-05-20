@@ -2,6 +2,7 @@ package dk.easv.belmanexam.ui.controllers.admin.dashboards;
 
 import dk.easv.belmanexam.model.UserModel;
 import dk.easv.belmanexam.services.interfaces.UserManagementService;
+import dk.easv.belmanexam.services.utils.RoleType;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
 import javafx.fxml.FXML;
@@ -19,7 +20,7 @@ public class UserCreatorController {
     private TextField firstNameField, lastNameField, emailField;
 
     @FXML
-    private ComboBox<String> roleComboBox;
+    private ComboBox<RoleType> roleComboBox;
 
     @FXML
     private PasswordField passwordField;
@@ -27,11 +28,11 @@ public class UserCreatorController {
 
     @FXML
     private void initialize() {
-        roleComboBox.getItems().addAll("Operator", "Quality Assurance", "Admin");
+        roleComboBox.getItems().addAll(RoleType.ADMIN, RoleType.OPERATOR, RoleType.QA);
     }
 
     public void submitButton() {
-        UserModel createdUser = userManagementService.createUser(firstNameField.getText(), lastNameField.getText(), roleComboBox.getSelectionModel().getSelectedItem(), emailField.getText(), passwordField.getText());
+        UserModel createdUser = userManagementService.createUser(firstNameField.getText(), lastNameField.getText(), roleComboBox.getSelectionModel().getSelectedItem().name(), emailField.getText(), passwordField.getText());
         if(createdUser != null) {
             clearFields();
             ViewManager.INSTANCE.hidePopup(FXMLPath.USER_CREATOR_POPUP);

@@ -7,6 +7,10 @@ public enum UserSession
   INSTANCE;
   private User loggedUser;
 
+  UserSession(){
+    loggedUser = null;
+  }
+
   public void setLoggedUser(User loggedUser)
   {
     this.loggedUser = loggedUser;

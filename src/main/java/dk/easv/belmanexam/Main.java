@@ -2,6 +2,8 @@ package dk.easv.belmanexam;
 
 import com.gluonhq.attach.pictures.PicturesService;
 import dk.easv.belmanexam.auth.AuthService;
+import dk.easv.belmanexam.auth.UserSession;
+import dk.easv.belmanexam.model.User;
 import dk.easv.belmanexam.services.factories.RepositoryService;
 import dk.easv.belmanexam.services.factories.RepositoryServiceFactory;
 import dk.easv.belmanexam.services.implementations.OrderManagementServiceImpl;
@@ -35,6 +37,7 @@ import java.util.Optional;
 
 public class Main extends Application
 {
+  private final UserSession userSession = UserSession.INSTANCE;
   private final ViewManager viewManager = ViewManager.INSTANCE;
   private final FXMLManager fxmlManager = FXMLManager.INSTANCE;
   private final StageManager stageManager = new StageManager();

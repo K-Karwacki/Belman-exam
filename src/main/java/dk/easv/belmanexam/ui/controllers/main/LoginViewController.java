@@ -13,11 +13,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.util.Locale;
 import java.util.Objects;
 
 public class LoginViewController {
     private AuthService authService;
-    private UserSession userSession;
+    private UserSession userSession = UserSession.INSTANCE;
     @FXML
     private TextField textFieldPassword;
     @FXML
@@ -54,7 +55,8 @@ public class LoginViewController {
         String password = isPasswordVisible ? textFieldPassword.getText() : passwordFieldPassword.getText();
 
         if (authService.authenticateWithPassword(email, password)) {
-            RoleType role = RoleType.valueOf(userSession.getLoggedUser().getRole());
+            RoleType role = RoleType.fromString(userSession.getLoggedUser().getRole());
+            System.out.println(userSession.getLoggedUser().getRole());
             switch(role){
                 case QA -> goToQAPage();
                 case ADMIN -> goToAdminPage();

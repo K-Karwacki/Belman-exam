@@ -2,8 +2,8 @@ package dk.easv.belmanexam.services.utils;
 
 public enum RoleType
 {
-    ADMIN("ADMINISTRATOR"),
-    QA("QUALITY_ASSURANCE"),
+    ADMIN("ADMIN"),
+    QA("QA"),
     OPERATOR("OPERATOR");
 
 

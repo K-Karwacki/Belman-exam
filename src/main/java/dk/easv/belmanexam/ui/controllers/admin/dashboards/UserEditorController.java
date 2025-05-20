@@ -2,6 +2,7 @@ package dk.easv.belmanexam.ui.controllers.admin.dashboards;
 
 import dk.easv.belmanexam.model.UserModel;
 import dk.easv.belmanexam.services.interfaces.UserManagementService;
+import dk.easv.belmanexam.services.utils.RoleType;
 import dk.easv.belmanexam.ui.ViewManager;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -15,7 +16,7 @@ public class UserEditorController {
     protected UserManagementService userManagementService;
 
     @FXML
-    private ComboBox<String> roleComboBox;
+    private ComboBox<RoleType> roleComboBox;
 
     @FXML
     private TextField firstNameField;
@@ -29,7 +30,7 @@ public class UserEditorController {
 
     @FXML
     private void initialize() {
-        roleComboBox.getItems().addAll("Operator", "Quality Assurance", "Admin");
+        roleComboBox.getItems().addAll(RoleType.ADMIN, RoleType.OPERATOR, RoleType.QA);
     }
     private UserModel userModel;
 
@@ -42,7 +43,7 @@ public class UserEditorController {
         this.firstNameField.setText(userModel.getFirstName());
         this.lastNameField.setText(userModel.getLastName());
         this.emailField.setText(userModel.getEmail());
-        this.roleComboBox.getSelectionModel().select(userModel.getRole());
+        this.roleComboBox.getSelectionModel().select(RoleType.fromString(userModel.getRole()));
     }
 
     public void setServices(UserManagementService userManagementService) {
@@ -55,7 +56,7 @@ public class UserEditorController {
         userModel.setFirstName(firstNameField.getText());
         userModel.setLastName(lastNameField.getText());
         userModel.setEmail(emailField.getText());
-        String selectedRole = roleComboBox.getSelectionModel().getSelectedItem();
+        String selectedRole = roleComboBox.getSelectionModel().getSelectedItem().name();
         if (selectedRole != null) {
             userModel.setRole(selectedRole);
 
