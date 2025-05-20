@@ -3,7 +3,6 @@ package dk.easv.belmanexam;
 import com.gluonhq.attach.pictures.PicturesService;
 import dk.easv.belmanexam.auth.AuthService;
 import dk.easv.belmanexam.auth.UserSession;
-import dk.easv.belmanexam.model.User;
 import dk.easv.belmanexam.services.factories.RepositoryService;
 import dk.easv.belmanexam.services.factories.RepositoryServiceFactory;
 import dk.easv.belmanexam.services.implementations.OrderManagementServiceImpl;
@@ -26,7 +25,6 @@ import dk.easv.belmanexam.ui.controllers.operator.dashboards.OrdersDashboardCont
 import dk.easv.belmanexam.ui.controllers.qa.dashboards.ApproveDocumentationDashboardController;
 import dk.easv.belmanexam.ui.controllers.qa.dashboards.DocumentationDashboardController;
 import dk.easv.belmanexam.ui.controllers.qa.dashboards.DocumentationPreviewController;
-import dk.easv.belmanexam.utils.PasswordHasher;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -57,17 +55,15 @@ public class Main extends Application
 
   if(picturesService.isEmpty()){
     System.out.println("Service not available");
-  }else{
+  } else {
     System.out.println("Service on");
   }
 
-
-
-    Locale.setDefault(Locale.ENGLISH);
-    setControllersDependencies();
-    stageManager.setCurrentStage(primaryStage);
-    viewManager.setStageManager(stageManager);
-    viewManager.showStage(FXMLPath.LOGIN_VIEW, "Login", false);
+  Locale.setDefault(Locale.ENGLISH);
+  setControllersDependencies();
+  stageManager.setCurrentStage(primaryStage);
+  viewManager.setStageManager(stageManager);
+  viewManager.showStage(FXMLPath.LOGIN_VIEW, "Login", false);
   }
 
   private void setControllersDependencies(){

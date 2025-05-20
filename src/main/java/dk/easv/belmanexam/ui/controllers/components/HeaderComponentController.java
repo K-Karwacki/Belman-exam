@@ -5,9 +5,6 @@ import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
-
-import javax.swing.text.View;
 
 public class HeaderComponentController {
 

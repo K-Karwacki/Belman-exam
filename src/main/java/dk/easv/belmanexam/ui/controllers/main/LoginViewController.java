@@ -13,7 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.util.Locale;
 import java.util.Objects;
 
 public class LoginViewController {
@@ -34,22 +33,6 @@ public class LoginViewController {
 
     private final ViewManager viewManager = ViewManager.INSTANCE;
     public void onClickLogin(ActionEvent actionEvent) {
-//        if(authService.authenticateWithPassword(textFieldEmail.getText(), textFieldPassword.getText())){
-//            switch (userSession.getLoggedUser().getRole()){
-//
-//            }
-//        }
-
-
-//        if(textFieldEmail.getText().equals("qa")){
-//            goToQAPage();
-//        }
-//        else if(textFieldEmail.getText().equals("admin")){
-//            goToAdminPage();
-//        }
-//        else if(textFieldEmail.getText().equals("operator")){
-//            goToOperatorPage();
-//        }
 
         String email = textFieldEmail.getText();
         String password = isPasswordVisible ? textFieldPassword.getText() : passwordFieldPassword.getText();
@@ -67,6 +50,17 @@ public class LoginViewController {
         else {
             System.out.println("Invalid login");
         }
+
+        /** Test Purposes **/
+//        if(textFieldEmail.getText().equals("qa")){
+//            goToQAPage();
+//
+//        } else if(textFieldEmail.getText().equals("admin")){
+//            goToAdminPage();
+//
+//        } else if(textFieldEmail.getText().equals("operator")){
+//            goToOperatorPage();
+//        }
     }
 
     private void goToOperatorPage(){

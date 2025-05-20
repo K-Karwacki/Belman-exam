@@ -10,9 +10,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-import javax.swing.*;
-
-
 public class UserCreatorController {
     protected static UserManagementService userManagementService;
 
