@@ -14,7 +14,7 @@ public class HeaderComponentController {
     @FXML private Label usernameLabel;
 
     public void initialize(){
-//        usernameLabel.setText(UserSession.INSTANCE.getLoggedUser().getFirstName() + " " + UserSession.INSTANCE.getLoggedUser().getLastName() );
+        usernameLabel.setText(UserSession.INSTANCE.getLoggedUser().getFirstName() + " " + UserSession.INSTANCE.getLoggedUser().getLastName() );
 
     }
     @FXML
