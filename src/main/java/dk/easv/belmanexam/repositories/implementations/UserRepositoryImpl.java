@@ -25,6 +25,7 @@ public class UserRepositoryImpl implements UserRepository {
                 user.setLastName(rs.getString("last_name"));
                 user.setEmail(rs.getString("email"));
                 user.setRole(rs.getString("role"));
+                user.setPasswordHash(rs.getString("hashed_password"));
                 users.add(user);
             }
 
@@ -52,6 +53,7 @@ public class UserRepositoryImpl implements UserRepository {
                 user.setLastName(rs.getString("last_name"));
                 user.setEmail(rs.getString("email"));
                 user.setRole(rs.getString("role"));
+                user.setPasswordHash(rs.getString("hashed_password"));
                 return Optional.of(user);
             }
 
@@ -64,7 +66,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User add(User entity) {
-        String sql = "INSERT INTO [user] (first_name, last_name, email, role) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO [user] (first_name, last_name, email, role, hashed_password) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = new DBConnection().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -73,6 +75,7 @@ public class UserRepositoryImpl implements UserRepository {
             stmt.setString(2, entity.getLastName());
             stmt.setString(3, entity.getEmail());
             stmt.setString(4, entity.getRole());
+            stmt.setString(5, entity.getPasswordHash());
             int affectedRows = stmt.executeUpdate();
 
             if (affectedRows == 0) {
@@ -113,7 +116,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User update(User entity) {
-        String sql = "UPDATE [user] SET first_name = ?, last_name = ?, email = ?, role = ? WHERE id = ?";
+        String sql = "UPDATE [user] SET first_name = ?, last_name = ?, email = ?, role = ?, hashed_password = ? WHERE id = ?";
 
         try (Connection conn = new DBConnection().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -121,7 +124,8 @@ public class UserRepositoryImpl implements UserRepository {
             stmt.setString(2, entity.getLastName());
             stmt.setString(3, entity.getEmail());
             stmt.setString(4, entity.getRole());
-            stmt.setLong(5, entity.getId());
+            stmt.setString(5, entity.getPasswordHash());
+            stmt.setLong(6, entity.getId());
 
             int affectedRows = stmt.executeUpdate();
             if (affectedRows == 0) {
@@ -136,7 +140,28 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override public User findByEmail(String email)
     {
-        return new User();
+//        return new User();
+        String sql = "SELECT * FROM [user] WHERE email = ?";
+        try (Connection conn = new DBConnection().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                User user = new User();
+                user.setId(rs.getLong("id"));
+                user.setFirstName(rs.getString("first_name"));
+                user.setLastName(rs.getString("last_name"));
+                user.setEmail(rs.getString("email"));
+                user.setRole(rs.getString("role"));
+                user.setPasswordHash(rs.getString("hashed_password"));
+                return user;
+            }
+            return null;
+        }
+        catch (SQLException e) {
+            throw new RuntimeException("Error retrieving user by email: " + e.getMessage(), e);
+        }
     }
+
 
 }

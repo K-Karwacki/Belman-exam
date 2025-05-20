@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface UserManagementService {
 
     UserListModel getUserListModel();
-    UserModel createUser(String firstName, String lastName, String role, String email);
+    UserModel createUser(String firstName, String lastName, String role, String email, String rawPassword);
     boolean deleteUser(UserModel userModel);
     boolean updateUser(UserModel userModel);
     Optional<User> getUserByEmail(String email);

@@ -24,6 +24,7 @@ import dk.easv.belmanexam.ui.controllers.operator.dashboards.OrdersDashboardCont
 import dk.easv.belmanexam.ui.controllers.qa.dashboards.ApproveDocumentationDashboardController;
 import dk.easv.belmanexam.ui.controllers.qa.dashboards.DocumentationDashboardController;
 import dk.easv.belmanexam.ui.controllers.qa.dashboards.DocumentationPreviewController;
+import dk.easv.belmanexam.utils.PasswordHasher;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

@@ -16,16 +16,10 @@ public class UserCreatorController {
     protected static UserManagementService userManagementService;
 
     @FXML
-    private TextField firstNameField;
-
-    @FXML
-    private TextField lastNameField;
+    private TextField firstNameField, lastNameField, emailField;
 
     @FXML
     private ComboBox<String> roleComboBox;
-
-    @FXML
-    private TextField emailField;
 
     @FXML
     private PasswordField passwordField;
@@ -37,7 +31,7 @@ public class UserCreatorController {
     }
 
     public void submitButton() {
-        UserModel createdUser = userManagementService.createUser(firstNameField.getText(), lastNameField.getText(), roleComboBox.getSelectionModel().getSelectedItem(), emailField.getText());
+        UserModel createdUser = userManagementService.createUser(firstNameField.getText(), lastNameField.getText(), roleComboBox.getSelectionModel().getSelectedItem(), emailField.getText(), passwordField.getText());
         if(createdUser != null) {
             clearFields();
             ViewManager.INSTANCE.hidePopup(FXMLPath.USER_CREATOR_POPUP);

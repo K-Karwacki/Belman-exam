@@ -33,11 +33,13 @@ public class LoginViewController {
 
     private final ViewManager viewManager = ViewManager.INSTANCE;
     public void onClickLogin(ActionEvent actionEvent) {
-        if(authService.authenticateWithPassword(textFieldEmail.getText(), textFieldPassword.getText())){
-            switch (userSession.getLoggedUser().getRole()){
-                
-            }
-        }
+//        if(authService.authenticateWithPassword(textFieldEmail.getText(), textFieldPassword.getText())){
+//            switch (userSession.getLoggedUser().getRole()){
+//
+//            }
+//        }
+
+
 //        if(textFieldEmail.getText().equals("qa")){
 //            goToQAPage();
 //        }
@@ -47,7 +49,24 @@ public class LoginViewController {
 //        else if(textFieldEmail.getText().equals("operator")){
 //            goToOperatorPage();
 //        }
+
+        String email = textFieldEmail.getText();
+        String password = isPasswordVisible ? textFieldPassword.getText() : passwordFieldPassword.getText();
+
+        if (authService.authenticateWithPassword(email, password)) {
+            RoleType role = RoleType.valueOf(userSession.getLoggedUser().getRole());
+            switch(role){
+                case QA -> goToQAPage();
+                case ADMIN -> goToAdminPage();
+                case OPERATOR -> goToOperatorPage();
+                default -> throw new IllegalStateException("Unexpected value: " + role);
+            }
+        }
+        else {
+            System.out.println("Invalid login");
+        }
     }
+
     private void goToOperatorPage(){
         viewManager.showStage(FXMLPath.OPERATOR_VIEW, "BelSign", true);
     }

@@ -6,6 +6,8 @@ import dk.easv.belmanexam.model.UserModel;
 import dk.easv.belmanexam.repositories.interfaces.UserRepository;
 import dk.easv.belmanexam.services.factories.RepositoryService;
 import dk.easv.belmanexam.services.interfaces.UserManagementService;
+import dk.easv.belmanexam.utils.PasswordHasher;
+
 import java.util.*;
 
 public class UserManagementServiceImpl implements UserManagementService {
@@ -45,12 +47,13 @@ public class UserManagementServiceImpl implements UserManagementService {
             return userListModel;
         }
 
-    public UserModel createUser(String firstName, String lastName, String role, String email) {
+    public UserModel createUser(String firstName, String lastName, String role, String email, String rawPassword) {
         User userEntity = new User();
         userEntity.setFirstName(firstName);
         userEntity.setLastName(lastName);
         userEntity.setRole(role);
         userEntity.setEmail(email);
+        userEntity.setPasswordHash(PasswordHasher.hashPassword(rawPassword));
 
         User savedUser = userRepository.add(userEntity);
 

@@ -1,6 +1,8 @@
 package dk.easv.belmanexam.model;
 
 
+import javax.management.relation.Role;
+
 public class User {
 
     private long id;
@@ -8,6 +10,8 @@ public class User {
     private String lastName;
     private String role;
     private String email;
+    private String password;
+    private String passwordHash;
 
     // Default constructor
     public User() {
@@ -60,6 +64,22 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 
 

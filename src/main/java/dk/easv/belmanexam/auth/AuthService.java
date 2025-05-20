@@ -4,6 +4,7 @@ import dk.easv.belmanexam.model.User;
 import dk.easv.belmanexam.repositories.interfaces.UserRepository;
 import dk.easv.belmanexam.services.factories.RepositoryService;
 import dk.easv.belmanexam.services.interfaces.UserManagementService;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class AuthService
 {
@@ -19,12 +20,11 @@ public class AuthService
 
   public boolean authenticateWithPassword(String email, String password){
     User user = findUserWithEmail(email);
-    if(findUserWithEmail(email) == null){
-      return false;
-    }
-    if(password == "javaiscool"){
-        UserSession.INSTANCE.setLoggedUser(user);
-        return true;
+    if(user == null) return false;
+
+    if (BCrypt.checkpw(password, user.getPasswordHash())) {
+      UserSession.INSTANCE.setLoggedUser(user);
+      return true;
     }
     return false;
   }
