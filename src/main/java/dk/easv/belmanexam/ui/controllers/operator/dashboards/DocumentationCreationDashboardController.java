@@ -104,20 +104,13 @@ public class DocumentationCreationDashboardController {
         photoDocumentation.setOrderNumber(orderNumber);
         photoDocumentation.setDateTime(LocalDateTime.now());
         photoDocumentationManagementService.add(photoDocumentation);
-//        if(!photos.isEmpty()){
-//        photos.forEach(file -> {
-//            try {
-//                photoDocumentationManagementService.saveFileInFolder(file, orderNumber);
-//            } catch (PhotoException e) {
-//                throw new RuntimeException(e);
-//            }
-//        });}
         this.parentFolderId = photoDocumentationManagementService.createFolder(orderNumber);
         for(PhotoInputComponentController photoInputComponent: photoInputComponents) {
             File file = photoInputComponent.getFile();
             if(file != null) {
                 try {
                     String sideFolder = photoDocumentationManagementService.createFolderInFolder(photoInputComponent.getSide(), parentFolderId);
+                    System.out.println(sideFolder);
                     photoDocumentationManagementService.saveFileInFolder(file, sideFolder);
             } catch (PhotoException e) {
                 throw new RuntimeException(e);

@@ -246,15 +246,19 @@ public class GoogleDriveManager {
     public String createFolderInFolder(String folderName, String parentFolderId) throws PhotoException {
         try {
             Drive service = getDriveService();
-            String folderId = findFolderId(folderName);
+
+            // Search for the folder within the parent folder
+            FileList result = service.files().list()
+                    .setQ("name = '" + folderName.replace("'", "\\'") + "' and '" + parentFolderId + "' in parents and mimeType = 'application/vnd.google-apps.folder' and trashed = false")
+                    .setFields("files(id)")
+                    .execute();
+            List<File> folders = result.getFiles();
+            String folderId = (folders != null && !folders.isEmpty()) ? folders.get(0).getId() : null;
+
             if (folderId == null) {
                 File folderMetadata = new File();
                 folderMetadata.setName(folderName);
                 folderMetadata.setMimeType("application/vnd.google-apps.folder");
-
-                if (parentFolderId == null) {
-                    parentFolderId = createFolder(folderName);
-                }
                 folderMetadata.setParents(Collections.singletonList(parentFolderId));
 
                 File folder = service.files().create(folderMetadata)
