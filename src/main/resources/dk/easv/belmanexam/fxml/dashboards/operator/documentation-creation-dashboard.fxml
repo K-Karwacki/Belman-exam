@@ -35,10 +35,13 @@
             <String fx:value="photos-container" />
          </styleClass>
          <padding>
-            <Insets top="33.0" />
+            <Insets top="10.0" />
          </padding>
          <content>
-            <FlowPane fx:id="flowPaneImageContainer" prefWidth="658.0" />
+            <FlowPane fx:id="flowPaneImageContainer" alignment="TOP_CENTER" hgap="15.0" prefWidth="658.0" vgap="25.0">
+               <padding>
+                  <Insets left="15.0" />
+               </padding></FlowPane>
          </content>
       </ScrollPane>
       <Button layoutX="826.0" layoutY="354.0" minHeight="65.0" minWidth="380.0" mnemonicParsing="false" onAction="#onClickSubmitDocumentation" styleClass="header-title" text="Submit">
