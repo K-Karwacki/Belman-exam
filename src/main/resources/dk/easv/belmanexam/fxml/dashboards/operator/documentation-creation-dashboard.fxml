@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" styleClass="bgc" stylesheets="@../../../styles/main.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.operator.dashboards.DocumentationCreationDashboardController">
+<AnchorPane prefHeight="500.0" styleClass="bgc" stylesheets="@../../../styles/main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.operator.dashboards.DocumentationCreationDashboardController">
    <children>
       <Label alignment="CENTER_RIGHT" layoutY="40.0" prefHeight="49.0" prefWidth="329.0" text="New documentation">
          <padding>
@@ -38,60 +38,7 @@
             <Insets top="33.0" />
          </padding>
          <content>
-            <FlowPane fx:id="flowPaneImageContainer" prefWidth="658.0">
-               <children>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="300.0">
-                     <children>
-                        <Label text="Label" />
-                        <ImageView fitHeight="170.0" fitWidth="300.0" onTouchPressed="#onTouchAddPhoto" opacity="0.42" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../images/add-icon--endless-icons-21.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="300.0">
-                     <children>
-                        <Label text="Label" />
-                        <ImageView fitHeight="170.0" fitWidth="300.0" onTouchPressed="#onTouchAddPhoto" opacity="0.42" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../images/add-icon--endless-icons-21.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="310.0" layoutY="10.0" prefHeight="200.0" prefWidth="300.0">
-                     <children>
-                        <Label text="Label" />
-                        <ImageView fitHeight="170.0" fitWidth="300.0" onTouchPressed="#onTouchAddPhoto" opacity="0.42" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../images/add-icon--endless-icons-21.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="10.0" layoutY="210.0" prefHeight="200.0" prefWidth="300.0">
-                     <children>
-                        <Label text="Label" />
-                        <ImageView fitHeight="170.0" fitWidth="300.0" onTouchPressed="#onTouchAddPhoto" opacity="0.42" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../images/add-icon--endless-icons-21.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="310.0" layoutY="210.0" prefHeight="200.0" prefWidth="300.0">
-                     <children>
-                        <Label text="Label" />
-                        <ImageView fitHeight="170.0" fitWidth="300.0" onTouchPressed="#onTouchAddPhoto" opacity="0.42" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../images/add-icon--endless-icons-21.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </VBox>
-               </children>
-            </FlowPane>
+            <FlowPane fx:id="flowPaneImageContainer" prefWidth="658.0" />
          </content>
       </ScrollPane>
       <Button layoutX="826.0" layoutY="354.0" minHeight="65.0" minWidth="380.0" mnemonicParsing="false" onAction="#onClickSubmitDocumentation" styleClass="header-title" text="Submit">
