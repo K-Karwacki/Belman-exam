@@ -1,0 +1,13 @@
+.container{
+    -fx-background-radius: 16;
+    -fx-background-color: rgba(160,160,160,.3);
+}
+
+.label{
+    -fx-text-fill: #004B88;
+    -fx-font-weight:bold;
+}
+
+.icon-container:hover{
+    -fx-background-color: rgba(160,160,160,.4);;
+}

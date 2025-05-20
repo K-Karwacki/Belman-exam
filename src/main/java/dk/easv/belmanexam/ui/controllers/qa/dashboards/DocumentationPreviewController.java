@@ -23,6 +23,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.HashMap;
 import java.util.List;
 
 public class DocumentationPreviewController {
@@ -33,7 +34,7 @@ public class DocumentationPreviewController {
 
     private PdfFile pdfFile;
     private PhotoDocumentation photoDocumentation;
-    private List<Image> imageList;
+    private HashMap<String, Image> imageList;
     private String orderNumber;
     private String comment;
 
@@ -44,7 +45,7 @@ public class DocumentationPreviewController {
         ViewManager.INSTANCE.switchDashboard(FXMLPath.APPROVE_DOCUMENTATION_DASHBOARD, "BelSign");
     }
 
-    public void setDetails(List<Image> imageList, String orderNumber, String comment, PhotoDocumentation photoDocumentation) throws IOException {
+    public void setDetails(HashMap<String, Image> imageList, String orderNumber, String comment, PhotoDocumentation photoDocumentation) throws IOException {
         this.photoDocumentation = photoDocumentation;
         this.imageList = imageList;
         this.orderNumber = orderNumber;

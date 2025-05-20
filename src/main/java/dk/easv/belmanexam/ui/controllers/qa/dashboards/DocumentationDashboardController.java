@@ -6,7 +6,7 @@ import dk.easv.belmanexam.repositories.utils.GoogleDriveManager;
 import dk.easv.belmanexam.services.utils.Status;
 import dk.easv.belmanexam.ui.FXMLManager;
 import dk.easv.belmanexam.ui.FXMLPath;
-import dk.easv.belmanexam.ui.controllers.qa.DocumentationListComponent;
+import dk.easv.belmanexam.ui.controllers.components.DocumentationListComponent;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;

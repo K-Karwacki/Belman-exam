@@ -1,4 +1,4 @@
-package dk.easv.belmanexam.ui.controllers.operator;
+package dk.easv.belmanexam.ui.controllers.components;
 
 import dk.easv.belmanexam.services.utils.Status;
 import dk.easv.belmanexam.ui.FXMLManager;

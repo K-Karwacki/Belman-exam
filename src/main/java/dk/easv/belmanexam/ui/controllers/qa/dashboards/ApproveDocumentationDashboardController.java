@@ -8,6 +8,7 @@ import dk.easv.belmanexam.ui.FXMLManager;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
 
+import dk.easv.belmanexam.ui.controllers.components.PhotoOutputComponentController;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -27,7 +28,7 @@ public class ApproveDocumentationDashboardController {
 
     private PhotoDocumentationManagementService photoDocumentationManagementService;
     private PhotoDocumentation photoDocumentation;
-    private final Map<String, List<Image>> imageCache = new HashMap<>();
+    private final Map<String, HashMap<String, Image>> imageCache = new HashMap<>();
 
 
     @FXML
@@ -45,20 +46,6 @@ public class ApproveDocumentationDashboardController {
     @FXML
     private void showParentView() {
         ViewManager.INSTANCE.switchDashboard(FXMLPath.DOCUMENTATION_DASHBOARD, "BelSign");
-    }
-
-    @FXML
-    private void addPhoto(Image image) {
-        ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(150);
-        imageView.setFitWidth(200);
-        flowPaneImageContainer.getChildren().add(imageView);
-
-        imageView.setOnMouseClicked(event -> {
-            Pair<Parent, PhotoDashboardController> p = FXMLManager.INSTANCE.getFXML(FXMLPath.PHOTO_DASHBOARD);
-            p.getValue().setPhoto(image);
-            ViewManager.INSTANCE.switchDashboard(FXMLPath.PHOTO_DASHBOARD, "BelSign");
-        });
     }
 
     public void setDetails(PhotoDocumentation photoDocumentation) {
@@ -79,23 +66,30 @@ public class ApproveDocumentationDashboardController {
 
     public void loadImages(String orderNumber) throws PhotoException {
         Platform.runLater(() -> flowPaneImageContainer.getChildren().clear());
-        if(imageCache.containsKey(orderNumber)) {
-            List<Image> photos = imageCache.get(orderNumber);
-            photos.forEach(photo -> Platform.runLater(() -> addPhoto(photo)));
-        }
-        else{
-            List<Image> photos = photoDocumentationManagementService.getAllImagesByOrderNumber(orderNumber);
+
+        HashMap<String, Image> photos;
+        if (imageCache.containsKey(orderNumber)) {
+            photos = imageCache.get(orderNumber);
+        } else {
+            photos = photoDocumentationManagementService.getAllImagesByOrderNumber(orderNumber);
             imageCache.put(orderNumber, photos);
-            photos.forEach(photo -> Platform.runLater(() -> addPhoto(photo)));
         }
 
+        for (Map.Entry<String, Image> entry : photos.entrySet()) {
+            Platform.runLater(() -> {
+                Pair<Parent, PhotoOutputComponentController> p = FXMLManager.INSTANCE.loadFXML(FXMLPath.PHOTO_OUTPUT_COMPONENT);
+                p.getValue().setSide(entry.getKey());
+                p.getValue().setImage(entry.getValue());
+                flowPaneImageContainer.getChildren().add(p.getKey());
+            });
+        }
     }
 
     @FXML
     private void onClickApproveDocumentation() throws IOException {
         String orderNumber = textFieldOrderNumber.getText();
         String comment = textFieldComment.getText();
-        List<Image> images = imageCache.get(orderNumber);
+        HashMap<String, Image> images = imageCache.get(orderNumber);
 
         Pair<Parent, DocumentationPreviewController> p = FXMLManager.INSTANCE.getFXML(FXMLPath.DOCUMENTATION_PREVIEW);
         DocumentationPreviewController controller = p.getValue();

@@ -11,9 +11,7 @@ import dk.easv.belmanexam.ui.models.PhotoDocumentationListModel;
 import dk.easv.belmanexam.utils.ImageConverter;
 import javafx.scene.image.Image;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 public class PhotoDocumentationServiceImpl implements PhotoDocumentationManagementService {
     private final RepositoryService repositoryService;
@@ -28,12 +26,16 @@ public class PhotoDocumentationServiceImpl implements PhotoDocumentationManageme
         initialize();
     }
 
-    public List<Image> getAllImagesByOrderNumber(String orderNumber) throws PhotoException {
-        List<Image> images = new ArrayList<>();
-        List<File> cloudFiles = googleDriveManager.listFilesInFolder(orderNumber);
-        List<byte[]> filesData = googleDriveManager.downloadFilesContent(cloudFiles);
-        for(byte[] fileData: filesData){
-            images.add(ImageConverter.convertToImage(fileData));
+    public HashMap<String, Image> getAllImagesByOrderNumber(String orderNumber) throws PhotoException {
+        HashMap<String, Image> images = new HashMap<>();
+        HashMap<String, String> folders = googleDriveManager.listFoldersInFolder(orderNumber);
+        for(Map.Entry<String, String> folder : folders.entrySet()) {
+            File file = googleDriveManager.listFilesInFolder(folder.getKey()).get(0);
+            String side = folders.get(folder.getKey());
+            byte[] fileData = googleDriveManager.downloadFileContent(file.getId());
+            Image image = ImageConverter.convertToImage(fileData);
+            System.out.println(folder);
+            images.put(side, image);
         }
         return images;
     }
@@ -41,8 +43,14 @@ public class PhotoDocumentationServiceImpl implements PhotoDocumentationManageme
         return photoDocumentationRepository.getAll();
     }
 
-    public void saveFileInFolder(java.io.File file, String folder) throws PhotoException {
-        googleDriveManager.saveFileInFolder(file,folder);
+    public void saveFileInFolder(java.io.File file, String folderId) throws PhotoException {
+        googleDriveManager.saveFileInFolder(file,folderId);
+    }
+    public String createFolderInFolder(String folderName, String parentFolderId) throws PhotoException {
+        return googleDriveManager.createFolderInFolder(folderName, parentFolderId);
+    }
+    public String createFolder(String folderName) throws PhotoException {
+        return googleDriveManager.createFolder(folderName);
     }
 
 

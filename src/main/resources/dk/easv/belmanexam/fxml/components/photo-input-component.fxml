@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" prefHeight="187.0" prefWidth="200.0" styleClass="container" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.components.PhotoInputComponentController">
+   <children>
+      <Label fx:id="lblSide" alignment="CENTER" contentDisplay="CENTER" text="Bottom" textFill="#004b88">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+      </Label>
+      <StackPane fx:id="stackPanePhotoContainer" alignment="BOTTOM_CENTER">
+         <children>
+            <HBox fx:id="hboxButtonsContainer" alignment="CENTER" minHeight="150.0" minWidth="200.0" prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="CENTER" minWidth="0.0" onMouseClicked="#onClickUploadPhotoFromDevice" prefHeight="200.0" prefWidth="100.0" styleClass="icon-container">
+                     <children>
+                        <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/upload-icon.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" onMouseClicked="#onClickTakePhoto" prefHeight="200.0" prefWidth="100.0" styleClass="icon-container">
+                     <children>
+                        <ImageView fitHeight="52.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/camera-icon.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </StackPane>
+   </children>
+   <stylesheets>
+      <URL value="@../../styles/main.css" />
+      <URL value="@../../styles/image-input.css" />
+   </stylesheets>
+</VBox>

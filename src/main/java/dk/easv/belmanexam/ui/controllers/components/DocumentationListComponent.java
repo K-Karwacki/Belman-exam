@@ -1,4 +1,4 @@
-package dk.easv.belmanexam.ui.controllers.qa;
+package dk.easv.belmanexam.ui.controllers.components;
 
 import dk.easv.belmanexam.model.PhotoDocumentation;
 import dk.easv.belmanexam.ui.FXMLManager;

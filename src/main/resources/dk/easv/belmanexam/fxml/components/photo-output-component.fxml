@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="vboxContainer" alignment="TOP_CENTER" prefHeight="187.0" prefWidth="200.0" styleClass="container" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.components.PhotoOutputComponentController">
+    <children>
+        <Label fx:id="lblSide" alignment="CENTER" contentDisplay="CENTER" text="Bottom" textFill="#004b88">
+            <font>
+                <Font size="24.0" />
+            </font>
+            <padding>
+                <Insets bottom="5.0" top="5.0" />
+            </padding>
+        </Label>
+    </children>
+    <stylesheets>
+        <URL value="@../../styles/main.css" />
+        <URL value="@../../styles/image-input.css" />
+    </stylesheets>
+</VBox>

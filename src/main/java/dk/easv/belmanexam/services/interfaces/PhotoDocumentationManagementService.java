@@ -6,11 +6,14 @@ import dk.easv.belmanexam.ui.models.PhotoDocumentationListModel;
 import javafx.scene.image.Image;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 public interface PhotoDocumentationManagementService {
     void saveFileInFolder(java.io.File file, String folder) throws PhotoException;
-    List<Image> getAllImagesByOrderNumber(String orderNumber) throws PhotoException;
+    String createFolder(String folderName) throws PhotoException;
+    String createFolderInFolder(String folderName, String parentFolderId) throws PhotoException;
+    HashMap<String, Image> getAllImagesByOrderNumber(String orderNumber) throws PhotoException;
     Collection<PhotoDocumentation> getAll();
     PhotoDocumentationListModel getPhotoDocumentationListModel();
 

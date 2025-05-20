@@ -21,6 +21,7 @@ import java.io.StringReader;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class GoogleDriveManager {
@@ -96,16 +97,14 @@ public class GoogleDriveManager {
     /**
      * Lists the names of image files in a Google Drive folder corresponding to the order number.
      *
-     * @param orderNumber Order number matching the folder name
      * @return List of file names in the folder
      * @throws PhotoException if there are issues with the API request or security
      */
-    public List<File> listFilesInFolder(String orderNumber) throws PhotoException {
+    public List<File> listFilesInFolder(String folderId) throws PhotoException {
         try {
             Drive service = getDriveService();
 
             // Find folder ID
-            String folderId = findFolderId(orderNumber);
             if (folderId == null) {
                 throw new IOException("Folder not found");
             }
@@ -117,6 +116,31 @@ public class GoogleDriveManager {
                     .execute();
 
             return new ArrayList<>(result.getFiles());
+        } catch (IOException | GeneralSecurityException e) {
+            throw new PhotoException(e);
+        }
+    }
+    public HashMap<String, String> listFoldersInFolder(String folderName) throws PhotoException {
+        try {
+            Drive service = getDriveService();
+
+            String folderId = findFolderId(folderName);
+            if (folderId == null) {
+                throw new IOException("Folder not found");
+            }
+
+            // List folders in the folder
+            FileList result = service.files().list()
+                    .setQ("'" + folderId + "' in parents and mimeType = 'application/vnd.google-apps.folder' and trashed = false")
+                    .setFields("files(id, name)") // Include name field
+                    .execute();
+
+            HashMap<String, String> folders = new HashMap<>();
+            for (File file : result.getFiles()) {
+                folders.put(file.getId(), file.getName());
+                System.out.println(file.getName());
+            }
+            return folders;
         } catch (IOException | GeneralSecurityException e) {
             throw new PhotoException(e);
         }
@@ -169,23 +193,9 @@ public class GoogleDriveManager {
     }
 
 
-    public void saveFileInFolder(java.io.File file, String folderName) throws PhotoException {
+    public void saveFileInFolder(java.io.File file, String folderId) throws PhotoException {
         try {
             Drive service = getDriveService();
-
-            // Find or create the folder
-            String folderId = findFolderId(folderName);
-            if (folderId == null) {
-                // Create a new folder
-                File folderMetadata = new File();
-                folderMetadata.setName(folderName);
-                folderMetadata.setMimeType("application/vnd.google-apps.folder");
-
-                File folder = service.files().create(folderMetadata)
-                        .setFields("id")
-                        .execute();
-                folderId = folder.getId();
-            }
 
             // Create file metadata
             File fileMetadata = new File();
@@ -205,6 +215,54 @@ public class GoogleDriveManager {
             service.files().create(fileMetadata, mediaContent)
                     .setFields("id, name")
                     .execute();
+
+        } catch (IOException | GeneralSecurityException e) {
+            throw new PhotoException(e);
+        }
+    }
+
+    public String createFolder(String folderName) throws PhotoException {
+        try {
+            Drive service = getDriveService();
+            String folderId = findFolderId(folderName);
+            if(folderId == null) {
+                File folderMetadata = new File();
+                folderMetadata.setName(folderName);
+                folderMetadata.setMimeType("application/vnd.google-apps.folder");
+
+                File folder = service.files().create(folderMetadata)
+                        .setFields("id")
+                        .execute();
+                return folder.getId();
+            }
+            else{
+                return folderId;
+            }
+
+        } catch (IOException | GeneralSecurityException e) {
+            throw new PhotoException(e);
+        }
+    }
+    public String createFolderInFolder(String folderName, String parentFolderId) throws PhotoException {
+        try {
+            Drive service = getDriveService();
+            String folderId = findFolderId(folderName);
+            if (folderId == null) {
+                File folderMetadata = new File();
+                folderMetadata.setName(folderName);
+                folderMetadata.setMimeType("application/vnd.google-apps.folder");
+
+                if (parentFolderId == null) {
+                    parentFolderId = createFolder(folderName);
+                }
+                folderMetadata.setParents(Collections.singletonList(parentFolderId));
+
+                File folder = service.files().create(folderMetadata)
+                        .setFields("id")
+                        .execute();
+                return folder.getId();
+            }
+            return folderId;
 
         } catch (IOException | GeneralSecurityException e) {
             throw new PhotoException(e);
