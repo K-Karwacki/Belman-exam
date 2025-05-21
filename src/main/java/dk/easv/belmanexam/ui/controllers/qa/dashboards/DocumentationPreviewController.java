@@ -1,5 +1,6 @@
 package dk.easv.belmanexam.ui.controllers.qa.dashboards;
 
+import dk.easv.belmanexam.auth.UserSession;
 import dk.easv.belmanexam.model.PhotoDocumentation;
 import dk.easv.belmanexam.services.interfaces.PhotoDocumentationManagementService;
 import dk.easv.belmanexam.services.utils.Status;
@@ -50,7 +51,8 @@ public class DocumentationPreviewController {
         this.imageList = imageList;
         this.orderNumber = orderNumber;
         this.comment = comment;
-        pdfFile = PDFGenerator.createPdf(orderNumber, "", imageList);
+        String approvedBy = "Approved by: " + UserSession.INSTANCE.getLoggedUser().getFirstName() + " " + UserSession.INSTANCE.getLoggedUser().getLastName();
+        pdfFile = PDFGenerator.createPdf(orderNumber, approvedBy, imageList);
         Image image = ImageConverter.convertPdfToImage(pdfFile.getByteData());
         imgViewPDFContainer.setImage(image);
     }
