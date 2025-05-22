@@ -3,19 +3,22 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox styleClass="bgc" stylesheets="@../../../styles/main.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.admin.dashboards.LogsDashboardController">
+
+<AnchorPane prefHeight="600.0" prefWidth="1280.0" stylesheets="@../../../styles/main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.admin.dashboards.LogsDashboardController">
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="49.0" styleClass="radius" stylesheets="@../../../styles/search-bar.css">
+      <HBox alignment="CENTER_LEFT" layoutY="30.0" prefHeight="49.0" prefWidth="1266.0" spacing="180.0" styleClass="radius" stylesheets="@../../../styles/search-bar.css">
          <children>
             <Label alignment="CENTER_RIGHT" prefHeight="49.0" prefWidth="270.0" text="Logs">
                <padding>
@@ -56,17 +59,37 @@
             </HBox>
          </children>
       </HBox>
-      <TableView prefHeight="450.0" prefWidth="980.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
-         <VBox.margin>
-            <Insets left="65.0" top="50.0" />
-         </VBox.margin>
-      </TableView>
+      <VBox layoutX="70.0" layoutY="155.0" prefHeight="412.0" prefWidth="1140.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="960.0" style="-fx-border-color: #777; -fx-border-radius: 13;">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="237.0" style="-fx-font-weight: bold;" text="Action" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <Label alignment="CENTER" prefHeight="44.0" prefWidth="325.0" style="-fx-font-weight: bold;" text="Full name">
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </Label>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="286.0" style="-fx-font-weight: bold;" text="Role" />
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <Label alignment="CENTER" prefHeight="46.0" prefWidth="294.0" style="-fx-font-weight: bold;" text="Date" textAlignment="CENTER" />
+               </children>
+               <styleClass>
+                  <String fx:value="light-bgc" />
+                  <String fx:value="radius" />
+               </styleClass>
+            </HBox>
+            <ScrollPane hbarPolicy="NEVER" prefHeight="350.0" prefWidth="960.0" style="-fx-border-color: gray;" styleClass="custom-scroll-pane">
+               <content>
+                  <FlowPane fx:id="userListRoot" hgap="15.0" prefHeight="347.0" prefWidth="940.0" vgap="15.0">
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </FlowPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
    </children>
-   <padding>
-      <Insets top="30.0" />
-   </padding>
-</VBox>
+</AnchorPane>

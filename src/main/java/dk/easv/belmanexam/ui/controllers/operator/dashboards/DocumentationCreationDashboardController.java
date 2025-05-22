@@ -51,47 +51,6 @@ public class DocumentationCreationDashboardController {
             photoInputComponents.add(p.getValue());
         }
     }
-
-//    @FXML
-//    private void uploadPhotoViaCloud() throws PhotoException {
-//        flowPaneImageContainer.getChildren().clear();
-//        String orderNumber = textFieldOrderNumber.getText();
-//        List<Image> photos = photoDocumentationManagementService.getAllImagesByOrderNumber(orderNumber);
-//        photos.forEach(this::addPhoto);
-//    }
-//
-//    @FXML
-//    private void uploadPhotoFromDevice() throws PhotoException {
-//        FileChooser fileChooser = new FileChooser();
-//        fileChooser.setTitle("Select Image File");
-//
-//        // Add image file filters
-//        fileChooser.getExtensionFilters().addAll(
-//                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
-//        File selectedFile = fileChooser.showOpenDialog(flowPaneImageContainer.getScene().getWindow());
-//        if (selectedFile != null) {
-////            photoDocumentationServiceImpl.saveFileInFolder(selectedFile, orderNumber);
-//            Image image = new Image(selectedFile.toURI().toString());
-//            savePhotoInformation(selectedFile);
-//            addPhoto(image);
-//        }
-//
-//    }
-//    @FXML
-//    private void addPhoto(Image image) {
-//        ImageView imageView = new ImageView(image);
-//        imageView.setFitHeight(150);
-//        imageView.setFitWidth(200);
-//        flowPaneImageContainer.getChildren().add(imageView);
-//        imageView.setOnMouseClicked(event -> {
-//            Pair<Parent, ImageDisplayDashboardController> p = FXMLManager.INSTANCE.getFXML(FXMLPath.IMAGE_DISPLAY_DASHBOARD);
-//            p.getValue().setDetails(image);
-//            ViewManager.INSTANCE.switchDashboard(FXMLPath.IMAGE_DISPLAY_DASHBOARD, "Selected Photo");
-//        });
-//    }
-    private void savePhotoInformation(File selectedFile) {
-        photos.add(selectedFile);
-    }
     @FXML
     private void showParentView(){
         ViewManager.INSTANCE.switchDashboard(FXMLPath.ORDERS_DASHBOARD, "Belsign");
