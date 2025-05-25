@@ -20,16 +20,18 @@ import java.util.Optional;
 public class PhotoDocumentationRepositoryImpl implements PhotoDocumentationRepository {
     private final UserRepository userRepository;
     private final LogMapper logMapper;
+    private final PhotoDocumentationMapper photoDocumentationMapper;
 
     public PhotoDocumentationRepositoryImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
         this.logMapper = new LogMapper(userRepository);
+        this.photoDocumentationMapper = new PhotoDocumentationMapper(userRepository);
     }
 
     @Override
     public Collection<PhotoDocumentation> getAll() {
         QueryBuilder<PhotoDocumentation> queryBuilder = new QueryBuilder<>(PhotoDocumentation.class, "PhotoDocumentation")
-                .withRowMapper(new PhotoDocumentationMapper());
+                .withRowMapper(photoDocumentationMapper);
 
         try (DBConnection dbConnection = new DBConnection()) {
             return queryBuilder.executeSelect(dbConnection.getConnection());
@@ -48,7 +50,8 @@ public class PhotoDocumentationRepositoryImpl implements PhotoDocumentationRepos
         QueryBuilder<PhotoDocumentation> queryBuilder = new QueryBuilder<>(PhotoDocumentation.class, "PhotoDocumentation")
                 .set("date", entity.getDateTime().toString())
                 .set("status", Status.PENDING.toString())
-                .set("order_number", entity.getOrderNumber());
+                .set("order_number", entity.getOrderNumber())
+                .set("user_id", entity.getUser().getID());
 
         try (DBConnection dbConnection = new DBConnection()) {
             queryBuilder.executeInsert(dbConnection.getConnection());

@@ -2,6 +2,7 @@ package dk.easv.belmanexam.ui.controllers.operator.dashboards;
 
 import dk.easv.belmanexam.auth.UserSession;
 import dk.easv.belmanexam.model.PhotoDocumentation;
+import dk.easv.belmanexam.model.UserModel;
 import dk.easv.belmanexam.services.interfaces.PhotoDocumentationManagementService;
 import dk.easv.belmanexam.exceptions.PhotoException;
 import dk.easv.belmanexam.services.utils.Status;
@@ -63,6 +64,7 @@ public class DocumentationCreationDashboardController {
         photoDocumentation.setStatus(Status.PENDING);
         photoDocumentation.setOrderNumber(orderNumber);
         photoDocumentation.setDateTime(LocalDateTime.now());
+        photoDocumentation.setUser(new UserModel(UserSession.INSTANCE.getLoggedUser()));
         photoDocumentationManagementService.add(photoDocumentation);
         this.parentFolderId = photoDocumentationManagementService.createFolder(orderNumber);
         for(PhotoInputComponentController photoInputComponent: photoInputComponents) {

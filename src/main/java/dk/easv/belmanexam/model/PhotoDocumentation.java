@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 public class PhotoDocumentation {
 
     private IntegerProperty id = new SimpleIntegerProperty();
+    private ObjectProperty<UserModel> user = new SimpleObjectProperty<>();
     private StringProperty orderNumber = new SimpleStringProperty();
     private SimpleObjectProperty<LocalDateTime> dateTime = new SimpleObjectProperty<>();
     private SimpleObjectProperty<Status> status = new SimpleObjectProperty<>();
@@ -18,9 +19,7 @@ public class PhotoDocumentation {
     public Integer getId() {
         return id.get();
     }
-    public void setId(Integer id) {
-        this.id.set(id);
-    }
+    public void setId(Integer id) { this.id.set(id);}
     public String getOrderNumber() {
         return orderNumber.get();
     }
@@ -51,4 +50,6 @@ public class PhotoDocumentation {
     public ObjectProperty<Status> statusProperty() {
         return status;
     }
+    public UserModel getUser() {return user.get();}
+    public void setUser(UserModel user) {this.user.set(user);}
 }

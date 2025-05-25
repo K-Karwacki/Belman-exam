@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 public class Log {
     private IntegerProperty id = new SimpleIntegerProperty();
-    private ObjectProperty<UserModel> user = new SimpleObjectProperty<>(); // Changed to UserModel
+    private ObjectProperty<UserModel> user = new SimpleObjectProperty<>();
     private StringProperty orderNumber = new SimpleStringProperty();
     private ObjectProperty<LocalDateTime> dateTime = new SimpleObjectProperty<>();
     private ObjectProperty<ActionType> actionType = new SimpleObjectProperty<>();
