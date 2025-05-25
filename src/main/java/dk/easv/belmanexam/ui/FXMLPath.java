@@ -28,6 +28,7 @@ public class FXMLPath
     public static final String USER_CARD_COMPONENT = "/dk/easv/belmanexam/fxml/components/user-card-component.fxml";
     public static final String PHOTO_INPUT_COMPONENT = "/dk/easv/belmanexam/fxml/components/photo-input-component.fxml";
     public static final String PHOTO_OUTPUT_COMPONENT = "/dk/easv/belmanexam/fxml/components/photo-output-component.fxml";
+    public static final String LOG_COMPONENT = "/dk/easv/belmanexam/fxml/components/log-component.fxml";
 
     //    Popups
     public static final String USER_EDITOR_POPUP = "/dk/easv/belmanexam/fxml/dashboards/admin/user-editor-popup.fxml";

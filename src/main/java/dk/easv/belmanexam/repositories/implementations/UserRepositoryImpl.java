@@ -48,7 +48,7 @@ public class UserRepositoryImpl implements UserRepository {
             if (rs.next()) {
                 User user = new User();
                 System.out.println(rs.getLong("id"));
-                user.setId(rs.getLong("id"));
+                user.setId(rs.getInt("id"));
                 user.setFirstName(rs.getString("first_name"));
                 user.setLastName(rs.getString("last_name"));
                 user.setEmail(rs.getString("email"));
@@ -84,7 +84,7 @@ public class UserRepositoryImpl implements UserRepository {
 
             try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
-                    entity.setId(generatedKeys.getLong(1));
+                    entity.setId(generatedKeys.getInt(1));
                 } else {
                     throw new SQLException("Inserting user failed, no ID obtained.");
                 }
@@ -148,7 +148,7 @@ public class UserRepositoryImpl implements UserRepository {
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 User user = new User();
-                user.setId(rs.getLong("id"));
+                user.setId(rs.getInt("id"));
                 user.setFirstName(rs.getString("first_name"));
                 user.setLastName(rs.getString("last_name"));
                 user.setEmail(rs.getString("email"));

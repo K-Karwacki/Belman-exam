@@ -2,7 +2,7 @@ package dk.easv.belmanexam.model;
 
 public class User {
 
-    private long id;
+    private int id;
     private String firstName;
     private String lastName;
     private String role;
@@ -19,7 +19,7 @@ public class User {
 
 
     // Parameterized constructor
-    public User(long id, String firstName, String lastName, String email, String role) {
+    public User(int id, String firstName, String lastName, String email, String role) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -29,13 +29,13 @@ public class User {
 
     // Getters and setters (updated naming)
 
-    public long getId()
+    public int getId()
     {
         return id;
     }
 
-    public long setId(long id) {
-        return this.id = id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {

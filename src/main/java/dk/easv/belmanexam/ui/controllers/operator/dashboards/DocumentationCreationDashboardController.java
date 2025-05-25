@@ -1,5 +1,6 @@
 package dk.easv.belmanexam.ui.controllers.operator.dashboards;
 
+import dk.easv.belmanexam.auth.UserSession;
 import dk.easv.belmanexam.model.PhotoDocumentation;
 import dk.easv.belmanexam.services.interfaces.PhotoDocumentationManagementService;
 import dk.easv.belmanexam.exceptions.PhotoException;

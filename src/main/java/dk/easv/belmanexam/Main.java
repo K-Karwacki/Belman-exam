@@ -16,6 +16,7 @@ import dk.easv.belmanexam.ui.FXMLManager;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.StageManager;
 import dk.easv.belmanexam.ui.ViewManager;
+import dk.easv.belmanexam.ui.controllers.admin.dashboards.LogsDashboardController;
 import dk.easv.belmanexam.ui.controllers.admin.dashboards.UserCreatorController;
 import dk.easv.belmanexam.ui.controllers.admin.dashboards.UserEditorController;
 import dk.easv.belmanexam.ui.controllers.admin.dashboards.UsersDashboardController;
@@ -77,7 +78,7 @@ public class Main extends Application
     UserEditorController userEditorController = (UserEditorController) fxmlManager.getFXML(FXMLPath.USER_EDITOR_POPUP).getValue();
     UserCreatorController userCreatorController = (UserCreatorController) fxmlManager.getFXML(FXMLPath.USER_CREATOR_POPUP).getValue();
     DocumentationPreviewController documentationPreviewController = (DocumentationPreviewController) fxmlManager.getFXML(FXMLPath.DOCUMENTATION_PREVIEW).getValue();
-
+    LogsDashboardController logsDashboardController = (LogsDashboardController) fxmlManager.getFXML(FXMLPath.LOGS_DASHBOARD).getValue();
     // Setting dependencies
     loginViewController.setServices(authService);
     ordersDashboardController.setServices(orderManagementService, googleDriveManager);
@@ -88,6 +89,7 @@ public class Main extends Application
     usersDashboardController.setServices(userManagementService);
     userEditorController.setServices(userManagementService);
     userCreatorController.setServices(userManagementService);
+    logsDashboardController.setServices(photoDocumentationManagementService);
   }
 
   public static void main(String[] args)

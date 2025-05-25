@@ -17,7 +17,7 @@
         <Separator orientation="VERTICAL" prefHeight="200.0" />
       <Label fx:id="lblDocumentedBy" alignment="CENTER" prefWidth="250.0" text="Anders Nielsen" wrapText="true" />
       <Separator orientation="VERTICAL" prefHeight="200.0" />
-        <Button fx:id="btnSeeDetails" mnemonicParsing="false" onAction="#onClickShowApproveDocumentationView" prefHeight="40.0" prefWidth="242.0" style="-fx-font-size: 16;" styleClass="green-button" text="See details">
+        <Button fx:id="btnSeeDetails" mnemonicParsing="false" onAction="#onClickShowApproveDocumentationView" prefHeight="40.0" prefWidth="242.0" style="-fx-font-size: 16;" styleClass="blue-button" text="See details">
             <effect>
                 <DropShadow height="9.0" radius="4.79" width="12.16" />
             </effect>

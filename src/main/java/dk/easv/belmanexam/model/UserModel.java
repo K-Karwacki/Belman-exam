@@ -1,5 +1,6 @@
 package dk.easv.belmanexam.model;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -8,7 +9,7 @@ import java.util.Objects;
 
 public class UserModel
 {
-    private final SimpleLongProperty ID = new SimpleLongProperty();
+    private final SimpleIntegerProperty ID = new SimpleIntegerProperty();
     private final SimpleObjectProperty<String> role = new SimpleObjectProperty<>();
     private final SimpleStringProperty firstName = new SimpleStringProperty();
     private final SimpleStringProperty lastName = new SimpleStringProperty();

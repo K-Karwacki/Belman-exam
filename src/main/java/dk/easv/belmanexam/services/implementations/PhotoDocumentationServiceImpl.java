@@ -1,12 +1,14 @@
 package dk.easv.belmanexam.services.implementations;
 
 import com.google.api.services.drive.model.File;
-import dk.easv.belmanexam.model.PhotoDocumentation;
+import dk.easv.belmanexam.auth.UserSession;
+import dk.easv.belmanexam.model.*;
 import dk.easv.belmanexam.services.factories.RepositoryService;
 import dk.easv.belmanexam.services.interfaces.PhotoDocumentationManagementService;
 import dk.easv.belmanexam.repositories.utils.GoogleDriveManager;
 import dk.easv.belmanexam.repositories.interfaces.PhotoDocumentationRepository;
 import dk.easv.belmanexam.exceptions.PhotoException;
+import dk.easv.belmanexam.ui.models.LogListModel;
 import dk.easv.belmanexam.ui.models.PhotoDocumentationListModel;
 import dk.easv.belmanexam.utils.ImageConverter;
 import javafx.scene.image.Image;
@@ -17,12 +19,14 @@ public class PhotoDocumentationServiceImpl implements PhotoDocumentationManageme
     private final RepositoryService repositoryService;
     private final PhotoDocumentationRepository photoDocumentationRepository;
     private final PhotoDocumentationListModel photoDocumentationListModel;
+    private final LogListModel logListModel;
     private final GoogleDriveManager googleDriveManager = new GoogleDriveManager();
 
     public PhotoDocumentationServiceImpl(RepositoryService repositoryService) {
         this.repositoryService = repositoryService;
         this.photoDocumentationRepository = repositoryService.getRepository(PhotoDocumentationRepository.class);
         this.photoDocumentationListModel = new PhotoDocumentationListModel();
+        this.logListModel = new LogListModel();
         initialize();
     }
 
@@ -55,10 +59,11 @@ public class PhotoDocumentationServiceImpl implements PhotoDocumentationManageme
 
 
     private void initialize(){
-        if (photoDocumentationRepository == null || photoDocumentationListModel == null || repositoryService == null) {
-            throw new RuntimeException("Load dependencies for OrderManagementService");
+        if (photoDocumentationRepository == null || photoDocumentationListModel == null || repositoryService == null || logListModel == null) {
+            throw new RuntimeException("Failed to load dependencies for PhotoDocumentationService");
         }
         photoDocumentationListModel.setDocumentation(photoDocumentationRepository.getAll());
+        logListModel.setLogs(photoDocumentationRepository.getAllLogs());
     }
 
     public PhotoDocumentationListModel getPhotoDocumentationListModel() {
@@ -69,12 +74,24 @@ public class PhotoDocumentationServiceImpl implements PhotoDocumentationManageme
     public void update(PhotoDocumentation photoDocumentation) {
         photoDocumentationRepository.update(photoDocumentation);
         photoDocumentationListModel.update(photoDocumentation);
+        addLog(UserSession.INSTANCE.getLoggedUser(), photoDocumentation);
     }
 
     @Override
     public void add(PhotoDocumentation photoDocumentation) {
         photoDocumentationRepository.add(photoDocumentation);
         photoDocumentationListModel.add(photoDocumentation);
+        addLog(UserSession.INSTANCE.getLoggedUser(), photoDocumentation);
     }
 
+    @Override
+    public LogListModel getLogListModel() {
+        return logListModel;
+    }
+
+    @Override
+    public void addLog(User user, PhotoDocumentation photoDocumentation){
+        Log log = photoDocumentationRepository.addLog(user, photoDocumentation);
+        logListModel.add(log);
+    }
 }

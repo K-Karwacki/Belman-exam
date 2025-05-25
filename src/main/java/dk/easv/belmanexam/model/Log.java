@@ -1,29 +1,24 @@
 package dk.easv.belmanexam.model;
 
 import dk.easv.belmanexam.services.utils.ActionType;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.*;
 
 import java.time.LocalDateTime;
 
 public class Log {
     private IntegerProperty id = new SimpleIntegerProperty();
-    private ObjectProperty<User> user = new SimpleObjectProperty<>();
-    private SimpleObjectProperty<LocalDateTime> dateTime = new SimpleObjectProperty<>();
-    private SimpleObjectProperty<ActionType> actionType = new SimpleObjectProperty<>();
+    private ObjectProperty<UserModel> user = new SimpleObjectProperty<>(); // Changed to UserModel
+    private StringProperty orderNumber = new SimpleStringProperty();
+    private ObjectProperty<LocalDateTime> dateTime = new SimpleObjectProperty<>();
+    private ObjectProperty<ActionType> actionType = new SimpleObjectProperty<>();
 
     public IntegerProperty idProperty() {
         return id;
     }
-    public ObjectProperty<User> userProperty() {
-        return user;
-    }
-    public SimpleObjectProperty<LocalDateTime> dateTimeProperty() {
+    public ObjectProperty<LocalDateTime> dateTimeProperty() {
         return dateTime;
     }
-    public SimpleObjectProperty<ActionType> actionTypeProperty() {
+    public ObjectProperty<ActionType> actionTypeProperty() {
         return actionType;
     }
     public int getId() {
@@ -31,6 +26,18 @@ public class Log {
     }
     public void setId(int id) {
         this.idProperty().set(id);
+    }
+    public UserModel getUser() { // Updated getter
+        return user.get();
+    }
+    public void setUser(UserModel user) { // Updated setter
+        this.user.set(user);
+    }
+    public String getOrderNumber() {
+        return orderNumber.get();
+    }
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber.set(orderNumber);
     }
     public LocalDateTime getDateTime() {
         return dateTimeProperty().get();

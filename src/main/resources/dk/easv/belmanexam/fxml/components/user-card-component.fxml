@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.components.UserCardComponentController">
+<VBox xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.components.UserCardComponentController">
    <children>
-      <Line endX="839.2929077148438" endY="0.2928932309150696" layoutX="111.0" layoutY="81.0" startX="-100.0" />
-      <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="940.0" styleClass="bgc" stylesheets="@../../styles/user-card.css">
+      <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="940.0" styleClass="bgc">
           <children>
             <VBox alignment="CENTER" prefHeight="50.0" prefWidth="230.0">
                <children>
@@ -60,7 +58,7 @@
                       <Cursor fx:constant="HAND" />
                   </cursor>
                <styleClass>
-                  <String fx:value="green-button" />
+                  <String fx:value="blue-button" />
                   <String fx:value="shadow" />
                </styleClass>
               </Button>
@@ -83,7 +81,10 @@
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
+         <stylesheets>
+            <URL value="@../../styles/main.css" />
+            <URL value="@../../styles/user-card.css" />
+         </stylesheets>
       </HBox>
-      <Line endX="839.2929077148438" endY="0.2928932309150696" startX="-100.0" />
    </children>
 </VBox>
