@@ -11,6 +11,7 @@ import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
 import dk.easv.belmanexam.ui.controllers.components.PhotoInputComponentController;
 import dk.easv.belmanexam.ui.controllers.components.OrderListComponent;
+import dk.easv.belmanexam.utils.ImageConverter;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -21,6 +22,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.FileChooser;
 import javafx.util.Pair;
 
+import javax.swing.text.html.Option;
 import java.io.File;
 import java.net.URL;
 import java.time.LocalDateTime;
@@ -71,6 +73,10 @@ public class DocumentationCreationDashboardController {
             File file = photoInputComponent.getFile();
             if(file != null) {
                 try {
+                    Image image = new Image(file.toURI().toString());
+                    byte[] image_data = ImageConverter.convertToByteArray(image);
+                    long documentation_id = photoDocumentationManagementService.getByOrderNumber(orderNumber).get().getId();
+                    photoDocumentationManagementService.addPhoto(image_data, documentation_id, photoInputComponent.getSide(), "");
                     String sideFolder = photoDocumentationManagementService.createFolderInFolder(photoInputComponent.getSide(), parentFolderId);
                     System.out.println(sideFolder);
                     photoDocumentationManagementService.saveFileInFolder(file, sideFolder);

@@ -78,6 +78,16 @@ public class PhotoDocumentationServiceImpl implements PhotoDocumentationManageme
     }
 
     @Override
+    public Optional<PhotoDocumentation> getById(long id) {
+        return photoDocumentationRepository.getById(id);
+    }
+
+    @Override
+    public Optional<PhotoDocumentation> getByOrderNumber(String orderNumber) {
+        return photoDocumentationRepository.getByOrderNumber(orderNumber);
+    }
+
+    @Override
     public void add(PhotoDocumentation photoDocumentation) {
         photoDocumentationRepository.add(photoDocumentation);
         photoDocumentationListModel.add(photoDocumentation);
@@ -90,8 +100,19 @@ public class PhotoDocumentationServiceImpl implements PhotoDocumentationManageme
     }
 
     @Override
+    public void addPhoto(byte[] data, long documentation_id, String side, String info) {
+        photoDocumentationRepository.addPhoto(data, documentation_id, side, info);
+    }
+
+    @Override
+    public Collection<Photo> getAllImagesByDocumentationId(long id) {
+        return photoDocumentationRepository.getAllImagesByDocumentationId(id);
+    }
+
+    @Override
     public void addLog(User user, PhotoDocumentation photoDocumentation){
         Log log = photoDocumentationRepository.addLog(user, photoDocumentation);
         logListModel.add(log);
     }
+
 }

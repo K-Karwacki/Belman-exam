@@ -20,13 +20,14 @@ public class PhotoDocumentationMapper implements BaseMapper<PhotoDocumentation> 
     @Override
     public PhotoDocumentation mapRow(ResultSet resultSet) throws SQLException {
         PhotoDocumentation photoDocumentation = new PhotoDocumentation();
-        int userId = resultSet.getInt("user_id");
-        User user = userRepository.getById(userId)
-                .orElseThrow(() -> new SQLException("User not found for ID: " + userId));
-        UserModel userModel = new UserModel(user);
-        photoDocumentation.setUser(userModel);
-        photoDocumentation.setId(resultSet.getInt("id"));
-        photoDocumentation.setOrderNumber(resultSet.getString("order_number"));
+        String operatorId = resultSet.getString("operatorID");
+//        int userId = resultSet.getInt("user_id");
+//        User user = userRepository.getById(userId)
+//                .orElseThrow(() -> new SQLException("User not found for ID: " + userId));
+//        UserModel userModel = new UserModel(user);
+//        photoDocumentation.setUser(userModel);
+        photoDocumentation.setId(resultSet.getLong("id"));
+        photoDocumentation.setOrderNumber(resultSet.getString("orderNumber"));
         photoDocumentation.setStatus(Status.fromString(resultSet.getString("status")));
         Timestamp timestamp = resultSet.getTimestamp("date");
         if (timestamp != null) {

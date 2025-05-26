@@ -1,6 +1,7 @@
 package dk.easv.belmanexam.ui.controllers.qa.dashboards;
 
 import dk.easv.belmanexam.exceptions.PhotoException;
+import dk.easv.belmanexam.model.Photo;
 import dk.easv.belmanexam.model.PhotoDocumentation;
 import dk.easv.belmanexam.services.interfaces.PhotoDocumentationManagementService;
 import dk.easv.belmanexam.services.utils.Status;
@@ -9,6 +10,7 @@ import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
 
 import dk.easv.belmanexam.ui.controllers.components.PhotoOutputComponentController;
+import dk.easv.belmanexam.utils.ImageConverter;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -20,9 +22,7 @@ import javafx.util.Pair;
 
 import javax.swing.text.View;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ApproveDocumentationDashboardController {
 
@@ -54,7 +54,7 @@ public class ApproveDocumentationDashboardController {
         imgViewLoadingGif.setVisible(true);
         Thread t = new Thread(() -> {
             try {
-                loadImages(photoDocumentation.getOrderNumber());
+                loadImages(photoDocumentation.getId());
             } catch (PhotoException e) {
                 throw new RuntimeException(e);
             } finally {
@@ -64,25 +64,33 @@ public class ApproveDocumentationDashboardController {
         t.start();
     }
 
-    public void loadImages(String orderNumber) throws PhotoException {
+    public void loadImages(long documentation_id) throws PhotoException {
         Platform.runLater(() -> flowPaneImageContainer.getChildren().clear());
-
-        HashMap<String, Image> photos;
-        if (imageCache.containsKey(orderNumber)) {
-            photos = imageCache.get(orderNumber);
-        } else {
-            photos = photoDocumentationManagementService.getAllImagesByOrderNumber(orderNumber);
-            imageCache.put(orderNumber, photos);
-        }
-
-        for (Map.Entry<String, Image> entry : photos.entrySet()) {
+        Collection<Photo> photos = photoDocumentationManagementService.getAllImagesByDocumentationId(documentation_id);
+        for (Photo photo : photos) {
             Platform.runLater(() -> {
                 Pair<Parent, PhotoOutputComponentController> p = FXMLManager.INSTANCE.loadFXML(FXMLPath.PHOTO_OUTPUT_COMPONENT);
-                p.getValue().setSide(entry.getKey());
-                p.getValue().setImage(entry.getValue());
+                p.getValue().setSide(photo.getSide());
+                p.getValue().setImage(ImageConverter.convertToImage(photo.getImageData()));
                 flowPaneImageContainer.getChildren().add(p.getKey());
             });
         }
+//        HashMap<String, Image> photos;
+//        if (imageCache.containsKey(orderNumber)) {
+//            photos = imageCache.get(orderNumber);
+//        } else {
+//            photos = photoDocumentationManagementService.getAllImagesByOrderNumber(orderNumber);
+//            imageCache.put(orderNumber, photos);
+//        }
+//
+//        for (Map.Entry<String, Image> entry : photos.entrySet()) {
+//            Platform.runLater(() -> {
+//                Pair<Parent, PhotoOutputComponentController> p = FXMLManager.INSTANCE.loadFXML(FXMLPath.PHOTO_OUTPUT_COMPONENT);
+//                p.getValue().setSide(entry.getKey());
+//                p.getValue().setImage(entry.getValue());
+//                flowPaneImageContainer.getChildren().add(p.getKey());
+//            });
+//        }
     }
 
     @FXML

@@ -5,47 +5,58 @@ import javafx.beans.property.*;
 
 public class Photo {
 
-    private IntegerProperty id = new SimpleIntegerProperty();
-    private StringProperty photoName = new SimpleStringProperty();
-    private ObjectProperty<PhotoDocumentation> photoDocumentation = new SimpleObjectProperty<>();
-    private StringProperty comment = new SimpleStringProperty();
+    private LongProperty id = new SimpleLongProperty();
+    private ObjectProperty<byte[]> imageData = new SimpleObjectProperty<>();
+    private LongProperty documentationId = new SimpleLongProperty();
+    private StringProperty side = new SimpleStringProperty();
+    private StringProperty info = new SimpleStringProperty();
 
     public Photo(){}
 
-    public Integer getId() {
+    public Long getId() {
         return id.get();
     }
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id.set(id);
     }
-    public String getPhotoName() {
-        return photoName.get();
+    public String getinfo() {
+        return info.get();
     }
-    public void setPhotoName(String photoName) {
-        this.photoName.set(photoName);
+    public void setinfo(String info) {
+        this.info.set(info);
     }
-    public ObjectProperty<PhotoDocumentation> getPhotoDocumentation() {
-        return photoDocumentation;
-    }
-    public void setPhotoDocumentation(ObjectProperty<PhotoDocumentation> photoDocumentation) {
-        this.photoDocumentation = photoDocumentation;
-    }
-    public String getComment() {
-        return comment.get();
-    }
-    public void setComment(String comment) {
-        this.comment.set(comment);
-    }
-    public IntegerProperty idProperty() {
+    public LongProperty idProperty() {
         return id;
     }
-    public StringProperty photoNameProperty() {
-        return photoName;
+    public StringProperty infoProperty() {
+        return info;
     }
-    public StringProperty commentProperty() {
-        return comment;
+    public byte[] getImageData() {
+        return imageData.get();
     }
-    public ObjectProperty<PhotoDocumentation> photoDocumentationProperty() {
-        return photoDocumentation;
+    public void setImageData(byte[] imageData) {
+        this.imageData.set(imageData);
     }
+    public ObjectProperty<byte[]> imageDataProperty() {
+        return imageData;
+    }
+    public Long getDocumentationId() {
+        return documentationId.get();
+    }
+    public void setDocumentationId(Long documentationId) {
+        this.documentationId.set(documentationId);
+    }
+    public LongProperty documentationIdProperty() {
+        return documentationId;
+    }
+    public String getSide() {
+        return side.get();
+    }
+    public void setSide(String side) {
+        this.side.set(side);
+    }
+    public StringProperty sideProperty() {
+        return side;
+    }
+
 }
