@@ -99,5 +99,12 @@ public class DocumentationDashboardController {
             activeButton.getStyleClass().add("green-button");
         }
     }
+    @FXML
+    private void onClickRefresh(){
+        System.out.println("test");
+        flowPaneDocumentationList.getChildren().clear();
+        photoDocumentationManagementService.refresh();
+        addDocumentation(status);
+    }
 
 }

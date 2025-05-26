@@ -135,7 +135,7 @@ public class PhotoDocumentationRepositoryImpl implements PhotoDocumentationRepos
     @Override
     public Collection<Log> getAllLogs() {
         QueryBuilder<Log> queryBuilder = new QueryBuilder<>(Log.class, "Log")
-                .withRowMapper(logMapper); // Use the injected LogMapper
+                .withRowMapper(logMapper);
 
         try (DBConnection dbConnection = new DBConnection()) {
             return queryBuilder.executeSelect(dbConnection.getConnection());
@@ -148,7 +148,7 @@ public class PhotoDocumentationRepositoryImpl implements PhotoDocumentationRepos
     public void addPhoto(byte[] data, long documentation_id, String side, String info) {
         QueryBuilder<Photo> queryBuilder = new QueryBuilder<>(Photo.class, "photo_item")
                 .set("documentation_id", documentation_id)
-                .set("image_data", data)
+                .set("data", data)
                 .set("info", info)
                 .set("side", side);
         try (DBConnection dbConnection = new DBConnection()) {

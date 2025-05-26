@@ -111,6 +111,11 @@ public class PhotoDocumentationServiceImpl implements PhotoDocumentationManageme
 
 
     @Override
+    public void refresh() {
+        photoDocumentationListModel.setDocumentation(photoDocumentationRepository.getAll());
+    }
+
+    @Override
     public void addLog(User user, PhotoDocumentation photoDocumentation){
         Log log = photoDocumentationRepository.addLog(user, photoDocumentation);
         logListModel.add(log);

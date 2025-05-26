@@ -114,7 +114,9 @@ public class ApproveDocumentationDashboardController {
 
     }
 
+
     public void setServices(PhotoDocumentationManagementService photoDocumentationManagementService) {
         this.photoDocumentationManagementService = photoDocumentationManagementService;
     }
+
 }

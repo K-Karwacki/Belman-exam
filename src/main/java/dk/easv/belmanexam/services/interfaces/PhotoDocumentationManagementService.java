@@ -26,4 +26,5 @@ public interface PhotoDocumentationManagementService {
     LogListModel getLogListModel();
     void addPhoto(byte[] data, long documentation_id, String side, String info);
     Collection<Photo> getAllImagesByDocumentationId(long id);
+    void refresh();
 }
