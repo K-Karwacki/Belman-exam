@@ -1,5 +1,6 @@
 package dk.easv.belmanexam.utils;
 
+import dk.easv.belmanexam.model.Photo;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -14,11 +15,13 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class PDFGenerator {
-    public static PdfFile createPdf(String title, String content, HashMap<String, Image> images) throws IOException {
+    public static PdfFile createPdf(String title, String content, Collection<Photo> photos) throws IOException {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         try (PDDocument document = new PDDocument()) {
             PdfFile pdfFile = new PdfFile();
@@ -42,9 +45,9 @@ public class PDFGenerator {
                 float yPosition = 480; // Starting y-coordinate
                 int i = 0;
 
-                for (Map.Entry<String, Image> entry : images.entrySet()) {
+                for (Photo photo : photos) {
                     // Convert JavaFX Image to BufferedImage
-                    BufferedImage bufferedImage = javafx.embed.swing.SwingFXUtils.fromFXImage(entry.getValue(), null);
+                    BufferedImage bufferedImage = javafx.embed.swing.SwingFXUtils.fromFXImage(Objects.requireNonNull(ImageConverter.convertToImage(photo.getImageData())), null);
 
                     // Convert BufferedImage to PDImageXObject
                     try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
@@ -55,12 +58,12 @@ public class PDFGenerator {
                         float scaledHeight = 140;
                         if(i%2 == 1){
                             contentStream.drawImage(image, xPosition, yPosition, scaledWidth, scaledHeight);
-                            addText(contentStream, xPosition, yPosition + scaledHeight + 5, entry.getKey());
+                            addText(contentStream, xPosition, yPosition + scaledHeight + 5, photo.getSide());
                             yPosition -= 250;
                         }
                         else{
                             contentStream.drawImage(image, xPosition2, yPosition, scaledWidth, scaledHeight);
-                            addText(contentStream, xPosition2, yPosition + scaledHeight + 5, entry.getKey());
+                            addText(contentStream, xPosition2, yPosition + scaledHeight + 5, photo.getSide());
                         }
                     }
                     i++;
@@ -80,10 +83,12 @@ public class PDFGenerator {
         }
     }
     private static void addText(PDPageContentStream contentStream, float position1, float position2, String text) throws IOException {
-        contentStream.setFont(PDType1Font.HELVETICA_BOLD, 10);
-        contentStream.beginText();
-        contentStream.newLineAtOffset(position1, position2);
-        contentStream.showText(text);
-        contentStream.endText();
+        if(text != null && !text.isEmpty()) {
+            contentStream.setFont(PDType1Font.HELVETICA_BOLD, 10);
+            contentStream.beginText();
+            contentStream.newLineAtOffset(position1, position2);
+            contentStream.showText(text);
+            contentStream.endText();
+        }
     }
 }

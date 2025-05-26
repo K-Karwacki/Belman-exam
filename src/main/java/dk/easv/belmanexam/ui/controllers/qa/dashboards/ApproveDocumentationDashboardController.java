@@ -28,7 +28,7 @@ public class ApproveDocumentationDashboardController {
 
     private PhotoDocumentationManagementService photoDocumentationManagementService;
     private PhotoDocumentation photoDocumentation;
-    private final Map<String, HashMap<String, Image>> imageCache = new HashMap<>();
+    private final Map<Long, Collection<Photo>> imageCache = new HashMap<>();
 
 
     @FXML
@@ -65,8 +65,15 @@ public class ApproveDocumentationDashboardController {
     }
 
     public void loadImages(long documentation_id) throws PhotoException {
+        flowPaneImageContainer.getChildren().clear();
+        Collection<Photo> photos;
+        if (imageCache.containsKey(photoDocumentation.getId())) {
+            photos = imageCache.get(photoDocumentation.getId());
+        } else {
+            photos = photoDocumentationManagementService.getAllImagesByDocumentationId(documentation_id);
+            imageCache.put(photoDocumentation.getId(), photos);
+        }
         Platform.runLater(() -> flowPaneImageContainer.getChildren().clear());
-        Collection<Photo> photos = photoDocumentationManagementService.getAllImagesByDocumentationId(documentation_id);
         for (Photo photo : photos) {
             Platform.runLater(() -> {
                 Pair<Parent, PhotoOutputComponentController> p = FXMLManager.INSTANCE.loadFXML(FXMLPath.PHOTO_OUTPUT_COMPONENT);
@@ -75,29 +82,13 @@ public class ApproveDocumentationDashboardController {
                 flowPaneImageContainer.getChildren().add(p.getKey());
             });
         }
-//        HashMap<String, Image> photos;
-//        if (imageCache.containsKey(orderNumber)) {
-//            photos = imageCache.get(orderNumber);
-//        } else {
-//            photos = photoDocumentationManagementService.getAllImagesByOrderNumber(orderNumber);
-//            imageCache.put(orderNumber, photos);
-//        }
-//
-//        for (Map.Entry<String, Image> entry : photos.entrySet()) {
-//            Platform.runLater(() -> {
-//                Pair<Parent, PhotoOutputComponentController> p = FXMLManager.INSTANCE.loadFXML(FXMLPath.PHOTO_OUTPUT_COMPONENT);
-//                p.getValue().setSide(entry.getKey());
-//                p.getValue().setImage(entry.getValue());
-//                flowPaneImageContainer.getChildren().add(p.getKey());
-//            });
-//        }
     }
 
     @FXML
     private void onClickApproveDocumentation() throws IOException {
         String orderNumber = textFieldOrderNumber.getText();
         String comment = textFieldComment.getText();
-        HashMap<String, Image> images = imageCache.get(orderNumber);
+        Collection<Photo> images = imageCache.get(photoDocumentation.getId());
 
         Pair<Parent, DocumentationPreviewController> p = FXMLManager.INSTANCE.getFXML(FXMLPath.DOCUMENTATION_PREVIEW);
         DocumentationPreviewController controller = p.getValue();

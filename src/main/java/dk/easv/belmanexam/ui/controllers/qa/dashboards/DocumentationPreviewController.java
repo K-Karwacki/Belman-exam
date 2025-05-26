@@ -1,6 +1,7 @@
 package dk.easv.belmanexam.ui.controllers.qa.dashboards;
 
 import dk.easv.belmanexam.auth.UserSession;
+import dk.easv.belmanexam.model.Photo;
 import dk.easv.belmanexam.model.PhotoDocumentation;
 import dk.easv.belmanexam.services.interfaces.PhotoDocumentationManagementService;
 import dk.easv.belmanexam.services.utils.Status;
@@ -24,6 +25,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -46,13 +48,13 @@ public class DocumentationPreviewController {
         ViewManager.INSTANCE.switchDashboard(FXMLPath.APPROVE_DOCUMENTATION_DASHBOARD, "BelSign");
     }
 
-    public void setDetails(HashMap<String, Image> imageList, String orderNumber, String comment, PhotoDocumentation photoDocumentation) throws IOException {
+    public void setDetails(Collection<Photo> photos, String orderNumber, String comment, PhotoDocumentation photoDocumentation) throws IOException {
         this.photoDocumentation = photoDocumentation;
         this.imageList = imageList;
         this.orderNumber = orderNumber;
         this.comment = comment;
         String approvedBy = "Approved by: " + UserSession.INSTANCE.getLoggedUser().getFirstName() + " " + UserSession.INSTANCE.getLoggedUser().getLastName();
-        pdfFile = PDFGenerator.createPdf(orderNumber, approvedBy, imageList);
+        pdfFile = PDFGenerator.createPdf(orderNumber, approvedBy, photos);
         Image image = ImageConverter.convertPdfToImage(pdfFile.getByteData());
         imgViewPDFContainer.setImage(image);
     }
