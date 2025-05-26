@@ -32,15 +32,15 @@ public class PhotoDocumentationServiceImpl implements PhotoDocumentationManageme
 
     public HashMap<String, Image> getAllImagesByOrderNumber(String orderNumber) throws PhotoException {
         HashMap<String, Image> images = new HashMap<>();
-        HashMap<String, String> folders = googleDriveManager.listFoldersInFolder(orderNumber);
-        for(Map.Entry<String, String> folder : folders.entrySet()) {
-            File file = googleDriveManager.listFilesInFolder(folder.getKey()).get(0);
-            String side = folders.get(folder.getKey());
-            byte[] fileData = googleDriveManager.downloadFileContent(file.getId());
-            Image image = ImageConverter.convertToImage(fileData);
-            System.out.println(folder);
-            images.put(side, image);
-        }
+//        HashMap<String, String> folders = googleDriveManager.listFoldersInFolder(orderNumber);
+//        for(Map.Entry<String, String> folder : folders.entrySet()) {
+//            File file = googleDriveManager.listFilesInFolder(folder.getKey()).get(0);
+//            String side = folders.get(folder.getKey());
+//            byte[] fileData = googleDriveManager.downloadFileContent(file.getId());
+//            Image image = ImageConverter.convertToImage(fileData);
+//            System.out.println(folder);
+//            images.put(side, image);
+//        }
         return images;
     }
     public Collection<PhotoDocumentation> getAll(){
@@ -48,13 +48,15 @@ public class PhotoDocumentationServiceImpl implements PhotoDocumentationManageme
     }
 
     public void saveFileInFolder(java.io.File file, String folderId) throws PhotoException {
-        googleDriveManager.saveFileInFolder(file,folderId);
+//        googleDriveManager.saveFileInFolder(file,folderId);
     }
     public String createFolderInFolder(String folderName, String parentFolderId) throws PhotoException {
-        return googleDriveManager.createFolderInFolder(folderName, parentFolderId);
+//        return googleDriveManager.createFolderInFolder(folderName, parentFolderId);
+        return "Create folder in folder";
     }
     public String createFolder(String folderName) throws PhotoException {
-        return googleDriveManager.createFolder(folderName);
+//        return googleDriveManager.createFolder(folderName);
+        return "Create folder";
     }
 
 

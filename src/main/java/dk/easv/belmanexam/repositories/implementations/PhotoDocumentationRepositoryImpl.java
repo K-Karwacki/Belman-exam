@@ -63,8 +63,8 @@ public class PhotoDocumentationRepositoryImpl implements PhotoDocumentationRepos
                 .set("date", entity.getDateTime().toString())
                 .set("status", Status.PENDING.toString())
                 .set("orderNumber", entity.getOrderNumber())
-                .set("operatorID", entity.getUser().getID())
-                .set("user_id", entity.getUser().getID());
+                .set("operatorID", entity.getUser().getID());
+//                .set("user_id", entity.getUser().getID());
 
         try (DBConnection dbConnection = new DBConnection()) {
             queryBuilder.executeInsert(dbConnection.getConnection());

@@ -28,7 +28,7 @@ public class PhotoDocumentation {
     }
     public void setId(Long id) { this.id.set(id);}
     public String getOrderNumber() {
-        return "Order nr";
+        return orderNumber.get();
     }
     public void setOrderNumber(String orderNumber) {
         this.orderNumber.set(orderNumber);

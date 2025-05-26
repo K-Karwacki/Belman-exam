@@ -47,12 +47,13 @@ public class DocumentationListComponent {
 
     public void setPhotoDocumentation(PhotoDocumentation documentation) {
         this.photoDocumentation = documentation;
-//        lblOrderNumber.setText(documentation.getOrderNumber());
+        lblOrderNumber.setText(documentation.getOrderNumber());
         String s = documentation.getStatus().toString().toLowerCase();
         String capitalized = Character.toUpperCase(s.charAt(0)) + s.substring(1);
         lblOrderStatus.setText(capitalized);
         LocalDateTime localDateTime = documentation.getDateTime();
         lblRecordDate.setText(localDateTime.getDayOfMonth() + "/" + localDateTime.getMonthValue() + "/" + localDateTime.getYear());
+        lblDocumentedBy.setText(documentation.getOperatorID());
 //        lblDocumentedBy.setText(documentation.getUser().getFirstName() + " " + documentation.getUser().getLastName());
     }
 }
