@@ -13,16 +13,22 @@ public class PhotoDocumentation {
     private StringProperty orderNumber = new SimpleStringProperty();
     private SimpleObjectProperty<LocalDateTime> dateTime = new SimpleObjectProperty<>();
     private SimpleObjectProperty<Status> status = new SimpleObjectProperty<>();
+    private String operatorID;
 
     public PhotoDocumentation(){
-
+        id.set(-1);
+        user.set(new UserModel(new User()));
+        orderNumber.set("");
+        dateTime.set(LocalDateTime.of(2012,12,31,11,59, 59,99));
+        status.set(Status.PENDING);
+        operatorID = "";
     }
     public Long getId() {
         return id.get();
     }
     public void setId(Long id) { this.id.set(id);}
     public String getOrderNumber() {
-        return orderNumber.get();
+        return "Order nr";
     }
     public void setOrderNumber(String orderNumber) {
         this.orderNumber.set(orderNumber);
@@ -53,4 +59,14 @@ public class PhotoDocumentation {
     }
     public UserModel getUser() {return user.get();}
     public void setUser(UserModel user) {this.user.set(user);}
+
+    public void setOperatorID(String operatorID)
+    {
+        this.operatorID = operatorID;
+    }
+
+    public String getOperatorID()
+    {
+        return operatorID;
+    }
 }

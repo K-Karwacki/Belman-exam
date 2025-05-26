@@ -12,9 +12,9 @@ public class PhotoMapper implements BaseMapper<Photo> {
         Photo photo = new Photo();
         photo.setId(resultSet.getLong("id"));
         photo.setinfo(resultSet.getString("info"));
-        photo.setImageData(resultSet.getBytes("image_data"));
+        photo.setImageData(resultSet.getBytes("data"));
         photo.setDocumentationId(resultSet.getLong("documentation_id"));
-        photo.setSide(resultSet.getString("side"));
+        photo.setSide(resultSet.getString("info"));
         return photo;
     }
 }

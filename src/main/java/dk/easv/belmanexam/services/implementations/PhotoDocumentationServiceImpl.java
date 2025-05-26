@@ -109,6 +109,7 @@ public class PhotoDocumentationServiceImpl implements PhotoDocumentationManageme
         return photoDocumentationRepository.getAllImagesByDocumentationId(id);
     }
 
+
     @Override
     public void addLog(User user, PhotoDocumentation photoDocumentation){
         Log log = photoDocumentationRepository.addLog(user, photoDocumentation);

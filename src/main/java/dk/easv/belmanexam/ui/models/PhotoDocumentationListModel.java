@@ -35,7 +35,7 @@ public class PhotoDocumentationListModel {
         return FXCollections.observableArrayList(
                 documentation.stream()
                         .filter(doc -> doc.getStatus() == status)
-                        .filter(doc -> doc.getOrderNumber().contains(input))
+//                        .filter(doc -> doc.getOrderNumber().contains(input))
                         .collect(Collectors.toList())
         );
     }
