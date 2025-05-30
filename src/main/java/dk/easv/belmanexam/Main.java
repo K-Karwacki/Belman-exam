@@ -81,7 +81,8 @@ public class Main extends Application
     LogsDashboardController logsDashboardController = (LogsDashboardController) fxmlManager.getFXML(FXMLPath.LOGS_DASHBOARD).getValue();
     // Setting dependencies
     loginViewController.setServices(authService);
-    ordersDashboardController.setServices(orderManagementService, googleDriveManager);
+//    ordersDashboardController.setServices(orderManagementService, googleDriveManager);
+    ordersDashboardController.setServices(photoDocumentationManagementService, googleDriveManager);
     documentationDashboardController.setServices(photoDocumentationManagementService, googleDriveManager);
     documentationCreationDashboardController.setServices(photoDocumentationManagementService);
     approveDocumentationDashboardController.setServices(photoDocumentationManagementService);

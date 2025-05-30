@@ -53,4 +53,11 @@ public class PhotoDocumentationListModel {
     public void add(PhotoDocumentation photoDocumentation){
         documentation.add(photoDocumentation);
     }
+
+    public Collection<PhotoDocumentation> getDocumentationForOperator(int operatorId, String orderNumberFilter) {
+        return documentation.stream()
+                .filter(doc -> doc.getOperatorID().equals(operatorId))
+                .filter(doc -> orderNumberFilter == null || orderNumberFilter.isEmpty() || doc.getOrderNumber().contains(orderNumberFilter))
+                .collect(Collectors.toList());
+    }
 }

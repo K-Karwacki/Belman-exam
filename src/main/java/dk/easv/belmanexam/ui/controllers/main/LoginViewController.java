@@ -4,8 +4,10 @@ import dk.easv.belmanexam.Main;
 import dk.easv.belmanexam.auth.AuthService;
 import dk.easv.belmanexam.auth.UserSession;
 import dk.easv.belmanexam.services.utils.RoleType;
+import dk.easv.belmanexam.ui.FXMLManager;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
+import dk.easv.belmanexam.ui.controllers.operator.dashboards.OrdersDashboardController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -34,12 +36,16 @@ public class LoginViewController {
     private final Image INVISIBLE_ICON = new Image(Objects.requireNonNull(Main.class.getResourceAsStream("images/invisible-icon.png")));
 
     private final ViewManager viewManager = ViewManager.INSTANCE;
-    public void onClickLogin(ActionEvent actionEvent) {
 
+    public void onClickLogin(ActionEvent actionEvent) {
         String email = textFieldEmail.getText();
         String password = isPasswordVisible ? textFieldPassword.getText() : passwordFieldPassword.getText();
 
         blankMessageInput(email, password);
+
+        if (email.isEmpty() || password.isEmpty()) {
+            return;
+        }
 
         if (authService.authenticateWithPassword(email, password)) {
             RoleType role = RoleType.fromString(userSession.getLoggedUser().getRole());
@@ -52,19 +58,8 @@ public class LoginViewController {
             }
         }
         else {
-            showAlert("Login Failed","The login failed. Please try again. \n");
+            showAlert("Login Failed", "The login failed. Please try again.\n");
         }
-
-        /** Test Purposes **/
-//        if(textFieldEmail.getText().equals("qa")){
-//            goToQAPage();
-//
-//        } else if(textFieldEmail.getText().equals("admin")){
-//            goToAdminPage();
-//
-//        } else if(textFieldEmail.getText().equals("operator")){
-//            goToOperatorPage();
-//        }
     }
 
     private void blankMessageInput(String email, String password) {
@@ -81,13 +76,15 @@ public class LoginViewController {
         }
     }
 
-    private void goToOperatorPage(){
+    private void goToOperatorPage() {
         viewManager.showStage(FXMLPath.OPERATOR_VIEW, "BelSign", true);
     }
-    private void goToAdminPage(){
+
+    private void goToAdminPage() {
         viewManager.showStage(FXMLPath.ADMIN_VIEW, "BelSign", true);
     }
-    private void goToQAPage(){
+
+    private void goToQAPage() {
         viewManager.showStage(FXMLPath.QUALITY_ASSURANCE_VIEW, "BelSign", true);
     }
 
@@ -112,11 +109,11 @@ public class LoginViewController {
         }
     }
 
-    public void setServices(AuthService authService){
+    public void setServices(AuthService authService) {
         this.authService = authService;
     }
 
-    public void showAlert(String title, String message){
+    public void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(null);
