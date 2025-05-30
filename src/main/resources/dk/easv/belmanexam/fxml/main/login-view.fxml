@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane minHeight="500.0" minWidth="450.0" styleClass="bgc" stylesheets="@../../styles/login.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.main.LoginViewController">
    <children>
@@ -21,9 +22,9 @@
             <Image url="@../../images/belman-logo.png" />
          </image>
       </ImageView>
-      <VBox layoutX="65.0" layoutY="159.0" prefHeight="265.0" prefWidth="320.0">
+      <VBox alignment="CENTER" layoutX="65.0" layoutY="159.0" prefHeight="265.0" prefWidth="320.0">
          <children>
-            <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="2.0">
                <children>
                   <Label text="Email" />
                   <TextField fx:id="textFieldEmail" prefHeight="32.0">
@@ -33,10 +34,16 @@
                               <Color green="0.29411765933036804" blue="0.5333333611488342" />
                            </color>
                         </DropShadow>
-                     </effect></TextField>
+                     </effect>
+                  </TextField>
+                  <Label fx:id="emailErrorLabel" alignment="CENTER" contentDisplay="CENTER" style="-fx-font-size: 15;" textAlignment="CENTER" textFill="#e44141">
+                     <font>
+                        <Font size="5.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+            <VBox prefHeight="200.0" prefWidth="320.0" spacing="2.0">
                <children>
                   <Label text="Password" />
                   <Pane prefWidth="370.0">
@@ -56,6 +63,11 @@
                         </ImageView>
                      </children>
                   </Pane>
+                  <Label fx:id="passwordErrorLabel" style="-fx-font-size: 15;" textFill="#e44141">
+                     <font>
+                        <Font size="5.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
          </children>

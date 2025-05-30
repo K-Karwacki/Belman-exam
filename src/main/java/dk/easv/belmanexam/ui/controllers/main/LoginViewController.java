@@ -8,6 +8,8 @@ import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -15,17 +17,17 @@ import javafx.scene.image.ImageView;
 
 import java.util.Objects;
 
+import static javax.swing.JOptionPane.showMessageDialog;
+
 public class LoginViewController {
     private AuthService authService;
     private UserSession userSession = UserSession.INSTANCE;
-    @FXML
-    private TextField textFieldPassword;
-    @FXML
-    private PasswordField passwordFieldPassword;
-    @FXML
-    private TextField textFieldEmail;
 
+    @FXML private TextField textFieldPassword;
+    @FXML private PasswordField passwordFieldPassword;
+    @FXML private TextField textFieldEmail;
     @FXML private ImageView imgEyeIcon;
+    @FXML private Label emailErrorLabel, passwordErrorLabel;
 
     private boolean isPasswordVisible = false;
     private final Image VISIBLE_ICON = new Image(Objects.requireNonNull(Main.class.getResourceAsStream("images/visible-icon.png")));
@@ -36,6 +38,8 @@ public class LoginViewController {
 
         String email = textFieldEmail.getText();
         String password = isPasswordVisible ? textFieldPassword.getText() : passwordFieldPassword.getText();
+
+        blankMessageInput(email, password);
 
         if (authService.authenticateWithPassword(email, password)) {
             RoleType role = RoleType.fromString(userSession.getLoggedUser().getRole());
@@ -48,7 +52,7 @@ public class LoginViewController {
             }
         }
         else {
-            System.out.println("Invalid login");
+            showAlert("Login Failed","The login failed. Please try again. \n");
         }
 
         /** Test Purposes **/
@@ -61,6 +65,20 @@ public class LoginViewController {
 //        } else if(textFieldEmail.getText().equals("operator")){
 //            goToOperatorPage();
 //        }
+    }
+
+    private void blankMessageInput(String email, String password) {
+        if (email.isEmpty()) {
+            emailErrorLabel.setText("Email is required");
+        } else {
+            emailErrorLabel.setText("");
+        }
+
+        if (password.isEmpty()) {
+            passwordErrorLabel.setText("Password is required");
+        } else {
+            passwordErrorLabel.setText("");
+        }
     }
 
     private void goToOperatorPage(){
@@ -96,5 +114,13 @@ public class LoginViewController {
 
     public void setServices(AuthService authService){
         this.authService = authService;
+    }
+
+    public void showAlert(String title, String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
