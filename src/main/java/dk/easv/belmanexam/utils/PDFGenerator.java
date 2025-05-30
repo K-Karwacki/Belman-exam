@@ -19,7 +19,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 public class PDFGenerator {
-    public static PdfFile createPdf(String title, String content, Collection<Photo> photos) throws IOException {
+    public static PdfFile createPdf(String title, String content, Collection<Photo> photos, String pageNumber) throws IOException {
         Image logo = new Image(Objects.requireNonNull(Main.class.getResourceAsStream("images/belman-logo.png")));
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -62,6 +62,7 @@ public class PDFGenerator {
 
                 // Add signature text
                 addText(contentStream, 480, 80, "Signature");
+                addText(contentStream, 570, 15, pageNumber);
             }
 
             // Save to ByteArrayOutputStream instead of file
