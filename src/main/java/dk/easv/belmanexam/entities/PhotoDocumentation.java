@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class PhotoDocumentation {
     private Long id;
 
-    private String operatorId;
+    private String operatorEmail;
 
     private UserModel user;
 
@@ -25,7 +25,7 @@ public class PhotoDocumentation {
         this.orderNumber = "";
         this.dateTime = LocalDateTime.of(2012, 12, 31, 11, 59, 59, 99_000_000);
         this.status = Status.PENDING;
-        this.operatorId = "";
+        this.operatorEmail = "";
     }
 
     public Long getId() {
@@ -36,12 +36,12 @@ public class PhotoDocumentation {
         this.id = id;
     }
 
-    public String getOperatorId() {
-        return operatorId;
+    public String getOperatorEmail() {
+        return operatorEmail;
     }
 
-    public void setOperatorId(String operatorId) {
-        this.operatorId = operatorId;
+    public void setOperatorEmail(String operatorEmail) {
+        this.operatorEmail = operatorEmail;
     }
 
     public UserModel getUser() {

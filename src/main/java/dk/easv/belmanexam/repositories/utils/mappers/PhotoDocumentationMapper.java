@@ -1,8 +1,10 @@
 package dk.easv.belmanexam.repositories.utils.mappers;
 
 import dk.easv.belmanexam.entities.PhotoDocumentation;
+import dk.easv.belmanexam.entities.User;
 import dk.easv.belmanexam.repositories.interfaces.UserRepository;
 import dk.easv.belmanexam.services.utils.Status;
+import dk.easv.belmanexam.ui.models.UserModel;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,13 +20,11 @@ public class PhotoDocumentationMapper implements BaseMapper<PhotoDocumentation> 
     @Override
     public PhotoDocumentation mapRow(ResultSet resultSet) throws SQLException {
         PhotoDocumentation photoDocumentation = new PhotoDocumentation();
-        String operatorId = resultSet.getString("operatorID");
-//        int userId = resultSet.getInt("user_id");
-//        User user = userRepository.getById(userId)
-//                .orElseThrow(() -> new SQLException("User not found for ID: " + userId));
-//        UserModel userModel = new UserModel(user);
-//        photoDocumentation.setUser(userModel);
-        photoDocumentation.setOperatorId(operatorId);
+        String operatorEmail = resultSet.getString("operatorEmail");
+        User user = userRepository.findByEmail(operatorEmail);
+        UserModel userModel = new UserModel(user);
+        photoDocumentation.setUser(userModel);
+        photoDocumentation.setOperatorEmail(operatorEmail);
         photoDocumentation.setId(resultSet.getLong("id"));
         photoDocumentation.setOrderNumber(resultSet.getString("orderNumber"));
         photoDocumentation.setStatus(Status.fromString(resultSet.getString("status")));

@@ -42,7 +42,6 @@ public class DocumentationPreviewController {
 
     public void setDetails(Collection<Photo> photos, String orderNumber, String comment, PhotoDocumentation photoDocumentation) throws IOException {
         this.photoDocumentation = photoDocumentation;
-        this.imageList = imageList;
         this.orderNumber = orderNumber;
         this.comment = comment;
         String approvedBy = "Approved by: " + UserSession.INSTANCE.getLoggedUser().getFirstName() + " " + UserSession.INSTANCE.getLoggedUser().getLastName();

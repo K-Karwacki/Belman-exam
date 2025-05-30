@@ -70,9 +70,6 @@ public class DocumentationCreationDashboardController {
                 byte[] image_data = ImageConverter.convertToByteArray(image);
                 long documentation_id = photoDocumentationManagementService.getByOrderNumber(orderNumber).get().getId();
                 photoDocumentationManagementService.addPhoto(image_data, documentation_id, photoInputComponent.getSide(), "");
-//                    String sideFolder = photoDocumentationManagementService.createFolderInFolder(photoInputComponent.getSide(), parentFolderId);
-//                    System.out.println(sideFolder);
-//                    photoDocumentationManagementService.saveFileInFolder(file, sideFolder);
             }
         }
         if(parentController != null) {

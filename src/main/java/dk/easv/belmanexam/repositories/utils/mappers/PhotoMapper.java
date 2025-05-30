@@ -14,7 +14,7 @@ public class PhotoMapper implements BaseMapper<Photo> {
         photo.setInfo(resultSet.getString("info"));
         photo.setImageData(resultSet.getBytes("data"));
         photo.setDocumentationId(resultSet.getLong("documentation_id"));
-        photo.setSide(resultSet.getString("info"));
+        photo.setSide(resultSet.getString("side"));
         return photo;
     }
 }

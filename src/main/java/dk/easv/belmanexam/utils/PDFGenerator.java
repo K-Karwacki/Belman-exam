@@ -1,6 +1,7 @@
 package dk.easv.belmanexam.utils;
-
+import dk.easv.belmanexam.Main;
 import dk.easv.belmanexam.entities.Photo;
+import javafx.scene.image.Image;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -19,6 +20,8 @@ import java.util.Objects;
 
 public class PDFGenerator {
     public static PdfFile createPdf(String title, String content, Collection<Photo> photos) throws IOException {
+        Image logo = new Image(Objects.requireNonNull(Main.class.getResourceAsStream("images/belman-logo.png")));
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         try (PDDocument document = new PDDocument()) {
             PdfFile pdfFile = new PdfFile();
@@ -29,44 +32,36 @@ public class PDFGenerator {
                 // Set font for text
                 contentStream.setFont(PDType1Font.HELVETICA_BOLD, 12);
 
+                // Add logo
+                addImage(contentStream, document, logo, 260, 720, .35); // Adjust x, y, width, height as needed
+
                 // Add Title
-                addText(contentStream, 50, 730, title);
-                //Add Date
-                addText(contentStream, 50, 700, LocalDate.now().format(formatter));
+                addText(contentStream, 50, 690, "Order number: " + title);
+                // Add Date
+                addText(contentStream, 50, 660, "Date: " + LocalDate.now().format(formatter));
                 // Add Content
-                addText(contentStream, 50, 670, content);
+                addText(contentStream, 50, 630, content);
 
                 // Add images vertically
-                float xPosition = 350; // Fixed x-coordinate
-                float xPosition2 = 50;
-                float yPosition = 480; // Starting y-coordinate
+                float xPosition1 = 50;  // Left column x-coordinate
+                float xPosition2 = 350; // Right column x-coordinate
+                float yPosition = 440;  // Starting y-coordinate
                 int i = 0;
 
                 for (Photo photo : photos) {
-                    // Convert JavaFX Image to BufferedImage
-                    BufferedImage bufferedImage = javafx.embed.swing.SwingFXUtils.
-                            fromFXImage(Objects.requireNonNull(ImageConverter.convertToImage(photo.getImageData())), null);
-
-                    // Convert BufferedImage to PDImageXObject
-                    try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
-                        ImageIO.write(bufferedImage, "png", baos);
-                        PDImageXObject image = PDImageXObject.
-                                createFromByteArray(document, baos.toByteArray(), "png");
-                        // Scale image to half size
-                        float scaledWidth = 200;
-                        float scaledHeight = 140;
-                        if(i%2 == 1){
-                            contentStream.drawImage(image, xPosition, yPosition, scaledWidth, scaledHeight);
-                            addText(contentStream, xPosition, yPosition + scaledHeight + 5, photo.getSide());
-                            yPosition -= 250;
-                        }
-                        else{
-                            contentStream.drawImage(image, xPosition2, yPosition, scaledWidth, scaledHeight);
-                            addText(contentStream, xPosition2, yPosition + scaledHeight + 5, photo.getSide());
-                        }
+                    if (i % 2 == 0) {
+                        // Add photo in left column
+                        addPhoto(contentStream, document, photo, xPosition1, yPosition);
+                    } else {
+                        // Add photo in right column
+                        addPhoto(contentStream, document, photo, xPosition2, yPosition);
+                        yPosition -= 250; // Move down after placing images in both columns
                     }
                     i++;
                 }
+
+                // Add signature text
+                addText(contentStream, 480, 80, "Signature");
             }
 
             // Save to ByteArrayOutputStream instead of file
@@ -81,13 +76,53 @@ public class PDFGenerator {
             return pdfFile;
         }
     }
+
     private static void addText(PDPageContentStream contentStream, float position1, float position2, String text) throws IOException {
-        if(text != null && !text.isEmpty()) {
+        if (text != null && !text.isEmpty()) {
             contentStream.setFont(PDType1Font.HELVETICA_BOLD, 10);
             contentStream.beginText();
             contentStream.newLineAtOffset(position1, position2);
             contentStream.showText(text);
             contentStream.endText();
+        }
+    }
+
+    private static void addImage(PDPageContentStream contentStream, PDDocument document, Image image, float xPosition, float yPosition, double scale) throws IOException {
+        // Convert JavaFX Image to BufferedImage
+        BufferedImage bufferedImage = javafx.embed.swing.SwingFXUtils
+                .fromFXImage(Objects.requireNonNull(image), null);
+
+        // Convert BufferedImage to PDImageXObject
+        try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
+            ImageIO.write(bufferedImage, "png", baos);
+            PDImageXObject pdImage = PDImageXObject.createFromByteArray(document, baos.toByteArray(), "png");
+            // Draw image at specified position and size
+            contentStream.drawImage(pdImage, xPosition, yPosition, (float) image.getWidth() * (float) scale, (float) image.getHeight()* (float) scale);
+        }
+    }
+
+    private static void addPhoto(PDPageContentStream contentStream, PDDocument document, Photo photo, float xPosition, float yPosition) throws IOException {
+        // Convert JavaFX Image to BufferedImage
+        BufferedImage bufferedImage = javafx.embed.swing.SwingFXUtils
+                .fromFXImage(Objects.requireNonNull(ImageConverter.convertToImage(photo.getImageData())), null);
+
+        // Get original dimensions
+        int originalWidth = bufferedImage.getWidth();
+        int originalHeight = bufferedImage.getHeight();
+
+        // Calculate scaled dimensions while maintaining aspect ratio
+        float maxWidth = 200;
+        float scaledWidth = Math.min(originalWidth, maxWidth); // Ensure width is no larger than 200
+        float aspectRatio = (float) originalHeight / originalWidth;
+        float scaledHeight = scaledWidth * aspectRatio; // Maintain aspect ratio
+
+        // Convert BufferedImage to PDImageXObject
+        try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
+            ImageIO.write(bufferedImage, "png", baos);
+            PDImageXObject image = PDImageXObject.createFromByteArray(document, baos.toByteArray(), "png");
+            // Draw image and add side text
+            contentStream.drawImage(image, xPosition, yPosition, scaledWidth, scaledHeight);
+            addText(contentStream, xPosition, yPosition + scaledHeight + 5, photo.getSide());
         }
     }
 }

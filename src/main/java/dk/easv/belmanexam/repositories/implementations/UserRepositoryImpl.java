@@ -1,166 +1,114 @@
 package dk.easv.belmanexam.repositories.implementations;
 
+import dk.easv.belmanexam.entities.PhotoDocumentation;
 import dk.easv.belmanexam.entities.User;
 import dk.easv.belmanexam.repositories.interfaces.UserRepository;
 import dk.easv.belmanexam.repositories.utils.DBConnection;
+import dk.easv.belmanexam.repositories.utils.QueryBuilder;
+import dk.easv.belmanexam.repositories.utils.mappers.UserMapper;
+import dk.easv.belmanexam.services.utils.Status;
 
 import java.sql.*;
 import java.util.*;
 
 public class UserRepositoryImpl implements UserRepository {
+    private final UserMapper userMapper = new UserMapper();
 
     @Override
-    public List<User> getAll() {
-        String sql = "SELECT * FROM [user]";
-
-        try (Connection conn = new DBConnection().getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
-
-            List<User> users = new LinkedList<>();
-            while (rs.next()) {
-                User user = new User();
-                user.setId(rs.getInt("id"));
-                user.setFirstName(rs.getString("first_name"));
-                user.setLastName(rs.getString("last_name"));
-                user.setEmail(rs.getString("email"));
-                user.setRole(rs.getString("role"));
-                user.setPasswordHash(rs.getString("hashed_password"));
-                users.add(user);
+    public Collection<User> getAll() {
+        QueryBuilder<User> queryBuilder = new QueryBuilder<>(User.class, "[User]")
+                .withRowMapper(userMapper);
+        try (DBConnection dbConnection = new DBConnection()) {
+            Collection<User> users = queryBuilder.executeSelect(dbConnection.getConnection());
+            if(users.iterator().hasNext()) {
+                return users;
             }
-
-            return Collections.unmodifiableList(users);
-        } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving users: " + e.getMessage(), e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
+        return null;
     }
 
     @Override
     public Optional<User> getById(long id) {
-        String sql = "SELECT * FROM [User] WHERE ID = ?";
-
-        try (Connection conn = new DBConnection().getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setLong(1, id);
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                User user = new User();
-                System.out.println(rs.getLong("id"));
-                user.setId(rs.getInt("id"));
-                user.setFirstName(rs.getString("first_name"));
-                user.setLastName(rs.getString("last_name"));
-                user.setEmail(rs.getString("email"));
-                user.setRole(rs.getString("role"));
-                user.setPasswordHash(rs.getString("hashed_password"));
-                return Optional.of(user);
+        QueryBuilder<User> queryBuilder = new QueryBuilder<>(User.class, "[User]")
+                .withRowMapper(userMapper)
+                .where("ID", id);
+        try (DBConnection dbConnection = new DBConnection()) {
+            Collection<User> users = queryBuilder.executeSelect(dbConnection.getConnection());
+            if(users.iterator().hasNext()) {
+                return Optional.of(users.iterator().next());
             }
-
-            return Optional.empty();
-        } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving user by ID: " + e.getMessage(), e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
+        return Optional.empty();
     }
 
 
     @Override
     public User add(User entity) {
-        String sql = "INSERT INTO [user] (first_name, last_name, email, role, hashed_password) VALUES (?, ?, ?, ?, ?)";
+        QueryBuilder<User> queryBuilder = new QueryBuilder<>(User.class, "[User]")
+                .set("email", entity.getEmail())
+                .set("first_name", entity.getFirstName())
+                .set("last_name", entity.getLastName())
+                .set("role", entity.getRole())
+                .set("hashed_password", entity.getPasswordHash());
 
-        try (Connection conn = new DBConnection().getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-
-            stmt.setString(1, entity.getFirstName());
-            stmt.setString(2, entity.getLastName());
-            stmt.setString(3, entity.getEmail());
-            stmt.setString(4, entity.getRole());
-            stmt.setString(5, entity.getPasswordHash());
-            int affectedRows = stmt.executeUpdate();
-
-            if (affectedRows == 0) {
-                throw new SQLException("Inserting user failed, no rows affected.");
-            }
-
-            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    entity.setId(generatedKeys.getInt(1));
-                } else {
-                    throw new SQLException("Inserting user failed, no ID obtained.");
-                }
-            }
-
-            return entity;
-        } catch (SQLException e) {
-            throw new RuntimeException("Error inserting user: " + e.getMessage(), e);
+        try (DBConnection dbConnection = new DBConnection()) {
+            queryBuilder.executeInsert(dbConnection.getConnection());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
+        return entity;
     }
 
 
     @Override
     public boolean delete(User entity) {
-        String sql = "DELETE FROM [user] WHERE id = ?";
-
-        try (Connection conn = new DBConnection().getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setLong(1, entity.getId());
-            int affectedRows = stmt.executeUpdate();
-            return affectedRows > 0;
-
-        } catch (SQLException e) {
-            throw new RuntimeException("Error deleting user: " + e.getMessage(), e);
+        System.out.println("DELETING USER: " + entity);
+        QueryBuilder<User> queryBuilder = new QueryBuilder<>(User.class, "[User]")
+                .where("ID", entity.getId());
+        try (DBConnection dbConnection = new DBConnection()) {
+            queryBuilder.executeDelete(dbConnection.getConnection());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
+        return true;
     }
 
 
     @Override
     public User update(User entity) {
-        String sql = "UPDATE [user] SET first_name = ?, last_name = ?, email = ?, role = ?, hashed_password = ? WHERE id = ?";
-
-        try (Connection conn = new DBConnection().getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, entity.getFirstName());
-            stmt.setString(2, entity.getLastName());
-            stmt.setString(3, entity.getEmail());
-            stmt.setString(4, entity.getRole());
-            stmt.setString(5, entity.getPasswordHash());
-            stmt.setLong(6, entity.getId());
-
-            int affectedRows = stmt.executeUpdate();
-            if (affectedRows == 0) {
-                throw new RuntimeException("No rows affected when updating user");
-            }
-            return entity;
-
-        } catch (SQLException e) {
-            throw new RuntimeException("Error updating user: " + e.getMessage(), e);
+        QueryBuilder<User> queryBuilder = new QueryBuilder<>(User.class, "[User]")
+                .where("ID", entity.getId())
+                .set("email", entity.getEmail())
+                .set("first_name", entity.getFirstName())
+                .set("last_name", entity.getLastName())
+                .set("role", entity.getRole())
+                .set("hashed_password", entity.getPasswordHash());
+        try (DBConnection dbConnection = new DBConnection()) {
+            queryBuilder.executeUpdate(dbConnection.getConnection());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
+        return entity;
     }
 
     @Override public User findByEmail(String email)
     {
-//        return new User();
-        String sql = "SELECT * FROM [user] WHERE email = ?";
-        try (Connection conn = new DBConnection().getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, email);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                User user = new User();
-                user.setId(rs.getInt("id"));
-                user.setFirstName(rs.getString("first_name"));
-                user.setLastName(rs.getString("last_name"));
-                user.setEmail(rs.getString("email"));
-                user.setRole(rs.getString("role"));
-                user.setPasswordHash(rs.getString("hashed_password"));
-                return user;
+        QueryBuilder<User> queryBuilder = new QueryBuilder<>(User.class, "[User]")
+                .withRowMapper(userMapper)
+                .where("email", email);
+        try (DBConnection dbConnection = new DBConnection()) {
+            Collection<User> users = queryBuilder.executeSelect(dbConnection.getConnection());
+            if(users.iterator().hasNext()) {
+                return users.iterator().next();
             }
-            return null;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-        catch (SQLException e) {
-            throw new RuntimeException("Error retrieving user by email: " + e.getMessage(), e);
-        }
+        return null;
     }
 
 

@@ -53,7 +53,6 @@ public class DocumentationListComponent {
         lblOrderStatus.setText(capitalized);
         LocalDateTime localDateTime = documentation.getDateTime();
         lblRecordDate.setText(localDateTime.getDayOfMonth() + "/" + localDateTime.getMonthValue() + "/" + localDateTime.getYear());
-        lblDocumentedBy.setText(documentation.getOperatorId());
-//        lblDocumentedBy.setText(documentation.getUser().getFirstName() + " " + documentation.getUser().getLastName());
+        lblDocumentedBy.setText(documentation.getUser().getFirstName() + " " + documentation.getUser().getLastName());
     }
 }

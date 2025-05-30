@@ -76,7 +76,6 @@ public class QueryBuilder<T> {
         return this;
     }
 
-    // New join methods
     public QueryBuilder<T> innerJoin(String table, String onCondition) {
         joins.add(new JoinClause("INNER", table, onCondition));
         return this;
@@ -165,6 +164,23 @@ public class QueryBuilder<T> {
         sql.setLength(sql.length() - 2); // Remove last comma and space
         placeholders.setLength(placeholders.length() - 2); // Remove last comma and space
         sql.append(")").append(placeholders).append(")");
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql.toString())) {
+            for (int i = 0; i < parameters.size(); i++) {
+                stmt.setObject(i + 1, parameters.get(i));
+            }
+            stmt.executeUpdate();
+        }
+    }
+
+    public void executeDelete(Connection conn) throws SQLException {
+        StringBuilder sql = new StringBuilder("DELETE FROM ").append(tableName);
+        List<Object> parameters = new ArrayList<>();
+
+        // Build JOIN clause for DELETE (if supported by the database)
+        buildJoinClause(sql);
+        // Build WHERE clause
+        buildWhereClause(sql, parameters);
 
         try (PreparedStatement stmt = conn.prepareStatement(sql.toString())) {
             for (int i = 0; i < parameters.size(); i++) {
