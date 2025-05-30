@@ -35,11 +35,14 @@ public class LoginViewController {
 
     private final ViewManager viewManager = ViewManager.INSTANCE;
     public void onClickLogin(ActionEvent actionEvent) {
-
         String email = textFieldEmail.getText();
         String password = isPasswordVisible ? textFieldPassword.getText() : passwordFieldPassword.getText();
 
         blankMessageInput(email, password);
+
+        if (email.isEmpty() || password.isEmpty()) {
+            return;
+        }
 
         if (authService.authenticateWithPassword(email, password)) {
             RoleType role = RoleType.fromString(userSession.getLoggedUser().getRole());
@@ -52,7 +55,7 @@ public class LoginViewController {
             }
         }
         else {
-            showAlert("Login Failed","The login failed. Please try again. \n");
+            showAlert("Login Failed", "The login failed. Please try again.\n");
         }
 
         /** Test Purposes **/
