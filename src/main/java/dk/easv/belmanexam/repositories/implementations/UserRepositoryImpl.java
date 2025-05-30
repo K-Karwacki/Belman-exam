@@ -1,6 +1,6 @@
 package dk.easv.belmanexam.repositories.implementations;
 
-import dk.easv.belmanexam.model.User;
+import dk.easv.belmanexam.entities.User;
 import dk.easv.belmanexam.repositories.interfaces.UserRepository;
 import dk.easv.belmanexam.repositories.utils.DBConnection;
 

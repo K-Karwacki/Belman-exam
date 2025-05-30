@@ -1,14 +1,13 @@
 package dk.easv.belmanexam.services.interfaces;
 
 import dk.easv.belmanexam.exceptions.PhotoException;
-import dk.easv.belmanexam.model.*;
+import dk.easv.belmanexam.entities.*;
 import dk.easv.belmanexam.ui.models.LogListModel;
 import dk.easv.belmanexam.ui.models.PhotoDocumentationListModel;
 import javafx.scene.image.Image;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Optional;
 
 public interface PhotoDocumentationManagementService {

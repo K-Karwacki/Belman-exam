@@ -47,7 +47,7 @@ module dk.easv.belmanexam{
   exports dk.easv.belmanexam.ui.controllers.operator.dashboards;
   exports dk.easv.belmanexam.ui.controllers.qa.dashboards;
 
-  exports dk.easv.belmanexam.model;
+  exports dk.easv.belmanexam.entities;
   exports dk.easv.belmanexam.services.utils;
   exports dk.easv.belmanexam.repositories.interfaces;
   exports dk.easv.belmanexam.repositories.utils;

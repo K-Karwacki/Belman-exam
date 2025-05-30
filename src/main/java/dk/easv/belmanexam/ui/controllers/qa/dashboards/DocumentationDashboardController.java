@@ -1,6 +1,6 @@
 package dk.easv.belmanexam.ui.controllers.qa.dashboards;
 
-import dk.easv.belmanexam.model.PhotoDocumentation;
+import dk.easv.belmanexam.entities.PhotoDocumentation;
 import dk.easv.belmanexam.services.interfaces.PhotoDocumentationManagementService;
 import dk.easv.belmanexam.repositories.utils.GoogleDriveManager;
 import dk.easv.belmanexam.services.utils.Status;

@@ -1,6 +1,6 @@
 package dk.easv.belmanexam.repositories.implementations;
 
-import dk.easv.belmanexam.model.Order;
+import dk.easv.belmanexam.entities.Order;
 import dk.easv.belmanexam.repositories.interfaces.OrderRepository;
 
 import java.util.Collection;

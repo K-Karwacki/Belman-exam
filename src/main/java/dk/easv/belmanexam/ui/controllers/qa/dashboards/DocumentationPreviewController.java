@@ -1,8 +1,8 @@
 package dk.easv.belmanexam.ui.controllers.qa.dashboards;
 
 import dk.easv.belmanexam.auth.UserSession;
-import dk.easv.belmanexam.model.Photo;
-import dk.easv.belmanexam.model.PhotoDocumentation;
+import dk.easv.belmanexam.entities.Photo;
+import dk.easv.belmanexam.entities.PhotoDocumentation;
 import dk.easv.belmanexam.services.interfaces.PhotoDocumentationManagementService;
 import dk.easv.belmanexam.services.utils.Status;
 import dk.easv.belmanexam.ui.FXMLPath;
@@ -10,24 +10,16 @@ import dk.easv.belmanexam.ui.ViewManager;
 import dk.easv.belmanexam.utils.ImageConverter;
 import dk.easv.belmanexam.utils.PDFGenerator;
 import dk.easv.belmanexam.utils.PdfFile;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 
 public class DocumentationPreviewController {
     @FXML

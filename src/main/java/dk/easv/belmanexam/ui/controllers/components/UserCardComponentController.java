@@ -2,7 +2,7 @@ package dk.easv.belmanexam.ui.controllers.components;
 
 
 
-import dk.easv.belmanexam.model.UserModel;
+import dk.easv.belmanexam.ui.models.UserModel;
 import dk.easv.belmanexam.services.interfaces.UserManagementService;
 import dk.easv.belmanexam.ui.FXMLManager;
 import dk.easv.belmanexam.ui.ViewManager;

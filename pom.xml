@@ -217,10 +217,10 @@
                     <bundlesList></bundlesList>
                     <resourcesList></resourcesList>
                     <reflectionList>
-<!--                        <reflection>dk.easv.belmanexam.model.Customer</reflection>-->
-<!--                        <reflection>dk.easv.belmanexam.model.Order</reflection>-->
-<!--                        <reflection>dk.easv.belmanexam.model.PhotoDocumentation</reflection>-->
-<!--                        <reflection>dk.easv.belmanexam.model.User</reflection>-->
+<!--                        <reflection>dk.easv.belmanexam.entities.Customer</reflection>-->
+<!--                        <reflection>dk.easv.belmanexam.entities.Order</reflection>-->
+<!--                        <reflection>dk.easv.belmanexam.entities.PhotoDocumentation</reflection>-->
+<!--                        <reflection>dk.easv.belmanexam.entities.User</reflection>-->
                     </reflectionList>
                     <jniList></jniList>
                     <attachList>

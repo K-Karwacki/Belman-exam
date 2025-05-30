@@ -1,10 +1,10 @@
-package dk.easv.belmanexam.model;
+package dk.easv.belmanexam.ui.models;
 
+import dk.easv.belmanexam.entities.User;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javax.management.relation.Role;
+
 import java.util.Objects;
 
 public class UserModel

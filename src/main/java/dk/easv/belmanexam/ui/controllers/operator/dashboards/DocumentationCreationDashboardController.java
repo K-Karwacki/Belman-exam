@@ -1,8 +1,8 @@
 package dk.easv.belmanexam.ui.controllers.operator.dashboards;
 
 import dk.easv.belmanexam.auth.UserSession;
-import dk.easv.belmanexam.model.PhotoDocumentation;
-import dk.easv.belmanexam.model.UserModel;
+import dk.easv.belmanexam.entities.PhotoDocumentation;
+import dk.easv.belmanexam.ui.models.UserModel;
 import dk.easv.belmanexam.services.interfaces.PhotoDocumentationManagementService;
 import dk.easv.belmanexam.exceptions.PhotoException;
 import dk.easv.belmanexam.services.utils.Status;
@@ -13,22 +13,16 @@ import dk.easv.belmanexam.ui.controllers.components.PhotoInputComponentControlle
 import dk.easv.belmanexam.ui.controllers.components.OrderListComponent;
 import dk.easv.belmanexam.utils.ImageConverter;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
-import javafx.stage.FileChooser;
 import javafx.util.Pair;
 
-import javax.swing.text.html.Option;
 import java.io.File;
-import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
 public class DocumentationCreationDashboardController {
 

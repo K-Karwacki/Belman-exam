@@ -1,6 +1,6 @@
 package dk.easv.belmanexam.auth;
 
-import dk.easv.belmanexam.model.User;
+import dk.easv.belmanexam.entities.User;
 import dk.easv.belmanexam.repositories.interfaces.UserRepository;
 import dk.easv.belmanexam.services.factories.RepositoryService;
 import org.mindrot.jbcrypt.BCrypt;

@@ -22,7 +22,7 @@ public class OrdersDashboardController{
 //        Collection<Order> orders = orderManagementService.getOrderListModel().getOrders();
 //        orders.forEach(order -> {
 //            Pair<Parent, OrderListComponent> p = FXMLManager.INSTANCE.loadFXML(FXMLPath.ORDER_LIST_COMPONENT);
-//            p.getValue().setOrderNumber(order.getOrderNumber());
+//            p.getValue().setOrderNumber(order .getOrderNumber());
 //            p.getValue().setStatus(order.getStatus());
 //            flowPaneOrderList.getChildren().add(p.getKey());
 //        });

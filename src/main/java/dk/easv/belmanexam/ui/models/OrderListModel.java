@@ -1,11 +1,5 @@
 package dk.easv.belmanexam.ui.models;
 
-import dk.easv.belmanexam.model.Order;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
-import java.util.Collection;
-
 public class OrderListModel {
 //    private final ObservableList<Order> orders = FXCollections.observableArrayList();
 //

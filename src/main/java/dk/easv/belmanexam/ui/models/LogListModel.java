@@ -1,6 +1,6 @@
 package dk.easv.belmanexam.ui.models;
 
-import dk.easv.belmanexam.model.Log;
+import dk.easv.belmanexam.entities.Log;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

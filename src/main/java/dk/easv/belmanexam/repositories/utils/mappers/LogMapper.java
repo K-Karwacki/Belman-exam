@@ -1,9 +1,8 @@
 package dk.easv.belmanexam.repositories.utils.mappers;
 
-import dk.easv.belmanexam.model.Log;
-import dk.easv.belmanexam.model.User;
-import dk.easv.belmanexam.model.UserModel;
-import dk.easv.belmanexam.repositories.implementations.UserRepositoryImpl;
+import dk.easv.belmanexam.entities.Log;
+import dk.easv.belmanexam.entities.User;
+import dk.easv.belmanexam.ui.models.UserModel;
 import dk.easv.belmanexam.repositories.interfaces.UserRepository;
 import dk.easv.belmanexam.services.utils.ActionType;
 

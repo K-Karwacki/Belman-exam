@@ -1,11 +1,8 @@
 package dk.easv.belmanexam.ui.models;
 
-import dk.easv.belmanexam.model.PhotoDocumentation;
-import dk.easv.belmanexam.model.UserModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableSet;
 
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
 

@@ -1,6 +1,5 @@
 package dk.easv.belmanexam.services.factories;
 
-import dk.easv.belmanexam.model.PhotoDocumentation;
 import dk.easv.belmanexam.repositories.implementations.OrderRepositoryImpl;
 import dk.easv.belmanexam.repositories.implementations.PhotoDocumentationRepositoryImpl;
 import dk.easv.belmanexam.repositories.implementations.UserRepositoryImpl;

@@ -1,13 +1,12 @@
 package dk.easv.belmanexam.utils;
 
-import dk.easv.belmanexam.model.Photo;
+import dk.easv.belmanexam.entities.Photo;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
-import javafx.scene.image.Image;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
@@ -16,8 +15,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 public class PDFGenerator {
@@ -47,12 +44,14 @@ public class PDFGenerator {
 
                 for (Photo photo : photos) {
                     // Convert JavaFX Image to BufferedImage
-                    BufferedImage bufferedImage = javafx.embed.swing.SwingFXUtils.fromFXImage(Objects.requireNonNull(ImageConverter.convertToImage(photo.getImageData())), null);
+                    BufferedImage bufferedImage = javafx.embed.swing.SwingFXUtils.
+                            fromFXImage(Objects.requireNonNull(ImageConverter.convertToImage(photo.getImageData())), null);
 
                     // Convert BufferedImage to PDImageXObject
                     try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
                         ImageIO.write(bufferedImage, "png", baos);
-                        PDImageXObject image = PDImageXObject.createFromByteArray(document, baos.toByteArray(), "png");
+                        PDImageXObject image = PDImageXObject.
+                                createFromByteArray(document, baos.toByteArray(), "png");
                         // Scale image to half size
                         float scaledWidth = 200;
                         float scaledHeight = 140;

@@ -1,6 +1,6 @@
 package dk.easv.belmanexam.auth;
 
-import dk.easv.belmanexam.model.User;
+import dk.easv.belmanexam.entities.User;
 
 public enum UserSession
 {

@@ -1,8 +1,7 @@
 package dk.easv.belmanexam.services.implementations;
 
-import com.google.api.services.drive.model.File;
 import dk.easv.belmanexam.auth.UserSession;
-import dk.easv.belmanexam.model.*;
+import dk.easv.belmanexam.entities.*;
 import dk.easv.belmanexam.services.factories.RepositoryService;
 import dk.easv.belmanexam.services.interfaces.PhotoDocumentationManagementService;
 import dk.easv.belmanexam.repositories.utils.GoogleDriveManager;
@@ -10,7 +9,6 @@ import dk.easv.belmanexam.repositories.interfaces.PhotoDocumentationRepository;
 import dk.easv.belmanexam.exceptions.PhotoException;
 import dk.easv.belmanexam.ui.models.LogListModel;
 import dk.easv.belmanexam.ui.models.PhotoDocumentationListModel;
-import dk.easv.belmanexam.utils.ImageConverter;
 import javafx.scene.image.Image;
 
 import java.util.*;

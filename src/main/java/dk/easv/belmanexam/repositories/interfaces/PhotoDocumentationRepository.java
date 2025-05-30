@@ -1,9 +1,9 @@
 package dk.easv.belmanexam.repositories.interfaces;
 
-import dk.easv.belmanexam.model.Log;
-import dk.easv.belmanexam.model.Photo;
-import dk.easv.belmanexam.model.PhotoDocumentation;
-import dk.easv.belmanexam.model.User;
+import dk.easv.belmanexam.entities.Log;
+import dk.easv.belmanexam.entities.Photo;
+import dk.easv.belmanexam.entities.PhotoDocumentation;
+import dk.easv.belmanexam.entities.User;
 
 import java.util.Collection;
 import java.util.Optional;

@@ -1,6 +1,6 @@
 package dk.easv.belmanexam.ui.controllers.components;
 
-import dk.easv.belmanexam.model.PhotoDocumentation;
+import dk.easv.belmanexam.entities.PhotoDocumentation;
 import dk.easv.belmanexam.ui.FXMLManager;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
@@ -53,7 +53,7 @@ public class DocumentationListComponent {
         lblOrderStatus.setText(capitalized);
         LocalDateTime localDateTime = documentation.getDateTime();
         lblRecordDate.setText(localDateTime.getDayOfMonth() + "/" + localDateTime.getMonthValue() + "/" + localDateTime.getYear());
-        lblDocumentedBy.setText(documentation.getOperatorID());
+        lblDocumentedBy.setText(documentation.getOperatorId());
 //        lblDocumentedBy.setText(documentation.getUser().getFirstName() + " " + documentation.getUser().getLastName());
     }
 }

@@ -1,10 +1,9 @@
 package dk.easv.belmanexam.services.interfaces;
 
-import dk.easv.belmanexam.model.User;
+import dk.easv.belmanexam.entities.User;
 import dk.easv.belmanexam.ui.models.UserListModel;
-import dk.easv.belmanexam.model.UserModel;
+import dk.easv.belmanexam.ui.models.UserModel;
 
-import java.util.Collection;
 import java.util.Optional;
 
 public interface UserManagementService {

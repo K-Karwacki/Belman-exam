@@ -18,10 +18,28 @@ public class QueryBuilder<T> {
     private final Map<String, Object> conditions = new HashMap<>();
     private final List<String> orderBy = new ArrayList<>();
     private final Map<String, Object> updates = new HashMap<>();
+    private final List<JoinClause> joins = new ArrayList<>();
     private Integer limit;
     private Integer offset;
     private String operation = "SELECT";
     private BaseMapper<T> rowMapper;
+
+    // Inner class to store join information
+    private static class JoinClause {
+        private final String joinType;
+        private final String table;
+        private final String onCondition;
+
+        JoinClause(String joinType, String table, String onCondition) {
+            this.joinType = joinType;
+            this.table = table;
+            this.onCondition = onCondition;
+        }
+
+        String toSQL() {
+            return String.format("%s JOIN %s ON %s", joinType, table, onCondition);
+        }
+    }
 
     public QueryBuilder(Class<T> entityClass, String tableName) {
         this.entityClass = entityClass;
@@ -58,6 +76,22 @@ public class QueryBuilder<T> {
         return this;
     }
 
+    // New join methods
+    public QueryBuilder<T> innerJoin(String table, String onCondition) {
+        joins.add(new JoinClause("INNER", table, onCondition));
+        return this;
+    }
+
+    public QueryBuilder<T> leftJoin(String table, String onCondition) {
+        joins.add(new JoinClause("LEFT", table, onCondition));
+        return this;
+    }
+
+    public QueryBuilder<T> rightJoin(String table, String onCondition) {
+        joins.add(new JoinClause("RIGHT", table, onCondition));
+        return this;
+    }
+
     public Collection<T> executeSelect(Connection conn) throws SQLException {
         if (rowMapper == null) {
             throw new IllegalStateException("Row mapper is required for SELECT queries");
@@ -65,6 +99,7 @@ public class QueryBuilder<T> {
 
         StringBuilder sql = new StringBuilder("SELECT * FROM ").append(tableName);
         List<Object> parameters = new ArrayList<>();
+        buildJoinClause(sql);
         buildWhereClause(sql, parameters);
         buildOrderByClause(sql);
         buildLimitOffsetClause(sql);
@@ -99,6 +134,8 @@ public class QueryBuilder<T> {
         });
         sql.setLength(sql.length() - 2); // Remove last comma and space
 
+        // Build JOIN clause for UPDATE
+        buildJoinClause(sql);
         // Build WHERE clause
         buildWhereClause(sql, parameters);
 
@@ -159,6 +196,14 @@ public class QueryBuilder<T> {
             sql.append(" LIMIT ").append(limit);
             if (offset != null) {
                 sql.append(" OFFSET ").append(offset);
+            }
+        }
+    }
+
+    private void buildJoinClause(StringBuilder sql) {
+        if (!joins.isEmpty()) {
+            for (JoinClause join : joins) {
+                sql.append(" ").append(join.toSQL());
             }
         }
     }

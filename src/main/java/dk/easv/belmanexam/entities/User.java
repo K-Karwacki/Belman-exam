@@ -1,4 +1,4 @@
-package dk.easv.belmanexam.model;
+package dk.easv.belmanexam.entities;
 
 public class User {
 

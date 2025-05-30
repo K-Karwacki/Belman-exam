@@ -1,6 +1,6 @@
 package dk.easv.belmanexam.repositories.implementations;
 
-import dk.easv.belmanexam.model.*;
+import dk.easv.belmanexam.entities.*;
 import dk.easv.belmanexam.repositories.interfaces.PhotoDocumentationRepository;
 import dk.easv.belmanexam.repositories.interfaces.UserRepository;
 import dk.easv.belmanexam.repositories.utils.DBConnection;
@@ -10,10 +10,10 @@ import dk.easv.belmanexam.repositories.utils.mappers.PhotoDocumentationMapper;
 import dk.easv.belmanexam.repositories.utils.mappers.PhotoMapper;
 import dk.easv.belmanexam.services.utils.ActionType;
 import dk.easv.belmanexam.services.utils.Status;
+import dk.easv.belmanexam.ui.models.UserModel;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 
 public class PhotoDocumentationRepositoryImpl implements PhotoDocumentationRepository {
@@ -81,7 +81,8 @@ public class PhotoDocumentationRepositoryImpl implements PhotoDocumentationRepos
 
     @Override
     public PhotoDocumentation update(PhotoDocumentation newEntity) {
-        QueryBuilder<PhotoDocumentation> queryBuilder = new QueryBuilder<>(PhotoDocumentation.class, "photo_doc")
+        QueryBuilder<PhotoDocumentation> queryBuilder =
+                new QueryBuilder<>(PhotoDocumentation.class, "photo_doc")
                 .set("date", newEntity.getDateTime().toString())
                 .set("status", newEntity.getStatus().toString())
                 .where("id", newEntity.getId());
@@ -95,7 +96,6 @@ public class PhotoDocumentationRepositoryImpl implements PhotoDocumentationRepos
 
     @Override
     public Log addLog(User user, PhotoDocumentation newEntity) {
-        System.out.println("Adding log ...");
         Log log = new Log();
         LocalDateTime now = LocalDateTime.now();
         String orderNumber = newEntity.getOrderNumber();
@@ -114,7 +114,6 @@ public class PhotoDocumentationRepositoryImpl implements PhotoDocumentationRepos
             default:
                 return null;
         }
-
         QueryBuilder<Log> queryBuilder = new QueryBuilder<>(Log.class, "Log")
                 .set("date", now.toString())
                 .set("action_type", actionType.toString())
@@ -135,7 +134,8 @@ public class PhotoDocumentationRepositoryImpl implements PhotoDocumentationRepos
     @Override
     public Collection<Log> getAllLogs() {
         QueryBuilder<Log> queryBuilder = new QueryBuilder<>(Log.class, "Log")
-                .withRowMapper(logMapper);
+                .withRowMapper(logMapper)
+                .innerJoin("[User]", "[User].id = Log.user_id");
 
         try (DBConnection dbConnection = new DBConnection()) {
             return queryBuilder.executeSelect(dbConnection.getConnection());

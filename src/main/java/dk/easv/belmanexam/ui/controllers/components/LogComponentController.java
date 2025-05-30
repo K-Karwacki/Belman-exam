@@ -1,12 +1,10 @@
 package dk.easv.belmanexam.ui.controllers.components;
 
-import com.google.api.client.util.DateTime;
-import dk.easv.belmanexam.model.Log;
+import dk.easv.belmanexam.entities.Log;
 import dk.easv.belmanexam.services.utils.ActionType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class LogComponentController {

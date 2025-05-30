@@ -1,6 +1,6 @@
 package dk.easv.belmanexam.ui.controllers.admin.dashboards;
 
-import dk.easv.belmanexam.model.UserModel;
+import dk.easv.belmanexam.ui.models.UserModel;
 import dk.easv.belmanexam.services.interfaces.UserManagementService;
 import dk.easv.belmanexam.services.utils.RoleType;
 import dk.easv.belmanexam.ui.FXMLPath;
