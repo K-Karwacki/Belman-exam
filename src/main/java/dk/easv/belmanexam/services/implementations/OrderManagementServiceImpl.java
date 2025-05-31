@@ -5,7 +5,6 @@ import dk.easv.belmanexam.services.interfaces.OrderManagementService;
 import dk.easv.belmanexam.repositories.interfaces.OrderRepository;
 import dk.easv.belmanexam.ui.models.OrderListModel;
 
-import java.util.ArrayList;
 
 public class OrderManagementServiceImpl implements OrderManagementService {
     private final RepositoryService repositoryService;

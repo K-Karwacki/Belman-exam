@@ -9,49 +9,59 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.ArgumentCaptor;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class UserManagementServiceTest {
 
     @Mock
-    private RepositoryService repositoryService;
+    private RepositoryService mockRepositoryService;
+
+    @Mock
+    private UserRepository mockUserRepository;
+
     private UserManagementServiceImpl userManagementService;
 
     @BeforeEach
     void setUp() {
-        userManagementService = new UserManagementServiceImpl(repositoryService);
+        when(mockRepositoryService.getRepository(UserRepository.class)).thenReturn(mockUserRepository);
+        userManagementService = new UserManagementServiceImpl(mockRepositoryService);
     }
 
-
     @Test
-    public void testCreateUserSuccessfully(){
+    public void testCreateUserSuccessfully() {
+        // Arrange
+        ArgumentCaptor<User> userArgumentCaptor = ArgumentCaptor.forClass(User.class);
 
+        when(mockUserRepository.add(any())).thenAnswer(invocation -> {
+            User user = invocation.getArgument(0);
+            user.setId(1);
+            return user;
+        });
 
-        //Arrange
-        UserRepository mockUserRepository = Mockito.mock(UserRepository.class);
-        RepositoryService mockRepositoryService = Mockito.mock(RepositoryService.class);
-
-        User dummyUser = new User();
-        dummyUser.setId(1);
-        dummyUser.setEmail("test@example.com");
-        Mockito.when(mockUserRepository.add(Mockito.any())).thenReturn(dummyUser);
-
-        UserManagementServiceImpl service = new UserManagementServiceImpl(mockRepositoryService);
-
-        //Act
-        UserModel result = service.createUser(
+        // Act
+        UserModel result = userManagementService.createUser(
                 "Kirsten",
                 "Nielsen",
                 "ADMIN",
                 "test@example.com",
                 "123456789");
 
-        //Assert
-        assertNotNull(result);
+        // Assert
+        verify(mockUserRepository).add(userArgumentCaptor.capture());
+        User passedtoAdd = userArgumentCaptor.getValue();
+
+        assertEquals("Kirsten", passedtoAdd.getFirstName());
+        assertEquals("Nielsen", passedtoAdd.getLastName());
+        assertEquals("ADMIN", passedtoAdd.getRole());
+        assertEquals("test@example.com", passedtoAdd.getEmail());
+
         assertEquals("test@example.com", result.getEmail());
+        assertEquals(1, result.getID());
+
     }
 }
