@@ -74,6 +74,7 @@ public class ApproveDocumentationDashboardController {
         Platform.runLater(() -> flowPaneImageContainer.getChildren().clear());
         for (Photo photo : photos) {
             Platform.runLater(() -> {
+                System.out.println("Hello");
                 Pair<Parent, PhotoOutputComponentController> p = FXMLManager.INSTANCE.loadFXML(FXMLPath.PHOTO_OUTPUT_COMPONENT);
                 p.getValue().setSide(photo.getSide());
                 p.getValue().setImage(ImageConverter.convertToImage(photo.getImageData()));

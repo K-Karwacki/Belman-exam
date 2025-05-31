@@ -45,6 +45,7 @@ public class DocumentationListComponent {
     }
 
 
+
     public void setPhotoDocumentation(PhotoDocumentation documentation) {
         this.photoDocumentation = documentation;
         lblOrderNumber.setText(documentation.getOrderNumber());

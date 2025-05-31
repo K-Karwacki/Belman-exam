@@ -1,6 +1,5 @@
 package dk.easv.belmanexam;
 
-import com.gluonhq.attach.pictures.PicturesService;
 import dk.easv.belmanexam.auth.AuthService;
 import dk.easv.belmanexam.auth.UserSession;
 import dk.easv.belmanexam.services.factories.RepositoryService;
@@ -52,15 +51,7 @@ public class Main extends Application
 
   @Override public void start(Stage primaryStage) {
 
-  Optional<PicturesService> picturesService = PicturesService.create();
-
-  if(picturesService.isEmpty()){
-    System.out.println("Service not available");
-  } else {
-    System.out.println("Service on");
-  }
-
-  Locale.setDefault(Locale.ENGLISH);
+    Locale.setDefault(Locale.ENGLISH);
   setControllersDependencies();
   stageManager.setCurrentStage(primaryStage);
   viewManager.setStageManager(stageManager);

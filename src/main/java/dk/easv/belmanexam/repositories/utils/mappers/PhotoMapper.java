@@ -11,7 +11,6 @@ public class PhotoMapper implements BaseMapper<Photo> {
     public Photo mapRow(ResultSet resultSet) throws SQLException {
         Photo photo = new Photo();
         photo.setId(resultSet.getLong("id"));
-        photo.setInfo(resultSet.getString("info"));
         photo.setImageData(resultSet.getBytes("data"));
         photo.setDocumentationId(resultSet.getLong("documentation_id"));
         photo.setSide(resultSet.getString("side"));
