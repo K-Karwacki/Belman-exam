@@ -3,6 +3,7 @@ package dk.easv.belmanexam.ui.controllers.qa.dashboards;
 import dk.easv.belmanexam.auth.UserSession;
 import dk.easv.belmanexam.entities.Photo;
 import dk.easv.belmanexam.entities.PhotoDocumentation;
+import dk.easv.belmanexam.services.EmailSenderService;
 import dk.easv.belmanexam.services.interfaces.PhotoDocumentationManagementService;
 import dk.easv.belmanexam.services.utils.Status;
 import dk.easv.belmanexam.ui.FXMLPath;
@@ -11,13 +12,18 @@ import dk.easv.belmanexam.utils.ImageConverter;
 import dk.easv.belmanexam.utils.PDFGenerator;
 import dk.easv.belmanexam.utils.PdfFile;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.geometry.Insets;
 
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -31,7 +37,17 @@ public class DocumentationPreviewController {
     @FXML
     private FlowPane flowPanePDFContainer;
 
+    @FXML
+    private TextField txtFieldEmail;
+
+    @FXML
+    private HBox btnSendEmail;
+
+    @FXML
+    private Label lblSend;
+
     private PhotoDocumentationManagementService photoDocumentationManagementService;
+    private EmailSenderService emailSenderService;
 
     private List<PdfFile> pdfFiles;
     private PhotoDocumentation photoDocumentation;
@@ -51,6 +67,8 @@ public class DocumentationPreviewController {
         this.photoDocumentation = photoDocumentation;
         this.orderNumber = orderNumber;
         this.comment = comment;
+        btnSendEmail.setDisable(false);
+        lblSend.setText("Send");
 
         String approvedBy = "Approved by: " + UserSession.INSTANCE.getLoggedUser().getFirstName() + " " + UserSession.INSTANCE.getLoggedUser().getLastName();
 
@@ -132,6 +150,19 @@ public class DocumentationPreviewController {
         }
     }
 
+    @FXML
+    private void onClickSendEmail() throws IOException {
+        String email = txtFieldEmail.getText();
+        List<File> files = new ArrayList<>();
+        for (PdfFile pdfFile : pdfFiles) {
+            files.add(pdfFile.getFile());
+        }
+        if(emailSenderService.sendReport(email, files, "Report")){
+            btnSendEmail.setDisable(true);
+            lblSend.setText("Sent");
+        }
+    }
+
     private void downloadSinglePdf() throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save PDF");
@@ -166,7 +197,8 @@ public class DocumentationPreviewController {
         }
     }
 
-    public void setServices(PhotoDocumentationManagementService photoDocumentationManagementService) {
+    public void setServices(PhotoDocumentationManagementService photoDocumentationManagementService, EmailSenderService emailSenderService) {
         this.photoDocumentationManagementService = photoDocumentationManagementService;
+        this.emailSenderService = emailSenderService;
     }
 }

@@ -24,8 +24,9 @@ module dk.easv.belmanexam{
     requires com.google.api.client.extensions.jetty.auth;
     requires org.apache.pdfbox;
   requires java.management;
+    requires org.json;
 
-  opens dk.easv.belmanexam.ui.controllers.main to javafx.fxml;
+    opens dk.easv.belmanexam.ui.controllers.main to javafx.fxml;
   opens dk.easv.belmanexam.ui.controllers.components to javafx.fxml;
   opens dk.easv.belmanexam.ui.controllers.admin to javafx.fxml;
   opens dk.easv.belmanexam.ui.controllers.admin.dashboards to javafx.fxml;
@@ -54,6 +55,7 @@ module dk.easv.belmanexam{
   exports dk.easv.belmanexam.repositories.utils.mappers;
   exports dk.easv.belmanexam.ui.models;
   exports dk.easv.belmanexam.auth;
+  exports dk.easv.belmanexam.services;
 
 
 }

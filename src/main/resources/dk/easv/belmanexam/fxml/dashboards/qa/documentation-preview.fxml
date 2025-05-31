@@ -5,11 +5,13 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="1280.0" stylesheets="@../../../styles/main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.qa.dashboards.DocumentationPreviewController">
@@ -53,52 +55,93 @@
             <String fx:value="previous-button" />
          </styleClass>
       </HBox>
-      <HBox alignment="CENTER_LEFT" layoutX="1098.0" layoutY="290.0" onMouseClicked="#onClickConfirm" prefHeight="60.0" prefWidth="174.0">
+      <VBox alignment="CENTER" layoutX="1080.0" layoutY="180.0" prefHeight="350.0" prefWidth="180.0" spacing="30.0">
          <children>
-            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/approve-icon.png" />
-               </image>
-            </ImageView>
-            <Label text="Confirm" textFill="WHITE">
-               <font>
-                  <Font size="46.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="11.0" />
-               </HBox.margin>
-            </Label>
+            <HBox alignment="CENTER_LEFT" onMouseClicked="#onClickConfirm" prefHeight="60.0" prefWidth="174.0">
+               <children>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/approve-icon.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Confirm" textFill="WHITE">
+                     <font>
+                        <Font size="46.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="11.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="confirm-button" />
+                  <String fx:value="green-button" />
+                  <String fx:value="shadow" />
+               </styleClass>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" onMouseClicked="#onClickDownload">
+               <children>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/download-icon.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Download" textFill="WHITE">
+                     <font>
+                        <Font size="46.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="11.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="confirm-button" />
+                  <String fx:value="blue-button" />
+                  <String fx:value="shadow" />
+               </styleClass>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+            <VBox alignment="CENTER" prefHeight="153.0" prefWidth="180.0" spacing="10.0">
+               <children>
+                  <TextField fx:id="txtFieldEmail" alignment="CENTER" prefHeight="42.0" prefWidth="180.0" promptText="Email">
+                     <font>
+                        <Font name="Helvetica Light" size="24.0" />
+                     </font>
+                  </TextField>
+                  <HBox fx:id="btnSendEmail" alignment="CENTER" onMouseClicked="#onClickSendEmail">
+                     <children>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/send-icon.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="lblSend" text="Send" textFill="WHITE">
+                           <font>
+                              <Font size="46.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="11.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <styleClass>
+                        <String fx:value="confirm-button" />
+                        <String fx:value="blue-button" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
          </children>
-         <styleClass>
-            <String fx:value="confirm-button" />
-            <String fx:value="green-button" />
-            <String fx:value="shadow" />
-         </styleClass>
-      </HBox>
-      <HBox alignment="CENTER_LEFT" layoutX="1098.0" layoutY="384.0" onMouseClicked="#onClickDownload">
-         <children>
-            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/download-icon.png" />
-               </image>
-            </ImageView>
-            <Label text="Download" textFill="WHITE">
-               <font>
-                  <Font size="46.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="11.0" />
-               </HBox.margin>
-            </Label>
-         </children>
-         <styleClass>
-            <String fx:value="confirm-button" />
-            <String fx:value="blue-button" />
-            <String fx:value="shadow" />
-         </styleClass>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </HBox>
+      </VBox>
    </children>
 </AnchorPane>

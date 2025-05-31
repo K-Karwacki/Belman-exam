@@ -2,6 +2,7 @@ package dk.easv.belmanexam;
 
 import dk.easv.belmanexam.auth.AuthService;
 import dk.easv.belmanexam.auth.UserSession;
+import dk.easv.belmanexam.services.EmailSenderService;
 import dk.easv.belmanexam.services.factories.RepositoryService;
 import dk.easv.belmanexam.services.factories.RepositoryServiceFactory;
 import dk.easv.belmanexam.services.implementations.OrderManagementServiceImpl;
@@ -45,6 +46,7 @@ public class Main extends Application
 
   protected final GoogleDriveManager googleDriveManager = new GoogleDriveManager();
   protected final OrderManagementService orderManagementService = new OrderManagementServiceImpl(repositoryService);
+  protected final EmailSenderService emailSenderService = new EmailSenderService();
   protected final PhotoDocumentationManagementService photoDocumentationManagementService = new PhotoDocumentationServiceImpl(repositoryService);
   protected final UserManagementService userManagementService = new UserManagementServiceImpl(repositoryService);
   protected final AuthService authService = new AuthService(repositoryService);
@@ -76,7 +78,7 @@ public class Main extends Application
     documentationDashboardController.setServices(photoDocumentationManagementService, googleDriveManager);
     documentationCreationDashboardController.setServices(photoDocumentationManagementService);
     approveDocumentationDashboardController.setServices(photoDocumentationManagementService);
-    documentationPreviewController.setServices(photoDocumentationManagementService);
+    documentationPreviewController.setServices(photoDocumentationManagementService, emailSenderService);
     usersDashboardController.setServices(userManagementService);
     userEditorController.setServices(userManagementService);
     userCreatorController.setServices(userManagementService);

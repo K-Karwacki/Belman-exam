@@ -148,7 +148,6 @@ public class PhotoDocumentationRepositoryImpl implements PhotoDocumentationRepos
         QueryBuilder<Photo> queryBuilder = new QueryBuilder<>(Photo.class, "photo_item")
                 .set("documentation_id", documentation_id)
                 .set("data", data)
-                .set("info", info)
                 .set("side", side);
         try (DBConnection dbConnection = new DBConnection()) {
             queryBuilder.executeInsert(dbConnection.getConnection());
