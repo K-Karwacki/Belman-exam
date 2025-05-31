@@ -11,6 +11,7 @@ module dk.easv.belmanexam{
 //  requires charm.down.common;
 //  requires com.gluonhq.;
 
+  requires metadata.extractor;
   requires jbcrypt;
   requires jdk.httpserver;
   requires java.sql;

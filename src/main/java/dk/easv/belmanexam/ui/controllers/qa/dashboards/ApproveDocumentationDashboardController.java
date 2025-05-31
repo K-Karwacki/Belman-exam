@@ -1,5 +1,10 @@
 package dk.easv.belmanexam.ui.controllers.qa.dashboards;
 
+import com.drew.imaging.ImageMetadataReader;
+import com.drew.imaging.ImageProcessingException;
+import com.drew.metadata.Metadata;
+import com.drew.metadata.MetadataException;
+import com.drew.metadata.exif.ExifIFD0Directory;
 import dk.easv.belmanexam.exceptions.PhotoException;
 import dk.easv.belmanexam.entities.Photo;
 import dk.easv.belmanexam.entities.PhotoDocumentation;
@@ -15,11 +20,16 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.util.Pair;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.util.*;
 
 public class ApproveDocumentationDashboardController {
