@@ -45,7 +45,7 @@ public class PDFGenerator {
                 // Add images vertically
                 float xPosition1 = 50;  // Left column x-coordinate
                 float xPosition2 = 350; // Right column x-coordinate
-                float yPosition = 440;  // Starting y-coordinate
+                float yPosition = 400;  // Starting y-coordinate
                 int i = 0;
 
                 for (Photo photo : photos) {
@@ -112,10 +112,21 @@ public class PDFGenerator {
         int originalHeight = bufferedImage.getHeight();
 
         // Calculate scaled dimensions while maintaining aspect ratio
-        float maxWidth = 200;
-        float scaledWidth = Math.min(originalWidth, maxWidth); // Ensure width is no larger than 200
-        float aspectRatio = (float) originalHeight / originalWidth;
-        float scaledHeight = scaledWidth * aspectRatio; // Maintain aspect ratio
+        float scaledWidth;
+        float scaledHeight;
+        if(originalHeight > originalWidth) {
+            float maxHeight = 180;
+            scaledHeight = Math.min(originalHeight, maxHeight); // Ensure height is no larger than 200
+            float aspectRatio = (float) originalWidth / originalHeight;
+            scaledWidth = scaledHeight * aspectRatio;
+        }
+        else{
+            float maxWidth = 200;
+            scaledWidth = Math.min(originalWidth, maxWidth); // Ensure width is no larger than 200
+            float aspectRatio = (float) originalHeight / originalWidth;
+            scaledHeight = scaledWidth * aspectRatio;
+        }
+
 
         // Convert BufferedImage to PDImageXObject
         try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
