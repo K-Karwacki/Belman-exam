@@ -26,7 +26,6 @@ public enum FXMLManager
             T controller = loader.getController();
             Pair<Parent, Object> parentFXMLControllerPair = new Pair<>(root, controller);
             loadedFXMLs.put(fxmlPath, parentFXMLControllerPair);
-            System.out.println("Fxml loaded");
             return new Pair<>(parentFXMLControllerPair.getKey(), (T) parentFXMLControllerPair.getValue());
         } catch (IOException e) {
             e.printStackTrace();
