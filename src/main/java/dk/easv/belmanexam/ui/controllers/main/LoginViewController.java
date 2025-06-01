@@ -4,16 +4,20 @@ import dk.easv.belmanexam.Main;
 import dk.easv.belmanexam.auth.AuthService;
 import dk.easv.belmanexam.auth.UserSession;
 import dk.easv.belmanexam.services.utils.RoleType;
+import dk.easv.belmanexam.ui.FXMLManager;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
+import dk.easv.belmanexam.ui.controllers.operator.dashboards.PersonalDocumentationDashboardController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.util.Pair;
 
 import java.util.Objects;
 
@@ -85,6 +89,8 @@ public class LoginViewController {
     }
 
     private void goToOperatorPage(){
+        Pair<Parent, PersonalDocumentationDashboardController> p = FXMLManager.INSTANCE.getFXML(FXMLPath.PERSONAL_DOCUMENTATION_DASHBOARD);
+        p.getValue().addDocumentation();
         viewManager.showStage(FXMLPath.OPERATOR_VIEW, "BelSign", true);
     }
     private void goToAdminPage(){

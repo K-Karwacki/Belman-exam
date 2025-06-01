@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox fx:id="hboxContainer" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="780.0" styleClass="container" stylesheets="@../../styles/main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.components.PersonalDocumentationComponent">
+   <children>
+      <Label fx:id="lblOrderNumber" alignment="CENTER" minWidth="150.0" prefHeight="21.0" prefWidth="254.0" style="-fx-font-weight: bold; -fx-font-size: 18;" text="12-03/133245" />
+      <Separator orientation="VERTICAL" prefHeight="30.0" prefWidth="0.0" />
+      <Label fx:id="lblStatus" alignment="CENTER" minWidth="100.0" prefHeight="21.0" prefWidth="207.0" style="-fx-font-weight: bold; -fx-font-size: 18;" text="Pending" />
+      <Separator orientation="VERTICAL" prefHeight="62.0" prefWidth="6.0" />
+      <Label fx:id="lblRecordDate" alignment="CENTER" prefHeight="58.0" prefWidth="301.0" style="-fx-font-weight: bold; -fx-font-size: 18;" text="11/24/2025" wrapText="true" />
+   </children>
+   <padding>
+      <Insets bottom="10.0" top="10.0" />
+   </padding>
+</HBox>

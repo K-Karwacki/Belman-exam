@@ -1,6 +1,7 @@
 package dk.easv.belmanexam.ui.models;
 
 import dk.easv.belmanexam.entities.PhotoDocumentation;
+import dk.easv.belmanexam.entities.User;
 import dk.easv.belmanexam.services.utils.Status;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,6 +35,14 @@ public class PhotoDocumentationListModel {
         return FXCollections.observableArrayList(
                 documentation.stream()
                         .filter(doc -> doc.getStatus() == status)
+                        .filter(doc -> doc.getOrderNumber().contains(input))
+                        .collect(Collectors.toList())
+        );
+    }
+    public ObservableList<PhotoDocumentation> getDocumentationForOperator(User user, String input) {
+        return FXCollections.observableArrayList(
+                documentation.stream()
+                        .filter(doc -> doc.getUser().getID() == user.getId())
                         .filter(doc -> doc.getOrderNumber().contains(input))
                         .collect(Collectors.toList())
         );

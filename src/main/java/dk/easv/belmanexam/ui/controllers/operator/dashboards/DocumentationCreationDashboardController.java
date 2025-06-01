@@ -10,7 +10,6 @@ import dk.easv.belmanexam.ui.FXMLManager;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
 import dk.easv.belmanexam.ui.controllers.components.PhotoInputComponentController;
-import dk.easv.belmanexam.ui.controllers.components.OrderListComponent;
 import dk.easv.belmanexam.utils.ImageConverter;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -27,11 +26,8 @@ import java.util.List;
 public class DocumentationCreationDashboardController {
 
     private final String[] sides = {"Top", "Front", "Left", "Right", "Back"};
-
-    private String parentFolderId;
     private List<File> photos = new ArrayList<>();
     private List<PhotoInputComponentController> photoInputComponents = new ArrayList<>();
-    private OrderListComponent parentController;
     private PhotoDocumentationManagementService photoDocumentationManagementService;
     private String orderNumber;
     @FXML
@@ -51,7 +47,7 @@ public class DocumentationCreationDashboardController {
     }
     @FXML
     private void showParentView(){
-        ViewManager.INSTANCE.switchDashboard(FXMLPath.ORDERS_DASHBOARD, "Belsign");
+        ViewManager.INSTANCE.switchDashboard(FXMLPath.PERSONAL_DOCUMENTATION_DASHBOARD, "Belsign");
     }
 
     @FXML
@@ -62,7 +58,6 @@ public class DocumentationCreationDashboardController {
         photoDocumentation.setDateTime(LocalDateTime.now());
         photoDocumentation.setUser(new UserModel(UserSession.INSTANCE.getLoggedUser()));
         photoDocumentationManagementService.add(photoDocumentation);
-        this.parentFolderId = photoDocumentationManagementService.createFolder(orderNumber);
         for(PhotoInputComponentController photoInputComponent: photoInputComponents) {
             File file = photoInputComponent.getFile();
             if(file != null) {
@@ -72,19 +67,15 @@ public class DocumentationCreationDashboardController {
                 photoDocumentationManagementService.addPhoto(image_data, documentation_id, photoInputComponent.getSide(), "");
             }
         }
-        if(parentController != null) {
-            parentController.changeStatus();
-        }
-        ViewManager.INSTANCE.switchDashboard(FXMLPath.ORDERS_DASHBOARD, "Belsign");
+        ViewManager.INSTANCE.switchDashboard(FXMLPath.PERSONAL_DOCUMENTATION_DASHBOARD, "Belsign");
 
     }
 
-    public void setDetails(String orderNumber, OrderListComponent parentController) {
+    public void setDetails(String orderNumber) {
         initialize();
         photos.clear();
         this.orderNumber = orderNumber;
         textFieldOrderNumber.setText(orderNumber);
-        this.parentController = parentController;
     }
 
     public void setServices(PhotoDocumentationManagementService photoDocumentationManagementService) {

@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="1194.0" styleClass="bgc" stylesheets="@../../../styles/main.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.operator.dashboards.OrdersDashboardController">
+<AnchorPane prefHeight="600.0" prefWidth="1280.0" styleClass="bgc" stylesheets="@../../../styles/main.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.belmanexam.ui.controllers.operator.dashboards.PersonalDocumentationDashboardController">
    <children>
       <Label alignment="CENTER_RIGHT" layoutY="40.0" prefHeight="49.0" prefWidth="324.0" text="My documentations">
          <padding>
@@ -31,30 +31,28 @@
             <String fx:value="left-side-header" />
          </styleClass>
       </Label>
-      <HBox alignment="CENTER_LEFT" layoutX="74.0" layoutY="121.0" prefHeight="46.0" prefWidth="700.0" style="-fx-border-color: #777; -fx-border-radius: 13;">
+      <HBox alignment="CENTER_LEFT" layoutX="74.0" layoutY="121.0" prefHeight="46.0" prefWidth="809.0" style="-fx-border-color: #777; -fx-border-radius: 13;">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="145.0" style="-fx-font-weight: bold;" text="Order No." />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="260.0" style="-fx-font-weight: bold;" text="Order No." />
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <Label alignment="CENTER" prefHeight="46.0" prefWidth="107.0" style="-fx-font-weight: bold;" text="Status">
+            <Label alignment="CENTER" prefHeight="44.0" prefWidth="211.0" style="-fx-font-weight: bold;" text="Status">
                <padding>
                   <Insets left="5.0" right="5.0" />
                </padding>
             </Label>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <Label alignment="CENTER" prefHeight="46.0" prefWidth="230.0" style="-fx-font-weight: bold;" text="Comment" textAlignment="CENTER" />
-            <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <Label alignment="CENTER" prefHeight="26.0" prefWidth="183.0" />
+            <Label alignment="CENTER" prefHeight="44.0" prefWidth="337.0" style="-fx-font-weight: bold;" text="Date of submission" textAlignment="CENTER" />
          </children>
          <styleClass>
             <String fx:value="light-bgc" />
             <String fx:value="radius" />
          </styleClass>
       </HBox>
-      <ScrollPane hbarPolicy="NEVER" layoutX="74.0" layoutY="181.0" prefHeight="293.0" prefWidth="698.0" style="-fx-border-color: #777;" styleClass="custom-scroll-pane">
+      <ScrollPane hbarPolicy="NEVER" layoutX="74.0" layoutY="181.0" prefHeight="374.0" prefWidth="807.0" style="-fx-border-color: #777;" styleClass="custom-scroll-pane">
          <content>
-            <FlowPane fx:id="flowPaneOrderList" prefHeight="200.0" prefWidth="700.0" />
+            <FlowPane fx:id="flowPaneDocumentationList" prefHeight="200.0" prefWidth="700.0" />
          </content></ScrollPane>
-      <VBox layoutX="831.0" layoutY="198.0" prefHeight="200.0" prefWidth="300.0" spacing="50.0">
+      <VBox layoutX="930.0" layoutY="250.0" prefHeight="200.0" prefWidth="300.0" spacing="50.0">
          <children>
             <HBox prefHeight="55.0" prefWidth="300.0" styleClass="radius" stylesheets="@../../../styles/search-bar.css">
                <children>

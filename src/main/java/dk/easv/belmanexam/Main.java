@@ -22,7 +22,7 @@ import dk.easv.belmanexam.ui.controllers.admin.dashboards.UserEditorController;
 import dk.easv.belmanexam.ui.controllers.admin.dashboards.UsersDashboardController;
 import dk.easv.belmanexam.ui.controllers.main.LoginViewController;
 import dk.easv.belmanexam.ui.controllers.operator.dashboards.DocumentationCreationDashboardController;
-import dk.easv.belmanexam.ui.controllers.operator.dashboards.OrdersDashboardController;
+import dk.easv.belmanexam.ui.controllers.operator.dashboards.PersonalDocumentationDashboardController;
 import dk.easv.belmanexam.ui.controllers.qa.dashboards.ApproveDocumentationDashboardController;
 import dk.easv.belmanexam.ui.controllers.qa.dashboards.DocumentationDashboardController;
 import dk.easv.belmanexam.ui.controllers.qa.dashboards.DocumentationPreviewController;
@@ -30,8 +30,6 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 import java.util.Locale;
-import java.util.Optional;
-
 
 
 public class Main extends Application
@@ -63,7 +61,7 @@ public class Main extends Application
   private void setControllersDependencies(){
     // Getting the controllers
     LoginViewController loginViewController = (LoginViewController) fxmlManager.getFXML(FXMLPath.LOGIN_VIEW).getValue();
-    OrdersDashboardController ordersDashboardController = (OrdersDashboardController) fxmlManager.getFXML(FXMLPath.ORDERS_DASHBOARD).getValue();
+    PersonalDocumentationDashboardController personalDocumentationDashboardController = (PersonalDocumentationDashboardController) fxmlManager.getFXML(FXMLPath.PERSONAL_DOCUMENTATION_DASHBOARD).getValue();
     DocumentationDashboardController documentationDashboardController = (DocumentationDashboardController) fxmlManager.getFXML(FXMLPath.DOCUMENTATION_DASHBOARD).getValue();
     DocumentationCreationDashboardController documentationCreationDashboardController = (DocumentationCreationDashboardController) fxmlManager.getFXML(FXMLPath.DOCUMENTATION_CREATION_DASHBOARD).getValue();
     ApproveDocumentationDashboardController approveDocumentationDashboardController = (ApproveDocumentationDashboardController) fxmlManager.getFXML(FXMLPath.APPROVE_DOCUMENTATION_DASHBOARD).getValue();
@@ -74,7 +72,7 @@ public class Main extends Application
     LogsDashboardController logsDashboardController = (LogsDashboardController) fxmlManager.getFXML(FXMLPath.LOGS_DASHBOARD).getValue();
     // Setting dependencies
     loginViewController.setServices(authService);
-    ordersDashboardController.setServices(orderManagementService, googleDriveManager);
+    personalDocumentationDashboardController.setServices(photoDocumentationManagementService);
     documentationDashboardController.setServices(photoDocumentationManagementService, googleDriveManager);
     documentationCreationDashboardController.setServices(photoDocumentationManagementService);
     approveDocumentationDashboardController.setServices(photoDocumentationManagementService);

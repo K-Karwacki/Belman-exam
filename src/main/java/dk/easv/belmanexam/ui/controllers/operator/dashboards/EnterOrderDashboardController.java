@@ -15,12 +15,12 @@ public class EnterOrderDashboardController {
     @FXML
     public void showDocumentationCreationView() {
         Pair<Parent, DocumentationCreationDashboardController> p = FXMLManager.INSTANCE.getFXML(FXMLPath.DOCUMENTATION_CREATION_DASHBOARD);
-        p.getValue().setDetails(textFieldOrderNumber.getText(), null);
+        p.getValue().setDetails(textFieldOrderNumber.getText());
         ViewManager.INSTANCE.switchDashboard(FXMLPath.DOCUMENTATION_CREATION_DASHBOARD, "BelSign");
     }
     @FXML
     public void showParentView(){
-        ViewManager.INSTANCE.switchDashboard(FXMLPath.ORDERS_DASHBOARD, "BelSign");
+        ViewManager.INSTANCE.switchDashboard(FXMLPath.PERSONAL_DOCUMENTATION_DASHBOARD, "BelSign");
     }
 
 }
