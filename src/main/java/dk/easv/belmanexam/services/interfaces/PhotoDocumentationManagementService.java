@@ -11,10 +11,6 @@ import java.util.HashMap;
 import java.util.Optional;
 
 public interface PhotoDocumentationManagementService {
-    void saveFileInFolder(java.io.File file, String folder) throws PhotoException;
-    String createFolder(String folderName) throws PhotoException;
-    String createFolderInFolder(String folderName, String parentFolderId) throws PhotoException;
-    HashMap<String, Image> getAllImagesByOrderNumber(String orderNumber) throws PhotoException;
     Collection<PhotoDocumentation> getAll();
     PhotoDocumentationListModel getPhotoDocumentationListModel();
     void addLog(User user, PhotoDocumentation photoDocumentation);

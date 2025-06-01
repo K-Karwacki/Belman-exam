@@ -16,15 +16,6 @@ public class UserModel
     private final SimpleStringProperty email = new SimpleStringProperty();
 
 
-//    public UserModel(){
-//        ID.set(-1);
-//        role.set(null);
-//        firstName.set(null);
-//        lastName.set(null);
-//        email.set(null);
-//
-//    }
-
     public UserModel(User user){
         ID.set(user.getId());
         role.set(user.getRole());

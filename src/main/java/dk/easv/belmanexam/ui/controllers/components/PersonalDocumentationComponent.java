@@ -15,17 +15,7 @@ public class PersonalDocumentationComponent {
 
     @FXML
     private Label lblOrderNumber;
-
-    public void setStatus(String status) {
-        lblStatus.setText(status);
-    }
-    public void setRecordDate(String recordDate) {
-        lblRecordDate.setText(recordDate);
-    }
-    public void setOrderNumber(String orderNumber) {
-        lblOrderNumber.setText(orderNumber);
-    }
-
+    
     public void setPhotoDocumentation(PhotoDocumentation documentation) {
         lblOrderNumber.setText(documentation.getOrderNumber());
         String s = documentation.getStatus().toString().toLowerCase();

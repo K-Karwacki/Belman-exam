@@ -101,7 +101,6 @@ public class DocumentationDashboardController {
     }
     @FXML
     private void onClickRefresh(){
-        System.out.println("test");
         flowPaneDocumentationList.getChildren().clear();
         photoDocumentationManagementService.refresh();
         addDocumentation(status);

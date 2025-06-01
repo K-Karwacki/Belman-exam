@@ -21,8 +21,6 @@ import javafx.util.Pair;
 
 import java.util.Objects;
 
-import static javax.swing.JOptionPane.showMessageDialog;
-
 public class LoginViewController {
     private AuthService authService;
     private UserSession userSession = UserSession.INSTANCE;
@@ -61,17 +59,6 @@ public class LoginViewController {
         else {
             showAlert("Login Failed", "The login failed. Please try again.\n");
         }
-
-        /** Test Purposes **/
-//        if(textFieldEmail.getText().equals("qa")){
-//            goToQAPage();
-//
-//        } else if(textFieldEmail.getText().equals("admin")){
-//            goToAdminPage();
-//
-//        } else if(textFieldEmail.getText().equals("operator")){
-//            goToOperatorPage();
-//        }
     }
 
     private void blankMessageInput(String email, String password) {

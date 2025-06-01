@@ -1,14 +1,11 @@
 package dk.easv.belmanexam.repositories.implementations;
 
-import dk.easv.belmanexam.entities.PhotoDocumentation;
 import dk.easv.belmanexam.entities.User;
 import dk.easv.belmanexam.repositories.interfaces.UserRepository;
 import dk.easv.belmanexam.repositories.utils.DBConnection;
 import dk.easv.belmanexam.repositories.utils.QueryBuilder;
 import dk.easv.belmanexam.repositories.utils.mappers.UserMapper;
-import dk.easv.belmanexam.services.utils.Status;
 
-import java.sql.*;
 import java.util.*;
 
 public class UserRepositoryImpl implements UserRepository {
@@ -66,7 +63,6 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public boolean delete(User entity) {
-        System.out.println("DELETING USER: " + entity);
         QueryBuilder<User> queryBuilder = new QueryBuilder<>(User.class, "[User]")
                 .where("ID", entity.getId());
         try (DBConnection dbConnection = new DBConnection()) {

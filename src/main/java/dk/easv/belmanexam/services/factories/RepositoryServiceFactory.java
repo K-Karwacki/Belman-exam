@@ -1,10 +1,8 @@
 package dk.easv.belmanexam.services.factories;
 
-import dk.easv.belmanexam.repositories.implementations.OrderRepositoryImpl;
 import dk.easv.belmanexam.repositories.implementations.PhotoDocumentationRepositoryImpl;
 import dk.easv.belmanexam.repositories.implementations.UserRepositoryImpl;
 import dk.easv.belmanexam.repositories.interfaces.BaseRepository;
-import dk.easv.belmanexam.repositories.interfaces.OrderRepository;
 import dk.easv.belmanexam.repositories.interfaces.PhotoDocumentationRepository;
 import dk.easv.belmanexam.repositories.interfaces.UserRepository;
 
@@ -26,9 +24,7 @@ public class RepositoryServiceFactory
   public void loadRepositories(){
     UserRepository userRepository = new UserRepositoryImpl();
     PhotoDocumentationRepository photoDocumentationRepository = new PhotoDocumentationRepositoryImpl(userRepository);
-    OrderRepository orderRepository = new OrderRepositoryImpl();
 
-    repositoryMap.putIfAbsent(OrderRepository.class, orderRepository);
     repositoryMap.putIfAbsent(PhotoDocumentationRepository.class, photoDocumentationRepository);
     repositoryMap.putIfAbsent(UserRepository.class, userRepository);
   }

@@ -138,7 +138,6 @@ public class GoogleDriveManager {
             HashMap<String, String> folders = new HashMap<>();
             for (File file : result.getFiles()) {
                 folders.put(file.getId(), file.getName());
-                System.out.println(file.getName());
             }
             return folders;
         } catch (IOException | GeneralSecurityException e) {

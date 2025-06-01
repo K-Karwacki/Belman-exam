@@ -1,17 +1,12 @@
 package dk.easv.belmanexam.ui.controllers.operator.dashboards;
 
 import dk.easv.belmanexam.auth.UserSession;
-import dk.easv.belmanexam.entities.Photo;
 import dk.easv.belmanexam.entities.PhotoDocumentation;
 import dk.easv.belmanexam.entities.User;
-import dk.easv.belmanexam.services.interfaces.OrderManagementService;
-import dk.easv.belmanexam.repositories.utils.GoogleDriveManager;
 import dk.easv.belmanexam.services.interfaces.PhotoDocumentationManagementService;
-import dk.easv.belmanexam.services.utils.Status;
 import dk.easv.belmanexam.ui.FXMLManager;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
-import dk.easv.belmanexam.ui.controllers.components.DocumentationListComponent;
 import dk.easv.belmanexam.ui.controllers.components.PersonalDocumentationComponent;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;

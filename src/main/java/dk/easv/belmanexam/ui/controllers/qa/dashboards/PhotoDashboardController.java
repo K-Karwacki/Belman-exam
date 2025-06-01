@@ -13,7 +13,6 @@ public class PhotoDashboardController {
 
     @FXML
     private void showParentView(){
-        System.out.println("test");
         ViewManager.INSTANCE.switchDashboard(FXMLPath.APPROVE_DOCUMENTATION_DASHBOARD, "BelSign");
     }
 

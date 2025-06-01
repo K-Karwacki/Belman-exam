@@ -8,7 +8,6 @@ import javafx.scene.image.ImageView;
 
 public class ImageDisplayDashboardController {
     private Image current_photo;
-    private DocumentationCreationDashboardController parentController;
 
     @FXML
     private ImageView imgViewSelectedPhoto;

@@ -22,14 +22,12 @@ public class ImageConverter {
         try{
             ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
             BufferedImage bufferedImage = ImageIO.read(bis);
-//            bufferedImage =
             try{
                 Metadata metadata = ImageMetadataReader.readMetadata(new ByteArrayInputStream(imageBytes));
                 ExifIFD0Directory directory = metadata.getFirstDirectoryOfType(ExifIFD0Directory.class);
 
                 if (directory != null && directory.containsTag(ExifIFD0Directory.TAG_ORIENTATION)) {
                     int orientation = directory.getInt(ExifIFD0Directory.TAG_ORIENTATION);
-                    System.out.println("Orientation: " + orientation);
                     bis.close();
                     return SwingFXUtils.toFXImage(rotateImageAccordingToOrientation(bufferedImage, orientation), null);
                 }

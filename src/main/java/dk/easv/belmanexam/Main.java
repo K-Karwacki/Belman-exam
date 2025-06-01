@@ -5,10 +5,8 @@ import dk.easv.belmanexam.auth.UserSession;
 import dk.easv.belmanexam.services.EmailSenderService;
 import dk.easv.belmanexam.services.factories.RepositoryService;
 import dk.easv.belmanexam.services.factories.RepositoryServiceFactory;
-import dk.easv.belmanexam.services.implementations.OrderManagementServiceImpl;
 import dk.easv.belmanexam.services.implementations.PhotoDocumentationServiceImpl;
 import dk.easv.belmanexam.services.implementations.UserManagementServiceImpl;
-import dk.easv.belmanexam.services.interfaces.OrderManagementService;
 import dk.easv.belmanexam.services.interfaces.PhotoDocumentationManagementService;
 import dk.easv.belmanexam.repositories.utils.GoogleDriveManager;
 import dk.easv.belmanexam.services.interfaces.UserManagementService;
@@ -43,7 +41,6 @@ public class Main extends Application
   protected final RepositoryService repositoryService = repositoryServiceFactory.getRepositoryService();
 
   protected final GoogleDriveManager googleDriveManager = new GoogleDriveManager();
-  protected final OrderManagementService orderManagementService = new OrderManagementServiceImpl(repositoryService);
   protected final EmailSenderService emailSenderService = new EmailSenderService();
   protected final PhotoDocumentationManagementService photoDocumentationManagementService = new PhotoDocumentationServiceImpl(repositoryService);
   protected final UserManagementService userManagementService = new UserManagementServiceImpl(repositoryService);

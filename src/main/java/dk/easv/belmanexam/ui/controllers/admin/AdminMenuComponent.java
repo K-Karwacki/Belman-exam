@@ -15,13 +15,13 @@ public class AdminMenuComponent
   @FXML
   private Button btnLogs;
 
-  public void switchToLogs(ActionEvent actionEvent)
+  public void switchToLogs()
   {
     ViewManager.INSTANCE.switchDashboard(FXMLPath.LOGS_DASHBOARD, "Logs");
     updateButtonStyles(btnLogs);
   }
 
-  public void switchToUsers(ActionEvent actionEvent)
+  public void switchToUsers()
   {
     ViewManager.INSTANCE.switchDashboard(FXMLPath.USERS_DASHBOARD, "Users");
     updateButtonStyles(btnUsers);

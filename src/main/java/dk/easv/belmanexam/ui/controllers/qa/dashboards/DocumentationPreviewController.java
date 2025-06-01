@@ -12,7 +12,6 @@ import dk.easv.belmanexam.utils.ImageConverter;
 import dk.easv.belmanexam.utils.PDFGenerator;
 import dk.easv.belmanexam.utils.PdfFile;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -23,7 +22,6 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.geometry.Insets;
 
-import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;

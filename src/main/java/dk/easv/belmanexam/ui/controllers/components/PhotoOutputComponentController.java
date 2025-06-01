@@ -3,20 +3,14 @@ package dk.easv.belmanexam.ui.controllers.components;
 import dk.easv.belmanexam.ui.FXMLManager;
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
-import dk.easv.belmanexam.ui.controllers.operator.dashboards.ImageDisplayDashboardController;
 import dk.easv.belmanexam.ui.controllers.qa.dashboards.PhotoDashboardController;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.util.Pair;
-
-import java.net.URL;
-import java.util.ResourceBundle;
-
 
 public class PhotoOutputComponentController{
     @FXML
