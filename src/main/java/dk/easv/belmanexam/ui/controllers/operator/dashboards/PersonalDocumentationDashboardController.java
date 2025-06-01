@@ -56,6 +56,7 @@ public class PersonalDocumentationDashboardController {
 
     @FXML
     public void filterByOrderNumber(){
+        addDocumentation();
     }
 
     public void setServices(PhotoDocumentationManagementService photoDocumentationManagementService) {
