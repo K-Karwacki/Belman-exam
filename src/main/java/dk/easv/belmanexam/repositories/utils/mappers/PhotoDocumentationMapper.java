@@ -22,8 +22,16 @@ public class PhotoDocumentationMapper implements BaseMapper<PhotoDocumentation> 
         PhotoDocumentation photoDocumentation = new PhotoDocumentation();
         String operatorEmail = resultSet.getString("operatorEmail");
         User user = userRepository.findByEmail(operatorEmail);
-        UserModel userModel = new UserModel(user);
-        photoDocumentation.setUser(userModel);
+        if(user != null) {
+            UserModel userModel = new UserModel(user);
+            photoDocumentation.setUser(userModel);
+        }
+        else{
+            UserModel userModel = new UserModel();
+            userModel.setFirstName(operatorEmail);
+            userModel.setLastName("");
+            photoDocumentation.setUser(userModel);
+        }
         photoDocumentation.setOperatorEmail(operatorEmail);
         photoDocumentation.setId(resultSet.getLong("id"));
         photoDocumentation.setOrderNumber(resultSet.getString("orderNumber"));

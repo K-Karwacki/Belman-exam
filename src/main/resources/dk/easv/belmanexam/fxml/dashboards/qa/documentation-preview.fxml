@@ -54,6 +54,9 @@
             <String fx:value="shadow" />
             <String fx:value="previous-button" />
          </styleClass>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </HBox>
       <VBox alignment="CENTER" layoutX="1080.0" layoutY="180.0" prefHeight="350.0" prefWidth="180.0" spacing="30.0">
          <children>
@@ -78,6 +81,9 @@
                   <String fx:value="green-button" />
                   <String fx:value="shadow" />
                </styleClass>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </HBox>
             <HBox alignment="CENTER_LEFT" onMouseClicked="#onClickDownload">
                <children>

@@ -15,6 +15,8 @@ public class UserModel
     private final SimpleStringProperty lastName = new SimpleStringProperty();
     private final SimpleStringProperty email = new SimpleStringProperty();
 
+    public UserModel(){
+    }
 
     public UserModel(User user){
         ID.set(user.getId());
