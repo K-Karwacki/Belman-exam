@@ -15,19 +15,19 @@
         </VBox.margin>
     </ImageView>
     <Label text="First Name:">
-      <padding>
-         <Insets top="30.0" />
-      </padding></Label>
+        <padding><Insets top="30.0" /></padding>
+    </Label>
     <TextField fx:id="firstNameField" />
+    <Label fx:id="firstNameErrorLabel" textFill="red" />
 
     <Label text="Last Name:" />
     <TextField fx:id="lastNameField" />
+    <Label fx:id="lastNameErrorLabel" textFill="red" />
 
     <Label text="Email:" />
     <TextField fx:id="emailField" />
+    <Label fx:id="emailErrorLabel" textFill="red" />
 
-<!--    <Label text="Password:" />-->
-<!--    <PasswordField fx:id="passwordField" />-->
     <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="75.0">
         <children>
             <Label prefHeight="17.0" prefWidth="47.0" text="Role:" />
@@ -49,6 +49,7 @@
     </HBox>
 
     <Label fx:id="resultLabel" />
+    <Label fx:id="roleErrorLabel" textFill="red" />
     <padding>
         <Insets left="35.0" right="35.0" top="20.0" />
     </padding>
