@@ -2,7 +2,6 @@ package dk.easv.belmanexam.ui.controllers.admin;
 
 import dk.easv.belmanexam.ui.FXMLPath;
 import dk.easv.belmanexam.ui.ViewManager;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 

@@ -32,7 +32,6 @@ import java.util.Locale;
 
 public class Main extends Application
 {
-  private final UserSession userSession = UserSession.INSTANCE;
   private final ViewManager viewManager = ViewManager.INSTANCE;
   private final FXMLManager fxmlManager = FXMLManager.INSTANCE;
   private final StageManager stageManager = new StageManager();

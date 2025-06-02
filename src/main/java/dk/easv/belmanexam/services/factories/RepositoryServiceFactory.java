@@ -19,7 +19,7 @@ public class RepositoryServiceFactory
     repositoryService = new RepositoryServiceImpl(repositoryMap);
 
     loadRepositories();
-  };
+  }
 
   public void loadRepositories(){
     UserRepository userRepository = new UserRepositoryImpl();

@@ -48,7 +48,6 @@ public class LoginViewController {
 
         if (authService.authenticateWithPassword(email, password)) {
             RoleType role = RoleType.fromString(userSession.getLoggedUser().getRole());
-            System.out.println(userSession.getLoggedUser().getRole());
             switch(role){
                 case QA -> goToQAPage();
                 case ADMIN -> goToAdminPage();

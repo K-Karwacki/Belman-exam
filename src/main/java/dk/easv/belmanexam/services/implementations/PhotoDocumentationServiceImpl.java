@@ -5,10 +5,8 @@ import dk.easv.belmanexam.entities.*;
 import dk.easv.belmanexam.services.factories.RepositoryService;
 import dk.easv.belmanexam.services.interfaces.PhotoDocumentationManagementService;
 import dk.easv.belmanexam.repositories.interfaces.PhotoDocumentationRepository;
-import dk.easv.belmanexam.exceptions.PhotoException;
 import dk.easv.belmanexam.ui.models.LogListModel;
 import dk.easv.belmanexam.ui.models.PhotoDocumentationListModel;
-import javafx.scene.image.Image;
 
 import java.util.*;
 

@@ -63,10 +63,8 @@ public class EmailSenderService {
 
         int responseCode = connection.getResponseCode();
         if (responseCode == 202) {
-            System.out.println("Email sent successfully!");
             return true;
         } else {
-            System.out.println("Failed to send email. Response code: " + responseCode);
             return false;
         }
     }

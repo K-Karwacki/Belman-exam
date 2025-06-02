@@ -98,7 +98,7 @@ public class StageManager
         try{
             getStage(fxmlFile).show();
         }catch (ViewException e){
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 

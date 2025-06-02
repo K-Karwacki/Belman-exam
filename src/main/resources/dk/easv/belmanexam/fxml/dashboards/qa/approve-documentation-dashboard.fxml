@@ -42,16 +42,6 @@
                   </TextField>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="300.0" style="-fx-border-color: #777; -fx-border-radius: 14; -fx-border-width: 2;">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="421.0" style="-fx-background-radius: 13 13 0 0;" styleClass="light-blue-label" text="Comment" />
-                  <TextField fx:id="textFieldComment" alignment="TOP_LEFT" prefHeight="133.0" prefWidth="296.0" styleClass="order-number-label">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </VBox>
          </children>
       </VBox>
       <StackPane layoutX="1150.0" layoutY="250.0" onMouseClicked="#onClickApproveDocumentation" prefHeight="0.0" prefWidth="0.0">

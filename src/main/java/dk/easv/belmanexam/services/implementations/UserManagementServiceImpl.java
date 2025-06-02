@@ -65,7 +65,6 @@ public class UserManagementServiceImpl implements UserManagementService {
 
     @Override public boolean updateUser(UserModel userModel)
         {
-            System.out.println(userModel.getID());
             Optional<User> optionalUser = userRepository.getById(userModel.getID());
             if(optionalUser.isPresent()){
                 User user = optionalUser.get();
