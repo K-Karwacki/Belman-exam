@@ -85,12 +85,11 @@ public class ApproveDocumentationDashboardController {
     @FXML
     private void onClickApproveDocumentation() throws IOException {
         String orderNumber = textFieldOrderNumber.getText();
-        String comment = textFieldComment.getText();
         Collection<Photo> images = imageCache.get(photoDocumentation.getId());
 
         Pair<Parent, DocumentationPreviewController> p = FXMLManager.INSTANCE.getFXML(FXMLPath.DOCUMENTATION_PREVIEW);
         DocumentationPreviewController controller = p.getValue();
-        controller.setDetails(images, orderNumber, comment, photoDocumentation);
+        controller.setDetails(images, orderNumber, photoDocumentation);
 
         ViewManager.INSTANCE.switchDashboard(FXMLPath.DOCUMENTATION_PREVIEW, "BelSign");
     }

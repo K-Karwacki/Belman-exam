@@ -51,7 +51,6 @@ public class DocumentationPreviewController {
     private PhotoDocumentation photoDocumentation;
     private HashMap<String, Image> imageList;
     private String orderNumber;
-    private String comment;
 
     public DocumentationPreviewController() {
         pdfFiles = new ArrayList<>();
@@ -61,10 +60,9 @@ public class DocumentationPreviewController {
         ViewManager.INSTANCE.switchDashboard(FXMLPath.APPROVE_DOCUMENTATION_DASHBOARD, "BelSign");
     }
 
-    public void setDetails(Collection<Photo> photos, String orderNumber, String comment, PhotoDocumentation photoDocumentation) throws IOException {
+    public void setDetails(Collection<Photo> photos, String orderNumber, PhotoDocumentation photoDocumentation) throws IOException {
         this.photoDocumentation = photoDocumentation;
         this.orderNumber = orderNumber;
-        this.comment = comment;
         btnSendEmail.setDisable(false);
         lblSend.setText("Send");
 
